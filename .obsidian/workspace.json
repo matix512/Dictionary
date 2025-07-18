@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "sadada/Welcome.md",
+                "file": "teste12/fsfdfsdf.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Welcome"
+              "title": "fsfdfsdf"
             }
           }
         ]
@@ -31,10 +31,14 @@
             "id": "2367c9d801a54ad8",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "sadada/Welcome.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Welcome"
             }
           }
         ]
@@ -195,11 +199,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a9d4e10e066d511e",
+  "active": "2367c9d801a54ad8",
   "lastOpenFiles": [
+    "teste12/fsfdfsdf.md",
+    "fdsfsfsdf/Untitled.md",
+    "teste12",
+    "sadada/Welcome.md",
     "adasd",
     "sadada",
-    "fdsfsfsdf",
-    "sadada/Welcome.md"
+    "fdsfsfsdf"
   ]
 }
