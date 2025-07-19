@@ -11,10 +11,14 @@
             "id": "d4c8fcad233f014e",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "GIT/🧠 Git Cheat Sheet.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "🧠 Git Cheat Sheet"
             }
           }
         ]
@@ -177,6 +181,8 @@
   },
   "active": "d4c8fcad233f014e",
   "lastOpenFiles": [
+    "GIT/🧠 Git Cheat Sheet.md",
+    "GIT",
     "teste12/fsfdfsdf.md",
     "sadada/Welcome.md",
     "fdsfsfsdf/Untitled.md",
