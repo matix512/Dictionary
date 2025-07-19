@@ -14,8 +14,11 @@ https://github.com/oreillymedia/Learning_PHP
 
 PDF: https://dpbck.ac.in/wp-content/uploads/2022/05/Programming-PHP-PDFDrive-.pdf
 
+![[![[Pasted image 20250719014104.png]]
 
 
-![[Pasted image 20250719013940.png]]
+![[Pasted image 20250719014104.png]]
+
+
 
 https://github.com/dimateos/eBook-1/blob/master/Web%20Programming%20with%20PHP%20and%20MySQL.pdf
