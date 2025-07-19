@@ -10,7 +10,7 @@ https://github.com/oreillymedia/Learning_PHP
 
 # Programming PHP
 
-<img src="https://m.media-amazon.com/images/I/41Hmkbf7afL._UF1000,1000_QL80_.jpg" alt="" width="150">
+<img src="https://m.media-amazon.com/images/I/41Hmkbf7afL._UF1000,1000_QL80_.jpg" alt="" width="200">
 
 PDF: https://dpbck.ac.in/wp-content/uploads/2022/05/Programming-PHP-PDFDrive-.pdf
 
@@ -20,5 +20,7 @@ PDF: https://dpbck.ac.in/wp-content/uploads/2022/05/Programming-PHP-PDFDrive-.pd
 Procurar este livro
 
 
+
+<img src="https://media.springernature.com/full/springer-static/cover-hires/book/978-3-319-22659-0" alt="descrição" width="200">
 
 https://github.com/dimateos/eBook-1/blob/master/Web%20Programming%20with%20PHP%20and%20MySQL.pdf
