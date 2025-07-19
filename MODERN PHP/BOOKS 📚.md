@@ -10,14 +10,15 @@ https://github.com/oreillymedia/Learning_PHP
 
 # Programming PHP
 
-![[Pasted image 20250719013624.png]]
+
 
 PDF: https://dpbck.ac.in/wp-content/uploads/2022/05/Programming-PHP-PDFDrive-.pdf
 
-![[![[Pasted image 20250719014104.png]]
 
 
-![[Pasted image 20250719014104.png]]
+
+
+<img src="caminho/imagem.png" alt="descrição" width="300">
 
 
 
