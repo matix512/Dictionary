@@ -14,7 +14,7 @@ https://github.com/oreillymedia/Learning_PHP
 PDF: https://dpbck.ac.in/wp-content/uploads/2022/05/Programming-PHP-PDFDrive-.pdf
 
 
-php 8 quick scripting reference pdf - procurar este livro como manual
+# php 8 quick scripting reference pdf - procurar este livro como manual
 
 
 https://github.com/dimateos/eBook-1/blob/master/Web%20Programming%20with%20PHP%20and%20MySQL.pdf
