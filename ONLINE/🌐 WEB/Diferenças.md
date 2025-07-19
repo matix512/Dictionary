@@ -5,4 +5,12 @@ Tecnicamente, HTML e CSS não são consideradas linguagens de programação - s�
 	Ou seja, não se programa, desenvolve-se!
 
 
-HTML - HYPERT 
+HTML - HYPERTEXT MARKUP LANGUAGE
+
+Focada em conteúdo
+
+CSS - CASCADING STYLE SHEETS
+
+Focada em estilo
+
+JAVASCRIPT
