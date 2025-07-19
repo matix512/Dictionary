@@ -13,4 +13,10 @@ Focada em conteúdo : textos, imagens, vídeos, etc
 
 Focada em design : cores, sombras, tamanhos, etc 
 
-JAVASCRIPT
+### ==JAVASCRIPT==
+
+Focada nas interacções : animações, menus, validações, etc
+
+
+
+
