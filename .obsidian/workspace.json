@@ -11,14 +11,12 @@
             "id": "d4c8fcad233f014e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "MODERN PHP/BOOKS 📚.md",
-                "mode": "source",
-                "source": false
+                "file": "MODERN PHP/Pasted image 20250719013917.png"
               },
-              "icon": "lucide-file",
-              "title": "BOOKS 📚"
+              "icon": "lucide-image",
+              "title": "Pasted image 20250719013917"
             }
           }
         ]
@@ -179,11 +177,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d4c8fcad233f014e",
+  "active": "a9d4e10e066d511e",
   "lastOpenFiles": [
+    "MODERN PHP/BOOKS 📚.md",
+    "MODERN PHP/Pasted image 20250719013917.png",
     "Pasted image 20250719013611.png",
     "Pasted image 20250719013539.png",
-    "MODERN PHP/BOOKS 📚.md",
     "Pasted image 20250719013636.png",
     "Pasted image 20250719013624.png",
     "Pasted image 20250719013618.png",
