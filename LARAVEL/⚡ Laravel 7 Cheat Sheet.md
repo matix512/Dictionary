@@ -19,7 +19,7 @@ php artisan serve
 ```
 
 
-## ⚙️ CONFIGURAÇÃO INICIAL
+## ⚙️ CONFIGURAÇÃO DB
 
 ```bash
 # Copiar ficheiro de ambiente de exemplo
