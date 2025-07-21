@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LARAVEL/🛣️ROUTES AND CONTROLLERS.md",
+                "file": "LARAVEL/🎨LAYOUTS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "🛣️ROUTES AND CONTROLLERS"
+              "title": "🎨LAYOUTS"
             }
           }
         ]
@@ -179,15 +179,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d4c8fcad233f014e",
+  "active": "a9d4e10e066d511e",
   "lastOpenFiles": [
-    "LARAVEL/📦FACTORIES.md",
+    "LARAVEL/Untitled",
     "LARAVEL/🛣️ROUTES AND CONTROLLERS.md",
+    "LARAVEL/📦FACTORIES.md",
     "LARAVEL/🌱SEEDS.md",
     "LARAVEL/⚡ Laravel 7 Cheat Sheet.md",
     "LARAVEL/🎨LAYOUTS.md",
     "LARAVEL/🔄MIGRATIONS.md",
-    "LARAVEL/Untitled",
     "LARAVEL/📜PAGE EXAMPLE.md",
     "LARAVEL/📋REVIEW TEST.md",
     "ONLINE/🌐 WEB/HTML/1..md",
