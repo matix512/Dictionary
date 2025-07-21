@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LARAVEL/📋REVIEW TEST.md",
+                "file": "LARAVEL/🎨LAYOUTS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📋REVIEW TEST"
+              "title": "🎨LAYOUTS"
             }
           }
         ]
@@ -181,8 +181,9 @@
   },
   "active": "d4c8fcad233f014e",
   "lastOpenFiles": [
-    "LARAVEL/⚡ Laravel 7 Cheat Sheet.md",
     "LARAVEL/📋REVIEW TEST.md",
+    "LARAVEL/🎨LAYOUTS.md",
+    "LARAVEL/⚡ Laravel 7 Cheat Sheet.md",
     "ONLINE/🌐 WEB/HTML/1..md",
     "LARAVEL",
     "ONLINE/🌐 WEB/Diferenças.md",
