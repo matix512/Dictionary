@@ -103,7 +103,6 @@ public function index()
 
 #### **Bootstrap não funciona:**
 
-htmlresponse-action-icon
 
 ```html
 <!-- Verificar CDN no head -->
