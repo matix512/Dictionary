@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LARAVEL/BOOTSTRAP TOOLKIT.md",
+                "file": "LARAVEL/ BOOTSTRAP TOOLKIT.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "BOOTSTRAP TOOLKIT"
+              "title": " BOOTSTRAP TOOLKIT"
             }
           }
         ]
@@ -182,7 +182,7 @@
   "active": "d4c8fcad233f014e",
   "lastOpenFiles": [
     "LARAVEL/🎨LAYOUTS.md",
-    "LARAVEL/BOOTSTRAP TOOLKIT.md",
+    "LARAVEL/ BOOTSTRAP TOOLKIT.md",
     "LARAVEL/Untitled",
     "LARAVEL/🛣️ROUTES AND CONTROLLERS.md",
     "LARAVEL/📦FACTORIES.md",
