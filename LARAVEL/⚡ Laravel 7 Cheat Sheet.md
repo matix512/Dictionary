@@ -22,8 +22,13 @@ php artisan serve
 ## ⚙️ CONFIGURAÇÃO DB
 
 ```bash
-# Abrir o ficheiro .env (environment)
-
+# Abrir o ficheiro .env (environment) e alterar a database depois de previamente ter sido criasa
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=personpet
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
 
