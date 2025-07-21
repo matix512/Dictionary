@@ -26,8 +26,6 @@ Route::resource('bicycles', 'BicycleController');
 
 ### **CountryController.php:**
 
-phpresponse-action-icon
-
 ```php
 <?php
 namespace App\Http\Controllers;
@@ -46,6 +44,58 @@ class CountryController extends Controller
     {
         $country = Country::with('users')->findOrFail($id);
         return view('countries.show', compact('country'));
+    }
+}
+```
+
+### **UserController.php:**
+
+```php
+<?php
+namespace App\Http\Controllers;
+use App\User;
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    public function index()
+    {
+        $users = User::with(['country', 'bicycles'])
+                    ->orderBy('first_name')
+                    ->get();
+        return view('users.index', compact('users'));
+    }
+    
+    public function show($id)
+    {
+        $user = User::with(['country', 'bicycles'])->findOrFail($id);
+        return view('users.show', compact('user'));
+    }
+}
+```
+
+### **BicycleController.php:**
+
+```php
+<?php
+namespace App\Http\Controllers;
+use App\Bicycle;
+use Illuminate\Http\Request;
+
+class BicycleController extends Controller
+{
+    public function index()
+    {
+        $bicycles = Bicycle::with('user.country')
+                          ->orderBy('brand')
+                          ->get();
+        return view('bicycles.index', compact('bicycles'));
+    }
+    
+    public function show($id)
+    {
+        $bicycle = Bicycle::with('user.country')->findOrFail($id);
+        return view('bicycles.show', compact('bicycle'));
     }
 }
 ```
