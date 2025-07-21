@@ -22,11 +22,8 @@ php artisan serve
 ## ⚙️ CONFIGURAÇÃO DB
 
 ```bash
-# Copiar ficheiro de ambiente de exemplo
-cp .env.example .env
+# Abrir o ficheiro .env (environment)
 
-# Gerar chave da aplicação
-php artisan key:generate
 ```
 
 
