@@ -44,9 +44,7 @@ npm install
 npm run dev
 ```
 
-dd($players); -> faz dump e die. mostra todos os objetos da classe
-
-#### **Base de Dados:**
+## **Base de Dados:**
 
 ```bash
 # Migrations
@@ -86,8 +84,6 @@ tail -f storage/logs/laravel.log
 
 #### **dd() e dump():**
 
-phpresponse-action-icon
-
 ```php
 // Controller
 public function index()
@@ -101,4 +97,45 @@ public function index()
 // Blade
 {{ dd($variable) }}
 {{ dump($variable) }}
+```
+
+### **🚨 Problemas Comuns:**
+
+#### **Bootstrap não funciona:**
+
+htmlresponse-action-icon
+
+```html
+<!-- Verificar CDN no head -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Antes do </body> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+```
+
+#### **Ícones não aparecem:**
+
+```html
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+```
+
+#### **Rotas não funcionam:**
+
+```bash
+# Limpar cache
+php artisan route:clear
+
+# Ver rotas disponíveis
+php artisan route:list
+```
+
+#### **Base de dados:**
+
+```bash
+# Verificar conexão
+php artisan tinker
+> DB::connection()->getPdo()
+
+# Ver migrations
+php artisan migrate:status
 ```
