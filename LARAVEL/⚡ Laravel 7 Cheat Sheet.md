@@ -1,6 +1,6 @@
 
  Guia prático de comandos e fluxos para Laravel 7  
-> Ideal para uso com Laragon, Composer e terminal local  
+> Ideal para uso com XAMPP, Composer e terminal local  
 > Compatível com PHP 7.3+
 
 ---
