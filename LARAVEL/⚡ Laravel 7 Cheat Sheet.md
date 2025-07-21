@@ -44,3 +44,4 @@ npm install
 npm run dev
 ```
 
+dd($players); -> faz dump e die. mostra todos os objetos da classe
