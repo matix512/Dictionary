@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LARAVEL 🐘/⚡ CHEAT SHEET.md",
+                "file": "LARAVEL 🐘/📜PAGE EXAMPLE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "⚡ CHEAT SHEET"
+              "title": "📜PAGE EXAMPLE"
             }
           }
         ]
@@ -181,6 +181,7 @@
   },
   "active": "d4c8fcad233f014e",
   "lastOpenFiles": [
+    "LARAVEL 🐘/⚡CHEAT SHEET.md",
     "LARAVEL 🐘/🐘BLADE TRICKS.md",
     "LARAVEL 🐘/🅱BOOTSTRAP TOOLKIT.md",
     "LARAVEL 🐘/🎨LAYOUTS.md",
@@ -188,7 +189,6 @@
     "LARAVEL 🐘/🛣️ROUTES AND CONTROLLERS.md",
     "LARAVEL 🐘/📦FACTORIES.md",
     "LARAVEL 🐘/🌱SEEDS.md",
-    "LARAVEL 🐘/⚡ CHEAT SHEET.md",
     "LARAVEL 🐘/🔄MIGRATIONS.md",
     "LARAVEL 🐘/📜PAGE EXAMPLE.md",
     "LARAVEL 🐘/📋REVIEW TEST.md",
