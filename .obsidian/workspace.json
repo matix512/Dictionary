@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LARAVEL 🐘/🐘BLADE TRICKS.md",
+                "file": "LARAVEL 🐘/⚡ CHEAT SHEET.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "🐘BLADE TRICKS"
+              "title": "⚡ CHEAT SHEET"
             }
           }
         ]
@@ -179,16 +179,16 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a9d4e10e066d511e",
+  "active": "d4c8fcad233f014e",
   "lastOpenFiles": [
-    "LARAVEL 🐘/🅱BOOTSTRAP TOOLKIT.md",
     "LARAVEL 🐘/🐘BLADE TRICKS.md",
+    "LARAVEL 🐘/🅱BOOTSTRAP TOOLKIT.md",
     "LARAVEL 🐘/🎨LAYOUTS.md",
     "LARAVEL/Untitled",
     "LARAVEL 🐘/🛣️ROUTES AND CONTROLLERS.md",
     "LARAVEL 🐘/📦FACTORIES.md",
     "LARAVEL 🐘/🌱SEEDS.md",
-    "LARAVEL 🐘/⚡ Laravel 7 Cheat Sheet.md",
+    "LARAVEL 🐘/⚡ CHEAT SHEET.md",
     "LARAVEL 🐘/🔄MIGRATIONS.md",
     "LARAVEL 🐘/📜PAGE EXAMPLE.md",
     "LARAVEL 🐘/📋REVIEW TEST.md",
