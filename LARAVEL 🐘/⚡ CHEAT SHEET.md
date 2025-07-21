@@ -46,3 +46,59 @@ npm run dev
 
 dd($players); -> faz dump e die. mostra todos os objetos da classe
 
+#### **Base de Dados:**
+
+```bash
+# Migrations
+php artisan make:migration create_table_name
+php artisan migrate
+php artisan migrate:fresh        # Reset tudo
+php artisan migrate:fresh --seed # Reset + seeds
+php artisan migrate:status       # Ver status
+
+# Seeds
+php artisan make:seeder NameSeeder
+php artisan db:seed
+php artisan db:seed --class=NameSeeder
+
+# Factories
+php artisan make:factory NameFactory
+```
+
+### **🔍 Debug Commands:**
+
+```bash
+# Ver rotas
+php artisan route:list
+php artisan route:list --name=users
+
+# Tinker (console interativo)
+php artisan tinker
+> User::count()
+> User::first()
+> User::where('email', 'test@test.com')->first()
+
+# Logs
+tail -f storage/logs/laravel.log
+```
+
+### **🐛 Laravel Debugging:**
+
+#### **dd() e dump():**
+
+phpresponse-action-icon
+
+```php
+// Controller
+public function index()
+{
+    $data = User::all();
+    dd($data);              // Die and dump
+    dump($data);            // Dump and continue
+    return view('users.index', compact('data'));
+}
+
+// Blade
+{{ dd($variable) }}
+{{ dump($variable) }}
+```
