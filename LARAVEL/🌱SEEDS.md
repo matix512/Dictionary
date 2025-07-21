@@ -40,11 +40,11 @@ public function run()
 }
 ```
 
-### BycicleSeeder.php:**
+### **BycicleSeeder.php:**
 
 ```php
 public function run()
 {
-    factory(User::class, 100)->create();
+    factory(Bicycle::class, 200)->create();
 }
 ```

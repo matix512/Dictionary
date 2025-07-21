@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LARAVEL/🌱SEEDS.md",
+                "file": "LARAVEL/📦FACTORIES.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "🌱SEEDS"
+              "title": "📦FACTORIES"
             }
           }
         ]
@@ -181,8 +181,8 @@
   },
   "active": "d4c8fcad233f014e",
   "lastOpenFiles": [
-    "LARAVEL/⚡ Laravel 7 Cheat Sheet.md",
     "LARAVEL/🌱SEEDS.md",
+    "LARAVEL/⚡ Laravel 7 Cheat Sheet.md",
     "LARAVEL/🎨LAYOUTS.md",
     "LARAVEL/📦FACTORIES.md",
     "LARAVEL/🔄MIGRATIONS.md",
