@@ -31,22 +31,20 @@ class CountrySeeder extends Seeder
 }
 ```
 
-### UserSeeder:**
+### **UserSeeder.php:**
 
 ```php
-<?php
-use Illuminate\Database\Seeder;
-use App\Country;
-
-class CountrySeeder extends Seeder
+public function run()
 {
-    public function run()
-    {
-        $countries = ['Portugal', 'Espanha', 'França', 'Polónia'];
-        
-        foreach($countries as $country) {
-            Country::create(['name' => $country]);
-        }
-    }
+    factory(User::class, 100)->create();
+}
+```
+
+### BycicleSeeder.php:**
+
+```php
+public function run()
+{
+    factory(User::class, 100)->create();
 }
 ```
