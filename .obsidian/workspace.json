@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LARAVEL/🎨LAYOUTS.md",
+                "file": "LARAVEL/SEEDS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "🎨LAYOUTS"
+              "title": "SEEDS"
             }
           }
         ]
@@ -181,8 +181,10 @@
   },
   "active": "d4c8fcad233f014e",
   "lastOpenFiles": [
-    "LARAVEL/📋REVIEW TEST.md",
+    "LARAVEL/📜PAGE EXAMPLE.md",
+    "LARAVEL/SEEDS.md",
     "LARAVEL/🎨LAYOUTS.md",
+    "LARAVEL/📋REVIEW TEST.md",
     "LARAVEL/⚡ Laravel 7 Cheat Sheet.md",
     "ONLINE/🌐 WEB/HTML/1..md",
     "LARAVEL",
