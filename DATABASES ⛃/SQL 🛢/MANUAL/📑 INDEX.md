@@ -1,13 +1,13 @@
 ### **🎯 Estrutura de Aprendizagem:**
 
-#### **📚 Módulo 1 - Fundamentos (Iniciante)**
+#### **📚 Módulo 1 - VAS
 
 - [[📁 01 - BASIC CONCEPT]]
 - [[📁 02 - RELATIONAL MODEL]]
 - [[📁 03 - INSTALL & SETUP]]
 - [[📁 04 - FIRST QUERIES]]]
 
-#### **🔧 Módulo 2 - SQL Essencial (Intermédio)**
+#### **🔧 Módulo 2 - SQL ESSENTIAL
 
 - [[📁 05 - WHERE & FILTERS]]
 - [[📁 06 - ORDER BY & LIMIT]]
