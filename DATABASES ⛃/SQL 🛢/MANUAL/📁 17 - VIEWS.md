@@ -692,5 +692,371 @@ AND o.order_date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR); -- Limitar dados
 CREATE INDEX idx_customers_status ON customers(status);  
 CREATE INDEX idx_orders_customer_date ON orders(customer_id, order_date);
 ```
+
+
+#### **Views Materializadas (Conceito):**
+
+```sql
+-- MySQL não tem views materializadas nativas, mas pode simular:
+
+-- 1. Criar tabela para cache
+CREATE TABLE materialized_monthly_sales AS
+SELECT 
+    YEAR(order_date) AS year,
+    MONTH(order_date) AS month,
+    COUNT(*) AS order_count,
+    SUM(total_amount) AS revenue
+FROM orders 
+WHERE status = 'completed'
+GROUP BY YEAR(order_date), MONTH(order_date);
+
+-- 2. Criar evento para atualizar automaticamente
+CREATE EVENT refresh_monthly_sales
+ON SCHEDULE EVERY 1 DAY
+STARTS TIMESTAMP(CURRENT_DATE + INTERVAL 1 DAY, '01:00:00')
+DO
+BEGIN
+    TRUNCATE TABLE materialized_monthly_sales;
+    INSERT INTO materialized_monthly_sales
+    SELECT 
+        YEAR(order_date) AS year,
+        MONTH(order_date) AS month,
+        COUNT(*) AS order_count,
+        SUM(total_amount) AS revenue
+    FROM orders 
+    WHERE status = 'completed'
+    GROUP BY YEAR(order_date), MONTH(order_date);
+END;
+
+-- 3. Usar tabela materializada em vez de view complexa
+SELECT * FROM materialized_monthly_sales 
+WHERE year = 2024 
+ORDER BY month;
 ```
+
+### **🔧 Gerenciar Views:**
+
+#### **Alterar Views:**
+
+```sql
+-- Alterar definição da view
+CREATE OR REPLACE VIEW customer_stats AS
+SELECT 
+    c.id,
+    c.first_name,
+    c.last_name,
+    c.email,
+    COUNT(o.id) AS total_orders,
+    COALESCE(SUM(o.total_amount), 0) AS total_spent,
+    MAX(o.order_date) AS last_order_date,
+    
+    -- Nova coluna adicionada
+    AVG(DATEDIFF(o.shipped_date, o.order_date)) AS avg_processing_days,
+    
+    -- Lógica atualizada
+    CASE 
+        WHEN COUNT(o.id) = 0 THEN 'New'
+        WHEN COUNT(o.id) <= 2 THEN 'Occasional'
+        WHEN COUNT(o.id) <= 5 THEN 'Regular'
+        WHEN COUNT(o.id) <= 15 THEN 'Frequent'
+        ELSE 'VIP'
+    END AS customer_tier
+
+FROM customers c
+LEFT JOIN orders o ON c.id = o.customer_id AND o.status = 'completed'
+GROUP BY c.id, c.first_name, c.last_name, c.email;
+```
+
+#### **Ver Informações das Views:**
+
+```sql
+-- MySQL - Listar todas as views
+SELECT 
+    TABLE_NAME as view_name,
+    VIEW_DEFINITION,
+    CHECK_OPTION,
+    IS_UPDATABLE
+FROM INFORMATION_SCHEMA.VIEWS 
+WHERE TABLE_SCHEMA = 'your_database'
+ORDER BY TABLE_NAME;
+
+-- Ver definição completa de uma view
+SHOW CREATE VIEW customer_stats;
+
+-- Ver colunas de uma view
+DESCRIBE customer_stats;
+```
+
+#### **Remover Views:**
+
+```sql
+-- Remover view específica
+DROP VIEW customer_stats;
+
+-- Remover se existir (não dá erro se não existir)
+DROP VIEW IF EXISTS customer_stats;
+
+-- Remover múltiplas views
+DROP VIEW view1, view2, view3;
+```
+
+### **🛡️ Segurança e Permissões:**
+
+#### **Controlo de Acesso com Views:**
+
+sqlresponse-action-icon
+
+```sql
+-- Criar utilizador só com acesso a views específicas
+CREATE USER 'marketing_user'@'%' IDENTIFIED BY 'secure_password';
+
+-- Dar acesso apenas às views de marketing
+GRANT SELECT ON your_database.marketing_customer_view TO 'marketing_user'@'%';
+GRANT SELECT ON your_database.product_catalog TO 'marketing_user'@'%';
+GRANT SELECT ON your_database.monthly_sales_report TO 'marketing_user'@'%';
+
+-- Negar acesso direto às tabelas
+-- (por default não tem acesso, mas ser explícito é melhor)
+REVOKE ALL ON your_database.customers FROM 'marketing_user'@'%';
+REVOKE ALL ON your_database.orders FROM 'marketing_user'@'%';
+
+-- View com row-level security
+CREATE VIEW user_own_orders AS
+SELECT 
+    o.id,
+    o.order_number,
+    o.order_date,
+    o.status,
+    o.total_amount
+FROM orders o
+WHERE o.customer_id = (
+    SELECT id FROM customers 
+    WHERE email = USER()  -- Ou outro método de identificação
+);
+```
+
+#### **Views com Definer Rights:**
+
+sqlresponse-action-icon
+
+```sql
+-- View que executa com privilégios do criador
+CREATE DEFINER = 'admin'@'localhost' VIEW sensitive_customer_data AS
+SELECT 
+    id,
+    CONCAT(first_name, ' ', last_name) AS full_name,
+    LEFT(email, 3) AS email_hint,  -- Dados parcialmente mascarados
+    total_spent,
+    last_order_date
+FROM customers
+WHERE status = 'active';
+
+-- Utilizadores podem aceder à view mas não à tabela diretamente
+GRANT SELECT ON your_database.sensitive_customer_data TO 'report_user'@'%';
+```
+
+### **📊 Views para Business Intelligence:**
+
+#### **Views para Analytics:**
+
+sqlresponse-action-icon
+
+```sql
+-- View para análise de cohort de receita
+CREATE VIEW revenue_cohort_analysis AS
+SELECT 
+    cohort.cohort_month,
+    analysis.period_offset,
+    analysis.customers,
+    analysis.revenue,
+    analysis.revenue_per_customer,
+    ROUND(analysis.revenue * 100.0 / cohort.total_customers, 2) AS revenue_retention_rate
+FROM (
+    -- Cohort base
+    SELECT 
+        DATE_FORMAT(MIN(order_date), '%Y-%m') AS cohort_month,
+        customer_id,
+        COUNT(DISTINCT customer_id) OVER (PARTITION BY DATE_FORMAT(MIN(order_date), '%Y-%m')) AS total_customers
+    FROM orders
+    WHERE status = 'completed'
+    GROUP BY customer_id
+) cohort
+INNER JOIN (
+    -- Revenue analysis per period
+    SELECT 
+        c.customer_id,
+        DATE_FORMAT(MIN(c.order_date), '%Y-%m') AS cohort_month,
+        PERIOD_DIFF(DATE_FORMAT(o.order_date, '%Y%m'), DATE_FORMAT(MIN(c.order_date), '%Y%m')) AS period_offset,
+        COUNT(DISTINCT o.customer_id) AS customers,
+        SUM(o.total_amount) AS revenue,
+        AVG(o.total_amount) AS revenue_per_customer
+    FROM (
+        SELECT customer_id, MIN(order_date) AS order_date
+        FROM orders WHERE status = 'completed'
+        GROUP BY customer_id
+    ) c
+    INNER JOIN orders o ON c.customer_id = o.customer_id
+    WHERE o.status = 'completed'
+    GROUP BY c.customer_id, DATE_FORMAT(MIN(c.order_date), '%Y-%m'), 
+             PERIOD_DIFF(DATE_FORMAT(o.order_date, '%Y%m'), DATE_FORMAT(MIN(c.order_date), '%Y%m'))
+) analysis ON cohort.customer_id = analysis.customer_id 
+              AND cohort.cohort_month = analysis.cohort_month;
+
+-- View para RFM Analysis (Recency, Frequency, Monetary)
+CREATE VIEW customer_rfm_analysis AS
+SELECT 
+    customer_id,
+    customer_name,
+    
+    -- Recency (days since last order)
+    recency_days,
+    CASE 
+        WHEN recency_days <= 30 THEN 5
+        WHEN recency_days <= 60 THEN 4
+        WHEN recency_days <= 90 THEN 3
+        WHEN recency_days <= 180 THEN 2
+        ELSE 1
+    END AS recency_score,
+    
+    -- Frequency (number of orders)
+    frequency_orders,
+    CASE 
+        WHEN frequency_orders >= 20 THEN 5
+        WHEN frequency_orders >= 10 THEN 4
+        WHEN frequency_orders >= 5 THEN 3
+        WHEN frequency_orders >= 2 THEN 2
+        ELSE 1
+    END AS frequency_score,
+    
+    -- Monetary (total spent)
+    monetary_value,
+    CASE 
+        WHEN monetary_value >= 5000 THEN 5
+        WHEN monetary_value >= 2000 THEN 4
+        WHEN monetary_value >= 1000 THEN 3
+        WHEN monetary_value >= 500 THEN 2
+        ELSE 1
+    END AS monetary_score,
+    
+    -- Combined RFM Score
+    CONCAT(
+        CASE 
+            WHEN recency_days <= 30 THEN 5
+            WHEN recency_days <= 60 THEN 4
+            WHEN recency_days <= 90 THEN 3
+            WHEN recency_days <= 180 THEN 2
+            ELSE 1
+        END,
+        CASE 
+            WHEN frequency_orders >= 20 THEN 5
+            WHEN frequency_orders >= 10 THEN 4
+            WHEN frequency_orders >= 5 THEN 3
+            WHEN frequency_orders >= 2 THEN 2
+            ELSE 1
+        END,
+        CASE 
+            WHEN monetary_value >= 5000 THEN 5
+            WHEN monetary_value >= 2000 THEN 4
+            WHEN monetary_value >= 1000 THEN 3
+            WHEN monetary_value >= 500 THEN 2
+            ELSE 1
+        END
+    ) AS rfm_score
+
+FROM (
+    SELECT 
+        c.id AS customer_id,
+        CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
+        DATEDIFF(CURDATE(), MAX(o.order_date)) AS recency_days,
+        COUNT(o.id) AS frequency_orders,
+        SUM(o.total_amount) AS monetary_value
+    FROM customers c
+    INNER JOIN orders o ON c.id = o.customer_id
+    WHERE o.status = 'completed'
+    GROUP BY c.id, c.first_name, c.last_name
+) customer_metrics;
+```
+
+### **🚨 Troubleshooting de Views:**
+
+#### **Problemas Comuns:**
+
+sqlresponse-action-icon
+
+```sql
+-- 1. View com erro após mudança de tabela
+-- Erro: "Table 'database.old_column' doesn't exist"
+
+-- Solução: Recriar a view
+CREATE OR REPLACE VIEW problematic_view AS
+SELECT 
+    id,
+    name,
+    new_column_name  -- Atualizar para novo nome
+FROM updated_table;
+
+-- 2. View muito lenta
+-- Problema: JOINs sem índices, muitos dados
+
+-- Análise:
+EXPLAIN SELECT * FROM slow_view WHERE condition;
+
+-- Solução: Adicionar índices apropriados
+CREATE INDEX idx_table1_join_column ON table1(join_column);
+CREATE INDEX idx_table2_join_column ON table2(join_column);
+
+-- 3. View não atualizável quando deveria ser
+-- Verificar se atende aos critérios:
+SELECT 
+    TABLE_NAME,
+    IS_UPDATABLE,
+    VIEW_DEFINITION
+FROM INFORMATION_SCHEMA.VIEWS 
+WHERE TABLE_NAME = 'your_view_name';
+
+-- Critérios para view atualizável:
+-- - Uma tabela apenas
+-- - Sem DISTINCT, GROUP BY, HAVING
+-- - Sem funções de agregação
+-- - Sem subqueries na SELECT
+-- - Sem UNION
+```
+
+### **📋 Best Practices para Views:**
+
+#### **✅ Boas Práticas:**
+
+sqlresponse-action-icon
+
+```sql
+-- 1. Nomes descritivos
+CREATE VIEW active_premium_customers AS ...  -- ✅ Claro
+CREATE VIEW v1 AS ...                        -- ❌ Não descritivo
+
+-- 2. Documentar views complexas
+CREATE VIEW customer_lifetime_value AS
+-- View para calcular CLV baseado em:
+-- - Receita total dos últimos 12 meses
+-- - Frequência de compra
+-- - Margem média de lucro (assumida 30%)
+-- Atualizada: 2024-01-15
+SELECT ...;
+
+-- 3. Prefixos consistentes
+CREATE VIEW vw_customer_summary AS ...      -- Prefixo para identificar views
+CREATE VIEW rpt_monthly_sales AS ...        -- Prefixo para views de relatório
+
+-- 4. Limitar dados quando possível
+CREATE VIEW recent_orders AS
+SELECT * FROM orders 
+WHERE order_date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR);  -- Não toda a história
+
+-- 5. Usar aliases claros
+CREATE VIEW order_summary AS
+SELECT 
+    o.id AS order_id,
+    c.id AS customer_id,
+    c.first_name AS customer_first_name  -- Evitar ambiguidade
+FROM orders o
+INNER JOIN customers c ON o.customer_id = c.id;
 ```
