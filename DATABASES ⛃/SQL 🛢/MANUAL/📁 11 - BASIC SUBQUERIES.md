@@ -31,10 +31,51 @@ HAVING ... (with aggregations)
 
 #### **Retornando Um Valor:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Preço médio na base de dados
 SELECT 
-    product
+    product,
+    price,  
+(SELECT AVG(price) FROM sales) AS average_price,  
+price - (SELECT AVG(price) FROM sales) AS difference_from_avg  
+FROM sales;
+
+-- Produto mais caro  
+SELECT product, price  
+FROM sales  
+WHERE price = (SELECT MAX(price) FROM sales);
+
+-- Vendas acima da média  
+SELECT COUNT(*) AS above_average_sales  
+FROM sales  
+WHERE quantity * price > (SELECT AVG(quantity * price) FROM sales);
 ```
+
+
+#### **Subqueries em SELECT:**
+
+```sql
+-- Múltiplas subqueries escalares
+SELECT 
+    salesperson,
+    COUNT(*) AS sales_count,
+    SUM(quantity * price) AS total_revenue,
+    (SELECT AVG(quantity * price) FROM sales) AS overall_avg,
+    (SELECT MAX(quantity * price) FROM sales) AS highest_sale,
+    (SELECT COUNT(DISTINCT salesperson) FROM sales) AS total_salespeople
+FROM sales
+GROUP BY salesperson;
+
+-- Percentuais com subqueries
+SELECT 
+    category,
+    SUM(quantity * price) AS category_revenue,
+    ROUND(
+        SUM(quantity * price) * 100.0 / 
+        (SELECT SUM(quantity * price) FROM sales), 
+        2
+    ) AS percentage_of_total
+FROM sales
+GROUP BY category;
+````
+
