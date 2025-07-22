@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/Untitled.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/02 - Modelo Relacional.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Untitled"
+              "title": "02 - Modelo Relacional"
             }
           }
         ]
@@ -179,10 +179,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "265c193f0d48319c",
+  "active": "a9d4e10e066d511e",
   "lastOpenFiles": [
+    "DATABASES ⛃/SQL 🛢/MANUAL/INDEX.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/02 - Modelo Relacional.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/01 - Conceitos Básicos de BD.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL",
     "DATABASES ⛃/SQL 🛢/CRIAÇÃO DE DB.md",
-    "DATABASES ⛃/SQL 🛢/Untitled.md",
     "DATABASES ⛃/SQL 🛢/MODELO RELACIONAL 🖧.md",
     "DATABASES ⛃",
     "DATABASES ⛃/SQL 🛢",
@@ -207,7 +210,6 @@
     "ONLINE/MODERN PHP/💻 VS CODE CONFIGS.md",
     "ONLINE/🌐 WEB/HTML",
     "ONLINE/MODERN PHP/📚 BOOKS.md",
-    "ONLINE",
     "Pasted image 20250719013940.png",
     "Pasted image 20250719013937.png",
     "Pasted image 20250719014104.png",
