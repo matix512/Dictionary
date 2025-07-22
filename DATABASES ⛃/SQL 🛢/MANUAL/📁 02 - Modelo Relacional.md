@@ -1,5 +1,4 @@
 
-
 ### **📐 Princípios do Modelo Relacional:**
 
 #### **Criado por Edgar F. Codd (1970):**
@@ -23,8 +22,6 @@ textresponse-action-icon
 
 #### **Chave Primária (Primary Key):**
 
-sqlresponse-action-icon
-
 ```sql
 -- Identifica unicamente cada linha
 CREATE TABLE users (
@@ -44,8 +41,6 @@ CREATE TABLE order_items (
 
 #### **Chave Estrangeira (Foreign Key):**
 
-sqlresponse-action-icon
-
 ```sql
 -- Liga duas tabelas
 CREATE TABLE orders (
@@ -57,8 +52,6 @@ CREATE TABLE orders (
 ```
 
 #### **Chave Candidata e Alternativa:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Múltiplas chaves possíveis
@@ -72,8 +65,6 @@ CREATE TABLE users (
 ### **🔗 Tipos de Relacionamentos:**
 
 #### **1:1 (Um para Um):**
-
-textresponse-action-icon
 
 ```text
 👤 USER ←→ 📄 PROFILE
@@ -89,8 +80,6 @@ users                profiles
 ```
 
 #### **1:N (Um para Muitos):**
-
-textresponse-action-icon
 
 ```text
 🏢 COMPANY ←──→ 👥 EMPLOYEES
@@ -108,7 +97,6 @@ companies            employees
 
 #### **M:N (Muitos para Muitos):**
 
-textresponse-action-icon
 
 ```text
 📚 STUDENTS ←──→ 📖 COURSES
@@ -128,7 +116,6 @@ students             enrollments         courses
 
 #### **Primeira Forma Normal (1NF):**
 
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Violação 1NF
@@ -153,7 +140,6 @@ CREATE TABLE student_courses (
 
 #### **Segunda Forma Normal (2NF):**
 
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Violação 2NF
@@ -182,7 +168,6 @@ CREATE TABLE products (
 
 #### **Terceira Forma Normal (3NF):**
 
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Violação 3NF
@@ -213,7 +198,6 @@ CREATE TABLE departments (
 
 #### **Regras de Integridade:**
 
-sqlresponse-action-icon
 
 ```sql
 -- Cascata: apagar pai apaga filhos
