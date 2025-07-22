@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 06 - ORDER BY & LIMIT.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 06 - ORDER BY & LIMIT 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📁 06 - ORDER BY & LIMIT"
+              "title": "📁 06 - ORDER BY & LIMIT 1"
             }
           }
         ]
@@ -181,8 +181,9 @@
   },
   "active": "265c193f0d48319c",
   "lastOpenFiles": [
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 05 - WHERE & FILTERS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 06 - ORDER BY & LIMIT.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 06 - ORDER BY & LIMIT 1.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 05 - WHERE & FILTERS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 04 - First Queries.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 03 - Instalação e Setup.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 02 - Modelo Relacional.md",
@@ -224,7 +225,6 @@
     "Pasted image 20250719013624.png",
     "Pasted image 20250719013618.png",
     "GIT 👾/🧠 Git Cheat Sheet.md",
-    "teste12/fsfdfsdf.md",
-    "sadada/Welcome.md"
+    "teste12/fsfdfsdf.md"
   ]
 }
