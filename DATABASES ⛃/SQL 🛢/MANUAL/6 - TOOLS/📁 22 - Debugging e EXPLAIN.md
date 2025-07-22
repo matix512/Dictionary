@@ -13,8 +13,6 @@
 
 ##### **Sintaxe Básica:**
 
-sqlresponse-action-icon
-
 ```sql
 EXPLAIN SELECT * FROM orders WHERE customer_id = 123;
 ```

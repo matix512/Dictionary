@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "7e4df237d013b183",
+        "id": "b509f5bca3f2a7b3",
         "type": "tabs",
         "children": [
           {
-            "id": "35f1cdae7b2e120b",
+            "id": "19bc7392c8a4f39a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 22 - Debugging e EXPLAIN.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "📁 22 - Debugging e EXPLAIN"
+              "title": "New tab"
             }
           }
         ]
@@ -179,10 +175,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "35f1cdae7b2e120b",
+  "active": "19bc7392c8a4f39a",
   "lastOpenFiles": [
+    "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 23 - BACKUP & RESTORE.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 22 - DEBUGGING e EXPLAIN.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 21 -MYSQL WORKBENCH.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 22 - Debugging e EXPLAIN.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 20 - SSMS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE/📁 16 - INDEX.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS",
@@ -212,7 +209,6 @@
     "DATABASES ⛃/SQL 🛢/MANUAL/3- GROUPS & AGREGATION/📁 10 - AGREGGATION FUNCTIONS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/2 - SQL ESSENTIAL/📁 08 - BASIC JOIN'S.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/2 - SQL ESSENTIAL/📁 07 - STRING & DATA FUNCTIONS.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/2 - SQL ESSENTIAL/📁 06 - ORDER BY & LIMIT.md",
     "DATABASES ⛃/SQL 🛢/MANUAL",
     "DATABASES ⛃",
     "DATABASES ⛃/SQL 🛢",
