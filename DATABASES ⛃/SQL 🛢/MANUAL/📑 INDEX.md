@@ -2,9 +2,9 @@
 
 #### **📚 Módulo 1 - Fundamentos (Iniciante)**
 
-- [[📁 01 - Conceitos Básicos de BD]]
-- [[📁 02 - Modelo Relacional]]
-- [[📁 03 - Instalação e Setup]]
+- [[📁 01 - BASIC CONCEPT]]
+- [[📁 02 - RELATIONAL MODEL]]
+- [[📁 03 - INSTALL & SETUP]]
 - [[📁 04 - First Queries]]]
 
 #### **🔧 Módulo 2 - SQL Essencial (Intermédio)**

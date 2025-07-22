@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 19 - TRIGGERS.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 04 - First Queries.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📁 19 - TRIGGERS"
+              "title": "📁 04 - First Queries"
             }
           }
         ]
@@ -181,8 +181,11 @@
   },
   "active": "35f1cdae7b2e120b",
   "lastOpenFiles": [
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 18 - STORED PROCEDURES.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 03 - INSTALL & SETUP.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 02 - RELATIONAL MODEL.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 01 - BASIC CONCEPT.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 19 - TRIGGERS.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 18 - STORED PROCEDURES.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📑 INDEX.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 20 - SSMS.md",
     "17 - Views.md",
@@ -202,9 +205,6 @@
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 06 - ORDER BY & LIMIT.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 05 - WHERE & FILTERS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 04 - First Queries.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 03 - Instalação e Setup.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 02 - Modelo Relacional.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 01 - Conceitos Básicos de BD.md",
     "DATABASES ⛃/SQL 🛢/MANUAL",
     "DATABASES ⛃/SQL 🛢/CRIAÇÃO DE DB.md",
     "DATABASES ⛃/SQL 🛢/MODELO RELACIONAL 🖧.md",
