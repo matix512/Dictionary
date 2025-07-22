@@ -1194,4 +1194,27 @@ BEGIN
             AND status = 'active'
             AND DATE(created_at) = CURDATE()
         ) THEN
+    
+-- Inserir novo alerta  
+INSERT INTO stock_alerts (  
+product_id,  
+product_name,  
+current_stock,  
+min_stock_level,  
+supplier_email,  
+alert_message,  
+priority_level,  
+status,  
+created_at  
+) VALUES (  
+product_id,  
+product_name,  
+current_stock,  
+min_level,  
+supplier_email,  
+alert_message,  
+alert_priority,  
+'active',  
+NOW()  
+);
 ```
