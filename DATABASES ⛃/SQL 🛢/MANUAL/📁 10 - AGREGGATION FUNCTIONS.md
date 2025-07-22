@@ -229,5 +229,12 @@ sqlresponse-action-icon
 SELECT 
     SUM(quantity * price) AS total_revenue,
     SUM(CASE WHEN salesperson = 'João' THEN quantity * price ELSE 0 END) AS joao_revenue,
-    SUM
+    SUM(CASE WHEN salesperson = 'Maria' THEN quantity * price ELSE 0 END) AS maria_revenue,  
+SUM(CASE WHEN MONTH(sale_date) = 1 THEN quantity * price ELSE 0 END) AS january_revenue,
+
+```text
+-- Percentuais de contribuição
+ROUND(SUM(CASE WHEN salesperson = 'João' THEN quantity * price ELSE 0 END) * 100.0 / SUM(quantity * price), 2) AS joao_percentage
 ```
+
+
