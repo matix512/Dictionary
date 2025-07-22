@@ -198,6 +198,7 @@ CREATE TABLE departments (
 
 #### **Regras de Integridade:**
 
+sqlresponse-action-icon
 
 ```sql
 -- Cascata: apagar pai apaga filhos
@@ -211,4 +212,23 @@ ON DELETE RESTRICT;
 
 -- Set NULL: põe NULL nos filhos
 ON DELETE SET NULL;
+
+-- Set Default: põe valor padrão
+ON DELETE SET DEFAULT;
+```
+
+### **🔍 Álgebra Relacional:**
+
+#### **Operações Básicas:**
+
+textresponse-action-icon
+
+```text
+σ (Seleção)     → WHERE
+π (Projeção)    → SELECT colunas específicas
+× (Produto)     → CROSS JOIN
+⋈ (Junção)      → JOIN
+∪ (União)       → UNION
+∩ (Interseção)  → INTERSECT
+- (Diferença)   → EXCEPT/MINUS
 ```
