@@ -261,9 +261,6 @@ p.sku,
 p.price,  
 c.name AS category,
 
-textresponse-action-icon
-
-```text
 -- Sales metrics
 SUM(oi.quantity) AS total_quantity_sold,
 COUNT(DISTINCT oi.order_id) AS times_ordered,
@@ -276,10 +273,6 @@ ROUND(SUM(oi.quantity * oi.unit_price) / SUM(oi.quantity), 2) AS revenue_per_uni
 -- Ranking
 RANK() OVER (ORDER BY SUM(oi.quantity) DESC) AS quantity_rank,
 RANK() OVER (ORDER BY SUM(oi.quantity * oi.unit_price) DESC) AS revenue_rank
-```
-
-
-```
 
 FROM products p  
 INNER JOIN order_items oi ON p.id = oi.product_id  
@@ -290,9 +283,7 @@ GROUP BY p.id, p.name, p.sku, p.price, c.name
 HAVING total_quantity_sold > 0  
 ORDER BY total_revenue DESC;
 
-textresponse-action-icon
-
-````text
+```
 
 ### **🛡️ Views para Segurança:**
 
@@ -347,8 +338,6 @@ GROUP BY c.id, c.first_name, c.last_name, c.email, c.credit_limit, c.total_spent
 ````
 
 #### **Views por Departamento:**
-
-sqlresponse-action-icon
 
 ```sql
 -- View para equipa de marketing
