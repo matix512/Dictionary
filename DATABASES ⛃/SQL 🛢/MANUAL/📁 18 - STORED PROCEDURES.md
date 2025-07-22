@@ -1,1053 +1,509 @@
-### **🔍 O que são Views?**
+### **🔧 O que são Stored Procedures?**
 
 #### **Definição:**
 
-> Uma View é uma "tabela virtual" baseada no resultado de uma query SQL. Não armazena dados fisicamente, mas apresenta dados de uma ou mais tabelas de forma organizada e simplificada.
+> Stored Procedures são conjuntos de instruções SQL pré-compiladas e armazenadas no servidor de base de dados. Podem aceitar parâmetros, conter lógica de negócio e retornar resultados.
 
-#### **Características das Views:**
-
-```text
-📊 Virtual - Não ocupam espaço (só a definição)
-🔄 Dinâmica - Dados sempre atualizados
-🛡️ Segurança - Escondem colunas/linhas sensíveis
-🎯 Simplificação - Queries complexas ficam simples
-📋 Reutilização - Lógica de negócio centralizada
-```
-
-#### **Tipos de Views:**
-
-```text
-👁️ Simple View - Baseada numa tabela
-🔗 Complex View - JOINs, agregações, subqueries
-✏️ Updatable View - Permite INSERT/UPDATE/DELETE
-👁️‍🗨️ Read-Only View - Apenas consulta
-🏃 Materialized View - Cache físico (PostgreSQL/Oracle)
-```
-
-### **🆕 Criar Views:**
-
-#### **Sintaxe Básica:**
-
-```sql
-CREATE VIEW view_name AS
-SELECT columns
-FROM tables
-WHERE conditions;
-```
-
-#### **View Simples:**
-
-```sql
--- View de produtos ativos
-CREATE VIEW active_products AS
-SELECT 
-    id,
-    name,
-    price,
-    stock_quantity,
-    category_id
-FROM products
-WHERE status = 'active'
-AND stock_quantity > 0;
-
--- Usar a view
-SELECT * FROM active_products WHERE price < 100;
-```
-
-#### **View com Cálculos:**
-
-```sql
--- View com campos calculados
-CREATE VIEW product_summary AS
-SELECT 
-    id,
-    name,
-    price,
-    stock_quantity,
-    price * stock_quantity AS inventory_value,
-    CASE 
-        WHEN stock_quantity = 0 THEN 'Out of Stock'
-        WHEN stock_quantity < 10 THEN 'Low Stock'
-        ELSE 'In Stock'
-    END AS stock_status,
-    DATEDIFF(CURDATE(), created_at) AS days_since_created
-FROM products;
-
--- Usar view
-SELECT * FROM product_summary 
-WHERE stock_status = 'Low Stock' 
-ORDER BY inventory_value DESC;
-```
-
-### **🔗 Views com JOINs:**
-
-#### **View com Relacionamentos:**
-
-```sql
--- View completa de pedidos
-CREATE VIEW order_details AS
-SELECT 
-    o.id AS order_id,
-    o.order_number,
-    o.order_date,
-    o.status,
-    o.total_amount,
-    
-    -- Customer info
-    c.id AS customer_id,
-    CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
-    c.email AS customer_email,
-    
-    -- Address info
-    o.shipping_address,
-    
-    -- Timing info
-    DATEDIFF(o.shipped_date, o.order_date) AS processing_days,
-    
-    -- Status info
-    CASE 
-        WHEN o.status = 'delivered' THEN 'Complete'
-        WHEN o.status = 'shipped' THEN 'In Transit'
-        WHEN o.status = 'cancelled' THEN 'Cancelled'
-        ELSE 'Processing'
-    END AS order_status_description
-
-FROM orders o
-INNER JOIN customers c ON o.customer_id = c.id;
-
--- Usar view com filtros
-SELECT * FROM order_details 
-WHERE order_date >= '2024-01-01'
-AND order_status_description = 'Complete'
-ORDER BY total_amount DESC;
-```
-
-#### **View com Múltiplas Tabelas:**
-
-```sql
--- View completa do catálogo
-CREATE VIEW product_catalog AS
-SELECT 
-    p.id,
-    p.name AS product_name,
-    p.sku,
-    p.price,
-    p.stock_quantity,
-    
-    -- Category info
-    c.name AS category_name,
-    c.parent_id AS parent_category_id,
-    
-    -- Supplier info
-    s.name AS supplier_name,
-    s.country AS supplier_country,
-    
-    -- Calculated fields
-    ROUND(p.price * 1.23, 2) AS price_with_tax,
-    p.price * p.stock_quantity AS inventory_value,
-    
-    -- Status
-    CASE 
-        WHEN p.stock_quantity = 0 THEN 'Out of Stock'
-        WHEN p.stock_quantity < p.min_stock_level THEN 'Reorder Required'
-        ELSE 'Available'
-    END AS availability_status,
-    
-    -- Timestamps
-    p.created_at,
-    p.updated_at
-
-FROM products p
-LEFT JOIN categories c ON p.category_id = c.id
-LEFT JOIN suppliers s ON p.supplier_id = s.id
-WHERE p.status = 'active';
-```
-
-### **📊 Views com Agregações:**
-
-#### **View de Estatísticas:**
-
-```sql
--- View de estatísticas de clientes
-CREATE VIEW customer_stats AS
-SELECT 
-    c.id,
-    c.first_name,
-    c.last_name,
-    c.email,
-    c.created_at AS customer_since,
-    
-    -- Order statistics
-    COUNT(o.id) AS total_orders,
-    COALESCE(SUM(o.total_amount), 0) AS total_spent,
-    COALESCE(AVG(o.total_amount), 0) AS avg_order_value,
-    MAX(o.order_date) AS last_order_date,
-    
-    -- Customer classification
-    CASE 
-        WHEN COUNT(o.id) = 0 THEN 'New Customer'
-        WHEN COUNT(o.id) <= 2 THEN 'Occasional'
-        WHEN COUNT(o.id) <= 10 THEN 'Regular'
-        ELSE 'VIP'
-    END AS customer_tier,
-    
-    -- Activity status
-    CASE 
-        WHEN MAX(o.order_date) IS NULL THEN 'Never Ordered'
-        WHEN MAX(o.order_date) >= DATE_SUB(CURDATE(), INTERVAL 30 DAY) THEN 'Active'
-        WHEN MAX(o.order_date) >= DATE_SUB(CURDATE(), INTERVAL 90 DAY) THEN 'Recent'
-        ELSE 'Inactive'
-    END AS activity_status
-
-FROM customers c
-LEFT JOIN orders o ON c.id = o.customer_id
-GROUP BY c.id, c.first_name, c.last_name, c.email, c.created_at;
-
--- Usar para análise
-SELECT 
-    customer_tier,
-    COUNT(*) AS customer_count,
-    AVG(total_spent) AS avg_lifetime_value
-FROM customer_stats
-GROUP BY customer_tier
-ORDER BY avg_lifetime_value DESC;
-```
-
-#### **View de Relatórios de Vendas:**
-
-```sql
--- View de vendas mensais
-CREATE VIEW monthly_sales_report AS  
-SELECT  
-YEAR(o.order_date) AS year,  
-MONTH(o.order_date) AS month,  
-MONTHNAME(o.order_date) AS month_name,  
-DATE_FORMAT(o.order_date, '%Y-%m') AS year_month,
+#### **Vantagens:**
 
 textresponse-action-icon
 
 ```text
--- Volume metrics
-COUNT(DISTINCT o.id) AS total_orders,
-COUNT(DISTINCT o.customer_id) AS unique_customers,
-SUM(oi.quantity) AS total_items_sold,
-
--- Revenue metrics
-SUM(o.total_amount) AS total_revenue,
-AVG(o.total_amount) AS avg_order_value,
-SUM(o.total_amount) / COUNT(DISTINCT o.customer_id) AS revenue_per_customer,
-
--- Product metrics
-COUNT(DISTINCT oi.product_id) AS unique_products_sold,
-
--- Growth calculations (simplified)
-LAG(SUM(o.total_amount)) OVER (ORDER BY YEAR(o.order_date), MONTH(o.order_date)) AS previous_month_revenue,
-
--- Status breakdown
-SUM(CASE WHEN o.status = 'completed' THEN o.total_amount ELSE 0 END) AS completed_revenue,
-SUM(CASE WHEN o.status = 'cancelled' THEN 1 ELSE 0 END) AS cancelled_orders
-
-FROM orders o  
-INNER JOIN order_items oi ON o.id = oi.order_id  
-GROUP BY YEAR(o.order_date), MONTH(o.order_date), MONTHNAME(o.order_date)  
-ORDER BY year DESC, month DESC;
-
--- View de produtos mais vendidos  
-CREATE VIEW top_selling_products AS  
-SELECT  
-p.id,  
-p.name,  
-p.sku,  
-p.price,  
-c.name AS category,
-
--- Sales metrics
-SUM(oi.quantity) AS total_quantity_sold,
-COUNT(DISTINCT oi.order_id) AS times_ordered,
-SUM(oi.quantity * oi.unit_price) AS total_revenue,
-AVG(oi.unit_price) AS avg_selling_price,
-
--- Performance metrics
-ROUND(SUM(oi.quantity * oi.unit_price) / SUM(oi.quantity), 2) AS revenue_per_unit,
-
--- Ranking
-RANK() OVER (ORDER BY SUM(oi.quantity) DESC) AS quantity_rank,
-RANK() OVER (ORDER BY SUM(oi.quantity * oi.unit_price) DESC) AS revenue_rank
-
-FROM products p  
-INNER JOIN order_items oi ON p.id = oi.product_id  
-INNER JOIN orders o ON oi.order_id = o.id  
-LEFT JOIN categories c ON p.category_id = c.id  
-WHERE o.status = 'completed'  
-GROUP BY p.id, p.name, p.sku, p.price, c.name  
-HAVING total_quantity_sold > 0  
-ORDER BY total_revenue DESC;
-
+⚡ Performance - Pré-compiladas, execução mais rápida
+🛡️ Segurança - Encapsulam lógica, previnem SQL injection
+🔄 Reutilização - Uma procedure, múltiplas aplicações
+📊 Consistência - Lógica de negócio centralizada
+🌐 Redução tráfego - Menos dados na rede
+🔒 Controlo acesso - Permissões granulares
 ```
 
-### **🛡️ Views para Segurança:**
+#### **Desvantagens:**
 
-#### **Controlar Acesso a Dados Sensíveis:**
-```sql
--- View que esconde informações sensíveis
-CREATE VIEW public_customer_info AS
-SELECT 
-    id,
-    first_name,
-    last_name,
-    -- Email mascarado
-    CONCAT(LEFT(email, 3), '***@', SUBSTRING_INDEX(email, '@', -1)) AS masked_email,
-    -- Telefone mascarado
-    CONCAT('***-***-', RIGHT(phone, 4)) AS masked_phone,
-    city,
-    country,
-    created_at,
-    -- Status público apenas
-    CASE WHEN status = 'active' THEN 'Active' ELSE 'Inactive' END AS account_status
-FROM customers
-WHERE status != 'deleted';  -- Não mostrar contas deletadas
+textresponse-action-icon
 
--- View para departamento financeiro
-CREATE VIEW finance_customer_view AS
-SELECT 
-    c.id,
-    CONCAT(c.first_name, ' ', c.last_name) AS full_name,
-    c.email,
-    
-    -- Financial information
-    c.credit_limit,
-    c.total_spent,
-    c.loyalty_points,
-    
-    -- Payment history
-    COUNT(o.id) AS total_orders,
-    SUM(CASE WHEN o.status = 'completed' THEN o.total_amount ELSE 0 END) AS paid_amount,
-    SUM(CASE WHEN o.status = 'pending' THEN o.total_amount ELSE 0 END) AS pending_amount,
-    
-    -- Risk assessment
-    CASE 
-        WHEN c.total_spent > c.credit_limit * 0.8 THEN 'High Risk'
-        WHEN c.total_spent > c.credit_limit * 0.5 THEN 'Medium Risk'
-        ELSE 'Low Risk'
-    END AS credit_risk
-
-FROM customers c
-LEFT JOIN orders o ON c.id = o.customer_id
-WHERE c.status = 'active'
-GROUP BY c.id, c.first_name, c.last_name, c.email, c.credit_limit, c.total_spent, c.loyalty_points;
-````
-
-#### **Views por Departamento:**
-
-```sql
--- View para equipa de marketing
-CREATE VIEW marketing_customer_view AS
-SELECT 
-    c.id,
-    c.first_name,
-    c.last_name,
-    c.email,
-    c.city,
-    c.country,
-    c.birth_date,
-    
-    -- Marketing metrics
-    YEAR(CURDATE()) - YEAR(c.birth_date) AS age,
-    cs.customer_tier,
-    cs.total_orders,
-    cs.total_spent,
-    cs.last_order_date,
-    cs.activity_status,
-    
-    -- Segmentation
-    CASE 
-        WHEN c.country = 'Portugal' THEN 'Domestic'
-        ELSE 'International'
-    END AS market_segment,
-    
-    -- Preferences (from order history)
-    (SELECT GROUP_CONCAT(DISTINCT cat.name) 
-     FROM orders o 
-     JOIN order_items oi ON o.id = oi.order_id
-     JOIN products p ON oi.product_id = p.id
-     JOIN categories cat ON p.category_id = cat.id
-     WHERE o.customer_id = c.id
-     AND o.status = 'completed'
-     LIMIT 5) AS preferred_categories
-
-FROM customers c
-INNER JOIN customer_stats cs ON c.id = cs.id
-WHERE c.status = 'active';
-
--- View para equipa de suporte
-CREATE VIEW support_customer_view AS
-SELECT 
-    c.id,
-    c.first_name,
-    c.last_name,
-    c.email,
-    c.phone,
-    c.created_at,
-    
-    -- Account info
-    c.status,
-    cs.total_orders,
-    cs.last_order_date,
-    
-    -- Recent activity
-    (SELECT COUNT(*) 
-     FROM orders o 
-     WHERE o.customer_id = c.id 
-     AND o.order_date >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)) AS orders_last_30_days,
-     
-    -- Issues tracking
-    (SELECT COUNT(*) 
-     FROM support_tickets st 
-     WHERE st.customer_id = c.id 
-     AND st.status = 'open') AS open_tickets,
-     
-    -- Order status
-    (SELECT GROUP_CONCAT(DISTINCT o.status)
-     FROM orders o 
-     WHERE o.customer_id = c.id 
-     AND o.order_date >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)) AS recent_order_statuses
-
-FROM customers c
-LEFT JOIN customer_stats cs ON c.id = cs.id;
+```text
+🏃‍♂️ Portabilidade - Específicas do SGBD
+🐛 Debug - Mais difícil de debuggar
+📝 Versionamento - Controlo de versões complexo
+🔧 Manutenção - Mudanças requerem deploy no BD
 ```
 
-### **🔄 Views Atualizáveis:**
+### **🆕 Criar Stored Procedures:**
 
-#### **Quando Uma View é Atualizável:**
+#### **Sintaxe Básica (MySQL):**
+
+sqlresponse-action-icon
 
 ```sql
--- ✅ View atualizável (simples, uma tabela, sem agregações)
-CREATE VIEW active_customers AS
-SELECT id, first_name, last_name, email, phone
-FROM customers
-WHERE status = 'active';
-
--- Operações permitidas:
-INSERT INTO active_customers (first_name, last_name, email) 
-VALUES ('João', 'Silva', 'joao@email.com');
-
-UPDATE active_customers 
-SET phone = '912345678' 
-WHERE id = 1;
-
-DELETE FROM active_customers WHERE id = 1;
+DELIMITER //
+CREATE PROCEDURE procedure_name(
+    IN parameter1 datatype,
+    OUT parameter2 datatype,
+    INOUT parameter3 datatype
+)
+BEGIN
+    -- Corpo da procedure
+    SQL statements;
+END //
+DELIMITER ;
 ```
 
-#### **Views Não Atualizáveis:**
+#### **Exemplo Simples:**
+
+sqlresponse-action-icon
 
 ```sql
--- ❌ View NÃO atualizável (tem JOINs, agregações)
-CREATE VIEW customer_order_summary AS
-SELECT 
-    c.id,
-    c.name,
-    COUNT(o.id) AS order_count,  -- Agregação
-    SUM(o.total) AS total_spent  -- Agregação
-FROM customers c
-LEFT JOIN orders o ON c.id = o.customer_id  -- JOIN
-GROUP BY c.id, c.name;  -- GROUP BY
+-- Procedure básica sem parâmetros
+DELIMITER //
+CREATE PROCEDURE GetAllCustomers()
+BEGIN
+    SELECT id, first_name, last_name, email 
+    FROM customers 
+    WHERE status = 'active'
+    ORDER BY last_name, first_name;
+END //
+DELIMITER ;
 
--- Estas operações falharão:
--- INSERT INTO customer_order_summary ...  -- ERRO
--- UPDATE customer_order_summary ...       -- ERRO
+-- Executar a procedure
+CALL GetAllCustomers();
 ```
 
-#### **WITH CHECK OPTION:**
+#### **Procedure com Parâmetros IN:**
+
+sqlresponse-action-icon
 
 ```sql
--- Garantir que INSERTs/UPDATEs respeitam a condição da view
-CREATE VIEW premium_customers AS
-SELECT id, first_name, last_name, email, total_spent
-FROM customers
-WHERE total_spent > 1000
-WITH CHECK OPTION;
-
--- ✅ Funcionará
-INSERT INTO premium_customers (first_name, last_name, email, total_spent)
-VALUES ('Maria', 'Santos', 'maria@email.com', 1500);
-
--- ❌ Falhará (total_spent <= 1000)
-INSERT INTO premium_customers (first_name, last_name, email, total_spent)
-VALUES ('Ana', 'Costa', 'ana@email.com', 500);  -- ERRO: CHECK OPTION failed
-```
-
-### **🎯 Views para Relatórios:**
-
-#### **Dashboard Executivo:**
-
-```sql
--- View para KPIs principais
-CREATE VIEW executive_dashboard AS
-SELECT 
-    'Today' AS period,
-    CURDATE() AS date,
-    
-    -- Sales metrics
-    (SELECT COUNT(*) FROM orders WHERE DATE(order_date) = CURDATE()) AS orders_today,
-    (SELECT COALESCE(SUM(total_amount), 0) FROM orders WHERE DATE(order_date) = CURDATE()) AS revenue_today,
-    
-    -- Customer metrics
-    (SELECT COUNT(*) FROM customers WHERE DATE(created_at) = CURDATE()) AS new_customers_today,
-    (SELECT COUNT(DISTINCT customer_id) FROM orders WHERE DATE(order_date) = CURDATE()) AS active_customers_today,
-    
-    -- Product metrics
-    (SELECT COUNT(*) FROM products WHERE stock_quantity = 0) AS out_of_stock_products,
-    (SELECT COUNT(*) FROM products WHERE stock_quantity < min_stock_level) AS low_stock_products,
-    
-    -- Comparison with yesterday
-    (SELECT COALESCE(SUM(total_amount), 0) FROM orders WHERE DATE(order_date) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)) AS revenue_yesterday
-
-UNION ALL
-
-SELECT 
-    'This Month' AS period,
-    LAST_DAY(CURDATE()) AS date,
-    
-    (SELECT COUNT(*) FROM orders WHERE YEAR(order_date) = YEAR(CURDATE()) AND MONTH(order_date) = MONTH(CURDATE())) AS orders_this_month,
-    (SELECT COALESCE(SUM(total_amount), 0) FROM orders WHERE YEAR(order_date) = YEAR(CURDATE()) AND MONTH(order_date) = MONTH(CURDATE())) AS revenue_this_month,
-    (SELECT COUNT(*) FROM customers WHERE YEAR(created_at) = YEAR(CURDATE()) AND MONTH(created_at) = MONTH(CURDATE())) AS new_customers_this_month,
-    (SELECT COUNT(DISTINCT customer_id) FROM orders WHERE YEAR(order_date) = YEAR(CURDATE()) AND MONTH(order_date) = MONTH(CURDATE())) AS active_customers_this_month,
-    (SELECT COUNT(*) FROM products WHERE stock_quantity = 0) AS out_of_stock_products,
-    (SELECT COUNT(*) FROM products WHERE stock_quantity < min_stock_level) AS low_stock_products,
-    (SELECT COALESCE(SUM(total_amount), 0) FROM orders WHERE YEAR(order_date) = YEAR(DATE_SUB(CURDATE(), INTERVAL 1 MONTH)) AND MONTH(order_date) = MONTH(DATE_SUB(CURDATE(), INTERVAL 1 MONTH))) AS revenue_last_month;
-```
-
-#### **View de Análise de Cohort:**
-
-```sql
--- Análise de retenção de clientes por cohort
-CREATE VIEW customer_cohort_analysis AS
-SELECT 
-    DATE_FORMAT(first_order_date, '%Y-%m') AS cohort_month,
-    period_number,
-    customers_in_period,
-    ROUND(customers_in_period * 100.0 / total_customers, 2) AS retention_rate
-FROM (
+DELIMITER //
+CREATE PROCEDURE GetCustomerOrders(
+    IN customer_id INT
+)
+BEGIN
     SELECT 
-        cohort_month,
-        period_number,
-        COUNT(*) AS customers_in_period,
-        FIRST_VALUE(COUNT(*)) OVER (PARTITION BY cohort_month ORDER BY period_number) AS total_customers
-    FROM (
+        o.id,
+        o.order_number,
+        o.order_date,
+        o.status,
+        o.total_amount
+    FROM orders o
+    WHERE o.customer_id = customer_id
+    ORDER BY o.order_date DESC;
+END //
+DELIMITER ;
+
+-- Executar com parâmetro
+CALL GetCustomerOrders(123);
+```
+
+#### **Procedure com Parâmetros OUT:**
+
+sqlresponse-action-icon
+
+```sql
+DELIMITER //
+CREATE PROCEDURE GetCustomerStats(
+    IN customer_id INT,
+    OUT total_orders INT,
+    OUT total_spent DECIMAL(10,2),
+    OUT last_order_date DATE
+)
+BEGIN
+    SELECT 
+        COUNT(id),
+        COALESCE(SUM(total_amount), 0),
+        MAX(order_date)
+    INTO total_orders, total_spent, last_order_date
+    FROM orders 
+    WHERE customer_id = customer_id AND status = 'completed';
+END //
+DELIMITER ;
+
+-- Executar e obter resultados
+CALL GetCustomerStats(123, @orders, @spent, @last_date);
+SELECT @orders AS total_orders, @spent AS total_spent, @last_date AS last_order_date;
+```
+
+### **🔄 Controlo de Fluxo:**
+
+#### **Condições IF-THEN-ELSE:**
+
+sqlresponse-action-icon
+
+```sql
+DELIMITER //
+CREATE PROCEDURE ProcessOrder(
+    IN order_id INT,
+    OUT result_message VARCHAR(255)
+)
+BEGIN
+    DECLARE order_status VARCHAR(50);
+    DECLARE customer_credit_limit DECIMAL(10,2);
+    DECLARE order_total DECIMAL(10,2);
+    
+    -- Obter informações do pedido
+    SELECT o.status, o.total_amount, c.credit_limit
+    INTO order_status, order_total, customer_credit_limit
+    FROM orders o
+    INNER JOIN customers c ON o.customer_id = c.id
+    WHERE o.id = order_id;
+    
+    -- Lógica condicional
+    IF order_status IS NULL THEN
+        SET result_message = 'Order not found';
+    ELSEIF order_status != 'pending' THEN
+        SET result_message = 'Order already processed';
+    ELSEIF order_total > customer_credit_limit THEN
+        SET result_message = 'Order exceeds credit limit';
+        UPDATE orders SET status = 'credit_hold' WHERE id = order_id;
+    ELSE
+        SET result_message = 'Order approved';
+        UPDATE orders SET status = 'approved' WHERE id = order_id;
+    END IF;
+END //
+DELIMITER ;
+
+-- Teste
+CALL ProcessOrder(100, @result);
+SELECT @result;
+```
+
+#### **Loops - WHILE:**
+
+sqlresponse-action-icon
+
+```sql
+DELIMITER //
+CREATE PROCEDURE GenerateTestData(
+    IN num_customers INT
+)
+BEGIN
+    DECLARE counter INT DEFAULT 1;
+    
+    WHILE counter <= num_customers DO
+        INSERT INTO customers (first_name, last_name, email)
+        VALUES (
+            CONCAT('Test', counter),
+            CONCAT('Customer', counter),
+            CONCAT('test', counter, '@example.com')
+        );
+        
+        SET counter = counter + 1;
+    END WHILE;
+END //
+DELIMITER ;
+
+-- Gerar 100 clientes de teste
+CALL GenerateTestData(100);
+```
+
+#### **Loops - REPEAT:**
+
+sqlresponse-action-icon
+
+```sql
+DELIMITER //
+CREATE PROCEDURE CalculateInterest(
+    IN principal DECIMAL(10,2),
+    IN rate DECIMAL(5,4),
+    IN years INT,
+    OUT final_amount DECIMAL(10,2)
+)
+BEGIN
+    DECLARE year_counter INT DEFAULT 1;
+    SET final_amount = principal;
+    
+    REPEAT
+        SET final_amount = final_amount * (1 + rate);
+        SET year_counter = year_counter + 1;
+    UNTIL year_counter > years
+    END REPEAT;
+END //
+DELIMITER ;
+
+-- Calcular juros compostos
+CALL CalculateInterest(1000.00, 0.05, 5, @result);
+SELECT @result; -- Resultado após 5 anos a 5%
+```
+
+### **📊 Procedures com Cursors:**
+
+#### **Processar Resultados Linha a Linha:**
+
+sqlresponse-action-icon
+
+```sql
+DELIMITER //
+CREATE PROCEDURE UpdateCustomerTiers()
+BEGIN
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE customer_id INT;
+    DECLARE total_spent DECIMAL(10,2);
+    DECLARE new_tier VARCHAR(20);
+    
+    -- Declarar cursor
+    DECLARE customer_cursor CURSOR FOR
         SELECT 
             c.id,
-            DATE_FORMAT(c.first_order_date, '%Y-%m') AS cohort_month,
-            PERIOD_DIFF(
-                DATE_FORMAT(o.order_date, '%Y%m'),
-                DATE_FORMAT(c.first_order_date, '%Y%m')
-            ) AS period_number
-        FROM (
-            SELECT 
-                customer_id,
-                MIN(order_date) AS first_order_date
-            FROM orders
-            GROUP BY customer_id
-        ) c
-        INNER JOIN orders o ON c.customer_id = o.customer_id
-        WHERE o.status = 'completed'
-    ) cohort_data
-    GROUP BY cohort_month, period_number
-) cohort_table
-ORDER BY cohort_month, period_number;
+            COALESCE(SUM(o.total_amount), 0) AS total
+        FROM customers c
+        LEFT JOIN orders o ON c.id = o.customer_id AND o.status = 'completed'
+        GROUP BY c.id;
+    
+    -- Handler para fim do cursor
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+    
+    OPEN customer_cursor;
+    
+    read_loop: LOOP
+        FETCH customer_cursor INTO customer_id, total_spent;
+        
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+        
+        -- Determinar tier baseado no gasto
+        IF total_spent >= 10000 THEN
+            SET new_tier = 'VIP';
+        ELSEIF total_spent >= 5000 THEN
+            SET new_tier = 'Gold';
+        ELSEIF total_spent >= 1000 THEN
+            SET new_tier = 'Silver';
+        ELSE
+            SET new_tier = 'Bronze';
+        END IF;
+        
+        -- Atualizar customer
+        UPDATE customers 
+        SET customer_tier = new_tier, total_spent = total_spent
+        WHERE id = customer_id;
+        
+    END LOOP;
+    
+    CLOSE customer_cursor;
+END //
+DELIMITER ;
+
+-- Executar atualização de tiers
+CALL UpdateCustomerTiers();
 ```
 
-### **🎯 Exercícios Práticos:**
+### **🚨 Tratamento de Erros:**
 
-#### **Exercício 1 - Sistema de E-commerce:**
+#### **Exception Handling:**
 
-```sql
--- 1. View de inventário crítico
-CREATE VIEW critical_inventory AS
-SELECT 
-    p.id,
-    p.sku,
-    p.name,
-    p.stock_quantity,
-    p.min_stock_level,
-    p.stock_quantity - p.min_stock_level AS stock_difference,
-    c.name AS category,
-    s.name AS supplier,
-    s.email AS supplier_email,
-    
-    CASE 
-        WHEN p.stock_quantity = 0 THEN 'CRITICAL - Out of Stock'
-        WHEN p.stock_quantity < p.min_stock_level THEN 'WARNING - Low Stock'
-        WHEN p.stock_quantity <= p.min_stock_level * 1.2 THEN 'WATCH - Getting Low'
-        ELSE 'OK'
-    END AS stock_status,
-    
-    p.price * (p.min_stock_level - p.stock_quantity) AS reorder_value_needed
-    
-FROM products p
-LEFT JOIN categories c ON p.category_id = c.id
-LEFT JOIN suppliers s ON p.supplier_id = s.id
-WHERE p.status = 'active'
-AND (p.stock_quantity <= p.min_stock_level * 1.2 OR p.stock_quantity = 0)
-ORDER BY 
-    CASE 
-        WHEN p.stock_quantity = 0 THEN 1
-        WHEN p.stock_quantity < p.min_stock_level THEN 2
-        ELSE 3
-    END,
-    p.stock_quantity ASC;
-
--- 2. View de performance de vendedores (assumindo tabela salespeople)
-CREATE VIEW salesperson_performance AS
-SELECT 
-    sp.id,
-    sp.name,
-    sp.region,
-    
-    -- Volume metrics
-    COUNT(DISTINCT o.id) AS total_orders,
-    COUNT(DISTINCT o.customer_id) AS unique_customers,
-    SUM(oi.quantity) AS total_items_sold,
-    
-    -- Revenue metrics
-    SUM(o.total_amount) AS total_revenue,
-    AVG(o.total_amount) AS avg_order_value,
-    
-    -- Performance metrics
-    SUM(o.total_amount) / COUNT(DISTINCT o.id) AS revenue_per_order,
-    COUNT(DISTINCT o.customer_id) / COUNT(DISTINCT o.id) AS customer_diversity,
-    
-    -- Time-based metrics
-    MIN(o.order_date) AS first_sale_date,
-    MAX(o.order_date) AS last_sale_date,
-    DATEDIFF(MAX(o.order_date), MIN(o.order_date)) + 1 AS active_days,
-    
-    -- Rankings
-    RANK() OVER (ORDER BY SUM(o.total_amount) DESC) AS revenue_rank,
-    RANK() OVER (ORDER BY COUNT(DISTINCT o.id) DESC) AS volume_rank
-
-FROM salespeople sp
-LEFT JOIN orders o ON sp.id = o.salesperson_id
-LEFT JOIN order_items oi ON o.id = oi.order_id
-WHERE o.status = 'completed'
-GROUP BY sp.id, sp.name, sp.region;
-
--- 3. View de análise de abandono de carrinho
-CREATE VIEW cart_abandonment_analysis AS
-SELECT 
-    DATE(sc.created_at) AS date,
-    COUNT(DISTINCT sc.id) AS total_carts,
-    COUNT(DISTINCT CASE WHEN o.id IS NOT NULL THEN sc.id END) AS converted_carts,
-    COUNT(DISTINCT sc.id) - COUNT(DISTINCT CASE WHEN o.id IS NOT NULL THEN sc.id END) AS abandoned_carts,
-    
-    ROUND(
-        (COUNT(DISTINCT sc.id) - COUNT(DISTINCT CASE WHEN o.id IS NOT NULL THEN sc.id END)) * 100.0 / 
-        COUNT(DISTINCT sc.id), 2
-    ) AS abandonment_rate,
-    
-    SUM(CASE WHEN o.id IS NULL THEN sc.total_value ELSE 0 END) AS lost_revenue,
-    AVG(CASE WHEN o.id IS NULL THEN sc.total_value END) AS avg_abandoned_value
-
-FROM shopping_carts sc
-LEFT JOIN orders o ON sc.customer_id = o.customer_id 
-    AND DATE(sc.created_at) = DATE(o.order_date)
-WHERE sc.status = 'active'
-GROUP BY DATE(sc.created_at)
-ORDER BY date DESC;
-```
-
-### **⚡ Performance e Otimização:**
-
-#### **Views e Performance:**
+sqlresponse-action-icon
 
 ```sql
-❌ View lenta - JOINs desnecessários, sem índices  
-CREATE VIEW slow_customer_orders AS  
-SELECT  
-c._, -- Selecionar tudo é ineficiente  
-o._,  
-p._,  
-cat._  
-FROM customers c  
-LEFT JOIN orders o ON c.id = o.customer_id  
-LEFT JOIN order_items oi ON o.id = oi.order_id  
-LEFT JOIN products p ON oi.product_id = p.id  
-LEFT JOIN categories cat ON p.category_id = cat.id; -- Múltiplos JOINs desnecessários
-
--- ✅ View otimizada - Apenas campos necessários, JOINs eficientes  
-CREATE VIEW optimized_customer_orders AS  
-SELECT  
-c.id AS customer_id,  
-c.first_name,  
-c.last_name,  
-o.id AS order_id,  
-o.order_date,  
-o.total_amount,  
-o.status  
-FROM customers c  
-INNER JOIN orders o ON c.id = o.customer_id -- INNER JOIN se sempre há relação  
-WHERE c.status = 'active' -- Filtrar na view  
-AND o.order_date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR); -- Limitar dados
-
--- Criar índices para suportar a view  
-CREATE INDEX idx_customers_status ON customers(status);  
-CREATE INDEX idx_orders_customer_date ON orders(customer_id, order_date);
-```
-
-
-#### **Views Materializadas (Conceito):**
-
-```sql
--- MySQL não tem views materializadas nativas, mas pode simular:
-
--- 1. Criar tabela para cache
-CREATE TABLE materialized_monthly_sales AS
-SELECT 
-    YEAR(order_date) AS year,
-    MONTH(order_date) AS month,
-    COUNT(*) AS order_count,
-    SUM(total_amount) AS revenue
-FROM orders 
-WHERE status = 'completed'
-GROUP BY YEAR(order_date), MONTH(order_date);
-
--- 2. Criar evento para atualizar automaticamente
-CREATE EVENT refresh_monthly_sales
-ON SCHEDULE EVERY 1 DAY
-STARTS TIMESTAMP(CURRENT_DATE + INTERVAL 1 DAY, '01:00:00')
-DO
+DELIMITER //
+CREATE PROCEDURE TransferFunds(
+    IN from_account INT,
+    IN to_account INT,
+    IN amount DECIMAL(10,2),
+    OUT result_message VARCHAR(255)
+)
 BEGIN
-    TRUNCATE TABLE materialized_monthly_sales;
-    INSERT INTO materialized_monthly_sales
-    SELECT 
-        YEAR(order_date) AS year,
-        MONTH(order_date) AS month,
-        COUNT(*) AS order_count,
-        SUM(total_amount) AS revenue
-    FROM orders 
-    WHERE status = 'completed'
-    GROUP BY YEAR(order_date), MONTH(order_date);
-END;
-
--- 3. Usar tabela materializada em vez de view complexa
-SELECT * FROM materialized_monthly_sales 
-WHERE year = 2024 
-ORDER BY month;
-```
-
-### **🔧 Gerenciar Views:**
-
-#### **Alterar Views:**
-
-```sql
--- Alterar definição da view
-CREATE OR REPLACE VIEW customer_stats AS
-SELECT 
-    c.id,
-    c.first_name,
-    c.last_name,
-    c.email,
-    COUNT(o.id) AS total_orders,
-    COALESCE(SUM(o.total_amount), 0) AS total_spent,
-    MAX(o.order_date) AS last_order_date,
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        SET result_message = 'Transfer failed - transaction rolled back';
+    END;
     
-    -- Nova coluna adicionada
-    AVG(DATEDIFF(o.shipped_date, o.order_date)) AS avg_processing_days,
+    DECLARE EXIT HANDLER FOR SQLWARNING
+    BEGIN
+        ROLLBACK;
+        SET result_message = 'Transfer warning - transaction rolled back';
+    END;
     
-    -- Lógica atualizada
-    CASE 
-        WHEN COUNT(o.id) = 0 THEN 'New'
-        WHEN COUNT(o.id) <= 2 THEN 'Occasional'
-        WHEN COUNT(o.id) <= 5 THEN 'Regular'
-        WHEN COUNT(o.id) <= 15 THEN 'Frequent'
-        ELSE 'VIP'
-    END AS customer_tier
+    START TRANSACTION;
+    
+    -- Verificar saldo suficiente
+    IF (SELECT balance FROM accounts WHERE id = from_account) < amount THEN
+        SET result_message = 'Insufficient funds';
+        ROLLBACK;
+    ELSE
+        -- Debitar conta origem
+        UPDATE accounts 
+        SET balance = balance - amount 
+        WHERE id = from_account;
+        
+        -- Creditar conta destino
+        UPDATE accounts 
+        SET balance = balance + amount 
+        WHERE id = to_account;
+        
+        -- Registrar transação
+        INSERT INTO transactions (from_account, to_account, amount, transaction_date)
+        VALUES (from_account, to_account, amount, NOW());
+        
+        COMMIT;
+        SET result_message = 'Transfer completed successfully';
+    END IF;
+END //
+DELIMITER ;
 
-FROM customers c
-LEFT JOIN orders o ON c.id = o.customer_id AND o.status = 'completed'
-GROUP BY c.id, c.first_name, c.last_name, c.email;
+-- Teste da transferência
+CALL TransferFunds(1, 2, 500.00, @result);
+SELECT @result;
 ```
 
-#### **Ver Informações das Views:**
+### **📈 Procedures para Relatórios:**
+
+#### **Relatório de Vendas Mensal:**
+
+sqlresponse-action-icon
 
 ```sql
--- MySQL - Listar todas as views
-SELECT 
-    TABLE_NAME as view_name,
-    VIEW_DEFINITION,
-    CHECK_OPTION,
-    IS_UPDATABLE
-FROM INFORMATION_SCHEMA.VIEWS 
-WHERE TABLE_SCHEMA = 'your_database'
-ORDER BY TABLE_NAME;
-
--- Ver definição completa de uma view
-SHOW CREATE VIEW customer_stats;
-
--- Ver colunas de uma view
-DESCRIBE customer_stats;
-```
-
-#### **Remover Views:**
-
-```sql
--- Remover view específica
-DROP VIEW customer_stats;
-
--- Remover se existir (não dá erro se não existir)
-DROP VIEW IF EXISTS customer_stats;
-
--- Remover múltiplas views
-DROP VIEW view1, view2, view3;
-```
-
-### **🛡️ Segurança e Permissões:**
-
-#### **Controlo de Acesso com Views:**
-
-```sql
--- Criar utilizador só com acesso a views específicas
-CREATE USER 'marketing_user'@'%' IDENTIFIED BY 'secure_password';
-
--- Dar acesso apenas às views de marketing
-GRANT SELECT ON your_database.marketing_customer_view TO 'marketing_user'@'%';
-GRANT SELECT ON your_database.product_catalog TO 'marketing_user'@'%';
-GRANT SELECT ON your_database.monthly_sales_report TO 'marketing_user'@'%';
-
--- Negar acesso direto às tabelas
--- (por default não tem acesso, mas ser explícito é melhor)
-REVOKE ALL ON your_database.customers FROM 'marketing_user'@'%';
-REVOKE ALL ON your_database.orders FROM 'marketing_user'@'%';
-
--- View com row-level security
-CREATE VIEW user_own_orders AS
-SELECT 
-    o.id,
-    o.order_number,
-    o.order_date,
-    o.status,
-    o.total_amount
-FROM orders o
-WHERE o.customer_id = (
-    SELECT id FROM customers 
-    WHERE email = USER()  -- Ou outro método de identificação
-);
-```
-
-#### **Views com Definer Rights:**
-
-```sql
--- View que executa com privilégios do criador
-CREATE DEFINER = 'admin'@'localhost' VIEW sensitive_customer_data AS
-SELECT 
-    id,
-    CONCAT(first_name, ' ', last_name) AS full_name,
-    LEFT(email, 3) AS email_hint,  -- Dados parcialmente mascarados
-    total_spent,
-    last_order_date
-FROM customers
-WHERE status = 'active';
-
--- Utilizadores podem aceder à view mas não à tabela diretamente
-GRANT SELECT ON your_database.sensitive_customer_data TO 'report_user'@'%';
-```
-
-### **📊 Views para Business Intelligence:**
-
-#### **Views para Analytics:**
-
-```sql
--- View para análise de cohort de receita
-CREATE VIEW revenue_cohort_analysis AS
-SELECT 
-    cohort.cohort_month,
-    analysis.period_offset,
-    analysis.customers,
-    analysis.revenue,
-    analysis.revenue_per_customer,
-    ROUND(analysis.revenue * 100.0 / cohort.total_customers, 2) AS revenue_retention_rate
-FROM (
-    -- Cohort base
+DELIMITER //
+CREATE PROCEDURE GenerateMonthlySalesReport(
+    IN report_year INT,
+    IN report_month INT
+)
+BEGIN
+    -- Declarar variáveis para totais
+    DECLARE total_orders INT DEFAULT 0;
+    DECLARE total_revenue DECIMAL(12,2) DEFAULT 0;
+    DECLARE total_customers INT DEFAULT 0;
+    
+    -- Calcular métricas principais
     SELECT 
-        DATE_FORMAT(MIN(order_date), '%Y-%m') AS cohort_month,
-        customer_id,
-        COUNT(DISTINCT customer_id) OVER (PARTITION BY DATE_FORMAT(MIN(order_date), '%Y-%m')) AS total_customers
+        COUNT(*),
+        SUM(total_amount),
+        COUNT(DISTINCT customer_id)
+    INTO total_orders, total_revenue, total_customers
     FROM orders
-    WHERE status = 'completed'
-    GROUP BY customer_id
-) cohort
-INNER JOIN (
-    -- Revenue analysis per period
+    WHERE YEAR(order_date) = report_year
+    AND MONTH(order_date) = report_month
+    AND status = 'completed';
+    
+    -- Resultado 1: Resumo geral
     SELECT 
-        c.customer_id,
-        DATE_FORMAT(MIN(c.order_date), '%Y-%m') AS cohort_month,
-        PERIOD_DIFF(DATE_FORMAT(o.order_date, '%Y%m'), DATE_FORMAT(MIN(c.order_date), '%Y%m')) AS period_offset,
-        COUNT(DISTINCT o.customer_id) AS customers,
-        SUM(o.total_amount) AS revenue,
-        AVG(o.total_amount) AS revenue_per_customer
+        report_year AS year,
+        report_month AS month,
+        MONTHNAME(STR_TO_DATE(report_month, '%m')) AS month_name,
+        total_orders,
+        total_revenue,
+        total_customers,
+        ROUND(total_revenue / total_orders, 2) AS avg_order_value,
+        ROUND(total_revenue / total_customers, 2) AS revenue_per_customer;
+    
+    -- Resultado 2: Top 10 produtos
+    SELECT 
+        p.name AS product_name,
+        SUM(oi.quantity) AS quantity_sold,
+        SUM(oi.quantity * oi.unit_price) AS product_revenue,
+        COUNT(DISTINCT oi.order_id) AS orders_count
+    FROM order_items oi
+    INNER JOIN orders o ON oi.order_id = o.id
+    INNER JOIN products p ON oi.product_id = p.id
+    WHERE YEAR(o.order_date) = report_year
+    AND MONTH(o.order_date) = report_month
+    AND o.status = 'completed'
+    GROUP BY p.id, p.name
+    ORDER BY product_revenue DESC
+    LIMIT 10;
+    
+    -- Resultado 3: Vendas por categoria
+    SELECT 
+        c.name AS category_name,
+        COUNT(DISTINCT o.id) AS orders_count,
+        SUM(oi.quantity) AS total_quantity,
+        SUM(oi.quantity * oi.unit_price) AS category_revenue,
+        ROUND(
+            SUM(oi.quantity * oi.unit_price) * 100.0 / total_revenue, 2
+        ) AS revenue_percentage
+    FROM order_items oi
+    INNER JOIN orders o ON oi.order_id = o.id
+    INNER JOIN products p ON oi.product_id = p.id
+    INNER JOIN categories c ON p.category_id = c.id
+    WHERE YEAR(o.order_date) = report_year
+    AND MONTH(o.order_date) = report_month
+    AND o.status = 'completed'
+    GROUP BY c.id, c.name
+    ORDER BY category_revenue DESC;
+    
+END //
+DELIMITER ;
+
+-- Gerar relatório para Janeiro 2024
+CALL GenerateMonthlySalesReport(2024, 1);
+```
+
+#### **Procedure para Análise de Cohort:**
+
+sqlresponse-action-icon
+
+```sql
+DELIMITER //
+CREATE PROCEDURE AnalyzeCustomerCohort(
+    IN cohort_year INT,
+    IN cohort_month INT
+)
+BEGIN
+    -- Temporary table para cohort base
+    CREATE TEMPORARY TABLE cohort_customers AS
+    SELECT DISTINCT customer_id
+    FROM orders
+    WHERE YEAR(order_date) = cohort_year
+    AND MONTH(order_date) = cohort_month
+    AND customer_id NOT IN (
+        SELECT DISTINCT customer_id
+        FROM orders
+        WHERE order_date < STR_TO_DATE(CONCAT(cohort_year, '-', cohort_month, '-01'), '%Y-%m-%d')
+    );
+    
+    -- Análise de retenção por período
+    SELECT 
+        period_offset,
+        customers_active,
+        ROUND(customers_active * 100.0 / total_cohort_size, 2) AS retention_rate,
+        total_orders,
+        total_revenue,
+        ROUND(total_revenue / customers_active, 2) AS avg_revenue_per_customer
     FROM (
-        SELECT customer_id, MIN(order_date) AS order_date
-        FROM orders WHERE status = 'completed'
-        GROUP BY customer_id
-    ) c
-    INNER JOIN orders o ON c.customer_id = o.customer_id
-    WHERE o.status = 'completed'
-    GROUP BY c.customer_id, DATE_FORMAT(MIN(c.order_date), '%Y-%m'), 
-             PERIOD_DIFF(DATE_FORMAT(o.order_date, '%Y%m'), DATE_FORMAT(MIN(c.order_date), '%Y%m'))
-) analysis ON cohort.customer_id = analysis.customer_id 
-              AND cohort.cohort_month = analysis.cohort_month;
+        SELECT 
+            PERIOD_DIFF(DATE_FORMAT(o.order_date, '%Y%m'), 
+                        CONCAT(cohort_year, LPAD(cohort_month, 2, '0'))) AS period_offset,
+            COUNT(DISTINCT o.customer_id) AS customers_active,
+            COUNT(*) AS total_orders,
+            SUM(o.total_amount) AS total_revenue,
+            (SELECT COUNT(*) FROM cohort_customers) AS total_cohort_size
+        FROM orders o
+        INNER JOIN cohort_customers cc ON o.customer_id = cc.customer_id
+        WHERE o.status = 'completed'
+        GROUP BY PERIOD_DIFF(DATE_FORMAT(o.order_date, '%Y%m'), 
+                            CONCAT(cohort_year, LPAD(cohort_month, 2, '0')))
+        ORDER BY period_offset
+    ) cohort_analysis;
+    
+    DROP TEMPORARY TABLE cohort_customers;
+END //
+DELIMITER ;
 
--- View para RFM Analysis (Recency, Frequency, Monetary)
-CREATE VIEW customer_rfm_analysis AS
-SELECT 
-    customer_id,
-    customer_name,
-    
-    -- Recency (days since last order)
-    recency_days,
-    CASE 
-        WHEN recency_days <= 30 THEN 5
-        WHEN recency_days <= 60 THEN 4
-        WHEN recency_days <= 90 THEN 3
-        WHEN recency_days <= 180 THEN 2
-        ELSE 1
-    END AS recency_score,
-    
-    -- Frequency (number of orders)
-    frequency_orders,
-    CASE 
-        WHEN frequency_orders >= 20 THEN 5
-        WHEN frequency_orders >= 10 THEN 4
-        WHEN frequency_orders >= 5 THEN 3
-        WHEN frequency_orders >= 2 THEN 2
-        ELSE 1
-    END AS frequency_score,
-    
-    -- Monetary (total spent)
-    monetary_value,
-    CASE 
-        WHEN monetary_value >= 5000 THEN 5
-        WHEN monetary_value >= 2000 THEN 4
-        WHEN monetary_value >= 1000 THEN 3
-        WHEN monetary_value >= 500 THEN 2
-        ELSE 1
-    END AS monetary_score,
-    
-    -- Combined RFM Score
-    CONCAT(
-        CASE 
-            WHEN recency_days <= 30 THEN 5
-            WHEN recency_days <= 60 THEN 4
-            WHEN recency_days <= 90 THEN 3
-            WHEN recency_days <= 180 THEN 2
-            ELSE 1
-        END,
-        CASE 
-            WHEN frequency_orders >= 20 THEN 5
-            WHEN frequency_orders >= 10 THEN 4
-            WHEN frequency_orders >= 5 THEN 3
-            WHEN frequency_orders >= 2 THEN 2
-            ELSE 1
-        END,
-        CASE 
-            WHEN monetary_value >= 5000 THEN 5
-            WHEN monetary_value >= 2000 THEN 4
-            WHEN monetary_value >= 1000 THEN 3
-            WHEN monetary_value >= 500 THEN 2
-            ELSE 1
-        END
-    ) AS rfm_score
-
-FROM (
-    SELECT 
-        c.id AS customer_id,
-        CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
-        DATEDIFF(CURDATE(), MAX(o.order_date)) AS recency_days,
-        COUNT(o.id) AS frequency_orders,
-        SUM(o.total_amount) AS monetary_value
-    FROM customers c
-    INNER JOIN orders o ON c.id = o.customer_id
-    WHERE o.status = 'completed'
-    GROUP BY c.id, c.first_name, c.last_name
-) customer_metrics;
+-- Analisar cohort de Janeiro 2024
+CALL AnalyzeCustomerCohort(2024, 1);
 ```
 
-### **🚨 Troubleshooting de Views:**
+### **🎯 Procedures de Manutenção:**
 
-#### **Problemas Comuns:**
+#### **Limpeza Automática de Dados:**
+
+sqlresponse-action-icon
 
 ```sql
--- 1. View com erro após mudança de tabela
--- Erro: "Table 'database.old_column' doesn't exist"
-
--- Solução: Recriar a view
-CREATE OR REPLACE VIEW problematic_view AS
-SELECT 
-    id,
-    name,
-    new_column_name  -- Atualizar para novo nome
-FROM updated_table;
-
--- 2. View muito lenta
--- Problema: JOINs sem índices, muitos dados
-
--- Análise:
-EXPLAIN SELECT * FROM slow_view WHERE condition;
-
--- Solução: Adicionar índices apropriados
-CREATE INDEX idx_table1_join_column ON table1(join_column);
-CREATE INDEX idx_table2_join_column ON table2(join_column);
-
--- 3. View não atualizável quando deveria ser
--- Verificar se atende aos critérios:
-SELECT 
-    TABLE_NAME,
-    IS_UPDATABLE,
-    VIEW_DEFINITION
-FROM INFORMATION_SCHEMA.VIEWS 
-WHERE TABLE_NAME = 'your_view_name';
-
--- Critérios para view atualizável:
--- - Uma tabela apenas
--- - Sem DISTINCT, GROUP BY, HAVING
--- - Sem funções de agregação
--- - Sem subqueries na SELECT
--- - Sem UNION
+DELIMITER //
+CREATE PROCEDURE CleanupOldData()
+BEGIN
+    DECLARE rows_affected INT DEFAULT 0;
+    DECLARE cleanup_log VARCHAR(500) DEFAULT '';
+    
+    -- Log início
+    INSERT INTO maintenance_log (action, start_time) 
+    VALUES ('CLEANUP_OLD_DATA', NOW());
+    
+    -- 1. Remover logs antigos (> 90 dias)
+    DELETE FROM access_logs 
+    WHERE created_at < DATE_SUB(NOW(), INTERVAL 90 DAY);
+    SET rows_affected = ROW_COUNT();
+    SET cleanup_log = CONCAT(cleanup_log, 'Access logs: ', rows_affected, ' rows; ');
+    
+    -- 2
 ```
-
-### **📋 Best Practices para Views:**
-
-#### **✅ Boas Práticas:**
-
-```sql
--- 1. Nomes descritivos
-CREATE VIEW active_premium_customers AS ...  -- ✅ Claro
-CREATE VIEW v1 AS ...                        -- ❌ Não descritivo
-
--- 2. Documentar views complexas
-CREATE VIEW customer_lifetime_value AS
--- View para calcular CLV baseado em:
--- - Receita total dos últimos 12 meses
--- - Frequência de compra
--- - Margem média de lucro (assumida 30%)
--- Atualizada: 2024-01-15
-SELECT ...;
-
--- 3. Prefixos consistentes
-CREATE VIEW vw_customer_summary AS ...      -- Prefixo para identificar views
-CREATE VIEW rpt_monthly_sales AS ...        -- Prefixo para views de relatório
-
--- 4. Limitar dados quando possível
-CREATE VIEW recent_orders AS
-SELECT * FROM orders 
-WHERE order_date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR);  -- Não toda a história
-
--- 5. Usar aliases claros
-CREATE VIEW order_summary AS
-SELECT 
-    o.id AS order_id,
-    c.id AS customer_id,
-    c.first_name AS customer_first_name  -- Evitar ambiguidade
-FROM orders o
-INNER JOIN customers c ON o.customer_id = c.id;
-```
-
