@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/0 - INDEX 📑.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/4 - DATA STRUCTURE/📁 12 - CREATE TABLE & DDL.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "0 - INDEX 📑"
+              "title": "📁 12 - CREATE TABLE & DDL"
             }
           }
         ]
@@ -181,13 +181,13 @@
   },
   "active": "19bc7392c8a4f39a",
   "lastOpenFiles": [
+    "DATABASES ⛃/SQL 🛢/MANUAL/0 - INDEX 📑.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 23 - BACKUP & RESTORE.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 22 - DEBUGGING e EXPLAIN.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 21 -MYSQL WORKBENCH.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 20 - SSMS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE/📁 16 - INDEX.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS",
-    "DATABASES ⛃/SQL 🛢/MANUAL/0 - INDEX 📑.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE",
     "DATABASES ⛃/SQL 🛢/MANUAL/4 - DATA STRUCTURE/📁 12 - CREATE TABLE & DDL.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/4 - DATA STRUCTURE",

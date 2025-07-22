@@ -19,8 +19,6 @@ textresponse-action-icon
 
 #### **Sintaxe Fundamental:**
 
-sqlresponse-action-icon
-
 ```sql
 CREATE TABLE table_name (
     column1 datatype [constraints],
@@ -31,8 +29,6 @@ CREATE TABLE table_name (
 ```
 
 #### **Exemplo Simples:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Tabela básica de produtos
@@ -52,8 +48,6 @@ SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'products';
 ### **📊 Tipos de Dados:**
 
 #### **Numéricos:**
-
-sqlresponse-action-icon
 
 ```sql
 CREATE TABLE numeric_examples (
@@ -76,8 +70,6 @@ CREATE TABLE numeric_examples (
 
 #### **Strings e Texto:**
 
-sqlresponse-action-icon
-
 ```sql
 CREATE TABLE string_examples (
     fixed_char CHAR(10),        -- Comprimento fixo, preenchido com espaços
@@ -93,8 +85,6 @@ CREATE TABLE string_examples (
 ```
 
 #### **Datas e Tempo:**
-
-sqlresponse-action-icon
 
 ```sql
 CREATE TABLE datetime_examples (
@@ -113,8 +103,6 @@ CREATE TABLE datetime_examples (
 ```
 
 #### **Outros Tipos:**
-
-sqlresponse-action-icon
 
 ```sql
 CREATE TABLE other_types (
