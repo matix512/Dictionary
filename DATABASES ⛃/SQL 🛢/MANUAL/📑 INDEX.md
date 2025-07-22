@@ -23,9 +23,9 @@
 #### **🏗️ Módulo 4 - Estrutura de Dados (Avançado)**
 
 - [[📁 12 - CREATE TABLE & DDL]]
-- [[13 - ALTER TABLE]]
-- [[14 - INSERT UPDATE DELETE]]
-- [[15 - Constraints e Relacionamentos]]
+- [[📁 13 - ALTER TABLE]]
+- [[📁 14 - INSERT UPDATE DELETE]]
+- [[📁 15 - CONSTRAINTS E RELACIONAMENTOS]]
 
 #### **⚡ Módulo 5 - Performance e Otimização (Avançado)**
 

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 16 - INDEX.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📑 INDEX.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📁 16 - INDEX"
+              "title": "📑 INDEX"
             }
           }
         ]
@@ -179,10 +179,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "265c193f0d48319c",
+  "active": "a9d4e10e066d511e",
   "lastOpenFiles": [
-    "DATABASES ⛃/SQL 🛢/MANUAL/📑 INDEX.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 16 - INDEX.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📑 INDEX.md",
     "16 - Índices.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 15 - CONSTRAINTS E RELACIONAMENTOS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 14 - INSERT UPDATE DELETE.md",
