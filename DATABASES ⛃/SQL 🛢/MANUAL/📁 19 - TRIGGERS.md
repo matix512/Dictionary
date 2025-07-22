@@ -1305,3 +1305,228 @@ BEGIN
 END;
 ````
 
+#### **2. Stored Procedures:**
+
+```sql
+-- Em vez de trigger complexo, usar procedure chamada pela aplicação
+DELIMITER //
+CREATE PROCEDURE ProcessOrderStatusChange(
+    IN order_id INT,
+    IN new_status VARCHAR(20)
+)
+BEGIN
+    DECLARE old_status VARCHAR(20);
+    
+    -- Obter status atual
+    SELECT status INTO old_status FROM orders WHERE id = order_id;
+    
+    -- Validar transição
+    CALL ValidateStatusTransition(old_status, new_status);
+    
+    -- Atualizar status
+    UPDATE orders SET status = new_status, status_changed_at = NOW() WHERE id = order_id;
+    
+    -- Log da mudança
+    INSERT INTO status_history (order_id, old_status, new_status, changed_at)
+    VALUES (order_id, old_status, new_status, NOW());
+    
+    -- Ações específicas por status
+    CASE new_status
+        WHEN 'shipped' THEN CALL ProcessShippedOrder(order_id);
+        WHEN 'delivered' THEN CALL ProcessDeliveredOrder(order_id);
+        WHEN 'cancelled' THEN CALL ProcessCancelledOrder(order_id);
+    END CASE;
+    
+END //
+DELIMITER ;
+```
+
+#### **3. Application-Level Logic:**
+
+```sql
+-- Em vez de trigger para envio de emails, fazer na aplicação
+-- Permite melhor controlo, async processing, retry logic, etc.
+
+-- Apenas registar eventos na BD
+CREATE TABLE business_events (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    event_type VARCHAR(50) NOT NULL,
+    entity_type VARCHAR(50) NOT NULL,
+    entity_id INT NOT NULL,
+    event_data JSON,
+    processed BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    INDEX idx_unprocessed (processed, created_at)
+);
+
+-- Trigger simples apenas para registar evento
+DELIMITER //
+CREATE TRIGGER register_customer_event
+AFTER INSERT ON customers
+FOR EACH ROW
+BEGIN
+    INSERT INTO business_events (event_type, entity_type, entity_id, event_data)
+    VALUES (
+        'CUSTOMER_CREATED',
+        'customer',
+        NEW.id,
+        JSON_OBJECT(
+            'customer_id', NEW.id,
+            'email', NEW.email,
+            'name', CONCAT(NEW.first_name, ' ', NEW.last_name)
+        )
+    );
+END //
+DELIMITER ;
+
+-- Aplicação processa eventos em background
+-- SELECT * FROM business_events WHERE processed = FALSE ORDER BY created_at LIMIT 100;
+```
+
+### **🎯 Monitorização e Manutenção:**
+
+#### **Monitor Performance de Triggers:**
+
+```sql
+-- Tabela para monitorar performance
+CREATE TABLE trigger_performance_log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    trigger_name VARCHAR(100),
+    table_name VARCHAR(100),
+    operation VARCHAR(10),
+    execution_time_ms DECIMAL(10,3),
+    record_count INT,
+    logged_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    INDEX idx_trigger_performance (trigger_name, logged_at)
+);
+
+-- Trigger com medição de tempo
+DELIMITER //
+CREATE TRIGGER monitored_trigger_example
+AFTER INSERT ON orders
+FOR EACH ROW
+BEGIN
+    DECLARE start_time DECIMAL(20,6);
+    DECLARE end_time DECIMAL(20,6);
+    
+    SET start_time = UNIX_TIMESTAMP(NOW(6));
+    
+    -- Lógica do trigger aqui
+    UPDATE customers 
+    SET total_orders = total_orders + 1,
+        last_order_date = NEW.order_date
+    WHERE id = NEW.customer_id;
+    
+    SET end_time = UNIX_TIMESTAMP(NOW(6));
+    
+    -- Log performance (apenas ocasionalmente para não impactar performance)
+    IF RAND() < 0.01 THEN  -- 1% das vezes
+        INSERT INTO trigger_performance_log (
+            trigger_name,
+            table_name,
+            operation,
+            execution_time_ms,
+            record_count
+        ) VALUES (
+            'monitored_trigger_example',
+            'orders',
+            'INSERT',
+            (end_time - start_time) * 1000,
+            1
+        );
+    END IF;
+    
+END //
+DELIMITER ;
+
+-- Análise de performance
+SELECT 
+    trigger_name,
+    table_name,
+    COUNT(*) as executions,
+    AVG(execution_time_ms) as avg_time_ms,
+    MAX(execution_time_ms) as max_time_ms,
+    MIN(execution_time_ms) as min_time_ms
+FROM trigger_performance_log
+WHERE logged_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)
+GROUP BY trigger_name, table_name
+ORDER BY avg_time_ms DESC;
+```
+
+#### **Auditoria de Triggers:**
+
+```sql
+-- Script para auditar todos os triggers
+SELECT 
+    t.TRIGGER_NAME,
+    t.EVENT_OBJECT_TABLE as table_name,
+    t.ACTION_TIMING,
+    t.EVENT_MANIPULATION,
+    CHAR_LENGTH(t.ACTION_STATEMENT) as code_length,
+    t.CREATED,
+    CASE 
+        WHEN t.ACTION_STATEMENT LIKE '%UPDATE%' AND t.ACTION_TIMING = 'AFTER' THEN 'POTENTIAL_RECURSION_RISK'
+        WHEN CHAR_LENGTH(t.ACTION_STATEMENT) > 5000 THEN 'COMPLEX_TRIGGER'
+        WHEN t.ACTION_STATEMENT LIKE '%SLEEP%' THEN 'PERFORMANCE_RISK'
+        ELSE 'OK'
+    END as risk_assessment
+FROM INFORMATION_SCHEMA.TRIGGERS t
+WHERE t.TRIGGER_SCHEMA = DATABASE()
+ORDER BY 
+    CASE risk_assessment
+        WHEN 'POTENTIAL_RECURSION_RISK' THEN 1
+        WHEN 'PERFORMANCE_RISK' THEN 2
+        WHEN 'COMPLEX_TRIGGER' THEN 3
+        ELSE 4
+    END,
+    t.EVENT_OBJECT_TABLE;
+```
+
+### **📋 Checklist de Triggers:**
+
+#### **✅ Antes de Implementar:**
+
+```text
+□ É realmente necessário um trigger?
+□ Pode ser feito na aplicação?
+□ É a melhor ferramenta para o trabalho?
+□ Impacto na performance foi considerado?
+□ Lógica é simples e focada?
+□ Tratamento de erros incluído?
+□ Documentação adequada?
+□ Testes realizados em ambiente similar à produção?
+□ Rollback plan definido?
+```
+
+#### **✅ Depois de Implementar:**
+
+```text
+□ Performance monitorizada?
+□ Logs de erro verificados?
+□ Comportamento conforme esperado?
+□ Sem efeitos colaterais não intencionais?
+□ Documentação atualizada?
+□ Equipa informada sobre novo trigger?
+```
+
+### **🔚 Conclusão - Quando Usar Triggers:**
+
+#### **✅ Usar Triggers Para:**
+
+- Validação de dados crítica que não pode ser contornada
+- Auditoria automática de mudanças importantes
+- Manutenção de integridade referencial complexa
+- Cálculos automáticos simples (timestamps, totais)
+- Logging de segurança
+- Sincronização de dados simples
+
+#### **❌ Evitar Triggers Para:**
+
+- Lógica de negócio complexa
+- Operações que podem falhar (envio emails, calls API)
+- Processamento que pode ser lento
+- Cálculos que podem ser feitos na aplicação
+- Operações que precisam de rollback complexo
+- Qualquer coisa que precisa de debugging frequente
