@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📑 INDEX.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/BASE/📁 01 - BASIC CONCEPT.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📑 INDEX"
+              "title": "📁 01 - BASIC CONCEPT"
             }
           }
         ]
@@ -179,15 +179,16 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "35f1cdae7b2e120b",
+  "active": "a9d4e10e066d511e",
   "lastOpenFiles": [
+    "DATABASES ⛃/SQL 🛢/MANUAL/📑 INDEX.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/BASE",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 19 - TRIGGERS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 20 - SSMS.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/📑 INDEX.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 04 - FIRST QUERIES.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 03 - INSTALL & SETUP.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 02 - RELATIONAL MODEL.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 01 - BASIC CONCEPT.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/BASE/📁 04 - FIRST QUERIES.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/BASE/📁 03 - INSTALL & SETUP.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/BASE/📁 02 - RELATIONAL MODEL.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/BASE/📁 01 - BASIC CONCEPT.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 18 - STORED PROCEDURES.md",
     "17 - Views.md",
     "18 - Stored Procedures.md",
@@ -207,7 +208,6 @@
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 05 - WHERE & FILTERS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL",
     "DATABASES ⛃/SQL 🛢/CRIAÇÃO DE DB.md",
-    "DATABASES ⛃/SQL 🛢/MODELO RELACIONAL 🖧.md",
     "DATABASES ⛃",
     "DATABASES ⛃/SQL 🛢",
     "LINUX 🐧",
@@ -216,7 +216,6 @@
     "ONLINE/🌐 WEB/JAVASCRIPT",
     "ONLINE/🌐 WEB/CSS",
     "ONLINE/🌐 WEB",
-    "ONLINE/🌐 WEB/HTML",
     "Pasted image 20250719013940.png",
     "Pasted image 20250719013937.png",
     "Pasted image 20250719014104.png",
