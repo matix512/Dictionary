@@ -680,19 +680,7 @@ id INT AUTO_INCREMENT PRIMARY KEY,
 order_id INT NOT NULL,  
 product_id INT NOT NULL,
 
-```
 
-);
-
--- 6. Itens do pedido  
-CREATE TABLE order_items (  
-id INT AUTO_INCREMENT PRIMARY KEY,  
-order_id INT NOT NULL,  
-product_id INT NOT NULL,
-
-textresponse-action-icon
-
-```text
 quantity INT NOT NULL,
 unit_price DECIMAL(10,2) NOT NULL,
 discount_percent DECIMAL(5,2) DEFAULT 0,
@@ -715,15 +703,13 @@ UNIQUE KEY uk_order_product (order_id, product_id),
 -- Indexes
 INDEX idx_order_items_order (order_id),
 INDEX idx_order_items_product (product_id)
-```
-
 );
 
-textresponse-action-icon
+```
 
-````text
 
 #### **Exercício 2 - Sistema Escolar Avançado:**
+
 ```sql
 -- Sistema escolar com constraints complexas
 
@@ -927,8 +913,6 @@ WHERE CONSTRAINT_SCHEMA = 'your_database_name';
 ```
 
 #### **Gerenciar Constraints Existentes:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Adicionar constraint a tabela existente
