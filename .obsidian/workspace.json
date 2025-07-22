@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 02 - Modelo Relacional.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📑 0 .INDEX.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📁 02 - Modelo Relacional"
+              "title": "📑 0 .INDEX"
             }
           }
         ]
@@ -179,11 +179,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "265c193f0d48319c",
+  "active": "a9d4e10e066d511e",
   "lastOpenFiles": [
-    "DATABASES ⛃/SQL 🛢/MANUAL/INDEX.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 01 - Conceitos Básicos de BD.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 02 - Modelo Relacional.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📑 0 .INDEX.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 01 - Conceitos Básicos de BD.md",
     "DATABASES ⛃/SQL 🛢/MANUAL",
     "DATABASES ⛃/SQL 🛢/CRIAÇÃO DE DB.md",
     "DATABASES ⛃/SQL 🛢/MODELO RELACIONAL 🖧.md",
