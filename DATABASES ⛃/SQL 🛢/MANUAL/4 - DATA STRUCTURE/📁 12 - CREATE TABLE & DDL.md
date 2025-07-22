@@ -121,8 +121,6 @@ CREATE TABLE other_types (
 
 #### **Primary Key:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Chave primária simples
 CREATE TABLE students (
@@ -154,8 +152,6 @@ CREATE TABLE students (
 
 #### **Foreign Key:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Criação com foreign key
 CREATE TABLE orders (
@@ -184,8 +180,6 @@ CREATE TABLE orders (
 ```
 
 #### **Unique, Not NULL, Check:**
-
-sqlresponse-action-icon
 
 ```sql
 CREATE TABLE comprehensive_table (
@@ -216,8 +210,6 @@ CREATE TABLE comprehensive_table (
 ### **🎯 Exemplos Práticos Completos:**
 
 #### **Sistema de E-commerce:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Tabela de categorias
@@ -302,8 +294,6 @@ CREATE TABLE customers (
 
 #### **Sistema Escolar:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Tabela de cursos
 CREATE TABLE courses (
@@ -381,8 +371,6 @@ CREATE TABLE enrollments (
 
 #### **Tabelas Temporárias:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Tabela temporária (sessão)
 CREATE TEMPORARY TABLE temp_calculations (
@@ -398,8 +386,6 @@ SELECT * FROM temp_calculations;
 ```
 
 #### **CREATE TABLE AS (CTAS):**
-
-sqlresponse-action-icon
 
 ```sql
 -- Criar tabela a partir de query
@@ -424,8 +410,6 @@ CREATE TABLE sales_backup LIKE sales;  -- Só estrutura
 
 #### **Particionamento (MySQL/PostgreSQL):**
 
-sqlresponse-action-icon
-
 ```sql
 -- Particionamento por range de data
 CREATE TABLE sales_partitioned (
@@ -446,8 +430,6 @@ PARTITION BY RANGE (YEAR(sale_date)) (
 ### **🎯 Exercícios Práticos:**
 
 #### **Exercício 1 - Básico:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Criar tabela de funcionários
@@ -478,8 +460,6 @@ ADD FOREIGN KEY (department_id) REFERENCES departments(id);
 ```
 
 #### **Exercício 2 - Intermediário:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Sistema de biblioteca
@@ -541,8 +521,6 @@ CREATE TABLE loans (
 
 #### **1. Convenções de Nomeação:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ✅ Boas práticas
 CREATE TABLE customer_orders (           -- snake_case
@@ -562,8 +540,6 @@ CREATE TABLE customer_orders (           -- snake_case
 ```
 
 #### **2. Performance e Manutenibilidade:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Incluir timestamps para auditoria
@@ -603,8 +579,6 @@ is_deleted BOOLEAN DEFAULT FALSE    -- Soft delete
 
 #### **1. Tipos de Dados Inadequados:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ Problemas comuns
 CREATE TABLE bad_design (
@@ -626,8 +600,6 @@ CREATE TABLE good_design (
 ```
 
 #### **2. Constraints Esquecidas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Sem constraints adequadas
