@@ -6,8 +6,6 @@
 
 #### **Características Principais:**
 
-textresponse-action-icon
-
 ```text
 🎯 Interface Gráfica - Gestão visual de bases de dados
 📊 Query Editor - Editor avançado com IntelliSense
@@ -21,8 +19,6 @@ textresponse-action-icon
 ### **⚙️ Interface do SSMS:**
 
 #### **Componentes Principais:**
-
-textresponse-action-icon
 
 ```text
 📁 Object Explorer:
@@ -49,8 +45,6 @@ textresponse-action-icon
 
 #### **Configuração Inicial:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Configurações recomendadas
 -- Tools → Options → Query Execution → SQL Server → General
@@ -71,8 +65,6 @@ sqlresponse-action-icon
 ### **🗃️ Gestão de Bases de Dados:**
 
 #### **Criar Base de Dados:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Via T-SQL
@@ -101,8 +93,6 @@ LOG ON (
 ```
 
 #### **Configurações de Base de Dados:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Verificar configurações atuais
@@ -133,8 +123,6 @@ ALTER DATABASE ECommerceDB SET AUTO_UPDATE_STATISTICS ON;
 
 #### **Criar Tabelas via Designer:**
 
-textresponse-action-icon
-
 ```text
 1. Expand Database → Tables
 2. Right-click → "New Table..."
@@ -148,8 +136,6 @@ textresponse-action-icon
 ```
 
 #### **Tipos de Dados SQL Server:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Tipos Numéricos
@@ -189,8 +175,6 @@ IMAGE                 -- Imagens (deprecated)
 ```
 
 #### **Exemplo Completo de Tabela:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Criar tabela complexa
@@ -239,8 +223,6 @@ CREATE TABLE Customers (
 ### **🔍 Query Editor Avançado:**
 
 #### **Funcionalidades do Editor:**
-
-sqlresponse-action-icon
 
 ```sql
 -- IntelliSense (Ctrl+Space para forçar)
