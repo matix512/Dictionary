@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 03 - Instalação e Setup.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 04 - First Queries.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📁 03 - Instalação e Setup"
+              "title": "📁 04 - First Queries"
             }
           }
         ]
@@ -181,8 +181,9 @@
   },
   "active": "265c193f0d48319c",
   "lastOpenFiles": [
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 02 - Modelo Relacional.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 03 - Instalação e Setup.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 04 - First Queries.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 02 - Modelo Relacional.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📑 INDEX.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 01 - Conceitos Básicos de BD.md",
     "DATABASES ⛃/SQL 🛢/MANUAL",
