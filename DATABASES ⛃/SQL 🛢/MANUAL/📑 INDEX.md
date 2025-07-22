@@ -4,25 +4,25 @@
 
 - [[📁 01 - Conceitos Básicos de BD]]
 - [[📁 02 - Modelo Relacional]]
-- [[03 - Instalação e Setup]]
-- [[04 - Primeiras Queries SELECT]]
+- [[📁 03 - Instalação e Setup]]
+- [[📁 04 - First Queries]]]
 
 #### **🔧 Módulo 2 - SQL Essencial (Intermédio)**
 
-- [[05 - WHERE e Filtros]]
-- [[06 - ORDER BY e LIMIT]]
-- [[07 - Funções de String e Data]]
-- [[08 - JOINs Básicos]]
+- [[📁 05 - WHERE & FILTERS]]
+- [[📁 06 - ORDER BY & LIMIT]]
+- [[📁 07 - STRING & DATA FUNCTIONS]]
+- [[📁 08 - BASIC JOIN'S]]
 
 #### **📊 Módulo 3 - Agregações e Grupos (Intermédio)**
 
 - [[📁 09 - GROUP BY & HAVING]]
 - [[📁 10 - AGREGGATION FUNCTIONS]]
-- [[11 - Subqueries Básicas]]
+- [[📁 11 - BASIC SUBQUERIES]]
 
 #### **🏗️ Módulo 4 - Estrutura de Dados (Avançado)**
 
-- [[12 - CREATE TABLE e DDL]]
+- [[📁 12 - CREATE TABLE & DDL]]
 - [[13 - ALTER TABLE]]
 - [[14 - INSERT UPDATE DELETE]]
 - [[15 - Constraints e Relacionamentos]]
