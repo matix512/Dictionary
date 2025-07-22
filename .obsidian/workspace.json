@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 08 - BASIC JOIN'S.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 08 - BASIC JOIN'S 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📁 08 - BASIC JOIN'S"
+              "title": "📁 08 - BASIC JOIN'S 1"
             }
           }
         ]
@@ -181,8 +181,9 @@
   },
   "active": "265c193f0d48319c",
   "lastOpenFiles": [
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 07 - STRING & DATA FUNCTIONS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 08 - BASIC JOIN'S.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 08 - BASIC JOIN'S 1.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 07 - STRING & DATA FUNCTIONS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 06 - ORDER BY & LIMIT.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 05 - WHERE & FILTERS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 04 - First Queries.md",
@@ -224,7 +225,6 @@
     "Pasted image 20250719013539.png",
     "Pasted image 20250719013636.png",
     "Pasted image 20250719013624.png",
-    "Pasted image 20250719013618.png",
-    "GIT 👾/🧠 Git Cheat Sheet.md"
+    "Pasted image 20250719013618.png"
   ]
 }
