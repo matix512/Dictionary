@@ -167,8 +167,6 @@ AND s.INDEX_NAME != 'PRIMARY';
 
 #### **Ordem das Colunas é Crucial:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Índice composto
 CREATE INDEX idx_orders_customer_date_status ON orders(customer_id, order_date, status);
@@ -186,8 +184,6 @@ SELECT * FROM orders WHERE order_date = '2024-01-15' AND status = 'pending';  --
 ```
 
 #### **Regra do "Left-Most Prefix":**
-
-sqlresponse-action-icon
 
 ```sql
 -- Índice: (A, B, C, D)
@@ -208,8 +204,6 @@ WHERE col_b = ? AND col_c = ?
 
 #### **Estratégias para Ordem de Colunas:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Regra geral: Mais seletivas primeiro, mais usadas primeiro
 -- 1. Igualdade antes de ranges
@@ -229,8 +223,6 @@ CREATE INDEX idx_orders_customer_date ON orders(customer_id, order_date);
 ### **🔍 Analisar Performance dos Índices:**
 
 #### **EXPLAIN - Ver Plano de Execução:**
-
-sqlresponse-action-icon
 
 ```sql
 -- MySQL
@@ -256,8 +248,6 @@ EXPLAIN FORMAT=JSON SELECT * FROM orders WHERE customer_id = 123;
 ```
 
 #### **Analisar Uso de Índices:**
-
-sqlresponse-action-icon
 
 ```sql
 -- MySQL - Ver estatísticas de uso
@@ -291,8 +281,6 @@ AND s.INDEX_NAME != 'PRIMARY';
 
 #### **Índices Full-Text:**
 
-sqlresponse-action-icon
-
 ```sql
 -- MySQL Full-Text Search
 CREATE TABLE articles (
@@ -317,7 +305,6 @@ WHERE MATCH(title, content) AGAINST('database' WITH QUERY EXPANSION);
 
 #### **Índices Funcionais:**
 
-sqlresponse-action-icon
 
 ```sql
 -- MySQL 8.0+ - Índices em expressões
@@ -337,8 +324,6 @@ CREATE INDEX idx_orders_year ON orders(EXTRACT(YEAR FROM order_date));
 
 #### **Índices Parciais:**
 
-sqlresponse-action-icon
-
 ```sql
 -- PostgreSQL - Índice apenas para subset dos dados
 CREATE INDEX idx_orders_pending ON orders(customer_id, order_date) 
@@ -357,8 +342,6 @@ WHERE status = 'pending' AND customer_id = 123;
 
 #### **Covering Indexes:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Índice que inclui todas as colunas necessárias
 CREATE INDEX idx_orders_covering ON orders(customer_id, order_date, status, total_amount);
@@ -374,8 +357,6 @@ INCLUDE (status, total_amount);
 ```
 
 #### **Índices para Diferentes Padrões de Query:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Para queries de range + igualdade
