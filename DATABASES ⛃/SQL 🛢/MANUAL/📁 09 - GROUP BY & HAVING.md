@@ -1,435 +1,226 @@
-### **🔗 Conceito de JOINs:**
+### **📊 Conceito de Agrupamento:**
 
-#### **O que são JOINs?**
+#### **O que é GROUP BY?**
 
-> JOINs combinam linhas de duas ou mais tabelas baseado numa relação entre elas. É a operação mais poderosa do SQL para trabalhar com dados relacionais.
+> GROUP BY agrupa linhas que têm os mesmos valores em colunas especificadas, permitindo aplicar funções de agregação (COUNT, SUM, AVG, etc.) a cada grupo.
 
-#### **Dataset de Exemplo:**
+#### **Fluxo de Execução SQL:**
 
-sqlresponse-action-icon
+textresponse-action-icon
 
-```sql
--- Criar tabelas para exemplos
-CREATE TABLE countries (
-    id INT PRIMARY KEY,
-    name VARCHAR(50),
-    continent VARCHAR(50)
-);
-
-CREATE TABLE students (
-    id INT PRIMARY KEY,
-    first_name VARCHAR(50),
-    last_name VARCHAR(50),
-    country_id INT,
-    FOREIGN KEY (country_id) REFERENCES countries(id)
-);
-
--- Dados de exemplo
-INSERT INTO countries VALUES 
-(1, 'Portugal', 'Europe'),
-(2, 'Brazil', 'South America'),
-(3, 'Spain', 'Europe'),
-(4, 'France', 'Europe');
-
-INSERT INTO students VALUES 
-(1, 'João', 'Silva', 1),
-(2, 'Maria', 'Santos', 1),
-(3, 'Carlos', 'Oliveira', 2),
-(4, 'Ana', 'Costa', NULL),
-(5, 'Pierre', 'Dubois', 4);
+```text
+1. FROM - Selecionar tabelas
+2. WHERE - Filtrar linhas individuais  
+3. GROUP BY - Agrupar linhas
+4. HAVING - Filtrar grupos
+5. SELECT - Selecionar colunas
+6. ORDER BY - Ordenar resultado
+7. LIMIT - Limitar resultado
 ```
 
-### **🎯 INNER JOIN:**
+### **🎯 GROUP BY Básico:**
 
-#### **Conceito:**
-
-> Retorna apenas registos que têm correspondência em ambas as tabelas.
-
-#### **Sintaxe e Exemplos:**
+#### **Sintaxe:**
 
 sqlresponse-action-icon
 
 ```sql
--- Sintaxe básica
-SELECT columns
-FROM table1
-INNER JOIN table2 ON table1.column = table2.column;
+SELECT column1, aggregate_function(column2)
+FROM table
+WHERE condition
+GROUP BY column1
+HAVING group_condition
+ORDER BY column1;
+```
 
--- Estudantes com seus países
-SELECT s.first_name, s.last_name, c.name AS country
-FROM students s
-INNER JOIN countries c ON s.country_id = c.id;
+#### **Exemplos Fundamentais:**
+
+sqlresponse-action-icon
+
+```sql
+-- Dataset expandido para exemplos
+CREATE TABLE sales (
+    id INT PRIMARY KEY,
+    product VARCHAR(50),
+    category VARCHAR(50),
+    quantity INT,
+    price DECIMAL(10,2),
+    sale_date DATE,
+    salesperson VARCHAR(50)
+);
+
+INSERT INTO sales VALUES 
+(1, 'Laptop', 'Electronics', 2, 800.00, '2024-01-15', 'João'),
+(2, 'Mouse', 'Electronics', 5, 25.00, '2024-01-16', 'Maria'),
+(3, 'Chair', 'Furniture', 3, 150.00, '2024-01-17', 'João'),
+(4, 'Laptop', 'Electronics', 1, 800.00, '2024-01-18', 'Ana'),
+(5, 'Table', 'Furniture', 2, 300.00, '2024-01-19', 'Maria');
+
+-- Contar vendas por vendedor
+SELECT salesperson, COUNT(*) AS total_sales
+FROM sales
+GROUP BY salesperson;
 
 -- Resultado:
--- +------------+-----------+-----------+
--- | first_name | last_name | country   |
--- +------------+-----------+-----------+
--- | João       | Silva     | Portugal  |
--- | Maria      | Santos    | Portugal  |
--- | Carlos     | Oliveira  | Brazil    |
--- | Pierre     | Dubois    | France    |
--- +------------+-----------+-----------+
--- Note: Ana Costa não aparece (country_id é NULL)
+-- +-------------+-------------+
+-- | salesperson | total_sales |
+-- +-------------+-------------+
+-- | João        | 2           |
+-- | Maria       | 2           |
+-- | Ana         | 1           |
+-- +-------------+-------------+
 ```
 
-#### **INNER JOIN com Múltiplas Tabelas:**
+### **📈 Funções de Agregação:**
+
+#### **COUNT - Contar:**
 
 sqlresponse-action-icon
 
 ```sql
--- Assumindo uma terceira tabela
-CREATE TABLE enrollments (
-    id INT PRIMARY KEY,
-    student_id INT,
-    course VARCHAR(50),
-    grade DECIMAL(3,1),
-    FOREIGN KEY (student_id) REFERENCES students(id)
-);
+-- Contar todas as linhas por grupo
+SELECT category, COUNT(*) AS total_items
+FROM sales
+GROUP BY category;
 
--- JOIN triplo
+-- Contar valores não nulos
+SELECT category, COUNT(price) AS items_with_price
+FROM sales
+GROUP BY category;
+
+-- Contar valores únicos
+SELECT category, COUNT(DISTINCT salesperson) AS unique_sellers
+FROM sales
+GROUP BY category;
+```
+
+#### **SUM - Somar:**
+
+sqlresponse-action-icon
+
+```sql
+-- Total de vendas por categoria
 SELECT 
-    s.first_name,
-    s.last_name,
-    c.name AS country,
-    e.course,
-    e.grade
-FROM students s
-INNER JOIN countries c ON s.country_id = c.id
-INNER JOIN enrollments e ON s.id = e.student_id;
+    category,
+    SUM(quantity * price) AS total_revenue
+FROM sales
+GROUP BY category;
+
+-- Total de quantidade e receita por vendedor
+SELECT 
+    salesperson,
+    SUM(quantity) AS total_quantity,
+    SUM(quantity * price) AS total_revenue
+FROM sales
+GROUP BY salesperson;
 ```
 
-### **⬅️ LEFT JOIN (LEFT OUTER JOIN):**
-
-#### **Conceito:**
-
-> Retorna TODOS os registos da tabela da esquerda, e os registos correspondentes da tabela da direita. Se não há correspondência, mostra NULL.
-
-#### **Exemplos:**
+#### **AVG - Média:**
 
 sqlresponse-action-icon
 
 ```sql
--- Todos os estudantes, mesmo sem país
-SELECT s.first_name, s.last_name, c.name AS country
-FROM students s
-LEFT JOIN countries c ON s.country_id = c.id;
+-- Preço médio por categoria
+SELECT 
+    category,
+    AVG(price) AS avg_price,
+    ROUND(AVG(price), 2) AS avg_price_rounded
+FROM sales
+GROUP BY category;
+
+-- Quantidade média por vendedor
+SELECT 
+    salesperson,
+    AVG(quantity) AS avg_quantity,
+    AVG(quantity * price) AS avg_sale_value
+FROM sales
+GROUP BY salesperson;
+```
+
+#### **MIN/MAX - Mínimo/Máximo:**
+
+sqlresponse-action-icon
+
+```sql
+-- Faixa de preços por categoria
+SELECT 
+    category,
+    MIN(price) AS cheapest,
+    MAX(price) AS most_expensive,
+    MAX(price) - MIN(price) AS price_range
+FROM sales
+GROUP BY category;
+
+-- Primeira e última venda por vendedor
+SELECT 
+    salesperson,
+    MIN(sale_date) AS first_sale,
+    MAX(sale_date) AS last_sale,
+    COUNT(*) AS total_sales
+FROM sales
+GROUP BY salesperson;
+```
+
+### **🔢 GROUP BY com Múltiplas Colunas:**
+
+#### **Agrupamento Hierárquico:**
+
+sqlresponse-action-icon
+
+```sql
+-- Vendas por categoria e vendedor
+SELECT 
+    category,
+    salesperson,
+    COUNT(*) AS sales_count,
+    SUM(quantity * price) AS revenue
+FROM sales
+GROUP BY category, salesperson
+ORDER BY category, revenue DESC;
 
 -- Resultado:
--- +------------+-----------+-----------+
--- | first_name | last_name | country   |
--- +------------+-----------+-----------+
--- | João       | Silva     | Portugal  |
--- | Maria      | Santos    | Portugal  |
--- | Carlos     | Oliveira  | Brazil    |
--- | Ana        | Costa     | NULL      |
--- | Pierre     | Dubois    | France    |
--- +------------+-----------+-----------+
--- Note: Ana Costa aparece com country NULL
+-- +-------------+-------------+-------------+---------+
+-- | category    | salesperson | sales_count | revenue |
+-- +-------------+-------------+-------------+---------+
+-- | Electronics | João        | 1           | 1600.00 |
+-- | Electronics | Ana         | 1           | 800.00  |
+-- | Electronics | Maria       | 1           | 125.00  |
+-- | Furniture   | Maria       | 1           | 600.00  |
+-- | Furniture   | João        | 1           | 450.00  |
+-- +-------------+-------------+-------------+---------+
 ```
 
-#### **LEFT JOIN para Contar:**
+#### **Agrupamento por Expressões:**
 
 sqlresponse-action-icon
 
 ```sql
--- Contar estudantes por país (incluindo países sem estudantes)
+-- Vendas por ano e mês
 SELECT 
-    c.name AS country,
-    COUNT(s.id) AS student_count
-FROM countries c
-LEFT JOIN students s ON c.id = s.country_id
-GROUP BY c.id, c.name
-ORDER BY student_count DESC;
+    YEAR(sale_date) AS year,
+    MONTH(sale_date) AS month,
+    MONTHNAME(sale_date) AS month_name,
+    COUNT(*) AS sales_count,
+    SUM(quantity * price) AS monthly_revenue
+FROM sales
+GROUP BY YEAR(sale_date), MONTH(sale_date), MONTHNAME(sale_date)
+ORDER BY year, month;
 
--- Resultado:
--- +-----------+---------------+
--- | country   | student_count |
--- +-----------+---------------+
--- | Portugal  | 2             |
--- | Brazil    | 1             |
--- | France    | 1             |
--- | Spain     | 0             |
--- +-----------+---------------+
-```
-
-### **➡️ RIGHT JOIN (RIGHT OUTER JOIN):**
-
-#### **Conceito:**
-
-> Retorna TODOS os registos da tabela da direita, e os registos correspondentes da tabela da esquerda. Menos usado que LEFT JOIN.
-
-#### **Exemplos:**
-
-sqlresponse-action-icon
-
-```sql
--- Todos os países, mesmo sem estudantes
-SELECT s.first_name, s.last_name, c.name AS country
-FROM students s
-RIGHT JOIN countries c ON s.country_id = c.id;
-
--- Equivalente ao LEFT JOIN anterior, mas com tabelas trocadas
-SELECT s.first_name, s.last_name, c.name AS country
-FROM countries c
-LEFT JOIN students s ON c.id = s.country_id;
-```
-
-### **🔄 FULL OUTER JOIN:**
-
-#### **Conceito:**
-
-> Retorna TODOS os registos quando há correspondência na tabela esquerda OU direita.
-
-#### **Exemplos:**
-
-sqlresponse-action-icon
-
-```sql
--- SQL Server/PostgreSQL
-SELECT s.first_name, s.last_name, c.name AS country
-FROM students s
-FULL OUTER JOIN countries c ON s.country_id = c.id;
-
--- MySQL não tem FULL OUTER JOIN, simular com UNION
-SELECT s.first_name, s.last_name, c.name AS country
-FROM students s
-LEFT JOIN countries c ON s.country_id = c.id
-UNION
-SELECT s.first_name, s.last_name, c.name AS country
-FROM students s
-RIGHT JOIN countries c ON s.country_id = c.id;
-```
-
-### **❌ CROSS JOIN:**
-
-#### **Conceito:**
-
-> Produto cartesiano - cada linha da primeira tabela é combinada com cada linha da segunda tabela.
-
-#### **Exemplos:**
-
-sqlresponse-action-icon
-
-```sql
--- Todas as combinações possíveis (cuidado com tabelas grandes!)
-SELECT s.first_name, c.name AS country
-FROM students s
-CROSS JOIN countries c;
-
--- Resultado: 5 estudantes × 4 países = 20 linhas
--- +------------+-----------+
--- | first_name | country   |
--- +------------+-----------+
--- | João       | Portugal  |
--- | João       | Brazil    |
--- | João       | Spain     |
--- | João       | France    |
--- | Maria      | Portugal  |
--- | ...        | ...       |
--- +------------+-----------+
-```
-
-### **🎯 Condições de JOIN:**
-
-#### **JOIN com Múltiplas Condições:**
-
-sqlresponse-action-icon
-
-```sql
--- Múltiplas condições no ON
-SELECT s.first_name, c.name
-FROM students s
-INNER JOIN countries c ON s.country_id = c.id 
-                       AND c.continent = 'Europe';
-
--- Condição adicional no WHERE
-SELECT s.first_name, c.name
-FROM students s
-INNER JOIN countries c ON s.country_id = c.id
-WHERE c.continent = 'Europe';
-```
-
-#### **Diferença ON vs WHERE:**
-
-sqlresponse-action-icon
-
-```sql
--- Com LEFT JOIN, WHERE filtra DEPOIS do JOIN
-SELECT s.first_name, c.name
-FROM students s
-LEFT JOIN countries c ON s.country_id = c.id
-WHERE c.continent = 'Europe';  -- Remove Ana Costa do resultado
-
--- ON filtra DURANTE o JOIN
-SELECT s.first_name, c.name
-FROM students s
-LEFT JOIN countries c ON s.country_id = c.id 
-                      AND c.continent = 'Europe';  -- Ana Costa fica com country NULL
-```
-
-### **🏗️ Self JOIN:**
-
-#### **Conceito:**
-
-> Uma tabela faz JOIN consigo mesma. Útil para hierarquias.
-
-#### **Exemplo - Estrutura de Funcionários:**
-
-sqlresponse-action-icon
-
-```sql
--- Tabela de funcionários
-CREATE TABLE employees (
-    id INT PRIMARY KEY,
-    name VARCHAR(50),
-    manager_id INT
-);
-
-INSERT INTO employees VALUES 
-(1, 'CEO', NULL),
-(2, 'Director A', 1),
-(3, 'Director B', 1),
-(4, 'Manager A1', 2),
-(5, 'Employee A1a', 4);
-
--- Self JOIN para ver funcionário e seu chefe
+-- Vendas por faixa de preço
 SELECT 
-    e.name AS employee,
-    m.name AS manager
-FROM employees e
-LEFT JOIN employees m ON e.manager_id = m.id;
-
--- Resultado:
--- +-------------+-----------+
--- | employee    | manager   |
--- +-------------+-----------+
--- | CEO         | NULL      |
--- | Director A  | CEO       |
--- | Director B  | CEO       |
--- | Manager A1  | Director A|
--- | Employee A1a| Manager A1|
--- +-------------+-----------+
-```
-
-### **📊 JOINs com Agregações:**
-
-#### **Estatísticas com GROUP BY:**
-
-sqlresponse-action-icon
-
-```sql
--- Número de estudantes por país e continente
-SELECT 
-    c.continent,
-    c.name AS country,
-    COUNT(s.id) AS student_count,
-    GROUP_CONCAT(s.first_name) AS student_names  -- MySQL
-FROM countries c
-LEFT JOIN students s ON c.id = s.country_id
-GROUP BY c.continent, c.id, c.name
-ORDER BY c.continent, student_count DESC;
-```
-
-#### **Subquery vs JOIN Performance:**
-
-sqlresponse-action-icon
-
-```sql
--- ❌ Lento com subquery
-SELECT first_name 
-FROM students 
-WHERE country_id IN (
-    SELECT id FROM countries WHERE continent = 'Europe'
-);
-
--- ✅ Rápido com JOIN
-SELECT s.first_name 
-FROM students s
-INNER JOIN countries c ON s.country_id = c.id
-WHERE c.continent = 'Europe';
-```
-
-### **🎯 Exercícios Práticos:**
-
-#### **Exercício 1 - JOINs Básicos:**
-
-sqlresponse-action-icon
-
-```sql
--- 1. Todos os estudantes europeus
-SELECT s.first_name, s.last_name, c.name AS country
-FROM students s
-INNER JOIN countries c ON s.country_id = c.id
-WHERE c.continent = 'Europe';
-
--- 2. Países sem estudantes
-SELECT c.name AS country
-FROM countries c
-LEFT JOIN students s ON c.id = s.country_id
-WHERE s.id IS NULL;
-
--- 3. Contar estudantes por continente
-SELECT c.continent, COUNT(s.id) AS student_count
-FROM countries c
-LEFT JOIN students s ON c.id = s.country_id
-GROUP BY c.continent;
-```
-
-#### **Exercício 2 - Avançado:**
-
-sqlresponse-action-icon
-
-```sql
--- 1. Estudantes do mesmo país
-SELECT 
-    s1.first_name + ' ' + s1.last_name AS student1,
-    s2.first_name + ' ' + s2.last_name AS student2,
-    c.name AS country
-FROM students s1
-INNER JOIN students s2 ON s1.country_id = s2.country_id AND s1.id < s2.id
-INNER JOIN countries c ON s1.country_id = c.id;
-
--- 2. País com mais estudantes
-SELECT c.name, COUNT(s.id) AS count
-FROM countries c
-LEFT JOIN students s ON c.id = s.country_id
-GROUP BY c.id, c.name
-ORDER BY count DESC
-LIMIT 1;
-```
-
-### **⚡ Performance Tips:**
-
-#### **1. Índices em Colunas de JOIN:**
-
-sqlresponse-action-icon
-
-```sql
--- Sempre indexar foreign keys
-CREATE INDEX idx_students_country ON students(country_id);
-CREATE INDEX idx_enrollments_student ON enrollments(student_id);
-```
-
-#### **2. Ordem das Tabelas:**
-
-sqlresponse-action-icon
-
-```sql
--- Geralmente, tabela menor primeiro
--- ✅ Menor → Maior
-SELECT * 
-FROM small_table s
-INNER JOIN large_table l ON s.id = l.small_id;
-```
-
-#### **3. Usar EXPLAIN:**
-
-sqlresponse-action-icon
-
-```sql
--- Ver plano de execução
-EXPLAIN 
-SELECT s.first_name, c.name
-FROM students s
-INNER JOIN countries c ON s.country_id = c.id;
+    CASE 
+        WHEN price < 100 THEN 'Cheap'
+        WHEN price BETWEEN 100 AND 500 THEN 'Medium'
+        ELSE 'Expensive'
+    END AS price_range,
+    COUNT(*) AS item_count,
+    AVG(price) AS avg_price
+    FROM sales  
+GROUP BY  
+CASE  
+WHEN price < 100 THEN 'Cheap'  
+WHEN price BETWEEN 100 AND 500 THEN 'Medium'  
+ELSE 'Expensive'  
+END  
+ORDER BY avg_price;
 ```
