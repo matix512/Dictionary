@@ -1076,8 +1076,6 @@ DELIMITER ;
 
 #### **2. Performance Issues:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ Trigger lento que afeta todas as operações
 DELIMITER //
@@ -1125,8 +1123,6 @@ DELIMITER ;
 ### **🛠️ Debugging de Triggers:**
 
 #### **Técnicas de Debug:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Trigger com logging para debug
@@ -1197,8 +1193,6 @@ SELECT * FROM trigger_error_log ORDER BY timestamp DESC LIMIT 10;
 ### **📚 Best Practices para Triggers:**
 
 #### **✅ Boas Práticas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Triggers simples e rápidos
@@ -1283,8 +1277,6 @@ DELIMITER ;
 
 #### **❌ O que Evitar:**
 
-textresponse-action-icon
-
 ```text
 ❌ Triggers muito complexos
 ❌ Lógica de negócio crítica só em triggers
@@ -1294,3 +1286,5 @@ textresponse-action-icon
 ❌ Triggers sem documentação
 ❌ Modificar dados da própria transação em AFTER triggers
 ```
+
+
