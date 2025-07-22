@@ -36,7 +36,7 @@
 
 #### **🔧 Módulo 6 - Ferramentas e Prática (Prático)**
 
-- [[20 - SQL Server Management Studio]]
+- [[📁 20 - SSMS]]
 - [[21 - MySQL Workbench]]
 - [[22 - Debugging e EXPLAIN]]
 - [[23 - Backup e Restore]]
