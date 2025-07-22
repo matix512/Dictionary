@@ -505,5 +505,44 @@ BEGIN
     SET rows_affected = ROW_COUNT();
     SET cleanup_log = CONCAT(cleanup_log, 'Access logs: ', rows_affected, ' rows; ');
     
-    -- 2
+    -- 2. Remover carrinho abandonado (> 30 dias)  
+    DELETE FROM shopping_carts  
+    WHERE status = 'abandoned'  
+    AND updated_at < DATE_SUB(NOW(), INTERVAL 30 DAY);  
+    SET rows_affected = ROW_COUNT();  
+    SET cleanup_log = CONCAT(cleanup_log, 'Abandoned carts: ', rows_affected, ' rows; ');
+    
+    -- 3. Arquivar pedidos antigos  
+    INSERT INTO orders_archive  
+    SELECT * FROM orders  
+    WHERE status IN ('completed', 'cancelled')  
+    AND order_date < DATE_SUB(NOW(), INTERVAL 2 YEAR);  
+    SET rows_affected = ROW_COUNT();  
+    SET cleanup_log = CONCAT(cleanup_log, 'Archived orders: ', rows_affected, ' rows; ');
+    
+    -- 4. Remover pedidos arquivados da tabela principal  
+    DELETE FROM orders  
+    WHERE status IN ('completed', 'cancelled')  
+    AND order_date < DATE_SUB(NOW(), INTERVAL 2 YEAR);  
+    SET rows_affected = ROW_COUNT();  
+    SET cleanup_log = CONCAT(cleanup_log, 'Deleted old orders: ', rows_affected, ' rows; ');
+    
+    -- 5. Atualizar estatísticas das tabelas  
+    ANALYZE TABLE customers, products, orders;
+    
+    -- Log fim  
+    UPDATE maintenance_log  
+    SET end_time = NOW(),  
+    details = cleanup_log,  
+    status = 'COMPLETED'  
+    WHERE action = 'CLEANUP_OLD_DATA'  
+    AND start_time = (SELECT MAX(start_time) FROM (SELECT start_time FROM maintenance_log WHERE action = 'CLEANUP_OLD_DATA') t);
+    
+
+END //  
+DELIMITER ;
+
+-- Executar limpeza  
+CALL CleanupOldData();
 ```
+
