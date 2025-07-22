@@ -945,8 +945,6 @@ CHECK TABLE orders;
 
 #### **Impacto na Performance:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Constraints que criam índices automaticamente:
 -- PRIMARY KEY - Cria índice clustered
@@ -968,8 +966,6 @@ AND order_date >= '2024-01-01';
 ### **🚨 Troubleshooting Constraints:**
 
 #### **Erros Comuns e Soluções:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Erro: Cannot add foreign key constraint
@@ -1000,5 +996,4 @@ UPDATE products SET price = 1.00 WHERE price <= 0;
 -- 3. Adicionar constraint
 ALTER TABLE products 
 ADD CONSTRAINT ck_products_price CHECK (price > 0);
-```
 ```
