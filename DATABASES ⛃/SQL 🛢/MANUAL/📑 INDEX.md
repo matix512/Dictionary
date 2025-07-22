@@ -30,7 +30,7 @@
 #### **⚡ Módulo 5 - Performance e Otimização (Avançado)**
 
 - [[📁 16 - INDEX]]
-- [[17 - Views]]
+- [[📁 17 - VIEWS]]
 - [[18 - Stored Procedures]]
 - [[19 - Triggers]]
 

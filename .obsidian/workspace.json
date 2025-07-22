@@ -35,8 +35,7 @@
               "title": "📁 17 - VIEWS"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -194,11 +193,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a9d4e10e066d511e",
+  "active": "265c193f0d48319c",
   "lastOpenFiles": [
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 16 - INDEX.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 17 - VIEWS.md",
+    "17 - Views.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📑 INDEX.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 17 - VIEWS.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 16 - INDEX.md",
     "16 - Índices.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 15 - CONSTRAINTS E RELACIONAMENTOS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 14 - INSERT UPDATE DELETE.md",
@@ -225,7 +225,6 @@
     "LARAVEL 🐘/⚡CHEAT SHEET.md",
     "LARAVEL 🐘/🐘BLADE TRICKS.md",
     "LARAVEL 🐘/🅱BOOTSTRAP TOOLKIT.md",
-    "LARAVEL 🐘/🎨LAYOUTS.md",
     "LARAVEL/Untitled",
     "LARAVEL 🐘",
     "ONLINE/🌐 WEB/JAVASCRIPT",
