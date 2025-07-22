@@ -672,6 +672,14 @@ CONSTRAINT ck_orders_total CHECK (
 INDEX idx_orders_customer (customer_id),
 INDEX idx_orders_status (status),
 INDEX idx_orders_date (order_date)
+);
+
+-- 6. Itens do pedido  
+CREATE TABLE order_items (  
+id INT AUTO_INCREMENT PRIMARY KEY,  
+order_id INT NOT NULL,  
+product_id INT NOT NULL,
+
 ```
 
 );
