@@ -729,4 +729,97 @@ BEGIN
     -- Calcular pontos (1 ponto por euro gasto, com multiplicador)
     SET points_earned = FLOOR(NEW.total_amount * multiplier);
 
+
+
+	-- Pontos bónus para pedidos grandes
+IF NEW.total_amount >= 500 THEN
+    SET points_earned = points_earned + 100;  -- 100 pontos bónus
+ELSEIF NEW.total_amount >= 200 THEN
+    SET points_earned = points_earned + 50;   -- 50 pontos bónus
+END IF;
+
+-- Registar transação de pontos
+INSERT INTO loyalty_transactions (
+    customer_id,
+    order_id,
+    transaction_type,
+    points,
+    multiplier_used,
+    description,
+    created_at
+) VALUES (
+    NEW.customer_id,
+    NEW.id,
+    'EARNED',
+    points_earned,
+    multiplier,
+    CONCAT('Pontos ganhos por pedido #', NEW.order_number),
+    NOW()
+);
+
+-- Atualizar total de pontos do cliente
+UPDATE customers 
+SET 
+    loyalty_points = loyalty_points + points_earned,
+    total_points_earned = total_points_earned + points_earned,
+    last_points_earned_date = NOW()
+WHERE id = NEW.customer_id;
+
+-- Verificar se cliente subiu de tier
+CALL CheckAndUpdateCustomerTier(NEW.customer_id);
+
+END //  
+DELIMITER ;
+
+
+-- Trigger para quando pontos são resgatados  
+DELIMITER //  
+CREATE TRIGGER process_points_redemption  
+AFTER INSERT ON loyalty_redemptions  
+FOR EACH ROW  
+BEGIN  
+DECLARE customer_points INT DEFAULT 0;
+
+```text
+-- Verificar se cliente tem pontos suficientes
+SELECT loyalty_points INTO customer_points
+FROM customers 
+WHERE id = NEW.customer_id;
+
+IF customer_points < NEW.points_used THEN
+    SIGNAL SQLSTATE '45000' 
+    SET MESSAGE_TEXT = 'Pontos insuficientes para este resgate';
+END IF;
+
+-- Deduzir pontos do cliente
+UPDATE customers 
+SET 
+    loyalty_points = loyalty_points - NEW.points_used,
+    total_points_redeemed = total_points_redeemed + NEW.points_used,
+    last_redemption_date = NOW()
+WHERE id = NEW.customer_id;
+
+-- Registar transação de pontos
+INSERT INTO loyalty_transactions (
+    customer_id,
+    redemption_id,
+    transaction_type,
+    points,
+    description,
+    created_at
+) VALUES (
+    NEW.customer_id,
+    NEW.id,
+    'REDEEMED',
+    -NEW.points_used,  -- Negativo para indicar dedução
+    CONCAT('Resgate: ', NEW.reward_description),
+    NOW()
+);
+
+END //  
+DELIMITER ;
+
 ```
+
+
+#### **Exercício 2 - Sistema de Aprovações:**
