@@ -499,5 +499,214 @@ sqlresponse-action-icon
 -- - MODIFY COLUMN (especialmente mudança de tipo)
 -- - ADD PRIMARY KEY/UNIQUE (precisa verificar toda a tabela)
 
--- Estrat
+-- Estratégias para tabelas grandes:
+
+-- 1. Fazer em horários de menor movimento  
+-- 2. Usar pt-online-schema-change (Percona) para MySQL  
+-- 3. Fazer ALTER em partes (se possível)
+
+-- Exemplo de ALTER seguro em produção:  
+-- Adicionar coluna NOT NULL em tabela grande
+
+-- Passo 1: Adicionar coluna NULL primeiro  
+ALTER TABLE large_table ADD COLUMN new_col VARCHAR(100) NULL;
+
+-- Passo 2: Popular dados em lotes  
+UPDATE large_table SET new_col = 'default_value' WHERE id BETWEEN 1 AND 10000;  
+UPDATE large_table SET new_col = 'default_value' WHERE id BETWEEN 10001 AND 20000;  
+-- Continuar em lotes...
+
+-- Passo 3: Tornar NOT NULL depois  
+ALTER TABLE large_table MODIFY COLUMN new_col VARCHAR(100) NOT NULL;
+
+textresponse-action-icon
+
+````text
+
+#### **2. Bloqueio de Tabelas:**
+```sql
+-- Operações que fazem LOCK da tabela:
+-- - ALTER TABLE (na maioria dos casos)
+-- - ADD/DROP INDEX em algumas versões
+
+-- Para minimizar impacto:
+-- 1. Usar ALGORITHM=INPLACE quando disponível (MySQL 5.6+)
+ALTER TABLE products 
+ADD INDEX idx_name (name) 
+ALGORITHM=INPLACE, LOCK=NONE;
+
+-- 2. Verificar se operação suporta online DDL
+-- MySQL 5.7+ suporta muitas operações online
+````
+
+### **🚨 Erros Comuns e Troubleshooting:**
+
+#### **1. Constraint Violations:**
+
+sqlresponse-action-icon
+
+```sql
+-- ❌ Erro: Tentar adicionar NOT NULL com dados NULL existentes
+ALTER TABLE customers MODIFY COLUMN phone VARCHAR(20) NOT NULL;
+-- Error: Column 'phone' cannot be null
+
+-- ✅ Solução: Corrigir dados primeiro
+UPDATE customers SET phone = 'N/A' WHERE phone IS NULL;
+ALTER TABLE customers MODIFY COLUMN phone VARCHAR(20) NOT NULL;
+
+-- ❌ Erro: Adicionar UNIQUE com dados duplicados
+ALTER TABLE products ADD UNIQUE (name);
+-- Error: Duplicate entry
+
+-- ✅ Solução: Identificar e corrigir duplicados
+SELECT name, COUNT(*) 
+FROM products 
+GROUP BY name 
+HAVING COUNT(*) > 1;
 ```
+
+#### **2. Foreign Key Issues:**
+
+sqlresponse-action-icon
+
+```sql
+-- ❌ Erro: Não conseguir dropar coluna com FK
+ALTER TABLE orders DROP COLUMN customer_id;
+-- Error: Cannot drop column 'customer_id': needed in a foreign key constraint
+
+-- ✅ Solução: Dropar FK primeiro
+ALTER TABLE orders DROP FOREIGN KEY fk_orders_customer;
+ALTER TABLE orders DROP COLUMN customer_id;
+
+-- ❌ Erro: Adicionar FK com dados órfãos
+ALTER TABLE orders ADD FOREIGN KEY (customer_id) REFERENCES customers(id);
+-- Error: Cannot add foreign key constraint
+
+-- ✅ Solução: Identificar e corrigir dados órfãos
+SELECT DISTINCT o.customer_id 
+FROM orders o 
+LEFT JOIN customers c ON o.customer_id = c.id 
+WHERE c.id IS NULL;
+```
+
+#### **3. Tipo de Dados Incompatível:**
+
+sqlresponse-action-icon
+
+```sql
+-- ❌ Erro: Converter VARCHAR para INT com dados inválidos
+ALTER TABLE temp_table MODIFY COLUMN price_text INT;
+-- Error: Incorrect integer value
+
+-- ✅ Solução: Identificar dados problemáticos primeiro
+SELECT * FROM temp_table WHERE price_text NOT REGEXP '^[0-9]+$';
+
+-- Corrigir ou limpar dados
+UPDATE temp_table SET price_text = '0' WHERE price_text NOT REGEXP '^[0-9]+$';
+ALTER TABLE temp_table MODIFY COLUMN price_text INT;
+```
+
+### **📋 Checklist para ALTER TABLE:**
+
+#### **Antes de Executar:**
+
+sqlresponse-action-icon
+
+```sql
+-- ✅ 1. Backup da tabela
+CREATE TABLE table_backup AS SELECT * FROM original_table;
+
+-- ✅ 2. Verificar dados atuais
+SELECT COUNT(*) FROM table_name;
+SELECT * FROM table_name LIMIT 10;
+
+-- ✅ 3. Identificar problemas potenciais
+-- Para NOT NULL:
+SELECT COUNT(*) FROM table_name WHERE column_name IS NULL;
+
+-- Para UNIQUE:
+SELECT column_name, COUNT(*) FROM table_name GROUP BY column_name HAVING COUNT(*) > 1;
+
+-- Para FK:
+SELECT COUNT(*) FROM child_table c LEFT JOIN parent_table p ON c.fk_col = p.id WHERE p.id IS NULL;
+
+-- ✅ 4. Verificar espaço em disco (para operações grandes)
+SHOW TABLE STATUS WHERE Name = 'table_name';
+```
+
+#### **Depois de Executar:**
+
+sqlresponse-action-icon
+
+```sql
+-- ✅ 1. Verificar estrutura
+DESCRIBE table_name;
+
+-- ✅ 2. Verificar constraints
+SHOW CREATE TABLE table_name;
+
+-- ✅ 3. Verificar dados
+SELECT COUNT(*) FROM table_name;  -- Deve ser igual ao anterior
+
+-- ✅ 4. Testar aplicação
+-- Executar queries típicas para verificar se tudo funciona
+
+-- ✅ 5. Atualizar documentação
+-- Documentar mudanças feitas
+```
+
+### **📚 Scripts Úteis para ALTER TABLE:**
+
+#### **Script para Adicionar Auditoria:**
+
+sqlresponse-action-icon
+
+```sql
+-- Procedure para adicionar campos de auditoria (MySQL)
+DELIMITER //
+CREATE PROCEDURE AddAuditFields(IN table_name VARCHAR(64))
+BEGIN
+    SET @sql = CONCAT(
+        'ALTER TABLE ', table_name, ' ',
+        'ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, ',
+        'ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, ',
+        'ADD COLUMN created_by INT DEFAULT 1, ',
+        'ADD COLUMN updated_by INT DEFAULT 1'
+    );
+    
+    PREPARE stmt FROM @sql;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+END //
+DELIMITER ;
+
+-- Usar:
+CALL AddAuditFields('customers');
+CALL AddAuditFields('products');
+```
+
+#### **Script para Verificar Integridade:**
+
+sqlresponse-action-icon
+
+```sql
+-- Verificar todas as FKs de uma base de dados
+SELECT 
+    TABLE_NAME,
+    COLUMN_NAME,
+    CONSTRAINT_NAME,
+    REFERENCED_TABLE_NAME,
+    REFERENCED_COLUMN_NAME
+FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+WHERE REFERENCED_TABLE_SCHEMA = 'your_database'
+ORDER BY TABLE_NAME;
+
+-- Verificar tamanhos de tabelas
+SELECT 
+    table_name,
+    ROUND(((data_length + index_length) / 1024 / 1024), 2) AS 'Size (MB)'
+FROM information_schema.tables 
+WHERE table_schema = 'your_database'
+ORDER BY (data_length + index_length) DESC;
+```
+
