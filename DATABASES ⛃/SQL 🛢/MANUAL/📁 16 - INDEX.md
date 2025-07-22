@@ -532,5 +532,496 @@ sqlresponse-action-icon
 -- Top 10 tabelas por tamanho de índices
 SELECT 
     TABLE_NAME,
-    ROUND(SUM(INDEX_LENGTH)/1024/1024, 2
+    ROUND(SUM(INDEX_LENGTH)/1024/1024, 2) AS 'Index Size MB',  
+ROUND(SUM(DATA_LENGTH)/1024/1024, 2) AS 'Data Size MB',  
+ROUND(SUM(INDEX_LENGTH)/SUM(DATA_LENGTH)*100, 2) AS 'Index/Data Ratio %'  
+FROM INFORMATION_SCHEMA.TABLES  
+WHERE TABLE_SCHEMA = 'your_database'  
+GROUP BY TABLE_NAME  
+ORDER BY SUM(INDEX_LENGTH) DESC  
+LIMIT 10;
+
+-- Índices que ocupam mais espaço  
+SELECT  
+s.TABLE_NAME,  
+s.INDEX_NAME,  
+s.CARDINALITY,  
+ROUND(  
+(SELECT SUM(stat_value * @@innodb_page_size)  
+FROM INFORMATION_SCHEMA.INNODB_SYS_TABLESTATS  
+WHERE name = CONCAT(s.TABLE_SCHEMA, '/', s.TABLE_NAME)  
+) / 1024 / 1024, 2  
+) AS 'Size MB'  
+FROM INFORMATION_SCHEMA.STATISTICS s  
+WHERE s.TABLE_SCHEMA = 'your_database'  
+AND s.INDEX_NAME != 'PRIMARY'  
+ORDER BY s.CARDINALITY DESC;
+
+-- Performance de queries por índice usado  
+SELECT  
+object_name AS table_name,  
+index_name,  
+count_read,  
+count_write,  
+sum_timer_read / 1000000000 AS read_time_seconds,  
+sum_timer_write / 1000000000 AS write_time_seconds  
+FROM performance_schema.table_io_waits_summary_by_index_usage  
+WHERE object_schema = 'your_database'  
+ORDER BY count_read DESC;
+
+textresponse-action-icon
+
+````text
+
+### **🛠️ Manutenção de Índices:**
+
+#### **Análise e Otimização:**
+```sql
+-- MySQL - Analisar tabela para atualizar estatísticas
+ANALYZE TABLE products;
+
+-- Verificar fragmentação de índices
+SELECT 
+    TABLE_NAME,
+    ENGINE,
+    TABLE_ROWS,
+    DATA_LENGTH,
+    INDEX_LENGTH,
+    DATA_FREE,
+    ROUND(DATA_FREE / (DATA_LENGTH + INDEX_LENGTH) * 100, 2) AS fragmentation_percent
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_SCHEMA = 'your_database'
+AND DATA_FREE > 0
+ORDER BY fragmentation_percent DESC;
+
+-- Reorganizar tabela se fragmentação > 10%
+OPTIMIZE TABLE products;
+
+-- SQL Server - Verificar fragmentação
+SELECT 
+    a.index_id,
+    name,
+    avg_fragmentation_in_percent,
+    fragment_count,
+    avg_fragment_size_in_pages
+FROM sys.dm_db_index_physical_stats(DB_ID('your_database'), NULL, NULL, NULL, 'LIMITED') a
+JOIN sys.indexes b ON a.object_id = b.object_id AND a.index_id = b.index_id
+WHERE avg_fragmentation_in_percent > 10;
+
+-- Reorganizar ou reconstruir índices
+-- Fragmentação 10-30%: REORGANIZE
+-- Fragmentação >30%: REBUILD
+ALTER INDEX idx_products_name ON products REORGANIZE;
+ALTER INDEX idx_products_name ON products REBUILD;
+````
+
+#### **Estratégia de Manutenção:**
+
+sqlresponse-action-icon
+
+```sql
+-- Script de manutenção semanal
+-- 1. Atualizar estatísticas
+ANALYZE TABLE customers, products, orders, order_items;
+
+-- 2. Reorganizar índices fragmentados
+-- (Executar durante horário de baixo movimento)
+
+-- 3. Verificar crescimento de índices
+SELECT 
+    TABLE_NAME,
+    ROUND(INDEX_LENGTH/1024/1024, 2) as index_size_mb,
+    TABLE_ROWS
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_SCHEMA = 'your_database'
+AND INDEX_LENGTH > 100*1024*1024  -- Índices > 100MB
+ORDER BY INDEX_LENGTH DESC;
+```
+
+### **📋 Checklist de Boas Práticas:**
+
+#### **✅ Antes de Criar Índice:**
+
+sqlresponse-action-icon
+
+```sql
+-- 1. Analisar padrões de query
+SELECT * FROM slow_query_log WHERE query_time > 1;
+
+-- 2. Verificar se não existe índice similar
+SHOW INDEXES FROM table_name;
+
+-- 3. Calcular seletividade da coluna
+SELECT 
+    COUNT(DISTINCT column_name) / COUNT(*) * 100 as selectivity
+FROM table_name;
+
+-- 4. Considerar impacto em INSERTs/UPDATEs
+-- Tabelas com muitos writes = menos índices
+
+-- 5. Testar em ambiente similar à produção
+```
+
+#### **✅ Monitorização Contínua:**
+
+sqlresponse-action-icon
+
+```sql
+-- Weekly index health check
+CREATE EVENT weekly_index_check
+ON SCHEDULE EVERY 1 WEEK
+DO
+BEGIN
+    -- Log índices não utilizados
+    INSERT INTO index_monitoring
+    SELECT NOW(), 'UNUSED_INDEX', TABLE_NAME, INDEX_NAME
+    FROM INFORMATION_SCHEMA.STATISTICS s
+    LEFT JOIN performance_schema.table_io_waits_summary_by_index_usage p
+        ON s.TABLE_NAME = p.object_name AND s.INDEX_NAME = p.index_name
+    WHERE s.TABLE_SCHEMA = 'your_database'
+    AND p.index_name IS NULL
+    AND s.INDEX_NAME != 'PRIMARY';
+    
+    -- Atualizar estatísticas de tabelas grandes
+    ANALYZE TABLE products, customers, orders;
+END;
+```
+
+### **🎯 Estratégias por Tipo de Aplicação:**
+
+#### **OLTP (Online Transaction Processing):**
+
+sqlresponse-action-icon
+
+```sql
+-- Características: Muitos INSERTs/UPDATEs, queries simples
+-- Estratégia: Poucos índices, muito específicos
+
+-- Índices essenciais apenas
+CREATE INDEX idx_orders_customer ON orders(customer_id);  -- Para JOINs
+CREATE INDEX idx_products_sku ON products(sku);           -- Para lookups
+CREATE INDEX idx_customers_email ON customers(email);     -- Para login
+
+-- Evitar índices compostos grandes
+-- Priorizar performance de escrita
+```
+
+#### **OLAP (Online Analytical Processing):**
+
+sqlresponse-action-icon
+
+```sql
+-- Características: Muitos SELECTs complexos, poucos writes
+-- Estratégia: Muitos índices, otimizar para leitura
+
+-- Índices compostos para relatórios
+CREATE INDEX idx_sales_date_product_customer ON sales(sale_date, product_id, customer_id);
+CREATE INDEX idx_orders_date_status_total ON orders(order_date, status, total_amount);
+
+-- Índices covering para queries frequentes
+CREATE INDEX idx_customer_stats ON customers(region, status) 
+INCLUDE (total_orders, total_spent, last_order_date);
+```
+
+#### **Aplicações Híbridas:**
+
+sqlresponse-action-icon
+
+```sql
+-- Balancear entre leitura e escrita
+-- Índices críticos para funcionalidade core
+-- Índices adicionais apenas se justificado por metrics
+
+-- Usar índices parciais para reduzir overhead
+CREATE INDEX idx_active_products ON products(category_id, price) 
+WHERE status = 'active';
+
+-- Considerar índices em horários específicos
+-- Criar índices para relatórios noturnos
+-- Remover após processamento (se aplicável)
+```
+
+### **🚨 Troubleshooting de Performance:**
+
+#### **Query Lenta - Processo de Diagnóstico:**
+
+sqlresponse-action-icon
+
+```sql
+-- 1. Capturar query problemática
+SELECT * FROM products p
+JOIN categories c ON p.category_id = c.id
+WHERE p.price BETWEEN 100 AND 500
+AND p.status = 'active'
+AND c.name = 'Electronics'
+ORDER BY p.created_at DESC
+LIMIT 20;
+
+-- 2. Analisar plano de execução
+EXPLAIN FORMAT=JSON [query above];
+
+-- 3. Identificar table scans/full index scans
+-- Procurar por: "type": "ALL" (table scan), "rows": número alto
+
+-- 4. Criar índices estratégicos
+-- Para WHERE: índice composto nas colunas filtradas
+CREATE INDEX idx_products_status_price_created ON products(status, price, created_at);
+
+-- Para JOIN: índice na foreign key
+CREATE INDEX idx_products_category ON products(category_id);
+
+-- 5. Testar novamente
+EXPLAIN FORMAT=JSON [query above];
+
+-- 6. Monitorar impacto em outras queries
+-- Verificar se novos índices não prejudicaram outras operações
+```
+
+### **Links Úteis:**
+
+- [[15 - Constraints e Relacionamentos]]
+- [[17 - Views]]
+- [[22 - Debugging e EXPLAIN]]
+
+---
+
+## 📁 **17 - Views**
+
+### **🔍 O que são Views?**
+
+#### **Definição:**
+
+> Uma View é uma "tabela virtual" baseada no resultado de uma query SQL. Não armazena dados fisicamente, mas apresenta dados de uma ou mais tabelas de forma organizada e simplificada.
+
+#### **Características das Views:**
+
+textresponse-action-icon
+
+```text
+📊 Virtual - Não ocupam espaço (só a definição)
+🔄 Dinâmica - Dados sempre atualizados
+🛡️ Segurança - Escondem colunas/linhas sensíveis
+🎯 Simplificação - Queries complexas ficam simples
+📋 Reutilização - Lógica de negócio centralizada
+```
+
+#### **Tipos de Views:**
+
+textresponse-action-icon
+
+```text
+👁️ Simple View - Baseada numa tabela
+🔗 Complex View - JOINs, agregações, subqueries
+✏️ Updatable View - Permite INSERT/UPDATE/DELETE
+👁️‍🗨️ Read-Only View - Apenas consulta
+🏃 Materialized View - Cache físico (PostgreSQL/Oracle)
+```
+
+### **🆕 Criar Views:**
+
+#### **Sintaxe Básica:**
+
+sqlresponse-action-icon
+
+```sql
+CREATE VIEW view_name AS
+SELECT columns
+FROM tables
+WHERE conditions;
+```
+
+#### **View Simples:**
+
+sqlresponse-action-icon
+
+```sql
+-- View de produtos ativos
+CREATE VIEW active_products AS
+SELECT 
+    id,
+    name,
+    price,
+    stock_quantity,
+    category_id
+FROM products
+WHERE status = 'active'
+AND stock_quantity > 0;
+
+-- Usar a view
+SELECT * FROM active_products WHERE price < 100;
+```
+
+#### **View com Cálculos:**
+
+sqlresponse-action-icon
+
+```sql
+-- View com campos calculados
+CREATE VIEW product_summary AS
+SELECT 
+    id,
+    name,
+    price,
+    stock_quantity,
+    price * stock_quantity AS inventory_value,
+    CASE 
+        WHEN stock_quantity = 0 THEN 'Out of Stock'
+        WHEN stock_quantity < 10 THEN 'Low Stock'
+        ELSE 'In Stock'
+    END AS stock_status,
+    DATEDIFF(CURDATE(), created_at) AS days_since_created
+FROM products;
+
+-- Usar view
+SELECT * FROM product_summary 
+WHERE stock_status = 'Low Stock' 
+ORDER BY inventory_value DESC;
+```
+
+### **🔗 Views com JOINs:**
+
+#### **View com Relacionamentos:**
+
+sqlresponse-action-icon
+
+```sql
+-- View completa de pedidos
+CREATE VIEW order_details AS
+SELECT 
+    o.id AS order_id,
+    o.order_number,
+    o.order_date,
+    o.status,
+    o.total_amount,
+    
+    -- Customer info
+    c.id AS customer_id,
+    CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
+    c.email AS customer_email,
+    
+    -- Address info
+    o.shipping_address,
+    
+    -- Timing info
+    DATEDIFF(o.shipped_date, o.order_date) AS processing_days,
+    
+    -- Status info
+    CASE 
+        WHEN o.status = 'delivered' THEN 'Complete'
+        WHEN o.status = 'shipped' THEN 'In Transit'
+        WHEN o.status = 'cancelled' THEN 'Cancelled'
+        ELSE 'Processing'
+    END AS order_status_description
+
+FROM orders o
+INNER JOIN customers c ON o.customer_id = c.id;
+
+-- Usar view com filtros
+SELECT * FROM order_details 
+WHERE order_date >= '2024-01-01'
+AND order_status_description = 'Complete'
+ORDER BY total_amount DESC;
+```
+
+#### **View com Múltiplas Tabelas:**
+
+sqlresponse-action-icon
+
+```sql
+-- View completa do catálogo
+CREATE VIEW product_catalog AS
+SELECT 
+    p.id,
+    p.name AS product_name,
+    p.sku,
+    p.price,
+    p.stock_quantity,
+    
+    -- Category info
+    c.name AS category_name,
+    c.parent_id AS parent_category_id,
+    
+    -- Supplier info
+    s.name AS supplier_name,
+    s.country AS supplier_country,
+    
+    -- Calculated fields
+    ROUND(p.price * 1.23, 2) AS price_with_tax,
+    p.price * p.stock_quantity AS inventory_value,
+    
+    -- Status
+    CASE 
+        WHEN p.stock_quantity = 0 THEN 'Out of Stock'
+        WHEN p.stock_quantity < p.min_stock_level THEN 'Reorder Required'
+        ELSE 'Available'
+    END AS availability_status,
+    
+    -- Timestamps
+    p.created_at,
+    p.updated_at
+
+FROM products p
+LEFT JOIN categories c ON p.category_id = c.id
+LEFT JOIN suppliers s ON p.supplier_id = s.id
+WHERE p.status = 'active';
+```
+
+### **📊 Views com Agregações:**
+
+#### **View de Estatísticas:**
+
+sqlresponse-action-icon
+
+```sql
+-- View de estatísticas de clientes
+CREATE VIEW customer_stats AS
+SELECT 
+    c.id,
+    c.first_name,
+    c.last_name,
+    c.email,
+    c.created_at AS customer_since,
+    
+    -- Order statistics
+    COUNT(o.id) AS total_orders,
+    COALESCE(SUM(o.total_amount), 0) AS total_spent,
+    COALESCE(AVG(o.total_amount), 0) AS avg_order_value,
+    MAX(o.order_date) AS last_order_date,
+    
+    -- Customer classification
+    CASE 
+        WHEN COUNT(o.id) = 0 THEN 'New Customer'
+        WHEN COUNT(o.id) <= 2 THEN 'Occasional'
+        WHEN COUNT(o.id) <= 10 THEN 'Regular'
+        ELSE 'VIP'
+    END AS customer_tier,
+    
+    -- Activity status
+    CASE 
+        WHEN MAX(o.order_date) IS NULL THEN 'Never Ordered'
+        WHEN MAX(o.order_date) >= DATE_SUB(CURDATE(), INTERVAL 30 DAY) THEN 'Active'
+        WHEN MAX(o.order_date) >= DATE_SUB(CURDATE(), INTERVAL 90 DAY) THEN 'Recent'
+        ELSE 'Inactive'
+    END AS activity_status
+
+FROM customers c
+LEFT JOIN orders o ON c.id = o.customer_id
+GROUP BY c.id, c.first_name, c.last_name, c.email, c.created_at;
+
+-- Usar para análise
+SELECT 
+    customer_tier,
+    COUNT(*) AS customer_count,
+    AVG(total_spent) AS avg_lifetime_value
+FROM customer_stats
+GROUP BY customer_tier
+ORDER BY avg_lifetime_value DESC;
+```
+
+#### **View de Relatórios de Vendas:**
+
+```sql
+-- View de vendas mensais
+CREATE VIEW monthly
+```
 ```
