@@ -1288,3 +1288,20 @@ DELIMITER ;
 ```
 
 
+### **📊 Alternativas aos Triggers:**
+
+
+#### **1. Event Schedulers:**
+```sql
+-- Em vez de trigger para limpeza, usar evento agendado
+CREATE EVENT daily_cleanup
+ON SCHEDULE EVERY 1 DAY
+STARTS TIMESTAMP(CURRENT_DATE + INTERVAL 1 DAY, '02:00:00')
+DO
+BEGIN
+    DELETE FROM audit_log WHERE created_at < DATE_SUB(NOW(), INTERVAL 90 DAY);
+    DELETE FROM temp_sessions WHERE expires_at < NOW();
+    CALL OptimizeTablesRoutine();
+END;
+````
+

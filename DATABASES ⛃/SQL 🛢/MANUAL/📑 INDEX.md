@@ -5,7 +5,7 @@
 - [[📁 01 - BASIC CONCEPT]]
 - [[📁 02 - RELATIONAL MODEL]]
 - [[📁 03 - INSTALL & SETUP]]
-- [[📁 04 - First Queries]]]
+- [[📁 04 - FIRST QUERIES]]]
 
 #### **🔧 Módulo 2 - SQL Essencial (Intermédio)**
 
