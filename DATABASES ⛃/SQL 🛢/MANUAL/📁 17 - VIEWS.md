@@ -246,7 +246,6 @@ LAG(SUM(o.total_amount)) OVER (ORDER BY YEAR(o.order_date), MONTH(o.order_date))
 -- Status breakdown
 SUM(CASE WHEN o.status = 'completed' THEN o.total_amount ELSE 0 END) AS completed_revenue,
 SUM(CASE WHEN o.status = 'cancelled' THEN 1 ELSE 0 END) AS cancelled_orders
-```
 
 FROM orders o  
 INNER JOIN order_items oi ON o.id = oi.order_id  
@@ -277,6 +276,9 @@ ROUND(SUM(oi.quantity * oi.unit_price) / SUM(oi.quantity), 2) AS revenue_per_uni
 -- Ranking
 RANK() OVER (ORDER BY SUM(oi.quantity) DESC) AS quantity_rank,
 RANK() OVER (ORDER BY SUM(oi.quantity * oi.unit_price) DESC) AS revenue_rank
+```
+
+
 ```
 
 FROM products p  
