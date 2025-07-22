@@ -16,8 +16,8 @@
 
 #### **📊 Módulo 3 - Agregações e Grupos (Intermédio)**
 
-- [[09 - GROUP BY e HAVING]]
-- [[10 - Funções de Agregação]]
+- [[📁 09 - GROUP BY & HAVING]]
+- [[📁 10 - AGREGGATION FUNCTIONS]]
 - [[11 - Subqueries Básicas]]
 
 #### **🏗️ Módulo 4 - Estrutura de Dados (Avançado)**
@@ -29,7 +29,7 @@
 
 #### **⚡ Módulo 5 - Performance e Otimização (Avançado)**
 
-- [[16 - Índices]]
+- [[📁 16 - INDEX]]
 - [[17 - Views]]
 - [[18 - Stored Procedures]]
 - [[19 - Triggers]]
