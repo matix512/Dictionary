@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 20 - SSMS.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 19 - TRIGGERS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📁 20 - SSMS"
+              "title": "📁 19 - TRIGGERS"
             }
           }
         ]
@@ -181,8 +181,8 @@
   },
   "active": "35f1cdae7b2e120b",
   "lastOpenFiles": [
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 19 - TRIGGERS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 20 - SSMS.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 19 - TRIGGERS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📑 INDEX.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 04 - FIRST QUERIES.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 03 - INSTALL & SETUP.md",
