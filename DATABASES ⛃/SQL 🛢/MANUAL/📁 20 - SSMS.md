@@ -228,4 +228,28 @@ CREATE TABLE Customers (
 -- IntelliSense (Ctrl+Space para forçar)
 SELECT c.FirstName,     -- IntelliSense sugere colunas
        c.LastName
+       o.OrderDate -- Auto-complete de tabelas JOINed  
+FROM Customers c  
+INNER JOIN Orders o ON c.CustomerID = o.CustomerID;
+
+-- Code Snippets (Ctrl+K, Ctrl+X)  
+-- Snippets incluem: CREATE TABLE, INSERT, UPDATE, DELETE, etc.
+
+-- Query Execution Options  
+SET STATISTICS IO ON; -- Mostra I/O statistics  
+SET STATISTICS TIME ON; -- Mostra tempo de execução  
+SET SHOWPLAN_ALL ON; -- Mostra execution plan textual
+
+-- Execution Plan (Ctrl+M para incluir actual plan)  
+SELECT c.FirstName, c.LastName, COUNT(o.OrderID) as OrderCount  
+FROM Customers c  
+LEFT JOIN Orders o ON c.CustomerID = o.CustomerID  
+GROUP BY c.CustomerID, c.FirstName, c.LastName  
+HAVING COUNT(o.OrderID) > 5;
+
+-- Results Options  
+-- Ctrl+Shift+R: Results to Text  
+-- Ctrl+D: Results to Grid (default)  
+-- Ctrl+Shift+F: Results to File
 ```
+
