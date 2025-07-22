@@ -3,7 +3,7 @@
 #### **📚 Módulo 1 - Fundamentos (Iniciante)**
 
 - [[📁 01 - Conceitos Básicos de BD]]
-- [[02 - Modelo Relacional]]
+- [[📁 02 - Modelo Relacional]]
 - [[03 - Instalação e Setup]]
 - [[04 - Primeiras Queries SELECT]]
 
