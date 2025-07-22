@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 13 - ALTER TABLE.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 14 - INSERT UPDATE DELETE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📁 13 - ALTER TABLE"
+              "title": "📁 14 - INSERT UPDATE DELETE"
             }
           }
         ]
@@ -181,8 +181,9 @@
   },
   "active": "265c193f0d48319c",
   "lastOpenFiles": [
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 12 - CREATE TABLE & DDL.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 13 - ALTER TABLE.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 14 - INSERT UPDATE DELETE.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 12 - CREATE TABLE & DDL.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 11 - BASIC SUBQUERIES.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 10 - AGREGGATION FUNCTIONS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 09 - GROUP BY & HAVING.md",
@@ -211,7 +212,6 @@
     "LARAVEL 🐘/📦FACTORIES.md",
     "LARAVEL 🐘/🌱SEEDS.md",
     "LARAVEL 🐘/🔄MIGRATIONS.md",
-    "LARAVEL 🐘/📋REVIEW TEST.md",
     "LARAVEL 🐘",
     "ONLINE/🌐 WEB/JAVASCRIPT",
     "ONLINE/🌐 WEB/CSS",
