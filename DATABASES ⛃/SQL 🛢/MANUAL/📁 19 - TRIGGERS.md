@@ -311,8 +311,6 @@ DELIMITER ;
 
 #### **AFTER DELETE - Cleanup e Auditoria:**
 
-sqlresponse-action-icon
-
 ```sql
 DELIMITER //
 CREATE TRIGGER cleanup_after_customer_delete
@@ -371,8 +369,6 @@ DELIMITER ;
 ### **💰 Triggers para Sistema Financeiro:**
 
 #### **Controlo de Transações:**
-
-sqlresponse-action-icon
 
 ```sql
 DELIMITER //
@@ -497,8 +493,6 @@ DELIMITER ;
 
 #### **Agregações Automáticas:**
 
-sqlresponse-action-icon
-
 ```sql
 DELIMITER //
 CREATE TRIGGER update_sales_statistics
@@ -572,8 +566,6 @@ DELIMITER ;
 
 #### **Detecção de Atividade Suspeita:**
 
-sqlresponse-action-icon
-
 ```sql
 DELIMITER //
 CREATE TRIGGER detect_suspicious_login
@@ -642,8 +634,6 @@ DELIMITER ;
 
 #### **Ver Triggers Existentes:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Listar todos os triggers
 SHOW TRIGGERS;
@@ -667,8 +657,6 @@ SHOW CREATE TRIGGER audit_customer_insert;
 ```
 
 #### **Alterar e Remover Triggers:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Remover trigger
