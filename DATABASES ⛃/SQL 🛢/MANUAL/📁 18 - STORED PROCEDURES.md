@@ -1343,8 +1343,6 @@ SELECT * FROM debug_log WHERE procedure_name = 'DebugExample' ORDER BY timestamp
 
 #### **Profiling de Performance:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Procedure com medição de performance
 DELIMITER //
@@ -1388,8 +1386,6 @@ DELIMITER ;
 ### **📚 Best Practices:**
 
 #### **✅ Boas Práticas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Sempre usar DELIMITER para procedures complexas
@@ -1502,8 +1498,6 @@ DELIMITER ;
 ```
 
 #### **❌ O que Evitar:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Procedures muito longas (> 100 linhas)

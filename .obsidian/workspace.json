@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 18 - STORED PROCEDURES.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 19 - TRIGGERS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📁 18 - STORED PROCEDURES"
+              "title": "📁 19 - TRIGGERS"
             }
           }
         ]
@@ -179,12 +179,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a9d4e10e066d511e",
+  "active": "35f1cdae7b2e120b",
   "lastOpenFiles": [
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 18 - STORED PROCEDURES.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 19 - TRIGGERS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📑 INDEX.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 20 - SSMS.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/📁 18 - STORED PROCEDURES.md",
     "17 - Views.md",
     "18 - Stored Procedures.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 17 - VIEWS.md",
