@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/01. VARIABLES & DATA TYPES.md",
+                "file": "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/03. CONTROL STRUCTURES.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01. VARIABLES & DATA TYPES"
+              "title": "03. CONTROL STRUCTURES"
             }
           }
         ]
@@ -181,16 +181,16 @@
   },
   "active": "19bc7392c8a4f39a",
   "lastOpenFiles": [
-    "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/02. DATA TYPES.md",
+    "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/02. OPERATORS.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/01. VARIABLES & DATA TYPES.md",
+    "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/02. DATA TYPES.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/10. DEBUGGING.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/09. ASSYNCHRONOUS CODE.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/08. DOM MANIPULATION.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/07. OBJECTS.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/06. ARRAYS.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/05. FUNCTIONS.md",
-    "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/04. CONTROL STRUCTURES.md",
-    "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/03. OPERATORS.md",
+    "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/03. CONTROL STRUCTURES.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/4 - DATA STRUCTURE/📁 12 - CREATE TABLE & DDL.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑",
     "JAVASCRIPT ｡🇯‌🇸‌",
