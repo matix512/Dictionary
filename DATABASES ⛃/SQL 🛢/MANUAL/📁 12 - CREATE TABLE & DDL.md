@@ -573,3 +573,90 @@ CREATE TABLE customer_orders (           -- snake_case
 );
 ```
 
+#### **2. Performance e Manutenibilidade:**
+
+sqlresponse-action-icon
+
+```sql
+-- Incluir timestamps para auditoria
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+-- Usar ENUM para valores limitados  
+status ENUM('active', 'inactive', 'pending') NOT NULL DEFAULT 'active',
+
+-- Índices importantes  
+INDEX idx_table_status (status),  
+INDEX idx_table_created (created_at),
+
+-- Comentários para documentação  
+COMMENT = 'Tabela de pedidos de clientes - criada em 2024-01-15'  
+);
+
+textresponse-action-icon
+
+````text
+
+#### **3. Segurança e Integridade:**
+```sql
+-- Sempre usar NOT NULL onde apropriado
+email VARCHAR(200) NOT NULL,
+
+-- Validações com CHECK
+CHECK (email LIKE '%@%'),
+CHECK (age BETWEEN 0 AND 150),
+
+-- Default values seguros
+created_by INT NOT NULL DEFAULT 1,  -- Usuário do sistema
+is_deleted BOOLEAN DEFAULT FALSE    -- Soft delete
+````
+
+### **🚨 Erros Comuns:**
+
+#### **1. Tipos de Dados Inadequados:**
+
+sqlresponse-action-icon
+
+```sql
+-- ❌ Problemas comuns
+CREATE TABLE bad_design (
+    id VARCHAR(50),                    -- Deveria ser INT AUTO_INCREMENT
+    price FLOAT,                       -- Deveria ser DECIMAL para dinheiro
+    is_active TINYINT,                 -- Deveria ser BOOLEAN
+    big_text VARCHAR(1000000),         -- Deveria ser TEXT
+    date_field VARCHAR(20)             -- Deveria ser DATE ou DATETIME
+);
+
+-- ✅ Correções
+CREATE TABLE good_design (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    price DECIMAL(10,2) NOT NULL,
+    is_active BOOLEAN DEFAULT TRUE,
+    description TEXT,
+    created_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+#### **2. Constraints Esquecidas:**
+
+sqlresponse-action-icon
+
+```sql
+-- ❌ Sem constraints adequadas
+CREATE TABLE orders_bad (
+    id INT,
+    customer_id INT,
+    total DECIMAL(10,2)
+);
+
+-- ✅ Com constraints apropriadas
+CREATE TABLE orders_good (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    total DECIMAL(10,2) NOT NULL CHECK (total >= 0),
+    
+    FOREIGN KEY (customer_id) REFERENCES customers(id),
+    INDEX idx_orders_customer (customer_id)
+);
+```
+```
