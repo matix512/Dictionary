@@ -624,4 +624,389 @@ CREATE TABLE orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     order_number VARCHAR(50) UNIQUE NOT NULL,
     customer_id INT NOT NULL,
+    
+    
+    
+-- Dates  
+order_date DATE NOT NULL DEFAULT (CURRENT_DATE),  
+required_date DATE,  
+shipped_date DATE,
+
+-- Status
+status ENUM('pending', 'confirmed', 'processing', 'shipped', 'delivered', 'cancelled') DEFAULT 'pending',
+
+-- Financial
+subtotal DECIMAL(10,2) NOT NULL DEFAULT 0,
+tax_amount DECIMAL(10,2) NOT NULL DEFAULT 0,
+shipping_cost DECIMAL(10,2) NOT NULL DEFAULT 0,
+total_amount DECIMAL(10,2) NOT NULL DEFAULT 0,
+
+-- Shipping
+shipping_address TEXT,
+tracking_number VARCHAR(100),
+
+-- Notes
+customer_notes TEXT,
+internal_notes TEXT,
+
+-- Audit
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+-- Constraints
+FOREIGN KEY (customer_id) REFERENCES customers(id),
+
+CONSTRAINT ck_orders_dates CHECK (
+    (required_date IS NULL OR required_date >= order_date) AND
+    (shipped_date IS NULL OR shipped_date >= order_date)
+),
+CONSTRAINT ck_orders_amounts CHECK (
+    subtotal >= 0 AND tax_amount >= 0 AND 
+    shipping_cost >= 0 AND total_amount >= 0
+),
+CONSTRAINT ck_orders_total CHECK (
+    total_amount = subtotal + tax_amount + shipping_cost
+),
+
+-- Indexes
+INDEX idx_orders_customer (customer_id),
+INDEX idx_orders_status (status),
+INDEX idx_orders_date (order_date)
+```
+
+);
+
+-- 6. Itens do pedido  
+CREATE TABLE order_items (  
+id INT AUTO_INCREMENT PRIMARY KEY,  
+order_id INT NOT NULL,  
+product_id INT NOT NULL,
+
+textresponse-action-icon
+
+```text
+quantity INT NOT NULL,
+unit_price DECIMAL(10,2) NOT NULL,
+discount_percent DECIMAL(5,2) DEFAULT 0,
+line_total DECIMAL(10,2) NOT NULL,
+
+-- Constraints
+FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+FOREIGN KEY (product_id) REFERENCES products(id),
+
+CONSTRAINT ck_order_items_quantity CHECK (quantity > 0),
+CONSTRAINT ck_order_items_price CHECK (unit_price > 0),
+CONSTRAINT ck_order_items_discount CHECK (discount_percent >= 0 AND discount_percent <= 100),
+CONSTRAINT ck_order_items_total CHECK (
+    line_total = quantity * unit_price * (1 - discount_percent/100)
+),
+
+-- Unique constraint
+UNIQUE KEY uk_order_product (order_id, product_id),
+
+-- Indexes
+INDEX idx_order_items_order (order_id),
+INDEX idx_order_items_product (product_id)
+```
+
+);
+
+textresponse-action-icon
+
+````text
+
+#### **Exercício 2 - Sistema Escolar Avançado:**
+```sql
+-- Sistema escolar com constraints complexas
+
+-- 1. Professores
+CREATE TABLE teachers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_number VARCHAR(20) UNIQUE NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(200) UNIQUE NOT NULL,
+    phone VARCHAR(20),
+    hire_date DATE NOT NULL,
+    salary DECIMAL(10,2) NOT NULL,
+    department VARCHAR(100),
+    
+    CONSTRAINT ck_teachers_hire_date CHECK (hire_date <= CURDATE()),
+    CONSTRAINT ck_teachers_salary CHECK (salary > 0),
+    
+    INDEX idx_teachers_department (department)
+);
+
+-- 2. Cursos
+CREATE TABLE courses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    course_code VARCHAR(10) UNIQUE NOT NULL,
+    name VARCHAR(200) NOT NULL,
+    description TEXT,
+    credits INT NOT NULL,
+    max_students INT DEFAULT 30,
+    teacher_id INT,
+    
+    -- Prerequisites (self-reference)
+    prerequisite_course_id INT,
+    
+    -- Semester info
+    semester ENUM('Fall', 'Spring', 'Summer') NOT NULL,
+    year_offered YEAR NOT NULL,
+    
+    FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE SET NULL,
+    FOREIGN KEY (prerequisite_course_id) REFERENCES courses(id) ON DELETE SET NULL,
+    
+    CONSTRAINT ck_courses_credits CHECK (credits BETWEEN 1 AND 10),
+    CONSTRAINT ck_courses_max_students CHECK (max_students BETWEEN 5 AND 200),
+    
+    INDEX idx_courses_teacher (teacher_id),
+    INDEX idx_courses_semester_year (semester, year_offered)
+);
+
+-- 3. Estudantes
+CREATE TABLE students (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_number VARCHAR(20) UNIQUE NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(200) UNIQUE NOT NULL,
+    birth_date DATE NOT NULL,
+    enrollment_date DATE NOT NULL DEFAULT (CURRENT_DATE),
+    
+    -- Academic info
+    major VARCHAR(100),
+    gpa DECIMAL(3,2) DEFAULT 0.00,
+    credits_completed INT DEFAULT 0,
+    
+    -- Status
+    status ENUM('enrolled', 'suspended', 'graduated', 'dropped') DEFAULT 'enrolled',
+    graduation_date DATE,
+    
+    CONSTRAINT ck_students_birth_date CHECK (
+        birth_date < DATE_SUB(CURDATE(), INTERVAL 16 YEAR)
+    ),
+    CONSTRAINT ck_students_gpa CHECK (gpa BETWEEN 0.00 AND 4.00),
+    CONSTRAINT ck_students_credits CHECK (credits_completed >= 0),
+    CONSTRAINT ck_students_graduation CHECK (
+        (status = 'graduated' AND graduation_date IS NOT NULL) OR
+        (status != 'graduated' AND graduation_date IS NULL)
+    ),
+    
+    INDEX idx_students_status (status),
+    INDEX idx_students_major (major)
+);
+
+-- 4. Inscrições (M:N relationship)
+CREATE TABLE enrollments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    course_id INT NOT NULL,
+    
+    enrollment_date DATE NOT NULL DEFAULT (CURRENT_DATE),
+    final_grade DECIMAL(5,2),
+    letter_grade ENUM('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D', 'F'),
+    status ENUM('enrolled', 'completed', 'dropped', 'failed') DEFAULT 'enrolled',
+    
+    -- Attendance tracking
+    classes_attended INT DEFAULT 0,
+    total_classes INT DEFAULT 0,
+    
+    FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE,
+    
+    CONSTRAINT ck_enrollments_grade CHECK (
+        final_grade IS NULL OR (final_grade BETWEEN 0 AND 100)
+    ),
+    CONSTRAINT ck_enrollments_attendance CHECK (
+        classes_attended <= total_classes AND
+        classes_attended >= 0 AND total_classes >= 0
+    ),
+    
+    -- Business rule: Student can't enroll in same course twice unless failed
+    UNIQUE KEY uk_student_course_active (student_id, course_id, status),
+    
+    INDEX idx_enrollments_student (student_id),
+    INDEX idx_enrollments_course (course_id),
+    INDEX idx_enrollments_status (status)
+);
+
+-- 5. Trigger para atualizar GPA automaticamente
+DELIMITER //
+CREATE TRIGGER update_student_gpa
+AFTER UPDATE ON enrollments
+FOR EACH ROW
+BEGIN
+    IF NEW.status = 'completed' AND NEW.final_grade IS NOT NULL THEN
+        UPDATE students 
+        SET gpa = (
+            SELECT AVG(
+                CASE 
+                    WHEN final_grade >= 97 THEN 4.0
+                    WHEN final_grade >= 93 THEN 4.0
+                    WHEN final_grade >= 90 THEN 3.7
+                    WHEN final_grade >= 87 THEN 3.3
+                    WHEN final_grade >= 83 THEN 3.0
+                    WHEN final_grade >= 80 THEN 2.7
+                    WHEN final_grade >= 77 THEN 2.3
+                    WHEN final_grade >= 73 THEN 2.0
+                    WHEN final_grade >= 70 THEN 1.7
+                    WHEN final_grade >= 67 THEN 1.3
+                    WHEN final_grade >= 65 THEN 1.0
+                    ELSE 0.0
+                END
+            )
+            FROM enrollments 
+            WHERE student_id = NEW.student_id 
+            AND status = 'completed' 
+            AND final_grade IS NOT NULL
+        ),
+        credits_completed = (
+            SELECT SUM(c.credits)
+            FROM enrollments e
+            JOIN courses c ON e.course_id = c.id
+            WHERE e.student_id = NEW.student_id 
+            AND e.status = 'completed'
+        )
+        WHERE id = NEW.student_id;
+    END IF;
+END //
+DELIMITER ;
+````
+
+### **🔍 Verificar e Gerenciar Constraints:**
+
+#### **Visualizar Constraints Existentes:**
+
+sqlresponse-action-icon
+
+```sql
+-- MySQL - Ver todas as constraints
+SELECT 
+    TABLE_NAME,
+    COLUMN_NAME,
+    CONSTRAINT_NAME,
+    CONSTRAINT_TYPE
+FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS tc
+JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE kcu 
+    ON tc.CONSTRAINT_NAME = kcu.CONSTRAINT_NAME
+WHERE tc.TABLE_SCHEMA = 'your_database_name'
+ORDER BY TABLE_NAME, CONSTRAINT_TYPE;
+
+-- Ver Foreign Keys específicas
+SELECT 
+    kcu.TABLE_NAME,
+    kcu.COLUMN_NAME,
+    kcu.CONSTRAINT_NAME,
+    kcu.REFERENCED_TABLE_NAME,
+    kcu.REFERENCED_COLUMN_NAME,
+    rc.UPDATE_RULE,
+    rc.DELETE_RULE
+FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE kcu
+JOIN INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS rc
+    ON kcu.CONSTRAINT_NAME = rc.CONSTRAINT_NAME
+WHERE kcu.TABLE_SCHEMA = 'your_database_name'
+ORDER BY kcu.TABLE_NAME;
+
+-- Ver Check Constraints (MySQL 8.0+)
+SELECT 
+    CONSTRAINT_SCHEMA,
+    TABLE_NAME,
+    CONSTRAINT_NAME,
+    CHECK_CLAUSE
+FROM INFORMATION_SCHEMA.CHECK_CONSTRAINTS
+WHERE CONSTRAINT_SCHEMA = 'your_database_name';
+```
+
+#### **Gerenciar Constraints Existentes:**
+
+sqlresponse-action-icon
+
+```sql
+-- Adicionar constraint a tabela existente
+ALTER TABLE products 
+ADD CONSTRAINT ck_products_price CHECK (price > 0);
+
+-- Remover constraint
+ALTER TABLE products 
+DROP CONSTRAINT ck_products_price;
+
+-- Modificar Foreign Key
+ALTER TABLE orders 
+DROP FOREIGN KEY fk_orders_customer;
+
+ALTER TABLE orders 
+ADD CONSTRAINT fk_orders_customer 
+FOREIGN KEY (customer_id) REFERENCES customers(id)
+ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- Desabilitar temporariamente checks (MySQL)
+SET FOREIGN_KEY_CHECKS = 0;
+-- ... operações que podem violar FKs
+SET FOREIGN_KEY_CHECKS = 1;
+
+-- Verificar integridade depois
+CHECK TABLE orders;
+```
+
+### **⚡ Performance e Constraints:**
+
+#### **Impacto na Performance:**
+
+sqlresponse-action-icon
+
+```sql
+-- Constraints que criam índices automaticamente:
+-- PRIMARY KEY - Cria índice clustered
+-- UNIQUE - Cria índice único
+-- FOREIGN KEY - Cria índice na coluna referenciada
+
+-- Ver índices criados automaticamente
+SHOW INDEXES FROM orders;
+
+-- Índices adicionais podem ser necessários
+CREATE INDEX idx_orders_status_date ON orders(status, order_date);
+
+-- Para consultas como:
+SELECT * FROM orders 
+WHERE status = 'pending' 
+AND order_date >= '2024-01-01';
+```
+
+### **🚨 Troubleshooting Constraints:**
+
+#### **Erros Comuns e Soluções:**
+
+sqlresponse-action-icon
+
+```sql
+-- Erro: Cannot add foreign key constraint
+-- Causa: Dados órfãos na tabela filha
+
+-- 1. Identificar dados problemáticos
+SELECT DISTINCT o.customer_id 
+FROM orders o 
+LEFT JOIN customers c ON o.customer_id = c.id 
+WHERE c.id IS NULL;
+
+-- 2. Corrigir dados ou remover órfãos
+DELETE FROM orders WHERE customer_id NOT IN (SELECT id FROM customers);
+
+-- 3. Adicionar constraint
+ALTER TABLE orders 
+ADD FOREIGN KEY (customer_id) REFERENCES customers(id);
+
+-- Erro: Check constraint violation
+-- Causa: Dados existentes violam nova regra
+
+-- 1. Identificar dados problemáticos
+SELECT * FROM products WHERE price <= 0;
+
+-- 2. Corrigir dados
+UPDATE products SET price = 1.00 WHERE price <= 0;
+
+-- 3. Adicionar constraint
+ALTER TABLE products 
+ADD CONSTRAINT ck_products_price CHECK (price > 0);
+```
 ```
