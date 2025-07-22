@@ -702,8 +702,6 @@ ALTER TABLE customers ENABLE TRIGGER ALL;
 
 #### **Exercício 1 - Sistema de Pontos de Fidelidade:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Trigger para calcular pontos automaticamente
 DELIMITER //
@@ -728,5 +726,7 @@ BEGIN
         ELSE SET multiplier = 1.00;
     END CASE;
     
-    -- Calcular pontos (
+    -- Calcular pontos (1 ponto por euro gasto, com multiplicador)
+    SET points_earned = FLOOR(NEW.total_amount * multiplier);
+
 ```
