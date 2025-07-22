@@ -1022,3 +1022,176 @@ DROP PROCEDURE GetCustomerStats;
 DROP PROCEDURE IF EXISTS GetCustomerStats;
 ````
 
+### **🎯 Exercícios Práticos:**
+
+#### **Exercício 1 - Sistema de Comissões:**
+
+sqlresponse-action-icon
+
+```sql
+-- Procedure para calcular comissões de vendedores
+DELIMITER //
+CREATE PROCEDURE CalculateSalesCommissions(
+    IN calculation_month INT,
+    IN calculation_year INT
+)
+BEGIN
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE salesperson_id INT;
+    DECLARE monthly_sales DECIMAL(12,2);
+    DECLARE commission_rate DECIMAL(5,4);
+    DECLARE commission_amount DECIMAL(10,2);
+    DECLARE base_salary DECIMAL(10,2);
+    
+    DECLARE sales_cursor CURSOR FOR
+        SELECT 
+            s.id,
+            s.base_salary,
+            COALESCE(SUM(o.total_amount), 0) as sales_total
+        FROM salespeople s
+        LEFT JOIN orders o ON s.id = o.salesperson_id
+            AND YEAR(o.order_date) = calculation_year
+            AND MONTH(o.order_date) = calculation_month
+            AND o.status = 'completed'
+        GROUP BY s.id, s.base_salary;
+    
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+    
+    -- Limpar comissões do mês
+    DELETE FROM sales_commissions 
+    WHERE commission_month = calculation_month 
+    AND commission_year = calculation_year;
+    
+    OPEN sales_cursor;
+    
+    commission_loop: LOOP
+        FETCH sales_cursor INTO salesperson_id, base_salary, monthly_sales;
+        
+        IF done THEN
+            LEAVE commission_loop;
+        END IF;
+        
+        -- Calcular taxa de comissão baseada em escalões
+        CASE
+            WHEN monthly_sales >= 50000 THEN SET commission_rate = 0.08;  -- 8%
+            WHEN monthly_sales >= 25000 THEN SET commission_rate = 0.06;  -- 6%
+            WHEN monthly_sales >= 10000 THEN SET commission_rate = 0.04;  -- 4%
+            WHEN monthly_sales >= 5000 THEN SET commission_rate = 0.02;   -- 2%
+            ELSE SET commission_rate = 0.00;  -- 0%
+        END CASE;
+        
+        SET commission_amount = monthly_sales * commission_rate;
+        
+        -- Inserir registo de comissão
+        INSERT INTO sales_commissions (
+            salesperson_id,
+            commission_month,
+            commission_year,
+            monthly_sales,
+            commission_rate,
+            commission_amount,
+            base_salary,
+            total_earnings,
+            calculation_date
+        ) VALUES (
+            salesperson_id,
+            calculation_month,
+            calculation_year,
+            monthly_sales,
+            commission_rate,
+            commission_amount,
+            base_salary,
+            base_salary + commission_amount,
+            NOW()
+        );
+        
+    END LOOP;
+    
+    CLOSE sales_cursor;
+    
+    -- Retornar resumo
+    SELECT 
+        COUNT(*) as salespeople_count,
+        SUM(monthly_sales) as total_sales,
+        SUM(commission_amount) as total_commissions,
+        AVG(commission_rate) as avg_commission_rate
+    FROM sales_commissions
+    WHERE commission_month = calculation_month
+    AND commission_year = calculation_year;
+    
+END //
+DELIMITER ;
+
+-- Calcular comissões para Janeiro 2024
+CALL CalculateSalesCommissions(1, 2024);
+```
+
+#### **Exercício 2 - Sistema de Alertas de Stock:**
+
+sqlresponse-action-icon
+
+```sql
+-- Procedure para gerar alertas de stock
+DELIMITER //
+CREATE PROCEDURE GenerateStockAlerts()
+BEGIN
+    DECLARE product_id INT;
+    DECLARE product_name VARCHAR(200);
+    DECLARE current_stock INT;
+    DECLARE min_level INT;
+    DECLARE supplier_email VARCHAR(200);
+    DECLARE alert_message TEXT;
+    DECLARE alert_priority ENUM('LOW', 'MEDIUM', 'HIGH', 'CRITICAL');
+    
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE stock_cursor CURSOR FOR
+        SELECT 
+            p.id,
+            p.name,
+            p.stock_quantity,
+            p.min_stock_level,
+            s.email as supplier_email
+        FROM products p
+        LEFT JOIN suppliers s ON p.supplier_id = s.id
+        WHERE p.status = 'active'
+        AND (p.stock_quantity <= p.min_stock_level OR p.stock_quantity = 0);
+    
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+    
+    -- Limpar alertas antigos (> 7 dias)
+    DELETE FROM stock_alerts 
+    WHERE created_at < DATE_SUB(NOW(), INTERVAL 7 DAY)
+    AND status = 'resolved';
+    
+    OPEN stock_cursor;
+    
+    stock_loop: LOOP
+        FETCH stock_cursor INTO product_id, product_name, current_stock, min_level, supplier_email;
+        
+        IF done THEN
+            LEAVE stock_loop;
+        END IF;
+        
+        -- Determinar prioridade e mensagem
+        IF current_stock = 0 THEN
+            SET alert_priority = 'CRITICAL';
+            SET alert_message = CONCAT('STOCK OUT: ', product_name, ' is completely out of stock!');
+        ELSEIF current_stock <= min_level * 0.25 THEN
+            SET alert_priority = 'HIGH';
+            SET alert_message = CONCAT('URGENT: ', product_name, ' has very low stock (', current_stock, ' units remaining)');
+        ELSEIF current_stock <= min_level * 0.5 THEN
+            SET alert_priority = 'MEDIUM';
+            SET alert_message = CONCAT('WARNING: ', product_name, ' is below minimum stock level (', current_stock, '/', min_level, ')');
+        ELSE
+            SET alert_priority = 'LOW';
+            SET alert_message = CONCAT('NOTICE: ', product_name, ' approaching minimum stock level (', current_stock, '/', min_level, ')');
+        END IF;
+        
+        -- Verificar se já existe alerta ativo para este produto
+        IF NOT EXISTS (
+            SELECT 1 FROM stock_alerts 
+            WHERE product_id = product_id 
+            AND status = 'active'
+            AND DATE(created_at) = CURDATE()
+        ) THEN
+```
