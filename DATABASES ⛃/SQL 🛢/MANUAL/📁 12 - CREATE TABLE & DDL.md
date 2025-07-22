@@ -659,4 +659,6 @@ CREATE TABLE orders_good (
     INDEX idx_orders_customer (customer_id)
 );
 ```
-```
+
+
+
