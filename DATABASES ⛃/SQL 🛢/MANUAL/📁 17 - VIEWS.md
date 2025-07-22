@@ -420,8 +420,6 @@ LEFT JOIN customer_stats cs ON c.id = cs.id;
 
 #### **Quando Uma View é Atualizável:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ✅ View atualizável (simples, uma tabela, sem agregações)
 CREATE VIEW active_customers AS
@@ -442,8 +440,6 @@ DELETE FROM active_customers WHERE id = 1;
 
 #### **Views Não Atualizáveis:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ View NÃO atualizável (tem JOINs, agregações)
 CREATE VIEW customer_order_summary AS
@@ -462,8 +458,6 @@ GROUP BY c.id, c.name;  -- GROUP BY
 ```
 
 #### **WITH CHECK OPTION:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Garantir que INSERTs/UPDATEs respeitam a condição da view
@@ -485,8 +479,6 @@ VALUES ('Ana', 'Costa', 'ana@email.com', 500);  -- ERRO: CHECK OPTION failed
 ### **🎯 Views para Relatórios:**
 
 #### **Dashboard Executivo:**
-
-sqlresponse-action-icon
 
 ```sql
 -- View para KPIs principais
@@ -526,8 +518,6 @@ SELECT
 ```
 
 #### **View de Análise de Cohort:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Análise de retenção de clientes por cohort
@@ -569,8 +559,6 @@ ORDER BY cohort_month, period_number;
 ### **🎯 Exercícios Práticos:**
 
 #### **Exercício 1 - Sistema de E-commerce:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. View de inventário crítico
@@ -671,10 +659,38 @@ ORDER BY date DESC;
 
 #### **Views e Performance:**
 
-sqlresponse-action-icon
-
 ```sql
--- ❌ View lenta - J
+❌ View lenta - JOINs desnecessários, sem índices  
+CREATE VIEW slow_customer_orders AS  
+SELECT  
+c._, -- Selecionar tudo é ineficiente  
+o._,  
+p._,  
+cat._  
+FROM customers c  
+LEFT JOIN orders o ON c.id = o.customer_id  
+LEFT JOIN order_items oi ON o.id = oi.order_id  
+LEFT JOIN products p ON oi.product_id = p.id  
+LEFT JOIN categories cat ON p.category_id = cat.id; -- Múltiplos JOINs desnecessários
+
+-- ✅ View otimizada - Apenas campos necessários, JOINs eficientes  
+CREATE VIEW optimized_customer_orders AS  
+SELECT  
+c.id AS customer_id,  
+c.first_name,  
+c.last_name,  
+o.id AS order_id,  
+o.order_date,  
+o.total_amount,  
+o.status  
+FROM customers c  
+INNER JOIN orders o ON c.id = o.customer_id -- INNER JOIN se sempre há relação  
+WHERE c.status = 'active' -- Filtrar na view  
+AND o.order_date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR); -- Limitar dados
+
+-- Criar índices para suportar a view  
+CREATE INDEX idx_customers_status ON customers(status);  
+CREATE INDEX idx_orders_customer_date ON orders(customer_id, order_date);
 ```
 ```
 ```

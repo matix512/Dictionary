@@ -35,7 +35,8 @@
               "title": "📁 17 - VIEWS"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -193,10 +194,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "265c193f0d48319c",
+  "active": "e0661653587f3531",
   "lastOpenFiles": [
-    "17 - Views.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📑 INDEX.md",
+    "17 - Views.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 17 - VIEWS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 16 - INDEX.md",
     "16 - Índices.md",
