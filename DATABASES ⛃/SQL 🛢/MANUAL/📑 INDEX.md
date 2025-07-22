@@ -32,7 +32,7 @@
 - [[📁 16 - INDEX]]
 - [[📁 17 - VIEWS]]
 - [[📁 18 - STORED PROCEDURES]]
-- [[19 - Triggers]]
+- [[📁 19 - TRIGGERS]]
 
 #### **🔧 Módulo 6 - Ferramentas e Prática (Prático)**
 

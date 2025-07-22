@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📑 INDEX.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/📁 19 - TRIGGERS 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📑 INDEX"
+              "title": "📁 19 - TRIGGERS 1"
             }
           }
         ]
@@ -181,10 +181,11 @@
   },
   "active": "35f1cdae7b2e120b",
   "lastOpenFiles": [
+    "DATABASES ⛃/SQL 🛢/MANUAL/📑 INDEX.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/📁 19 - TRIGGERS 1.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 18 - STORED PROCEDURES.md",
     "17 - Views.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 19 - TRIGGERS.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/📑 INDEX.md",
     "18 - Stored Procedures.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 17 - VIEWS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/📁 16 - INDEX.md",
@@ -209,7 +210,6 @@
     "DATABASES ⛃/SQL 🛢/MODELO RELACIONAL 🖧.md",
     "DATABASES ⛃",
     "DATABASES ⛃/SQL 🛢",
-    "LARAVEL 🐘/📜PAGE EXAMPLE.md",
     "LINUX 🐧",
     "LARAVEL/Untitled",
     "LARAVEL 🐘",
