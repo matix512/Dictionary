@@ -818,8 +818,479 @@ INSERT INTO loyalty_transactions (
 
 END //  
 DELIMITER ;
-
 ```
 
 
 #### **Exercício 2 - Sistema de Aprovações:**
+
+```sql
+-- Trigger para workflow de aprovações
+DELIMITER //
+CREATE TRIGGER initiate_approval_workflow
+AFTER INSERT ON expense_requests
+FOR EACH ROW
+BEGIN
+    DECLARE approval_level INT DEFAULT 1;
+    DECLARE approver_id INT;
+    DECLARE manager_id INT;
+    
+    -- Determinar nível de aprovação baseado no valor
+    IF NEW.amount >= 10000 THEN
+        SET approval_level = 3;  -- CEO approval
+    ELSEIF NEW.amount >= 5000 THEN
+        SET approval_level = 2;  -- Director approval
+    ELSE
+        SET approval_level = 1;  -- Manager approval
+    END IF;
+    
+    -- Obter manager do employee
+    SELECT manager_id INTO manager_id
+    FROM employees 
+    WHERE id = NEW.employee_id;
+    
+    -- Criar primeiro passo da aprovação
+    IF approval_level >= 1 THEN
+        INSERT INTO approval_steps (
+            request_id,
+            step_number,
+            approver_id,
+            approval_level,
+            status,
+            created_at
+        ) VALUES (
+            NEW.id,
+            1,
+            manager_id,
+            'MANAGER',
+            'PENDING',
+            NOW()
+        );
+    END IF;
+    
+    -- Se precisar de mais níveis, criar steps adicionais
+    IF approval_level >= 2 THEN
+        -- Encontrar director
+        SELECT id INTO approver_id
+        FROM employees 
+        WHERE role = 'DIRECTOR' 
+        AND department = (SELECT department FROM employees WHERE id = NEW.employee_id)
+        LIMIT 1;
+        
+        INSERT INTO approval_steps (
+            request_id,
+            step_number,
+            approver_id,
+            approval_level,
+            status,
+            created_at
+        ) VALUES (
+            NEW.id,
+            2,
+            approver_id,
+            'DIRECTOR',
+            'WAITING',  -- Waiting for previous step
+            NOW()
+        );
+    END IF;
+    
+    IF approval_level >= 3 THEN
+        -- CEO approval
+        SELECT id INTO approver_id
+        FROM employees 
+        WHERE role = 'CEO'
+        LIMIT 1;
+        
+        INSERT INTO approval_steps (
+            request_id,
+            step_number,
+            approver_id,
+            approval_level,
+            status,
+            created_at
+        ) VALUES (
+            NEW.id,
+            3,
+            approver_id,
+            'CEO',
+            'WAITING',
+            NOW()
+        );
+    END IF;
+    
+    -- Atualizar status da requisição
+    UPDATE expense_requests 
+    SET 
+        approval_status = 'PENDING',
+        total_approval_steps = approval_level,
+        workflow_started_at = NOW()
+    WHERE id = NEW.id;
+    
+    -- Notificar primeiro aprovador
+    INSERT INTO notifications (
+        recipient_id,
+        notification_type,
+        title,
+        message,
+        reference_id,
+        created_at
+    ) VALUES (
+        manager_id,
+        'APPROVAL_REQUEST',
+        'Nova Requisição de Despesa',
+        CONCAT('Requisição de €', NEW.amount, ' aguarda sua aprovação'),
+        NEW.id,
+        NOW()
+    );
+    
+END //
+DELIMITER ;
+
+-- Trigger para quando uma aprovação é dada
+DELIMITER //
+CREATE TRIGGER process_approval_step
+AFTER UPDATE ON approval_steps
+FOR EACH ROW
+BEGIN
+    DECLARE next_step_id INT;
+    DECLARE request_complete BOOLEAN DEFAULT FALSE;
+    DECLARE total_steps INT;
+    DECLARE approved_steps INT;
+    
+    -- Só processar se status mudou para APPROVED
+    IF NEW.status = 'APPROVED' AND OLD.status != 'APPROVED' THEN
+        
+        -- Verificar quantos steps estão aprovados
+        SELECT 
+            COUNT(*) as total,
+            SUM(CASE WHEN status = 'APPROVED' THEN 1 ELSE 0 END) as approved
+        INTO total_steps, approved_steps
+        FROM approval_steps 
+        WHERE request_id = NEW.request_id;
+        
+        -- Se todos os steps estão aprovados
+        IF approved_steps = total_steps THEN
+            SET request_complete = TRUE;
+            
+            UPDATE expense_requests 
+            SET 
+                approval_status = 'APPROVED',
+                final_approved_at = NOW(),
+                final_approved_by = NEW.approver_id
+            WHERE id = NEW.request_id;
+            
+        ELSE
+            -- Ativar próximo step
+            UPDATE approval_steps 
+            SET 
+                status = 'PENDING',
+                activated_at = NOW()
+            WHERE request_id = NEW.request_id 
+            AND step_number = NEW.step_number + 1;
+            
+            -- Notificar próximo aprovador
+            SELECT approver_id INTO next_step_id
+            FROM approval_steps 
+            WHERE request_id = NEW.request_id 
+            AND step_number = NEW.step_number + 1;
+            
+            INSERT INTO notifications (
+                recipient_id,
+                notification_type,
+                title,
+                message,
+                reference_id,
+                created_at
+            ) VALUES (
+                next_step_id,
+                'APPROVAL_REQUEST',
+                'Requisição Aguarda Aprovação',
+                CONCAT('Requisição aprovada no nível anterior, aguarda sua aprovação'),
+                NEW.request_id,
+                NOW()
+            );
+        END IF;
+        
+    ELSEIF NEW.status = 'REJECTED' AND OLD.status != 'REJECTED' THEN
+        -- Se rejeitado, rejeitar toda a requisição
+        UPDATE expense_requests 
+        SET 
+            approval_status = 'REJECTED',
+            rejected_at = NOW(),
+            rejected_by = NEW.approver_id,
+            rejection_reason = NEW.comments
+        WHERE id = NEW.request_id;
+        
+        -- Cancelar steps restantes
+        UPDATE approval_steps 
+        SET status = 'CANCELLED'
+        WHERE request_id = NEW.request_id 
+        AND status IN ('PENDING', 'WAITING');
+        
+    END IF;
+    
+END //
+DELIMITER ;
+```
+
+
+### **⚠️ Problemas Comuns e Soluções:**
+
+#### **1. Triggers Recursivos:**
+
+```sql
+-- ❌ Problema: Trigger que se chama a si próprio
+DELIMITER //
+CREATE TRIGGER dangerous_recursive_trigger
+AFTER UPDATE ON products
+FOR EACH ROW
+BEGIN
+    -- PERIGO: Isto vai criar loop infinito!
+    UPDATE products SET updated_at = NOW() WHERE id = NEW.id;
+END //
+DELIMITER ;
+
+-- ✅ Solução: Verificar se é necessário atualizar
+DELIMITER //
+CREATE TRIGGER safe_update_trigger
+BEFORE UPDATE ON products
+FOR EACH ROW
+BEGIN
+    -- Usar BEFORE e SET NEW em vez de UPDATE
+    SET NEW.updated_at = NOW();
+END //
+DELIMITER ;
+
+-- ✅ Outra solução: Condição para evitar recursão
+DELIMITER //
+CREATE TRIGGER conditional_update_trigger
+AFTER UPDATE ON products
+FOR EACH ROW
+BEGIN
+    -- Só atualizar se não foi já atualizado nesta sessão
+    IF NEW.updated_at = OLD.updated_at THEN
+        UPDATE products SET updated_at = NOW() WHERE id = NEW.id;
+    END IF;
+END //
+DELIMITER ;
+```
+
+#### **2. Performance Issues:**
+
+sqlresponse-action-icon
+
+```sql
+-- ❌ Trigger lento que afeta todas as operações
+DELIMITER //
+CREATE TRIGGER slow_trigger
+AFTER INSERT ON orders
+FOR EACH ROW
+BEGIN
+    -- PROBLEMA: Query complexa em cada INSERT
+    SELECT COUNT(*) FROM orders o
+    JOIN order_items oi ON o.id = oi.order_id
+    JOIN products p ON oi.product_id = p.id
+    WHERE o.customer_id = NEW.customer_id;
+    
+    -- Múltiplas operações custosas...
+END //
+DELIMITER ;
+
+-- ✅ Solução: Otimizar ou usar queue assíncrona
+DELIMITER //
+CREATE TRIGGER optimized_trigger
+AFTER INSERT ON orders
+FOR EACH ROW
+BEGIN
+    -- Operações simples e rápidas apenas
+    UPDATE customers 
+    SET order_count = order_count + 1 
+    WHERE id = NEW.customer_id;
+    
+    -- Operações complexas para queue
+    INSERT INTO background_tasks (
+        task_type, 
+        reference_id, 
+        priority,
+        created_at
+    ) VALUES (
+        'UPDATE_CUSTOMER_STATS',
+        NEW.customer_id,
+        'LOW',
+        NOW()
+    );
+END //
+DELIMITER ;
+```
+
+### **🛠️ Debugging de Triggers:**
+
+#### **Técnicas de Debug:**
+
+sqlresponse-action-icon
+
+```sql
+-- Trigger com logging para debug
+DELIMITER //
+CREATE TRIGGER debug_trigger_example
+AFTER UPDATE ON products
+FOR EACH ROW
+BEGIN
+    -- Log de debug
+    INSERT INTO trigger_debug_log (
+        trigger_name,
+        table_name,
+        operation,
+        record_id,
+        debug_info,
+        timestamp
+    ) VALUES (
+        'debug_trigger_example',
+        'products',
+        'UPDATE',
+        NEW.id,
+        CONCAT('OLD price: ', OLD.price, ', NEW price: ', NEW.price),
+        NOW()
+    );
+    
+    -- Lógica do trigger com try-catch
+    BEGIN
+        DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
+        BEGIN
+            INSERT INTO trigger_error_log (
+                trigger_name,
+                error_message,
+                record_id,
+                timestamp
+            ) VALUES (
+                'debug_trigger_example',
+                'Error in trigger execution',
+                NEW.id,
+                NOW()
+            );
+        END;
+        
+        -- Lógica principal aqui
+        IF NEW.price != OLD.price THEN
+            INSERT INTO price_history (
+                product_id,
+                old_price,
+                new_price,
+                changed_at
+            ) VALUES (
+                NEW.id,
+                OLD.price,
+                NEW.price,
+                NOW()
+            );
+        END IF;
+        
+    END;
+    
+END //
+DELIMITER ;
+
+-- Ver logs de debug
+SELECT * FROM trigger_debug_log ORDER BY timestamp DESC LIMIT 10;
+SELECT * FROM trigger_error_log ORDER BY timestamp DESC LIMIT 10;
+```
+
+### **📚 Best Practices para Triggers:**
+
+#### **✅ Boas Práticas:**
+
+sqlresponse-action-icon
+
+```sql
+-- 1. Triggers simples e rápidos
+-- 2. Evitar lógica de negócio complexa
+-- 3. Usar BEFORE para validação, AFTER para logging
+-- 4. Sempre incluir tratamento de erros
+-- 5. Documentar o propósito do trigger
+-- 6. Testar impacto na performance
+-- 7. Considerar alternativas (stored procedures, aplicação)
+
+-- Exemplo de trigger bem estruturado:
+DELIMITER //
+CREATE TRIGGER well_structured_trigger
+BEFORE UPDATE ON orders
+FOR EACH ROW
+-- Trigger para validar mudanças de status de pedidos
+-- Criado: 2024-01-15
+-- Propósito: Garantir que transições de status são válidas
+-- Regras: pending -> confirmed -> shipped -> delivered
+--         Qualquer status -> cancelled (exceto delivered)
+BEGIN
+    DECLARE old_status VARCHAR(20) DEFAULT OLD.status;
+    DECLARE new_status VARCHAR(20) DEFAULT NEW.status;
+    
+    -- Log da tentativa de mudança (para auditoria)
+    INSERT INTO status_change_log (
+        order_id,
+        old_status,
+        new_status,
+        attempted_by,
+        attempted_at
+    ) VALUES (
+        NEW.id,
+        old_status,
+        new_status,
+        USER(),
+        NOW()
+    );
+    
+    -- Validar transições permitidas
+    CASE old_status
+        WHEN 'pending' THEN
+            IF new_status NOT IN ('confirmed', 'cancelled') THEN
+                SIGNAL SQLSTATE '45000' 
+                SET MESSAGE_TEXT = 'Pedido pending só pode ir para confirmed ou cancelled';
+            END IF;
+            
+        WHEN 'confirmed' THEN
+            IF new_status NOT IN ('shipped', 'cancelled') THEN
+                SIGNAL SQLSTATE '45000' 
+                SET MESSAGE_TEXT = 'Pedido confirmed só pode ir para shipped ou cancelled';
+            END IF;
+            
+        WHEN 'shipped' THEN
+            IF new_status NOT IN ('delivered', 'cancelled') THEN
+                SIGNAL SQLSTATE '45000' 
+                SET MESSAGE_TEXT = 'Pedido shipped só pode ir para delivered ou cancelled';
+            END IF;
+            
+        WHEN 'delivered' THEN
+            IF new_status != 'delivered' THEN
+                SIGNAL SQLSTATE '45000' 
+                SET MESSAGE_TEXT = 'Pedido delivered não pode mudar de status';
+            END IF;
+            
+        WHEN 'cancelled' THEN
+            IF new_status != 'cancelled' THEN
+                SIGNAL SQLSTATE '45000' 
+                SET MESSAGE_TEXT = 'Pedido cancelled não pode mudar de status';
+            END IF;
+            
+    END CASE;
+    
+    -- Atualizar timestamp se status mudou
+    IF old_status != new_status THEN
+        SET NEW.status_changed_at = NOW();
+    END IF;
+    
+END //
+DELIMITER ;
+```
+
+#### **❌ O que Evitar:**
+
+textresponse-action-icon
+
+```text
+❌ Triggers muito complexos
+❌ Lógica de negócio crítica só em triggers
+❌ Operações custosas que bloqueiam transações
+❌ Triggers que modificam outras tabelas sem controlo
+❌ Triggers sem tratamento de erros
+❌ Triggers sem documentação
+❌ Modificar dados da própria transação em AFTER triggers
+```
