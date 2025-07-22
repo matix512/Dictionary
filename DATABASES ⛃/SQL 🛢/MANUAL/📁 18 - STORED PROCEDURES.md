@@ -1217,4 +1217,300 @@ alert_priority,
 'active',  
 NOW()  
 );
+
+
+-- Se crítico, enviar notificação imediata
+        IF alert_priority = 'CRITICAL' THEN
+            INSERT INTO notification_queue (
+                notification_type,
+                recipient_email,
+                subject,
+                message,
+                priority,
+                created_at
+            ) VALUES (
+                'STOCK_CRITICAL',
+                COALESCE(supplier_email, 'inventory@company.com'),
+                CONCAT('CRITICAL: ', product_name, ' Out of Stock'),
+                alert_message,
+                'HIGH',
+                NOW()
+            );
+        END IF;
+    END IF;
+    
+END LOOP;
+
+CLOSE stock_cursor;
+
+-- Retornar resumo dos alertas gerados
+SELECT 
+    priority_level,
+    COUNT(*) as alert_count
+FROM stock_alerts
+WHERE DATE(created_at) = CURDATE()
+AND status = 'active'
+GROUP BY priority_level
+ORDER BY 
+    CASE priority_level
+        WHEN 'CRITICAL' THEN 1
+        WHEN 'HIGH' THEN 2
+        WHEN 'MEDIUM' THEN 3
+        WHEN 'LOW' THEN 4
+    END;
+
+END //  
+DELIMITER ;
+
+-- Event para executar automaticamente  
+CREATE EVENT daily_stock_alerts  
+ON SCHEDULE EVERY 1 DAY  
+STARTS TIMESTAMP(CURRENT_DATE + INTERVAL 1 DAY, '09:00:00')  
+DO  
+CALL GenerateStockAlerts();
+
+-- Executar manualmente  
+CALL GenerateStockAlerts();
+
+```
+
+
+
+### **🚨 Debugging e Troubleshooting:**
+
+
+#### **Técnicas de Debug:**
+
+```sql
+-- Procedure com debug logging
+DELIMITER //
+CREATE PROCEDURE DebugExample(
+    IN input_value INT,
+    IN debug_mode BOOLEAN DEFAULT FALSE
+)
+BEGIN
+    DECLARE local_var INT DEFAULT 0;
+    DECLARE error_msg VARCHAR(255);
+    
+    -- Debug: Log início
+    IF debug_mode THEN
+        INSERT INTO debug_log (procedure_name, message, timestamp)
+        VALUES ('DebugExample', CONCAT('Started with input: ', input_value), NOW());
+    END IF;
+    
+    -- Declarar handler para erros
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        GET DIAGNOSTICS CONDITION 1
+            error_msg = MESSAGE_TEXT;
+        
+        INSERT INTO error_log (procedure_name, error_message, input_params, timestamp)
+        VALUES ('DebugExample', error_msg, CONCAT('input_value=', input_value), NOW());
+        
+        RESIGNAL;  -- Re-raise the error
+    END;
+    
+    -- Lógica principal
+    SET local_var = input_value * 2;
+    
+    IF debug_mode THEN
+        INSERT INTO debug_log (procedure_name, message, timestamp)
+        VALUES ('DebugExample', CONCAT('Calculated local_var: ', local_var), NOW());
+    END IF;
+    
+    -- Simular condição de erro para demonstração
+    IF input_value < 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Input value cannot be negative';
+    END IF;
+    
+    -- Mais lógica...
+    UPDATE products SET stock_quantity = stock_quantity + local_var WHERE id = input_value;
+    
+    IF debug_mode THEN
+        INSERT INTO debug_log (procedure_name, message, timestamp)
+        VALUES ('DebugExample', CONCAT('Updated product ', input_value, ' stock'), NOW());
+    END IF;
+    
+END //
+DELIMITER ;
+
+-- Executar com debug
+CALL DebugExample(10, TRUE);
+
+-- Ver logs de debug
+SELECT * FROM debug_log WHERE procedure_name = 'DebugExample' ORDER BY timestamp DESC LIMIT 10;
+````
+
+#### **Profiling de Performance:**
+
+sqlresponse-action-icon
+
+```sql
+-- Procedure com medição de performance
+DELIMITER //
+CREATE PROCEDURE ProfiledProcedure()
+BEGIN
+    DECLARE start_time DECIMAL(20,6);
+    DECLARE end_time DECIMAL(20,6);
+    DECLARE execution_time DECIMAL(10,6);
+    
+    -- Marcar início
+    SET start_time = UNIX_TIMESTAMP(NOW(6));
+    
+    -- Operação custosa 1
+    SELECT COUNT(*) FROM orders o 
+    INNER JOIN order_items oi ON o.id = oi.order_id;
+    
+    SET end_time = UNIX_TIMESTAMP(NOW(6));
+    SET execution_time = end_time - start_time;
+    
+    INSERT INTO performance_log (operation, execution_time_seconds, timestamp)
+    VALUES ('Complex JOIN query', execution_time, NOW());
+    
+    -- Reset timer para próxima operação
+    SET start_time = UNIX_TIMESTAMP(NOW(6));
+    
+    -- Operação custosa 2
+    UPDATE customers SET last_activity = NOW() WHERE id IN (
+        SELECT DISTINCT customer_id FROM orders WHERE order_date >= CURDATE()
+    );
+    
+    SET end_time = UNIX_TIMESTAMP(NOW(6));
+    SET execution_time = end_time - start_time;
+    
+    INSERT INTO performance_log (operation, execution_time_seconds, timestamp)
+    VALUES ('Customer update with subquery', execution_time, NOW());
+    
+END //
+DELIMITER ;
+```
+
+### **📚 Best Practices:**
+
+#### **✅ Boas Práticas:**
+
+sqlresponse-action-icon
+
+```sql
+-- 1. Sempre usar DELIMITER para procedures complexas
+DELIMITER //
+CREATE PROCEDURE GoodExample()
+BEGIN
+    -- Código aqui
+END //
+DELIMITER ;
+
+-- 2. Declarar variáveis no início
+DELIMITER //
+CREATE PROCEDURE VariableExample()
+BEGIN
+    -- Todas as declarações primeiro
+    DECLARE customer_count INT DEFAULT 0;
+    DECLARE total_revenue DECIMAL(12,2) DEFAULT 0.00;
+    DECLARE done INT DEFAULT FALSE;
+    
+    -- Depois handlers
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+    
+    -- Depois cursors
+    DECLARE customer_cursor CURSOR FOR SELECT id FROM customers;
+    
+    -- Finalmente a lógica
+    -- ...código...
+END //
+DELIMITER ;
+
+-- 3. Usar transaction para operações críticas
+DELIMITER //
+CREATE PROCEDURE TransactionExample()
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        RESIGNAL;
+    END;
+    
+    START TRANSACTION;
+    
+    -- Operações críticas
+    INSERT INTO ...;
+    UPDATE ...;
+    DELETE FROM ...;
+    
+    COMMIT;
+END //
+DELIMITER ;
+
+-- 4. Validar parâmetros de entrada
+DELIMITER //
+CREATE PROCEDURE ValidatedProcedure(
+    IN customer_id INT,
+    IN order_amount DECIMAL(10,2)
+)
+BEGIN
+    -- Validações
+    IF customer_id IS NULL OR customer_id <= 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Invalid customer ID';
+    END IF;
+    
+    IF order_amount IS NULL OR order_amount <= 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Invalid order amount';
+    END IF;
+    
+    -- Verificar se customer existe
+    IF NOT EXISTS (SELECT 1 FROM customers WHERE id = customer_id) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Customer not found';
+    END IF;
+    
+    -- Lógica principal
+    -- ...
+END //
+DELIMITER ;
+
+-- 5. Documentar procedures complexas
+DELIMITER //
+CREATE PROCEDURE WellDocumentedProcedure(
+    IN start_date DATE,    -- Data início do relatório
+    IN end_date DATE,      -- Data fim do relatório
+    OUT total_orders INT,  -- Número total de pedidos no período
+    OUT total_revenue DECIMAL(12,2)  -- Receita total no período
+)
+-- Procedure para gerar relatório de vendas por período
+-- Criada: 2024-01-15
+-- Autor: Sistema
+-- Última modificação: 2024-01-15
+-- 
+-- Parâmetros:
+--   start_date: Data de início (inclusive)
+--   end_date: Data de fim (inclusive)
+--   total_orders: Retorna o número de pedidos
+--   total_revenue: Retorna a receita total
+--
+-- Uso:
+--   CALL WellDocumentedProcedure('2024-01-01', '2024-01-31', @orders, @revenue);
+--   SELECT @orders, @revenue;
+BEGIN
+    SELECT 
+        COUNT(*),
+        COALESCE(SUM(total_amount), 0)
+    INTO total_orders, total_revenue
+    FROM orders
+    WHERE order_date BETWEEN start_date AND end_date
+    AND status = 'completed';
+END //
+DELIMITER ;
+```
+
+#### **❌ O que Evitar:**
+
+sqlresponse-action-icon
+
+```sql
+-- ❌ Procedures muito longas (> 100 linhas)
+-- ❌ Lógica de negócio complexa em SQL
+-- ❌ Procedures sem tratamento de erro
+-- ❌ Cursors desnecessários (usar JOINs quando possível)
+-- ❌ Dynamic SQL sem validação de entrada
+-- ❌ Procedures sem documentação
+-- ❌ Operações que podem ser feitas na aplicação
 ```
