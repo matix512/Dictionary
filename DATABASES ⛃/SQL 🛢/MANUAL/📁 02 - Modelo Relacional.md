@@ -198,8 +198,6 @@ CREATE TABLE departments (
 
 #### **Regras de Integridade:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Cascata: apagar pai apaga filhos
 ALTER TABLE orders 
@@ -220,8 +218,6 @@ ON DELETE SET DEFAULT;
 ### **🔍 Álgebra Relacional:**
 
 #### **Operações Básicas:**
-
-textresponse-action-icon
 
 ```text
 σ (Seleção)     → WHERE
