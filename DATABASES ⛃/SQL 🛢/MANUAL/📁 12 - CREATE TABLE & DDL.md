@@ -1,461 +1,458 @@
-### **🎯 O que são Subqueries?**
+### **🏗️ Data Definition Language (DDL):**
 
-#### **Definição:**
+#### **O que é DDL?**
 
-> Uma subquery (subconsulta) é uma query SQL dentro de outra query SQL. A subquery é executada primeiro e seu resultado é usado pela query principal.
+> DDL são comandos SQL usados para definir e modificar a estrutura da base de dados. Incluem CREATE, ALTER, DROP, TRUNCATE.
 
-#### **Tipos de Subqueries:**
+#### **Comandos Principais:**
 
 textresponse-action-icon
 
 ```text
-📝 Scalar: Retorna um único valor
-📊 Table: Retorna uma tabela de resultados  
-🔍 Column: Retorna uma coluna de valores
-✅ Correlated: Referencia a query externa
-❌ Non-correlated: Independente da query externa
+🆕 CREATE - Criar objetos (tabelas, índices, views)
+🔧 ALTER - Modificar estrutura existente
+❌ DROP - Apagar objetos permanentemente
+🧹 TRUNCATE - Esvaziar tabela (mantém estrutura)
 ```
 
-#### **Onde Usar Subqueries:**
+### **🆕 CREATE TABLE Básico:**
+
+#### **Sintaxe Fundamental:**
 
 sqlresponse-action-icon
 
 ```sql
-SELECT ... (scalar subquery)
-FROM ... (table subquery)
-WHERE ... (most common)
-HAVING ... (with aggregations)
+CREATE TABLE table_name (
+    column1 datatype [constraints],
+    column2 datatype [constraints],
+    ...
+    [table_constraints]
+);
 ```
 
-### **🔢 Scalar Subqueries:**
+#### **Exemplo Simples:**
 
-#### **Retornando Um Valor:**
+sqlresponse-action-icon
 
 ```sql
--- Preço médio na base de dados
-SELECT 
-    product,
-    price,  
-(SELECT AVG(price) FROM sales) AS average_price,  
-price - (SELECT AVG(price) FROM sales) AS difference_from_avg  
-FROM sales;
+-- Tabela básica de produtos
+CREATE TABLE products (
+    id INT,
+    name VARCHAR(100),
+    price DECIMAL(10, 2),
+    created_at DATETIME
+);
 
--- Produto mais caro  
-SELECT product, price  
-FROM sales  
-WHERE price = (SELECT MAX(price) FROM sales);
-
--- Vendas acima da média  
-SELECT COUNT(*) AS above_average_sales  
-FROM sales  
-WHERE quantity * price > (SELECT AVG(quantity * price) FROM sales);
+-- Verificar estrutura criada
+DESCRIBE products;  -- MySQL
+-- ou
+SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'products';
 ```
 
+### **📊 Tipos de Dados:**
 
-#### **Subqueries em SELECT:**
+#### **Numéricos:**
+
+sqlresponse-action-icon
 
 ```sql
--- Múltiplas subqueries escalares
+CREATE TABLE numeric_examples (
+    tiny_int TINYINT,           -- -128 to 127
+    small_int SMALLINT,         -- -32,768 to 32,767
+    medium_int MEDIUMINT,       -- MySQL específico
+    regular_int INT,            -- -2,147,483,648 to 2,147,483,647
+    big_int BIGINT,            -- Muito grande
+    
+    decimal_fixed DECIMAL(10,2), -- Precisão fixa: 999999.99
+    numeric_fixed NUMERIC(10,2), -- Sinónimo de DECIMAL
+    float_approx FLOAT,         -- Aproximado, 32-bit
+    double_approx DOUBLE,       -- Aproximado, 64-bit
+    
+    -- Com unsigned (só positivos)
+    unsigned_int INT UNSIGNED,  -- 0 to 4,294,967,295
+    auto_id INT AUTO_INCREMENT  -- MySQL auto incremento
+);
+```
+
+#### **Strings e Texto:**
+
+sqlresponse-action-icon
+
+```sql
+CREATE TABLE string_examples (
+    fixed_char CHAR(10),        -- Comprimento fixo, preenchido com espaços
+    variable_varchar VARCHAR(255), -- Comprimento variável, até 255 chars
+    tiny_text TINYTEXT,         -- Até 255 chars
+    regular_text TEXT,          -- Até 65,535 chars
+    medium_text MEDIUMTEXT,     -- Até 16,777,215 chars
+    long_text LONGTEXT,         -- Até 4,294,967,295 chars
+    
+    -- Encoding específico
+    utf8_text TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+);
+```
+
+#### **Datas e Tempo:**
+
+sqlresponse-action-icon
+
+```sql
+CREATE TABLE datetime_examples (
+    just_date DATE,             -- '2024-01-15'
+    just_time TIME,             -- '14:30:00'
+    date_and_time DATETIME,     -- '2024-01-15 14:30:00'
+    timestamp_auto TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    timestamp_update TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    -- Ano apenas
+    year_only YEAR,             -- '2024'
+    
+    -- Com timezone (PostgreSQL/SQL Server)
+    with_timezone TIMESTAMPTZ   -- PostgreSQL
+);
+```
+
+#### **Outros Tipos:**
+
+sqlresponse-action-icon
+
+```sql
+CREATE TABLE other_types (
+    true_false BOOLEAN,         -- TRUE/FALSE
+    binary_data BLOB,           -- Dados binários
+    json_data JSON,             -- MySQL 5.7+, PostgreSQL
+    enum_status ENUM('active', 'inactive', 'pending'), -- MySQL
+    
+    -- Geométricos (MySQL)
+    coordinates POINT,
+    area_polygon POLYGON
+);
+```
+
+### **🔑 Constraints (Restrições):**
+
+#### **Primary Key:**
+
+sqlresponse-action-icon
+
+```sql
+-- Chave primária simples
+CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+-- Chave primária nomeada
+CREATE TABLE students (
+    id INT,
+    name VARCHAR(100),
+    CONSTRAINT pk_students_id PRIMARY KEY (id)
+);
+
+-- Chave primária composta
+CREATE TABLE order_items (
+    order_id INT,
+    product_id INT,
+    quantity INT,
+    PRIMARY KEY (order_id, product_id)
+);
+
+-- Auto increment
+CREATE TABLE students (
+    id INT AUTO_INCREMENT PRIMARY KEY,  -- MySQL
+    name VARCHAR(100)
+);
+```
+
+#### **Foreign Key:**
+
+sqlresponse-action-icon
+
+```sql
+-- Criação com foreign key
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT,
+    order_date DATE,
+    FOREIGN KEY (customer_id) REFERENCES customers(id)
+);
+
+-- Foreign key nomeada com ações
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT,
+    order_date DATE,
+    CONSTRAINT fk_orders_customer 
+        FOREIGN KEY (customer_id) 
+        REFERENCES customers(id)
+        ON DELETE CASCADE           -- Apaga orders se customer for apagado
+        ON UPDATE CASCADE          -- Atualiza se customer.id mudar
+);
+
+-- Outras ações de referência
+-- ON DELETE RESTRICT   -- Não permite apagar se há referências
+-- ON DELETE SET NULL   -- Define como NULL
+-- ON DELETE SET DEFAULT -- Define valor padrão
+```
+
+#### **Unique, Not NULL, Check:**
+
+sqlresponse-action-icon
+
+```sql
+CREATE TABLE comprehensive_table (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    
+    -- NOT NULL
+    name VARCHAR(100) NOT NULL,
+    
+    -- UNIQUE
+    email VARCHAR(200) UNIQUE,
+    
+    -- UNIQUE nomeado
+    username VARCHAR(50),
+    CONSTRAINT uk_username UNIQUE (username),
+    
+    -- CHECK constraint
+    age INT CHECK (age >= 0 AND age <= 150),
+    
+    -- DEFAULT values
+    status VARCHAR(20) DEFAULT 'active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    -- Múltiplas constraints
+    salary DECIMAL(10,2) NOT NULL DEFAULT 0.00 CHECK (salary >= 0)
+);
+```
+
+### **🎯 Exemplos Práticos Completos:**
+
+#### **Sistema de E-commerce:**
+
+sqlresponse-action-icon
+
+```sql
+-- Tabela de categorias
+CREATE TABLE categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE,
+    description TEXT,
+    parent_id INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    -- Self-reference para categorias hierárquicas
+    FOREIGN KEY (parent_id) REFERENCES categories(id) ON DELETE SET NULL
+);
+
+-- Tabela de produtos
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(200) NOT NULL,
+    description TEXT,
+    category_id INT NOT NULL,
+    
+    -- Preços
+    cost_price DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    selling_price DECIMAL(10,2) NOT NULL,
+    
+    -- Inventário
+    stock_quantity INT NOT NULL DEFAULT 0,
+    min_stock_level INT DEFAULT 10,
+    
+    -- Status
+    status ENUM('active', 'inactive', 'discontinued') DEFAULT 'active',
+    is_featured BOOLEAN DEFAULT FALSE,
+    
+    -- Timestamps
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    -- Constraints
+    FOREIGN KEY (category_id) REFERENCES categories(id),
+    CHECK (selling_price > 0),
+    CHECK (stock_quantity >= 0),
+    CHECK (cost_price >= 0),
+    
+    -- Índices
+    INDEX idx_products_category (category_id),
+    INDEX idx_products_status (status),
+    INDEX idx_products_featured (is_featured)
+);
+
+-- Tabela de clientes
+CREATE TABLE customers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(200) NOT NULL UNIQUE,
+    phone VARCHAR(20),
+    
+    -- Endereço
+    street_address TEXT,
+    city VARCHAR(100),
+    postal_code VARCHAR(20),
+    country VARCHAR(100) DEFAULT 'Portugal',
+    
+    -- Account info
+    date_of_birth DATE,
+    account_status ENUM('active', 'inactive', 'suspended') DEFAULT 'active',
+    
+    -- Timestamps
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    -- Full-text search no nome
+    FULLTEXT(first_name, last_name),
+    
+    -- Índices
+    INDEX idx_customers_email (email),
+    INDEX idx_customers_status (account_status),
+    INDEX idx_customers_country (country)
+);
+```
+
+#### **Sistema Escolar:**
+
+sqlresponse-action-icon
+
+```sql
+-- Tabela de cursos
+CREATE TABLE courses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    code VARCHAR(10) NOT NULL UNIQUE,
+    name VARCHAR(200) NOT NULL,
+    description TEXT,
+    credits INT NOT NULL DEFAULT 3,
+    max_students INT DEFAULT 30,
+    
+    -- Datas
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    CHECK (credits > 0),
+    CHECK (max_students > 0),
+    CHECK (end_date > start_date)
+);
+
+-- Tabela de estudantes
+CREATE TABLE students (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_number VARCHAR(20) NOT NULL UNIQUE,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(200) NOT NULL UNIQUE,
+    date_of_birth DATE NOT NULL,
+    
+    -- Academic info
+    enrollment_date DATE NOT NULL DEFAULT (CURRENT_DATE),
+    graduation_date DATE NULL,
+    gpa DECIMAL(3,2) DEFAULT 0.00,
+    
+    -- Status
+    status ENUM('enrolled', 'graduated', 'suspended', 'dropped') DEFAULT 'enrolled',
+    
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    CHECK (gpa >= 0.00 AND gpa <= 4.00),
+    CHECK (graduation_date IS NULL OR graduation_date > enrollment_date)
+);
+
+-- Tabela de inscrições (Many-to-Many)
+CREATE TABLE enrollments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    course_id INT NOT NULL,
+    enrollment_date DATE NOT NULL DEFAULT (CURRENT_DATE),
+    final_grade DECIMAL(5,2) NULL,
+    status ENUM('enrolled', 'completed', 'dropped', 'failed') DEFAULT 'enrolled',
+    
+    -- Timestamps
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    -- Foreign keys
+    FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE,
+    
+    -- Constraints
+    UNIQUE KEY unique_student_course (student_id, course_id),
+    CHECK (final_grade IS NULL OR (final_grade >= 0 AND final_grade <= 100)),
+    
+    -- Índices
+    INDEX idx_enrollments_student (student_id),
+    INDEX idx_enrollments_course (course_id),
+    INDEX idx_enrollments_status (status)
+);
+```
+
+### **📋 CREATE TABLE Avançado:**
+
+#### **Tabelas Temporárias:**
+
+sqlresponse-action-icon
+
+```sql
+-- Tabela temporária (sessão)
+CREATE TEMPORARY TABLE temp_calculations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    value DECIMAL(10,2),
+    calculation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Usar a tabela temporária
+INSERT INTO temp_calculations (value) VALUES (100.50), (200.75);
+SELECT * FROM temp_calculations;
+-- Tabela é automaticamente apagada no fim da sessão
+```
+
+#### **CREATE TABLE AS (CTAS):**
+
+sqlresponse-action-icon
+
+```sql
+-- Criar tabela a partir de query
+CREATE TABLE high_value_sales AS
 SELECT 
     salesperson,
-    COUNT(*) AS sales_count,
-    SUM(quantity * price) AS total_revenue,
-    (SELECT AVG(quantity * price) FROM sales) AS overall_avg,
-    (SELECT MAX(quantity * price) FROM sales) AS highest_sale,
-    (SELECT COUNT(DISTINCT salesperson) FROM sales) AS total_salespeople
-FROM sales
-GROUP BY salesperson;
-
--- Percentuais com subqueries
-SELECT 
-    category,
-    SUM(quantity * price) AS category_revenue,
-    ROUND(
-        SUM(quantity * price) * 100.0 / 
-        (SELECT SUM(quantity * price) FROM sales), 
-        2
-    ) AS percentage_of_total
-FROM sales
-GROUP BY category;
-````
-
-### **📊 Subqueries em WHERE:**
-
-#### **Comparações Simples:**
-
-sqlresponse-action-icon
-
-```sql
--- Produtos com preço acima da média
-SELECT product, price
-FROM sales
-WHERE price > (SELECT AVG(price) FROM sales);
-
--- Vendas do vendedor mais produtivo
-SELECT *
-FROM sales
-WHERE salesperson = (
-    SELECT salesperson 
-    FROM sales 
-    GROUP BY salesperson 
-    ORDER BY SUM(quantity * price) DESC 
-    LIMIT 1
-);
-
--- Vendas da data com maior volume
-SELECT *
-FROM sales
-WHERE sale_date = (
-    SELECT sale_date 
-    FROM sales 
-    GROUP BY sale_date 
-    ORDER BY COUNT(*) DESC 
-    LIMIT 1
-);
-```
-
-#### **IN e NOT IN:**
-
-sqlresponse-action-icon
-
-```sql
--- Produtos vendidos por João
-SELECT DISTINCT product
-FROM sales
-WHERE salesperson = 'João';
-
--- Outros vendedores que venderam os mesmos produtos
-SELECT DISTINCT salesperson
-FROM sales
-WHERE product IN (
-    SELECT DISTINCT product 
-    FROM sales 
-    WHERE salesperson = 'João'
-)
-AND salesperson != 'João';
-
--- Produtos nunca vendidos por Maria
-SELECT DISTINCT product
-FROM sales
-WHERE product NOT IN (
-    SELECT product 
-    FROM sales 
-    WHERE salesperson = 'Maria'
-    AND product IS NOT NULL  -- Importante com NOT IN!
-);
-```
-
-#### **EXISTS e NOT EXISTS:**
-
-sqlresponse-action-icon
-
-```sql
--- Vendedores que venderam eletrônicos
-SELECT DISTINCT s1.salesperson
-FROM sales s1
-WHERE EXISTS (
-    SELECT 1 
-    FROM sales s2 
-    WHERE s2.salesperson = s1.salesperson 
-    AND s2.category = 'Electronics'
-);
-
--- Categorias sem vendas hoje
-SELECT DISTINCT category
-FROM sales s1
-WHERE NOT EXISTS (
-    SELECT 1 
-    FROM sales s2 
-    WHERE s2.category = s1.category 
-    AND s2.sale_date = CURDATE()
-);
-
--- Produtos vendidos por todos os vendedores
-SELECT DISTINCT product
-FROM sales s1
-WHERE NOT EXISTS (
-    SELECT DISTINCT salesperson 
-    FROM sales s2
-    WHERE NOT EXISTS (
-        SELECT 1 
-        FROM sales s3 
-        WHERE s3.product = s1.product 
-        AND s3.salesperson = s2.salesperson
-    )
-);
-```
-
-### **📋 Subqueries como Tabelas (FROM):**
-
-#### **Derived Tables:**
-
-sqlresponse-action-icon
-
-```sql
--- Top 3 vendedores como tabela
-SELECT 
-    top_sellers.salesperson,
-    top_sellers.revenue,
-    sales.product
-FROM (
-    SELECT 
-        salesperson, 
-        SUM(quantity * price) AS revenue
-    FROM sales
-    GROUP BY salesperson
-    ORDER BY revenue DESC
-    LIMIT 3
-) AS top_sellers
-JOIN sales ON top_sellers.salesperson = sales.salesperson;
-
--- Estatísticas mensais
-SELECT 
-    monthly_stats.*,
-    CASE 
-        WHEN revenue > avg_monthly_revenue THEN 'Above Average'
-        ELSE 'Below Average'
-    END AS performance
-FROM (
-    SELECT 
-        MONTH(sale_date) AS month,
-        MONTHNAME(sale_date) AS month_name,
-        COUNT(*) AS sales_count,
-        SUM(quantity * price) AS revenue,
-        AVG(SUM(quantity * price)) OVER() AS avg_monthly_revenue
-    FROM sales
-    GROUP BY MONTH(sale_date), MONTHNAME(sale_date)
-) AS monthly_stats
-ORDER BY month;
-```
-
-#### **Common Table Expressions (CTEs):**
-
-sqlresponse-action-icon
-
-```sql
--- MySQL 8.0+, SQL Server, PostgreSQL
-WITH top_products AS (
-    SELECT 
-        product,
-        SUM(quantity * price) AS revenue
-    FROM sales
-    GROUP BY product
-    ORDER BY revenue DESC
-    LIMIT 5
-),
-product_stats AS (
-    SELECT 
-        AVG(revenue) AS avg_product_revenue,
-        MAX(revenue) AS max_product_revenue
-    FROM top_products
-)
-SELECT 
-    tp.product,
-    tp.revenue,
-    ps.avg_product_revenue,
-    ROUND(tp.revenue - ps.avg_product_revenue, 2) AS diff_from_avg
-FROM top_products tp
-CROSS JOIN product_stats ps;
-```
-
-### **🔄 Correlated Subqueries:**
-
-#### **Referenciando Query Externa:**
-
-sqlresponse-action-icon
-
-```sql
--- Vendas de cada vendedor acima de sua própria média
-SELECT 
-    salesperson,
     product,
-    quantity * price AS sale_value
-FROM sales s1
-WHERE quantity * price > (
-    SELECT AVG(quantity * price)
-    FROM sales s2
-    WHERE s2.salesperson = s1.salesperson  -- Correlação aqui!
-);
-
--- Última venda de cada vendedor
-SELECT 
-    salesperson,
-    product,
+    quantity,
+    price,
+    quantity * price AS total_value,
     sale_date
-FROM sales s1
-WHERE sale_date = (
-    SELECT MAX(sale_date)
-    FROM sales s2
-    WHERE s2.salesperson = s1.salesperson
-);
+FROM sales
+WHERE quantity * price > 1000;
 
--- Vendas do produto mais vendido por categoria
-SELECT 
-    category,
-    product,
-    quantity
-FROM sales s1
-WHERE product = (
-    SELECT product
-    FROM sales s2
-    WHERE s2.category = s1.category
-    GROUP BY product
-    ORDER BY SUM(quantity) DESC
-    LIMIT 1
-);
+-- Com estrutura mas sem dados
+CREATE TABLE empty_sales_copy AS
+SELECT * FROM sales WHERE 1=0;  -- Condição sempre falsa
+
+-- MySQL específico - LIKE
+CREATE TABLE sales_backup LIKE sales;  -- Só estrutura
 ```
 
-### **📊 Subqueries com Agregações:**
-
-#### **HAVING com Subqueries:**
+#### **Particionamento (MySQL/PostgreSQL):**
 
 sqlresponse-action-icon
 
 ```sql
--- Vendedores com receita acima da média geral
-SELECT 
-    salesperson,
-    SUM(quantity * price) AS revenue
-FROM sales
-GROUP BY salesperson
-HAVING SUM(quantity * price) > (
-    SELECT AVG(revenue_per_salesperson)
-    FROM (
-        SELECT SUM(quantity * price) AS revenue_per_salesperson
-        FROM sales
-        GROUP BY salesperson
-    ) AS salesperson_revenues
+-- Particionamento por range de data
+CREATE TABLE sales_partitioned (
+    id INT AUTO_INCREMENT,
+    product VARCHAR(100),
+    sale_date DATE NOT NULL,
+    amount DECIMAL(10,2),
+    PRIMARY KEY (id, sale_date)  -- Chave deve incluir coluna de partição
+)
+PARTITION BY RANGE (YEAR(sale_date)) (
+    PARTITION p2022 VALUES LESS THAN (2023),
+    PARTITION p2023 VALUES LESS THAN (2024),
+    PARTITION p2024 VALUES LESS THAN (2025),
+    PARTITION p_future VALUES LESS THAN MAXVALUE
 );
-
--- Categorias que representam mais de 20% das vendas
-SELECT 
-    category,
-    SUM(quantity * price) AS revenue,
-    ROUND(SUM(quantity * price) * 100.0 / (SELECT SUM(quantity * price) FROM sales), 2) AS percentage
-FROM sales
-GROUP BY category
-HAVING SUM(quantity * price) > (SELECT SUM(quantity * price) FROM sales) * 0.2;
-```
-
-### **🎯 Casos Práticos Avançados:**
-
-#### **Ranking e Top N:**
-
-sqlresponse-action-icon
-
-```sql
--- Top 3 produtos por categoria
-SELECT 
-    category,
-    product,
-    total_revenue
-FROM (
-    SELECT 
-        category,
-        product,
-        SUM(quantity * price) AS total_revenue,
-        ROW_NUMBER() OVER (PARTITION BY category ORDER BY SUM(quantity * price) DESC) as rank_in_category
-    FROM sales
-    GROUP BY category, product
-) ranked_products
-WHERE rank_in_category <= 3;
-
--- Produtos que estão no top 20% de receita
-SELECT 
-    product,
-    SUM(quantity * price) AS revenue
-FROM sales
-GROUP BY product
-HAVING SUM(quantity * price) >= (
-    SELECT PERCENTILE_CONT(0.8) WITHIN GROUP (ORDER BY product_revenue)
-    FROM (
-        SELECT SUM(quantity * price) AS product_revenue
-        FROM sales
-        GROUP BY product
-    ) AS product_revenues
-);
-```
-
-#### **Análise Temporal:**
-
-sqlresponse-action-icon
-
-```sql
--- Crescimento mês a mês
-SELECT 
-    YEAR(sale_date) AS year,
-    MONTH(sale_date) AS month,
-    SUM(quantity * price) AS current_month_revenue,
-    (
-        SELECT SUM(quantity * price)
-        FROM sales s2
-        WHERE YEAR(s2.sale_date) = YEAR(s1.sale_date)
-        AND MONTH(s2.sale_date) = MONTH(s1.sale_date) - 1
-    ) AS previous_month_revenue,
-    ROUND(
-        (SUM(quantity * price) - (
-            SELECT COALESCE(SUM(quantity * price), 0)
-            FROM sales s2
-            WHERE YEAR(s2.sale_date) = YEAR(s1.sale_date)
-            AND MONTH(s2.sale_date) = MONTH(s1.sale_date) - 1
-        )) * 100.0 / NULLIF((
-            SELECT SUM(quantity * price)
-            FROM sales s2
-            WHERE YEAR(s2.sale_date) = YEAR(s1.sale_date)
-            AND MONTH(s2.sale_date) = MONTH(s1.sale_date) - 1
-        ), 0),
-        2
-    ) AS growth_percentage
-FROM sales s1
-GROUP BY YEAR(sale_date), MONTH(sale_date)
-ORDER BY year, month;
-
--- Clientes que não compraram nos últimos 30 dias
-SELECT DISTINCT customer_id
-FROM sales
-WHERE customer_id NOT IN (
-    SELECT DISTINCT customer_id
-    FROM sales
-    WHERE sale_date >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
-    AND customer_id IS NOT NULL
-);
-```
-
-### **🔍 Subqueries vs JOINs:**
-
-#### **Quando Usar Cada Um:**
-
-sqlresponse-action-icon
-
-```sql
--- ✅ Subquery é melhor - apenas verificar existência
-SELECT product
-FROM sales
-WHERE EXISTS (
-    SELECT 1 FROM categories c WHERE c.name = 'Electronics'
-);
-
--- ✅ JOIN é melhor - precisar de dados de ambas tabelas
-SELECT s.product, c.description
-FROM sales s
-INNER JOIN categories c ON s.category = c.name
-WHERE c.name = 'Electronics';
-
--- Performance comparison
--- ❌ Lento - subquery não correlacionada repetitiva
-SELECT *
-FROM sales s1
-WHERE (SELECT COUNT(*) FROM sales s2 WHERE s2.salesperson = s1.salesperson) > 3;
-
--- ✅ Rápido - JOIN com agregação
-SELECT s1.*
-FROM sales s1
-INNER JOIN (
-    SELECT salesperson
-    FROM sales
-    GROUP BY salesperson
-    HAVING COUNT(*) > 3
-) active_sellers ON s1.salesperson = active_sellers.salesperson;
 ```
 
 ### **🎯 Exercícios Práticos:**
@@ -465,23 +462,31 @@ INNER JOIN (
 sqlresponse-action-icon
 
 ```sql
--- 1. Produtos mais caros que a média
-SELECT product, price
-FROM sales
-WHERE price > (SELECT AVG(price) FROM sales);
+-- 1. Criar tabela de funcionários
+CREATE TABLE employees (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(200) UNIQUE NOT NULL,
+    phone VARCHAR(20),
+    hire_date DATE NOT NULL,
+    salary DECIMAL(10,2) CHECK (salary > 0),
+    department VARCHAR(100) DEFAULT 'General'
+);
 
--- 2. Vendedores que venderam o produto mais caro
-SELECT DISTINCT salesperson
-FROM sales
-WHERE price = (SELECT MAX(price) FROM sales);
+-- 2. Criar tabela de departamentos
+CREATE TABLE departments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE,
+    budget DECIMAL(12,2) DEFAULT 0,
+    manager_id INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
--- 3. Número de vendas acima da média por vendedor
-SELECT 
-    salesperson,
-    COUNT(*) AS sales_above_average
-FROM sales
-WHERE quantity * price > (SELECT AVG(quantity * price) FROM sales)
-GROUP BY salesperson;
+-- 3. Adicionar foreign key aos funcionários
+ALTER TABLE employees 
+ADD COLUMN department_id INT,
+ADD FOREIGN KEY (department_id) REFERENCES departments(id);
 ```
 
 #### **Exercício 2 - Intermediário:**
@@ -489,185 +494,82 @@ GROUP BY salesperson;
 sqlresponse-action-icon
 
 ```sql
--- 1. Produtos vendidos por mais vendedores que a média
-SELECT 
-    product,
-    COUNT(DISTINCT salesperson) AS sellers_count
-FROM sales
-GROUP BY product
-HAVING COUNT(DISTINCT salesperson) > (
-    SELECT AVG(sellers_per_product)
-    FROM (
-        SELECT COUNT(DISTINCT salesperson) AS sellers_per_product
-        FROM sales
-        GROUP BY product
-    ) AS product_sellers
+-- 1. Sistema de biblioteca
+CREATE TABLE authors (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(200) NOT NULL,
+    birth_date DATE,
+    nationality VARCHAR(100),
+    biography TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 2. Vendedores que nunca venderam eletrônicos
-SELECT DISTINCT salesperson
-FROM sales s1
-WHERE NOT EXISTS (
-    SELECT 1
-    FROM sales s2
-    WHERE s2.salesperson = s1.salesperson
-    AND s2.category = 'Electronics'
+CREATE TABLE books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    isbn VARCHAR(20) UNIQUE NOT NULL,
+    title VARCHAR(300) NOT NULL,
+    author_id INT NOT NULL,
+    publication_year YEAR,
+    pages INT CHECK (pages > 0),
+    genre ENUM('Fiction', 'Non-Fiction', 'Science', 'History', 'Biography') NOT NULL,
+    available_copies INT DEFAULT 1,
+    total_copies INT DEFAULT 1,
+    
+    FOREIGN KEY (author_id) REFERENCES authors(id),
+    CHECK (available_copies <= total_copies),
+    CHECK (available_copies >= 0)
 );
 
--- 3. Receita de cada vendedor vs receita total
-SELECT 
-    salesperson,
-    SUM(quantity * price) AS individual_revenue,
-    (SELECT SUM(quantity * price) FROM sales) AS total_revenue,
-    ROUND(SUM(quantity * price) * 100.0 / (SELECT SUM(quantity * price) FROM sales), 2) AS percentage_of_total
-FROM sales
-GROUP BY salesperson;
+CREATE TABLE members (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    member_number VARCHAR(20) UNIQUE NOT NULL,
+    name VARCHAR(200) NOT NULL,
+    email VARCHAR(200) UNIQUE NOT NULL,
+    phone VARCHAR(20),
+    address TEXT,
+    join_date DATE DEFAULT (CURRENT_DATE),
+    status ENUM('active', 'suspended', 'expired') DEFAULT 'active',
+    max_books_allowed INT DEFAULT 5
+);
+
+CREATE TABLE loans (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    member_id INT NOT NULL,
+    book_id INT NOT NULL,
+    loan_date DATE NOT NULL DEFAULT (CURRENT_DATE),
+    due_date DATE NOT NULL,
+    return_date DATE NULL,
+    fine_amount DECIMAL(6,2) DEFAULT 0.00,
+    
+    FOREIGN KEY (member_id) REFERENCES members(id),
+    FOREIGN KEY (book_id) REFERENCES books(id),
+    CHECK (due_date > loan_date),
+    CHECK (return_date IS NULL OR return_date >= loan_date),
+    CHECK (fine_amount >= 0)
+);
 ```
 
-#### **Exercício 3 - Avançado:**
+### **💡 Boas Práticas:**
+
+#### **1. Convenções de Nomeação:**
 
 sqlresponse-action-icon
 
 ```sql
--- 1. Produtos que tiveram vendas em todos os meses do ano
-SELECT DISTINCT product
-FROM sales s1
-WHERE NOT EXISTS (
-    SELECT month_num
-    FROM (
-        SELECT 1 AS month_num UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 
-        UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 
-        UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12
-    ) months
-    WHERE NOT EXISTS (
-        SELECT 1
-        FROM sales s2
-        WHERE s2.product = s1.product
-        AND MONTH(s2.sale_date) = months.month_num
-    )
-);
-
--- 2. Vendedores que sempre vendem acima do preço médio do produto
-SELECT DISTINCT salesperson
-FROM sales s1
-WHERE NOT EXISTS (
-    SELECT 1
-    FROM sales s2
-    WHERE s2.salesperson = s1.salesperson
-    AND s2.price < (
-        SELECT AVG(price)
-        FROM sales s3
-        WHERE s3.product = s2.product
-    )
-);
-
--- 3. Segunda maior venda de cada vendedor
-SELECT 
-    salesperson,
-    quantity * price AS second_highest_sale
-FROM sales s1
-WHERE (
-    SELECT COUNT(DISTINCT quantity * price)
-    FROM sales s2
-    WHERE s2.salesperson = s1.salesperson
-    AND s2.quantity * s2.price > s1.quantity * s1.price
-) = 1;
-```
-
-### **⚡ Performance e Otimização:**
-
-#### **1. Subqueries Eficientes:**
-
-sqlresponse-action-icon
-
-```sql
--- ❌ Lento - subquery correlacionada pesada
-SELECT *
-FROM sales s1
-WHERE quantity * price > (
-    SELECT AVG(quantity * price)
-    FROM sales s2
-    WHERE s2.category = s1.category
-    AND s2.salesperson = s1.salesperson
-);
-
--- ✅ Rápido - pré-calcular em CTE ou tabela temporária
-WITH category_salesperson_avg AS (
-    SELECT 
-        category,
-        salesperson,
-        AVG(quantity * price) AS avg_sale_value
-    FROM sales
-    GROUP BY category, salesperson
-)
-SELECT s.*
-FROM sales s
-INNER JOIN category_salesperson_avg csa 
-    ON s.category = csa.category 
-    AND s.salesperson = csa.salesperson
-WHERE s.quantity * s.price > csa.avg_sale_value;
-```
-
-#### **2. Evitar Subqueries em SELECT quando possível:**
-
-sqlresponse-action-icon
-
-```sql
--- ❌ Lento - múltiplas subqueries escalares
-SELECT 
-    salesperson,
-    (SELECT COUNT(*) FROM sales s2 WHERE s2.salesperson = s1.salesperson) AS sales_count,
-    (SELECT AVG(quantity * price) FROM sales s2 WHERE s2.salesperson = s1.salesperson) AS avg_sale
-FROM sales s1
-GROUP BY salesperson;
-
--- ✅ Rápido - usar agregação direta
-SELECT 
-    salesperson,
-    COUNT(*) AS sales_count,
-    AVG(quantity * price) AS avg_sale
-FROM sales
-GROUP BY salesperson;
-```
-
-### **🚨 Erros Comuns:**
-
-#### **1. NULL com NOT IN:**
-
-sqlresponse-action-icon
-
-```sql
--- ❌ Pode retornar 0 linhas se houver NULL
-SELECT product
-FROM sales
-WHERE salesperson NOT IN (
-    SELECT salesperson FROM sales WHERE category = 'Electronics'
-    -- Se qualquer salesperson for NULL, NOT IN retorna vazio!
-);
-
--- ✅ Usar NOT EXISTS ou filtrar NULLs
-SELECT product
-FROM sales s1
-WHERE NOT EXISTS (
-    SELECT 1
-    FROM sales s2
-    WHERE s2.category = 'Electronics'
-    AND s2.salesperson = s1.salesperson
+-- ✅ Boas práticas
+CREATE TABLE customer_orders (           -- snake_case
+    id INT AUTO_INCREMENT PRIMARY KEY,   -- id sempre como PK
+    customer_id INT NOT NULL,            -- _id para foreign keys
+    order_date DATE NOT NULL,            -- nomes descritivos
+    total_amount DECIMAL(10,2),          -- tipo apropriado
+    
+    -- Constraints nomeadas
+    CONSTRAINT fk_orders_customer FOREIGN KEY (customer_id) REFERENCES customers(id),
+    CONSTRAINT ck_orders_amount CHECK (total_amount >= 0),
+    
+    -- Índices nomeados
+    INDEX idx_orders_customer (customer_id),
+    INDEX idx_orders_date (order_date)
 );
 ```
 
-#### **2. Subquery retornando múltiplos valores:**
-
-sqlresponse-action-icon
-
-```sql
--- ❌ Erro se subquery retorna mais de um valor
-SELECT *
-FROM sales
-WHERE price = (SELECT price FROM sales WHERE category = 'Electronics');
-
--- ✅ Usar IN ou ANY/ALL
-SELECT *
-FROM sales
-WHERE price IN (SELECT price FROM sales WHERE category = 'Electronics');
-```
