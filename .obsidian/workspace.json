@@ -11,10 +11,14 @@
             "id": "265c193f0d48319c",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "SQL 🛢/Untitled.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Untitled"
             }
           }
         ]
@@ -177,6 +181,8 @@
   },
   "active": "a9d4e10e066d511e",
   "lastOpenFiles": [
+    "DATABASES ⛃",
+    "SQL 🛢/Untitled.md",
     "SQL 🛢",
     "LARAVEL 🐘/📜PAGE EXAMPLE.md",
     "LINUX 🐧",
@@ -211,7 +217,6 @@
     "Pasted image 20250719013618.png",
     "GIT 👾/🧠 Git Cheat Sheet.md",
     "ONLINE/MODERN PHP",
-    "GIT 👾",
     "teste12/fsfdfsdf.md",
     "sadada/Welcome.md",
     "fdsfsfsdf/Untitled.md"
