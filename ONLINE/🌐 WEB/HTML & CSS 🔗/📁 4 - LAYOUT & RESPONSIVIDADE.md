@@ -65,7 +65,6 @@ Media queries permitem aplicar estilos CSS diferentes com base nas característi
 
 ### Densidade de Pixels
 
-
 ```css
 @media (resolution: 96dpi) { ... }           /* Resolução exata */
 @media (min-resolution: 300dpi) { ... }      /* Resolução mínima (telas de alta densidade) */
@@ -74,8 +73,6 @@ Media queries permitem aplicar estilos CSS diferentes com base nas característi
 ```
 
 ### Recursos do Dispositivo
-
-cssresponse-action-icon
 
 ```css
 @media (hover: hover) { ... }           /* Dispositivo tem capacidade de hover */
@@ -89,8 +86,6 @@ cssresponse-action-icon
 
 ## Operadores Lógicos
 
-cssresponse-action-icon
-
 ```css
 @media screen and (min-width: 768px) { ... }  /* AND: ambas condições verdadeiras */
 @media screen or (min-width: 768px) { ... }   /* OR: qualquer condição verdadeira */
@@ -98,8 +93,6 @@ cssresponse-action-icon
 ```
 
 ## Breakpoints Comuns
-
-cssresponse-action-icon
 
 ```css
 /* Mobile First (recomendado) */
@@ -133,8 +126,6 @@ body {
 
 ## Media Queries no HTML
 
-htmlresponse-action-icon
-
 ```html
 <!-- Adapta viewport para dispositivos móveis -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -149,8 +140,6 @@ htmlresponse-action-icon
 ```
 
 ## Imagens Responsivas com Media Queries
-
-cssresponse-action-icon
 
 ```css
 /* Imagem de fundo diferente para cada tamanho de tela */
@@ -172,8 +161,6 @@ cssresponse-action-icon
 ```
 
 ## Layout Responsivo com Grid
-
-cssresponse-action-icon
 
 ```css
 .grid-container {
@@ -208,8 +195,6 @@ cssresponse-action-icon
 
 ## Menu Responsivo
 
-cssresponse-action-icon
-
 ```css
 /* Estilo base do menu (mobile) */
 .nav-menu {
@@ -243,3 +228,32 @@ cssresponse-action-icon
 4. **Teste em dispositivos reais**: Ou use ferramentas de inspeção do navegador para simular.
 5. **Use unidades relativas**: Prefira rem, em, % em vez de pixels fixos.
 6. **Foque em componentes**: Escreva media queries por componente, não para toda a página.
+
+---
+
+# 📄 13 - DESIGN RESPONSIVO
+
+## Princípios Fundamentais
+
+### 1. Layout Fluido
+Usar unidades relativas (%, vw, vh, rem) em vez de unidades fixas (px):
+
+```css
+/* Layout fluido */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+/* Texto fluido */
+body {
+  font-size: calc(16px + 0.5vw);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+````
+
