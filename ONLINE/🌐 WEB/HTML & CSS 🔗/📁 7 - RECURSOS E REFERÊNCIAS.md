@@ -278,5 +278,96 @@
 
 ### Z
 - **Zero Config**: Ferramentas que funcionam com configuração mínima ou nenhuma
+
+---
+
+# 📄 22 - GUIA DE REFERÊNCIA RÁPIDA
+
+### Estrutura Básica
+```html
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título da Página</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Conteúdo da página -->
+</body>
+</html>
+````
+
+### Elementos de Texto
+
+| Elemento     | Descrição                                        |
+| ------------ | ------------------------------------------------ |
+| <h1> a <h6>  | Títulos (do mais importante ao menos importante) |
+| <p>          | Parágrafo                                        |
+| <br>         | Quebra de linha                                  |
+| <hr>         | Linha horizontal                                 |
+| <strong>     | Texto em negrito com ênfase semântica            |
+| <b>          | Texto em negrito sem ênfase semântica            |
+| <em>         | Texto em itálico com ênfase semântica            |
+| <i>          | Texto em itálico sem ênfase semântica            |
+| <mark>       | Texto marcado/destacado                          |
+| <small>      | Texto menor                                      |
+| <del>        | Texto riscado                                    |
+| <ins>        | Texto sublinhado (inserido)                      |
+| <sub>        | Texto subscrito                                  |
+| <sup>        | Texto sobrescrito                                |
+| <q>          | Citação curta inline                             |
+| <blockquote> | Bloco de citação                                 |
+| <abbr>       | Abreviação                                       |
+| <address>    | Informações de contato                           |
+| <cite>       | Título de trabalho                               |
+| <code>       | Código de computador                             |
+
+### Links
+
+```html
+<!-- Link básico -->
+<a href="https://www.exemplo.com">Texto do link</a>
+
+<!-- Link em nova aba -->
+<a href="https://www.exemplo.com" target="_blank" rel="noopener noreferrer">Abre em nova aba</a>
+
+<!-- Link para email -->
+<a href="mailto:contato@exemplo.com">Enviar email</a>
+
+<!-- Link para telefone -->
+<a href="tel:+1234567890">Ligar</a>
+
+<!-- Link para âncora na mesma página -->
+<a href="#secao">Ir para seção</a>
+<div id="secao">Conteúdo da seção</div>
 ```
+
+### Imagens e Mídia
+
+```html
+<!-- Imagem básica -->
+<img src="imagem.jpg" alt="Descrição da imagem">
+
+<!-- Imagem com dimensões -->
+<img src="imagem.jpg" alt="Descrição" width="300" height="200">
+
+<!-- Imagem com legenda -->
+<figure>
+  <img src="imagem.jpg" alt="Descrição">
+  <figcaption>Legenda da imagem</figcaption>
+</figure>
+
+<!-- Vídeo -->
+<video width="320" height="240" controls>
+  <source src="video.mp4" type="video/mp4">
+  <source src="video.webm" type="video/webm">
+  Seu navegador não suporta o elemento de vídeo.
+</video>
+
+<!-- Áudio -->
+<audio controls>
+  <source src="audio.mp3" type="audio/mpeg">
+  <source src="audio.ogg" type="
 ```
