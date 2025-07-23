@@ -216,11 +216,37 @@ FROM Invoice;
 ```
 
 ```sql
-
-
+SELECT FORMAT(GETDATE(), 'MM-dd-yyyy');
 ```
 
 ```sql
-
+SELECT DATEDIFF(day, '2022-01-01', '2023-01-01');
 ```
 
+### Funções de Agregação
+
+```sql
+SELECT COUNT(InvoiceId) 
+FROM Invoice
+WHERE Total > 10;
+```
+
+```sql
+SELECT MIN(Total) 
+FROM Invoice;
+```
+
+```sql
+SELECT MAX(Total) 
+FROM Invoice;
+```
+
+
+## 🔗 JOINING TABLES
+
+### 🔸 INNER JOIN
+
+Retorna apenas linhas com correspondência em ambas as tabelas.
+```sql
+
+```
