@@ -494,8 +494,6 @@ h1 {
 
 ### Picture Element
 
-htmlresponse-action-icon
-
 ```html
 <picture>
   <source media="(min-width: 1200px)" srcset="imagem-desktop.jpg">
@@ -508,15 +506,11 @@ htmlresponse-action-icon
 
 ### Abordagem com Overflow
 
-cssresponse-action-icon
-
 ```css
 .table-container {
   overflow-x: auto;
 }
 ```
-
-htmlresponse-action-icon
 
 ```html
 <div class="table-container">
@@ -527,8 +521,6 @@ htmlresponse-action-icon
 ```
 
 ### Reorganização para Mobile
-
-cssresponse-action-icon
 
 ```css
 @media (max-width: 768px) {
@@ -565,8 +557,6 @@ cssresponse-action-icon
 }
 ```
 
-htmlresponse-action-icon
-
 ```html
 <table>
   <thead>
@@ -588,8 +578,6 @@ htmlresponse-action-icon
 ```
 
 ## Formulários Responsivos
-
-cssresponse-action-icon
 
 ```css
 .form-group {
@@ -615,8 +603,6 @@ cssresponse-action-icon
 }
 ```
 
-htmlresponse-action-icon
-
 ```html
 <form>
   <div class="form-row">
@@ -628,3 +614,208 @@ htmlresponse-action-icon
     <div class="form-group half">
       <label for="lastname">Sobrenome</label>
 ```
+
+```markdown
+    <div class="form-group half">
+      <label for="lastname">Sobrenome</label>
+      <input type="text" id="lastname" class="form-control">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" class="form-control">
+  </div>
+  
+  <div class="form-group">
+    <label for="message">Mensagem</label>
+    <textarea id="message" class="form-control" rows="5"></textarea>
+  </div>
+  
+  <button type="submit" class="btn">Enviar</button>
+</form>
+```
+
+## Vídeos Responsivos
+
+### Container com Proporção Fixa
+
+cssresponse-action-icon
+
+```css
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe,
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+```
+
+htmlresponse-action-icon
+
+```html
+<div class="video-container">
+  <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+</div>
+```
+
+## Padrões de Layout Responsivo
+
+### Layout de Cards
+
+cssresponse-action-icon
+
+```css
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 15px;
+  flex-grow: 1;
+}
+```
+
+### Layout de Alternância Texto-Imagem
+
+cssresponse-action-icon
+
+```css
+.text-image-section {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0;
+}
+
+.text-content,
+.image-container {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .text-image-section {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .text-content,
+  .image-container {
+    width: 50%;
+  }
+  
+  /* Alternar direção para seções pares */
+  .text-image-section:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+}
+```
+
+### Layout de Hero Responsivo
+
+cssresponse-action-icon
+
+```css
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  max-width: 600px;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 8vw, 4rem);
+  margin-bottom: 20px;
+  color: white;
+}
+
+.hero-text {
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  margin-bottom: 30px;
+  color: white;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay escuro */
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh;
+  }
+}
+```
+
+## Testes de Responsividade
+
+### Ferramentas de Teste
+
+1. **DevTools do Navegador** - Chrome, Firefox, Edge têm modo responsivo
+2. **Simuladores de Dispositivo** - BrowserStack, LambdaTest
+3. **Testes em Dispositivos Reais** - Smartphones, tablets de diferentes tamanhos
+
+### Checklist de Responsividade
+
+- [ ]  Site funciona em todas as larguras de tela (320px - 1920px+)
+- [ ]  Texto é legível sem zoom em dispositivos móveis
+- [ ]  Elementos interativos têm tamanho adequado para toque (min. 44x44px)
+- [ ]  Menus navegáveis em telas pequenas
+- [ ]  Não há rolagem horizontal em telas pequenas
+- [ ]  Imagens carregam corretamente e mantêm proporção
+- [ ]  Formulários são utilizáveis em dispositivos móveis
+- [ ]  Contraste adequado em diferentes tamanhos de tela
+- [ ]  Performance é boa em conexões móveis
+
+## Dicas e Melhores Práticas
+
+1. **Comece pelo mobile** (Mobile First Design)
+2. **Use unidades relativas** (rem, em, %, vw, vh)
+3. **Teste frequentemente** em diferentes dispositivos
+4. **Mantenha a performance** otimizando imagens e recursos
+5. **Considere a acessibilidade** em todos os tamanhos de tela
+6. **Simplifique para telas menores** quando necessário
+7. **Priorize o conteúdo mais importante** em telas pequenas
+8. **Evite elementos que dependem de hover** em interfaces touch
