@@ -687,3 +687,24 @@ vertical-align: text-top;   /* Alinha com o topo do texto */
 vertical-align: text-bottom; /* Alinha com a base do texto */
 vertical-align: 5px;        /* Deslocamento específico */
 ```
+
+## Fontes Web
+
+### @font-face
+
+cssresponse-action-icon
+
+```css
+@font-face {
+  font-family: 'MinhaFonte';
+  src: url('minhafonte.woff2') format('woff2'),
+       url('minhafonte.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;  /* Estratégia de carregamento */
+}
+
+/* Uso da fonte */
+.elemento {
+  font-family: 'MinhaFonte', sans
+```
