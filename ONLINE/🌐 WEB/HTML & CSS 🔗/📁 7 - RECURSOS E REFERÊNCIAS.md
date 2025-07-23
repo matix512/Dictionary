@@ -1576,3 +1576,102 @@ button, input, select, textarea {
 # 📄 23 - RECURSOS E LINKS ÚTEIS
 
 
+
+```markdown
+# Recursos e Links Úteis
+
+## Documentação Oficial
+
+### HTML
+- [MDN Web Docs - HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML) - Documentação completa sobre HTML
+- [HTML Living Standard](https://html.spec.whatwg.org/) - Especificação oficial do HTML
+- [W3C HTML](https://www.w3.org/html/) - Grupo de trabalho do W3C para HTML
+
+### CSS
+- [MDN Web Docs - CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS) - Documentação completa sobre CSS
+- [W3C CSS](https://www.w3.org/Style/CSS/) - Especificações oficiais do CSS
+- [CSS-Tricks](https://css-tricks.com/) - Tutoriais e dicas sobre CSS
+
+## Ferramentas Online
+
+### Editores de Código
+- [CodePen](https://codepen.io/) - Editor de código online para experimentos
+- [JSFiddle](https://jsfiddle.net/) - Ambiente de teste para HTML, CSS e JavaScript
+- [CodeSandbox](https://codesandbox.io/) - IDE online para desenvolvimento web
+- [StackBlitz](https://stackblitz.com/) - IDE online com suporte a projetos completos
+
+### Validação e Testes
+- [W3C Markup Validation Service](https://validator.w3.org/) - Validador oficial de HTML
+- [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) - Validador oficial de CSS
+- [Can I Use](https://caniuse.com/) - Compatibilidade de recursos web entre navegadores
+- [PageSpeed Insights](https://pagespeed.web.dev/) - Análise de desempenho de páginas web
+- [WebPageTest](https://www.webpagetest.org/) - Teste de performance avançado
+
+### Ferramentas de Cores
+- [Coolors](https://coolors.co/) - Gerador de paletas de cores
+- [Adobe Color](https://color.adobe.com/) - Criação e exploração de temas de cores
+- [ColorSpace](https://mycolor.space/) - Gerador de harmonias de cores
+- [Contrast Checker](https://webaim.org/resources/contrastchecker/) - Verificador de contraste para acessibilidade
+- [ColorZilla](https://www.colorzilla.com/) - Seletor de cores para navegadores
+
+### Tipografia
+- [Google Fonts](https://fonts.google.com/) - Biblioteca gratuita de fontes
+- [Font Pair](https://www.fontpair.co/) - Combinações de fontes que funcionam bem juntas
+- [Type Scale](https://type-scale.com/) - Calculadora de escala tipográfica
+- [Fontjoy](https://fontjoy.com/) - Gerador de combinações de fontes usando IA
+- [Font Squirrel](https://www.fontsquirrel.com/) - Fontes gratuitas para uso comercial
+
+### Geradores CSS
+- [CSS Grid Generator](https://cssgrid-generator.netlify.app/) - Gerador visual de layouts CSS Grid
+- [Flexbox Generator](https://loading.io/flexbox/) - Gerador visual de layouts Flexbox
+- [CSS Gradient](https://cssgradient.io/) - Gerador de gradientes CSS
+- [Animista](https://animista.net/) - Gerador de animações CSS
+- [Cubic Bezier](https://cubic-bezier.com/) - Criador de curvas de timing para transições
+- [Neumorphism.io](https://neumorphism.io/) - Gerador de design neumórfico
+- [Glassmorphism](https://hype4.academy/tools/glassmorphism-generator) - Gerador de efeito vidro (glassmorphism)
+
+### Imagens e Gráficos
+- [Unsplash](https://unsplash.com/) - Fotos gratuitas de alta qualidade
+- [SVG Repo](https://www.svgrepo.com/) - Coleção de ícones e ilustrações SVG
+- [Hero Patterns](https://heropatterns.com/) - Padrões de fundo SVG
+- [CSS Clip Path Maker](https://bennettfeely.com/clippy/) - Gerador de clip-path
+- [Remove.bg](https://www.remove.bg/) - Remove fundos de imagens automaticamente
+- [TinyPNG](https://tinypng.com/) - Compressão de imagens PNG e JPEG
+
+### Ícones
+- [Font Awesome](https://fontawesome.com/) - Conjunto de ícones vetoriais
+- [Material Icons](https://fonts.google.com/icons) - Ícones do Material Design
+- [Feather Icons](https://feathericons.com/) - Ícones simples e elegantes
+- [Iconify](https://iconify.design/) - Mais de 100.000 ícones de vários conjuntos
+- [Flaticon](https://www.flaticon.com/) - Ícones gratuitos em PNG, SVG, EPS, PSD e BASE 64
+
+## Tutoriais e Cursos
+
+### Plataformas de Aprendizado
+- [freeCodeCamp](https://www.freecodecamp.org/) - Cursos gratuitos de desenvolvimento web
+- [Codecademy](https://www.codecademy.com/) - Cursos interativos de programação
+- [Mozilla Developer Network (MDN)](https://developer.mozilla.org/pt-BR/docs/Learn) - Guias de aprendizado web
+- [W3Schools](https://www.w3schools.com/) - Tutoriais e referências para tecnologias web
+- [CSS-Tricks](https://css-tricks.com/) - Artigos, tutoriais e dicas sobre CSS
+- [Traversy Media](https://www.traversymedia.com/) - Tutoriais e cursos em vídeo
+
+### Jogos para Aprendizado
+- [Flexbox Froggy](https://flexboxfroggy.com/) - Aprenda Flexbox jogando
+- [Grid Garden](https://cssgridgarden.com/) - Aprenda CSS Grid jogando
+- [CSS Diner](https://flukeout.github.io/) - Aprenda seletores CSS jogando
+- [Flexbox Defense](http://www.flexboxdefense.com/) - Jogo de tower defense para aprender Flexbox
+
+## Frameworks e Bibliotecas
+
+### CSS Frameworks
+- [Bootstrap](https://getbootstrap.com/) - Framework CSS mais popular
+- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utility-first
+- [Bulma](https://bulma.io/) - Framework CSS moderno baseado em Flexbox
+- [Foundation](https://get.foundation/) - Framework responsivo avançado
+
+### Pré-processadores
+- [Sass](https://sass-lang.com/) - O mais popular pré-processador CSS
+- [Less](https://lesscss.org/) - Pré-processador CSS semelhante ao CSS
+- [Stylus](https://stylus-lang.com
+````
+
