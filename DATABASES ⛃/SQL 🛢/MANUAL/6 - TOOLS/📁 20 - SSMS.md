@@ -344,8 +344,6 @@ ORDER BY AvgOrderValue DESC;
 
 #### **Performance Tuning Advisor:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Database Engine Tuning Advisor (DTA)
 -- 1. Tools → "Database Engine Tuning Advisor"
@@ -375,8 +373,6 @@ ORDER BY rs.avg_duration DESC;
 
 #### **Logins e Users:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Criar SQL Server Login
 CREATE LOGIN JohnDoe WITH PASSWORD = 'StrongPassword123!';
@@ -397,8 +393,6 @@ CREATE USER JohnDoe FOR LOGIN JohnDoe;
 ```
 
 #### **Roles e Permissions:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Database Roles predefinidas
@@ -576,8 +570,6 @@ EXEC dbo.sp_add_jobserver
 
 #### **SQL Server Import/Export Wizard:**
 
-textresponse-action-icon
-
 ```text
 Right-click Database → "Tasks" → "Import Data..." ou "Export Data..."
 
@@ -599,8 +591,6 @@ Processo:
 ```
 
 #### **BULK INSERT para Ficheiros:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Preparar tabela de staging
@@ -639,8 +629,6 @@ AND FirstName IS NOT NULL;
 
 #### **SQL Server Profiler:**
 
-textresponse-action-icon
-
 ```text
 Tools → "SQL Server Profiler"
 
@@ -656,8 +644,6 @@ Filtros: Application, Database, Duration > X
 ```
 
 #### **Database Diagram:**
-
-textresponse-action-icon
 
 ```text
 -- Criar Database Diagram
@@ -677,8 +663,6 @@ EXEC sp_changedbowner 'sa';
 ### **🎯 Exercícios Práticos SSMS:**
 
 #### **Exercício 1 - Setup Completo:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Criar nova database via wizard

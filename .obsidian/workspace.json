@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 20 - SSMS.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 23 - BACKUP & RESTORE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📁 20 - SSMS"
+              "title": "📁 23 - BACKUP & RESTORE"
             }
           }
         ]
@@ -193,6 +193,9 @@
   },
   "active": "19bc7392c8a4f39a",
   "lastOpenFiles": [
+    "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 22 - DEBUGGING e EXPLAIN.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 21 -MYSQL WORKBENCH.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 20 - SSMS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE/📁 19 - TRIGGERS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE/📁 18 - STORED PROCEDURES.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE/📁 17 - VIEWS.md",
@@ -220,9 +223,6 @@
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS",
     "DATABASES ⛃/COURSERA",
     "DATABASES ⛃/CURSOEMVIDEO",
-    "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/04. FUNCTIONS.md",
-    "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/03. CONTROL STRUCTURES.md",
-    "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/02. OPERATORS.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑",
     "JAVASCRIPT ｡🇯‌🇸‌",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS",
