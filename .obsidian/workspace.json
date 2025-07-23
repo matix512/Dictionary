@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "3c417fe92f6b15e7",
@@ -166,7 +166,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -179,7 +179,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "19bc7392c8a4f39a",
+  "active": "76af6513452d4038",
   "lastOpenFiles": [
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/03. CONTROL STRUCTURES.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/02. OPERATORS.md",
