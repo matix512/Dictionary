@@ -429,8 +429,6 @@ button:disabled {
 }
 ```
 
-htmlresponse-action-icon
-
 ```html
 <!-- Uso dos estilos personalizados -->
 <label class="custom-checkbox">
@@ -447,8 +445,6 @@ htmlresponse-action-icon
 ```
 
 ### Estilizando Select
-
-cssresponse-action-icon
 
 ```css
 .custom-select {
@@ -473,8 +469,6 @@ cssresponse-action-icon
 }
 ```
 
-htmlresponse-action-icon
-
 ```html
 <div class="custom-select">
   <select name="categoria">
@@ -486,8 +480,6 @@ htmlresponse-action-icon
 ```
 
 ### Input de Arquivo Personalizado
-
-cssresponse-action-icon
 
 ```css
 .custom-file {
@@ -530,8 +522,6 @@ cssresponse-action-icon
 }
 ```
 
-htmlresponse-action-icon
-
 ```html
 <div class="custom-file">
   <input type="file" class="custom-file-input" id="arquivo" name="arquivo">
@@ -542,8 +532,6 @@ htmlresponse-action-icon
 ## Estados e Validação
 
 ### Estilos para Estados
-
-cssresponse-action-icon
 
 ```css
 /* Validação nativa */
@@ -595,8 +583,6 @@ textarea:read-only {
 
 ### Validação de Formulário com HTML5
 
-htmlresponse-action-icon
-
 ```html
 <form novalidate>
   <div class="form-group">
@@ -626,8 +612,6 @@ htmlresponse-action-icon
   <button type="submit">Enviar</button>
 </form>
 ```
-
-javascriptresponse-action-icon
 
 ```javascript
 // Validação básica com JavaScript
@@ -672,8 +656,6 @@ form.addEventListener('submit', function(event) {
 
 ### Formulário em Linha
 
-cssresponse-action-icon
-
 ```css
 .form-inline {
   display: flex;
@@ -707,8 +689,6 @@ cssresponse-action-icon
 
 ### Formulário em Grid
 
-cssresponse-action-icon
-
 ```css
 .form-grid {
   display: grid;
@@ -728,8 +708,6 @@ cssresponse-action-icon
 ```
 
 ### Formulário em Etapas
-
-cssresponse-action-icon
 
 ```css
 .form-steps {
@@ -770,3 +748,455 @@ cssresponse-action-icon
 ```
 
 
+## Acessibilidade em Formulários
+
+### Práticas Recomendadas
+
+```markdown
+<!-- Use labels explicitamente associados aos inputs -->
+<label for="nome">Nome:</label>
+<input type="text" id="nome" name="nome">
+
+<!-- Use atributos aria para melhor suporte a leitores de tela -->
+<div class="form-group">
+  <label for="senha">Senha:</label>
+  <input 
+    type="password" 
+    id="senha" 
+    name="senha" 
+    aria-required="true" 
+    aria-describedby="senha-help"
+  >
+  <div id="senha-help" class="help-text">Senha deve ter pelo menos 8 caracteres.</div>
+</div>
+
+<!-- Agrupe campos relacionados com fieldset e legend -->
+<fieldset>
+  <legend>Endereço de Entrega</legend>
+  <!-- campos de endereço -->
+</fieldset>
+
+<!-- Indique campos obrigatórios -->
+<label for="email">Email: <span class="required">*</span></label>
+<input type="email" id="email" name="email" required>
+
+<div class="required-note">* Campos obrigatórios</div>
+
+<!-- Forneça feedback claro para erros -->
+<div class="form-group has-error">
+  <label for="telefone">Telefone:</label>
+  <input 
+    type="tel" 
+    id="telefone" 
+    name="telefone"
+    aria-invalid="true"
+    aria-describedby="telefone-error"
+  >
+  <div id="telefone-error" class="error-message" role="alert">
+    Por favor, digite um número de telefone válido.
+  </div>
+</div>
+
+<!-- Uso adequado de botões -->
+<button type="submit" aria-label="Enviar formulário">Enviar</button>
+<button type="button" aria-label="Cancelar e limpar formulário">Cancelar</button>
+```
+
+### CSS para Acessibilidade
+
+cssresponse-action-icon
+
+```css
+/* Destacar o foco claramente */
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+/* Contraste adequado */
+label {
+  color: #333; /* Contraste suficiente */
+}
+
+.help-text,
+::placeholder {
+  color: #555; /* Não use cinza claro que é difícil de ler */
+}
+
+/* Indicador de campo obrigatório */
+.required {
+  color: #dc3545;
+}
+
+.required-note {
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  color: #555;
+}
+
+/* Tamanhos de toque adequados para mobile */
+@media (max-width: 768px) {
+  button,
+  input,
+  select {
+    min-height: 44px; /* Recomendação WCAG */
+  }
+  
+  [type="checkbox"],
+  [type="radio"] {
+    min-height: 0;
+  }
+  
+  .custom-checkbox,
+  .custom-radio {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+```
+
+## Exemplos Práticos
+
+### Formulário de Login
+
+htmlresponse-action-icon
+
+```html
+<form class="login-form">
+  <h2>Entrar</h2>
+  
+  <div class="form-group">
+    <label for="login-email">Email:</label>
+    <input 
+      type="email" 
+      id="login-email" 
+      name="email" 
+      required 
+      autocomplete="username"
+    >
+  </div>
+  
+  <div class="form-group">
+    <label for="login-senha">Senha:</label>
+    <div class="password-field">
+      <input 
+        type="password" 
+        id="login-senha" 
+        name="senha" 
+        required 
+        autocomplete="current-password"
+      >
+      <button type="button" class="toggle-password" aria-label="Mostrar senha">
+        <span class="icon">👁️</span>
+      </button>
+    </div>
+  </div>
+  
+  <div class="form-group remember-me">
+    <label class="custom-checkbox">
+      Lembrar de mim
+      <input type="checkbox" name="remember">
+      <span class="checkmark"></span>
+    </label>
+    <a href="#" class="forgot-password">Esqueceu a senha?</a>
+  </div>
+  
+  <button type="submit" class="btn-submit">Entrar</button>
+  
+  <div class="form-footer">
+    Não tem uma conta? <a href="#">Cadastre-se</a>
+  </div>
+</form>
+```
+
+cssresponse-action-icon
+
+```css
+.login-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.password-field {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+}
+
+.remember-me {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+}
+
+.form-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+```
+
+### Formulário de Contato Responsivo
+
+htmlresponse-action-icon
+
+```html
+<form class="contact-form">
+  <h2>Entre em Contato</h2>
+  
+  <div class="form-row">
+    <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="assunto">Assunto:</label>
+    <input type="text" id="assunto" name="assunto" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="mensagem">Mensagem:</label>
+    <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label class="custom-checkbox">
+      Desejo receber notícias e atualizações
+      <input type="checkbox" name="newsletter">
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  
+  <div class="form-row">
+    <button type="reset" class="btn-secondary">Limpar</button>
+    <button type="submit" class="btn-primary">Enviar Mensagem</button>
+  </div>
+</form>
+```
+
+cssresponse-action-icon
+
+```css
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+```
+
+### Formulário de Registro com Validação
+
+htmlresponse-action-icon
+
+```html
+<form class="signup-form" novalidate>
+  <h2>Criar Conta</h2>
+  
+  <div class="form-group">
+    <label for="signup-nome">Nome Completo:</label>
+    <input 
+      type="text" 
+      id="signup-nome" 
+      name="nome" 
+      required
+      minlength="3"
+      autocomplete="name"
+    >
+    <div class="error-message"></div>
+  </div>
+  
+  <div class="form-group">
+    <label for="signup-email">Email:</label>
+    <input 
+      type="email" 
+      id="signup-email" 
+      name="email" 
+      required
+      autocomplete="email"
+    >
+    <div class="error-message"></div>
+  </div>
+  
+  <div class="form-group">
+    <label for="signup-senha">Senha:</label>
+    <input 
+      type="password" 
+      id="signup-senha" 
+      name="senha" 
+      required
+      minlength="8"
+      aria-describedby="password-requirements"
+      autocomplete="new-password"
+    >
+    <div id="password-requirements" class="help-text">
+      Senha deve conter pelo menos 8 caracteres, incluindo letras maiúsculas,
+      minúsculas, números e símbolos.
+    </div>
+    <div class="error-message"></div>
+  </div>
+  
+  <div class="form-group">
+    <label for="signup-confirmar">Confirmar Senha:</label>
+    <input 
+      type="password" 
+      id="signup-confirmar" 
+      name="confirmar_senha" 
+      required
+      autocomplete="new-password"
+    >
+    <div class="error-message"></div>
+  </div>
+  
+  <div class="form-group">
+    <label class="custom-checkbox">
+      Concordo com os <a href="#">Termos e Condições</a>
+      <input type="checkbox" name="termos" required>
+      <span class="checkmark"></span>
+    </label>
+    <div class="error-message"></div>
+  </div>
+  
+  <button type="submit" class="btn-submit">Criar Conta</button>
+  
+  <div class="form-footer">
+    Já tem uma conta? <a href="#">Faça login</a>
+  </div>
+</form>
+```
+
+cssresponse-action-icon
+
+```css
+.signup-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.help-text {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  min-height: 20px;
+}
+
+/* Estilos para validação visual */
+input.is-valid {
+  border-color: #28a745;
+  background-image: url("data:image/svg+xml,..."); /* Ícone de verificação */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+  padding-right: 40px;
+}
+
+input.is-invalid {
+  border-color: #dc3545;
+  background-image: url("data:image/svg+xml,..."); /* Ícone de erro */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+  padding-right: 40px;
+}
+```
+
+## Considerações de Segurança
+
+### Proteção Contra Ataques
+
+1. **Nunca confie em dados do cliente**: Sempre valide no servidor
+2. **Proteja contra CSRF**: Use tokens CSRF
+3. **Limite uploads**: Verifique tamanho e tipo de arquivos
+4. **Sanitize inputs**: Evite XSS e injeção de código
+5. **Use HTTPS**: Proteja dados durante a transmissão
+6. **Implementar CAPTCHA/reCAPTCHA**: Para formulários públicos
+7. **Limite tentativas**: Evite força bruta em formulários de login
+
+### GDPR e Privacidade
+
+1. Inclua avisos claros sobre o uso dos dados
+2. Obtenha consentimento explícito
+3. Ofereça opção de opt-out para newsletters
+4. Não colete mais dados do que o necessário
+5. Informe sobre cookies e rastreamento
