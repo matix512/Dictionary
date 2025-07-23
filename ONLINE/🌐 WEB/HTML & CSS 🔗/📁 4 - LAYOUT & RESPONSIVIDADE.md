@@ -1160,8 +1160,6 @@ O gap é uma propriedade moderna que substitui margens entre itens flex:
 
 ### Flexbox para Formulários
 
-cssresponse-action-icon
-
 ```css
 .form-row {
   display: flex;
@@ -1196,8 +1194,6 @@ cssresponse-action-icon
 
 ### Diagonal Layout com Flexbox
 
-cssresponse-action-icon
-
 ```css
 .diagonal-layout {
   display: flex;
@@ -1219,8 +1215,6 @@ cssresponse-action-icon
 ```
 
 ### Split Screen com Flexbox
-
-cssresponse-action-icon
 
 ```css
 .split-screen {
@@ -1276,8 +1270,6 @@ cssresponse-action-icon
 
 ### Larguras Iguais Independente do Conteúdo
 
-cssresponse-action-icon
-
 ```css
 .equal-width {
   display: flex;
@@ -1289,8 +1281,6 @@ cssresponse-action-icon
 ```
 
 ### Último Item na Direita
-
-cssresponse-action-icon
 
 ```css
 .navbar {
@@ -1304,8 +1294,6 @@ cssresponse-action-icon
 
 ### Evitando que Itens Encolham Abaixo do Conteúdo
 
-cssresponse-action-icon
-
 ```css
 .no-shrink {
   flex-shrink: 0; /* Não encolhe abaixo do tamanho do conteúdo */
@@ -1313,8 +1301,6 @@ cssresponse-action-icon
 ```
 
 ### Distribução Automática em Múltiplas Linhas
-
-cssresponse-action-icon
 
 ```css
 .auto-grid {
