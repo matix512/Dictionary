@@ -68,7 +68,7 @@
 - Código mais legível
 - Manutenção facilitada
 
-### 📄 04 - TEXTO & TIPOGRAFIA
+# 📄 04 - TEXTO & TIPOGRAFIA
 
 # Texto & Tipografia HTML
 
@@ -83,7 +83,6 @@
 ````
 
 ## Parágrafos e Quebras
-
 ```html
 <p>Este é um parágrafo de texto.</p>
 <br> <!-- Quebra de linha -->
@@ -91,9 +90,6 @@
 ```
 
 ## Formatação de Texto
-
-htmlresponse-action-icon
-
 ```html
 <strong>Texto em negrito</strong> ou <b>negrito</b>
 <em>Texto em itálico</em> ou <i>itálico</i>
@@ -105,9 +101,6 @@ htmlresponse-action-icon
 ```
 
 ## Listas
-
-htmlresponse-action-icon
-
 ```html
 <!-- Lista não ordenada -->
 <ul>
@@ -133,9 +126,6 @@ htmlresponse-action-icon
 ```
 
 ## Citações
-
-htmlresponse-action-icon
-
 ```html
 <blockquote>
     <p>Esta é uma citação longa que ocupa um bloco separado.</p>
@@ -146,9 +136,6 @@ htmlresponse-action-icon
 ```
 
 ## Código
-
-htmlresponse-action-icon
-
 ```html
 <code>console.log("Código inline");</code>
 
@@ -169,11 +156,12 @@ function exemplo() {
 - Não use quebras de linha para espaçamento (use CSS)
 - Evite formatar texto com HTML quando o estilo deve ser CSS
 
-textresponse-action-icon
+
+# 📄 05 - LINKS & NAVEGAÇÃO
+
 
 ````text
 
-### 📄 05 - LINKS & NAVEGAÇÃO
 
 ```markdown
 # Links & Navegação
