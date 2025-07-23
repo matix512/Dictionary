@@ -6,7 +6,6 @@
 
 #### **Operações Principais:**
 
-textresponse-action-icon
 
 ```text
 ➕ ADD - Adicionar colunas, constraints, índices
@@ -19,16 +18,12 @@ textresponse-action-icon
 
 #### **Sintaxe Básica:**
 
-sqlresponse-action-icon
-
 ```sql
 ALTER TABLE table_name
 ADD COLUMN column_name datatype [constraints] [position];
 ```
 
 #### **Exemplos Práticos:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Adicionar coluna simples

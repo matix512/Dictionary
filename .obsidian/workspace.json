@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/4 - DATA STRUCTURE/📁 12 - CREATE TABLE & DDL.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/4 - DATA STRUCTURE/📁 13 - ALTER TABLE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📁 12 - CREATE TABLE & DDL"
+              "title": "📁 13 - ALTER TABLE"
             }
           }
         ]
@@ -193,6 +193,7 @@
   },
   "active": "19bc7392c8a4f39a",
   "lastOpenFiles": [
+    "DATABASES ⛃/SQL 🛢/MANUAL/4 - DATA STRUCTURE/📁 12 - CREATE TABLE & DDL.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/3- GROUPS & AGREGATION/📁 11 - BASIC SUBQUERIES.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/3- GROUPS & AGREGATION/📁 10 - AGREGGATION FUNCTIONS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/3- GROUPS & AGREGATION/📁 09 - GROUP BY & HAVING.md",
@@ -222,7 +223,6 @@
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/08. DOM MANIPULATION.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/07. OBJECTS.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/06. ARRAYS.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/4 - DATA STRUCTURE/📁 12 - CREATE TABLE & DDL.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑",
     "JAVASCRIPT ｡🇯‌🇸‌",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS",
