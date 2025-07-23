@@ -207,3 +207,20 @@ WHERE CustomerId = 5;
 SELECT AVG(Total) 
 FROM Invoice;
 ```
+
+### Funções de Data e Hora
+
+```sql
+SELECT FORMAT(InvoiceDate, 'MM-dd-yyyy') 
+FROM Invoice;
+```
+
+```sql
+
+
+```
+
+```sql
+
+```
+
