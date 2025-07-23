@@ -35,6 +35,20 @@ SELECT *
 FROM Customer;
 ```
 
+### Obter várias colunas
+```sql
+SELECT FirstName, LastName 
+FROM Customer;
+```
+
+### Ordenar por coluna (ascendente)
+
+```
+```sql
+
+CopyEdit
+
+`SELECT FirstName, LastName  FROM Customer ORDER BY LastName ASC;`
 
 
 ```
