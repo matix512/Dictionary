@@ -1421,5 +1421,535 @@ transition: propriedade duração timing-function delay;
 
 /* Animação de Bounce */
 @keyframes bounce {
-  0%, 20%,
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
 ```
+
+### Propriedades de Animação
+
+```css
+.elemento {
+  /* Propriedade completa */
+  animation: fadeIn 1s ease-out 0.5s 2 alternate forwards;
+  
+  /* Propriedades individuais */
+  animation-name: fadeIn;                 /* Nome da animação */
+  animation-duration: 1s;                 /* Duração */
+  animation-timing-function: ease-out;    /* Função de tempo */
+  animation-delay: 0.5s;                  /* Delay antes de iniciar */
+  animation-iteration-count: 2;           /* Número de repetições (ou 'infinite') */
+  animation-direction: alternate;         /* Direção (normal, reverse, alternate, alternate-reverse) */
+  animation-fill-mode: forwards;          /* Estado após animação (none, forwards, backwards, both) */
+  animation-play-state: running;          /* Estado de reprodução (running, paused) */
+}
+```
+
+### Múltiplas Animações
+
+```css
+.multi-animation {
+  /* Várias animações separadas por vírgula */
+  animation: 
+    fadeIn 1s ease-out,
+    pulse 2s ease-in-out infinite;
+}
+```
+
+## Transformações CSS
+
+### Transform 2D
+
+```css
+.elemento {
+  /* Transformação única */
+  transform: translateX(50px);
+  
+  /* Transformações combinadas (aplicadas da direita para a esquerda) */
+  transform: rotate(45deg) scale(1.5) translateX(50px);
+}
+```
+
+### Tipos de Transformação 2D
+
+```css
+/* Translação (movimento) */
+transform: translateX(20px);         /* Horizontal */
+transform: translateY(-30px);        /* Vertical */
+transform: translate(20px, -30px);   /* Ambos */
+
+/* Escala (redimensionamento) */
+transform: scaleX(1.5);              /* Horizontal */
+transform: scaleY(0.8);              /* Vertical */
+transform: scale(1.5, 0.8);          /* Ambos */
+transform: scale(1.5);               /* Proporcional */
+
+/* Rotação */
+transform: rotate(45deg);            /* Em graus (deg) */
+transform: rotate(0.5turn);          /* Em voltas (turn) */
+transform: rotate(1rad);             /* Em radianos (rad) */
+
+/* Inclinação (skew) */
+transform: skewX(15deg);             /* Horizontal */
+transform: skewY(-10deg);            /* Vertical */
+transform: skew(15deg, -10deg);      /* Ambos */
+```
+
+### Transform 3D
+
+```css
+/* Translação 3D */
+transform: translateZ(50px);                   /* Profundidade */
+transform: translate3d(20px, 30px, 50px);      /* X, Y, Z */
+
+/* Rotação 3D */
+transform: rotateX(45deg);                     /* Em torno do eixo X */
+transform: rotateY(45deg);                     /* Em torno do eixo Y */
+transform: rotateZ(45deg);                     /* Em torno do eixo Z (igual a rotate) */
+transform: rotate3d(1, 1, 1, 45deg);           /* Rotação no espaço 3D */
+
+/* Escala 3D */
+transform: scaleZ(1.5);                        /* Profundidade */
+transform: scale3d(1.5, 0.8, 2);               /* X, Y, Z */
+
+/* Perspectiva (aplicada ao elemento pai) */
+.container {
+  perspective: 1000px;
+}
+
+/* Ou diretamente na transformação */
+transform: perspective(1000px) rotateY(45deg);
+```
+
+### Origem da Transformação
+
+cssresponse-action-icon
+
+```css
+.elemento {
+  transform-origin: center;          /* Padrão */
+  transform-origin: top left;        /* Canto superior esquerdo */
+  transform-origin: bottom right;    /* Canto inferior direito */
+  transform-origin: 50px 30px;       /* Coordenadas específicas */
+  transform-origin: 50% 50% 0;       /* X, Y, Z (para 3D) */
+}
+```
+
+### Estilo de Transformação 3D
+
+cssresponse-action-icon
+
+```css
+.container {
+  transform-style: flat;             /* Padrão, elementos filhos não preservam espaço 3D */
+  transform-style: preserve-3d;      /* Filhos mantêm posicionamento 3D */
+}
+```
+
+### Visibilidade de Face
+
+cssresponse-action-icon
+
+```css
+.card {
+  backface-visibility: visible;      /* Mostra o verso do elemento (padrão) */
+  backface-visibility: hidden;       /* Esconde o verso do elemento quando rotacionado */
+}
+```
+
+## Exemplos Práticos
+
+### Botão com Hover
+
+cssresponse-action-icon
+
+```css
+.button {
+  padding: 12px 24px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+```
+
+### Card com Hover
+
+cssresponse-action-icon
+
+```css
+.card {
+  width: 300px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  max-width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+```
+
+### Menu de Navegação
+
+cssresponse-action-icon
+
+```css
+.nav-link {
+  display: inline-block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3498db;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+```
+
+### Loading Spinner
+
+cssresponse-action-icon
+
+```css
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #3498db;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+```
+
+### Flip Card
+
+cssresponse-action-icon
+
+```css
+.flip-card {
+  width: 300px;
+  height: 200px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.flip-card-front {
+  background-color: #f1f1f1;
+}
+
+.flip-card-back {
+  background-color: #3498db;
+  color: white;
+  transform: rotateY(180deg);
+}
+```
+
+### Animação de Entrada
+
+cssresponse-action-icon
+
+```css
+.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplicar a elementos em sequência */
+.staggered > * {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.staggered > *:nth-child(1) { animation-delay: 0.1s; }
+.staggered > *:nth-child(2) { animation-delay: 0.2s; }
+.staggered > *:nth-child(3) { animation-delay: 0.3s; }
+.staggered > *:nth-child(4) { animation-delay: 0.4s; }
+.staggered > *:nth-child(5) { animation-delay: 0.5s; }
+```
+
+### Modal Animation
+
+cssresponse-action-icon
+
+```css
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+  max-width: 90%;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.modal-overlay.active .modal {
+  transform: scale(1);
+  opacity: 1;
+}
+```
+
+### Hamburger Menu Animation
+
+cssresponse-action-icon
+
+```css
+.hamburger {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #333;
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburger span:nth-child(2),
+.hamburger span:nth-child(3) {
+  top: 10px;
+}
+
+.hamburger span:nth-child(4) {
+  top: 20px;
+}
+
+.hamburger.open span:nth-child(1) {
+  top: 10px;
+  width: 0%;
+  left: 50%;
+}
+
+.hamburger.open span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.hamburger.open span:nth-child(4) {
+  top: 10px;
+  width: 0%;
+  left: 50%;
+}
+```
+
+## Otimização e Performance
+
+### Propriedades Eficientes
+
+Para melhor performance, prefira animar estas propriedades:
+
+- opacity
+- transform (translate, scale, rotate)
+
+Evite animar estas propriedades quando possível:
+
+- width, height
+- top, left, bottom, right
+- margin, padding
+- background-color
+- box-shadow
+
+### Técnicas de Otimização
+
+cssresponse-action-icon
+
+```css
+/* Usar will-change para informar o navegador sobre animações futuras */
+.elemento {
+  will-change: transform, opacity;
+}
+
+/* Forçar aceleração de hardware */
+.elemento {
+  transform: translateZ(0);
+}
+
+/* Reduzir repaints usando transforms */
+.elemento {
+  /* Em vez de: */
+  /* left: 100px; */
+  /* top: 50px; */
+  
+  /* Use: */
+  transform: translate(100px, 50px);
+}
+```
+
+### Animações Responsivas
+
+cssresponse-action-icon
+
+```css
+/* Ajustar animações para dispositivos */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Animações diferentes por tamanho de tela */
+@media (max-width: 768px) {
+  .elemento {
+    animation: simpleAnimation 0.5s ease;
+  }
+}
+
+@media (min-width: 769px) {
+  .elemento {
+    animation: complexAnimation 1s ease;
+  }
+}
+```
+
+## Bibliotecas e Ferramentas
+
+### Animações Prontas
+
+- **Animate.css**: Biblioteca de animações CSS prontas para uso
+    
+    htmlresponse-action-icon
+    
+    ```html
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <div class="animate__animated animate__fadeIn">Conteúdo com fade in</div>
+    ```
+    
+- **Hover.css**: Efeitos de hover para elementos
+    
+    htmlresponse-action-icon
+    
+    ```html
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+    <button class="hvr-grow">Botão que cresce</button>
+    ```
+    
+
+### Ferramentas de Criação de Animações
+
+- **Keyframes.app**: Gerador de animações online
+- **Animista**: Biblioteca de animações personalizáveis
+- **CSS Animation Kit**: Coleção de animações e efeitos
+- **Cubic-bezier.com**: Criador de curvas de timing
