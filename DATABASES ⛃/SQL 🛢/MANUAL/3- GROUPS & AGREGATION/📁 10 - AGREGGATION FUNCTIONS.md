@@ -165,8 +165,6 @@ GROUP BY category;
 
 #### **Datas Extremas:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Primeira e última venda
 SELECT 
@@ -191,8 +189,6 @@ HAVING COUNT(*) > 1;  -- Só vendedores com múltiplas vendas
 
 #### **COUNT com CASE:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Contar por condições específicas
 SELECT 
@@ -208,8 +204,6 @@ FROM sales;
 
 #### **SUM com CASE:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Revenue por condições
 SELECT 
@@ -220,17 +214,13 @@ SUM(CASE WHEN MONTH(sale_date) = 1 THEN quantity * price ELSE 0 END) AS january_
 
 ```text
 -- Percentuais de contribuição
-ROUND(SUM(CASE WHEN salesperson = 'João' THEN quantity * price ELSE 0 END) * 100.0 / SUM(quantity * price), 2) AS joao_percentage
+ROUND(SUM(CASE WHEN salesperson = 'João' THEN quantity * price ELSE 0 END) * 100.0 / SUM(quantity * price), 2) AS joao_percentage FROM sales;
 ```
 
 
-FROM sales;
-
-textresponse-action-icon
-
-````text
 
 #### **AVG com CASE:**
+
 ```sql
 -- Médias condicionais
 SELECT 
@@ -244,8 +234,6 @@ FROM sales;
 ### **🔄 Window Functions (Agregações Avançadas):**
 
 #### **Agregações com OVER:**
-
-sqlresponse-action-icon
 
 ```sql
 -- MySQL 8.0+, SQL Server, PostgreSQL
@@ -272,8 +260,6 @@ ORDER BY sale_date;
 
 #### **Partições por Grupos:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Agregações por partição
 SELECT 
@@ -297,8 +283,6 @@ ORDER BY category, sale_value DESC;
 ### **📊 Análises Estatísticas Complexas:**
 
 #### **Quartis e Percentis:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Análise de quartis (MySQL 8.0+)
