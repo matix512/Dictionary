@@ -154,6 +154,7 @@ WHERE LastName NOT LIKE '%A';
 ```
 
 
+---
 
 ### 🧮 Filtros em múltiplas colunas
 
@@ -171,6 +172,8 @@ FROM Invoice
 WHERE Total IS NOT NULL;
 ```
 
+
+---
 ## 🔧 TRANSFORMING DATA
 
 ### Funções de Texto
@@ -241,7 +244,7 @@ SELECT MAX(Total)
 FROM Invoice;
 ```
 
-
+---
 ## 🔗 JOINING TABLES
 
 ### 🔸 INNER JOIN
@@ -272,4 +275,19 @@ JOIN Invoice
     ON Customer.State = Invoice.BillingState;
 ```
 
-🔸 FULL OUTER JOIN
+### 🔸 FULL OUTER JOIN
+
+Retorna todos os registos de ambas as tabelas, com `NULL` onde não houver correspondência.
+
+```sql
+SELECT 
+    Customer.CustomerId,
+    Customer.LastName,
+    Invoice.InvoiceId
+FROM Customer
+FULL OUTER JOIN Invoice 
+    ON Customer.State = Invoice.BillingState;
+```
+
+
+---
