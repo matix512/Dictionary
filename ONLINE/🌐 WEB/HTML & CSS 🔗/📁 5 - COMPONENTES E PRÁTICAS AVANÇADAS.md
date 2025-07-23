@@ -1530,8 +1530,6 @@ transform: perspective(1000px) rotateY(45deg);
 
 ### Origem da Transformação
 
-cssresponse-action-icon
-
 ```css
 .elemento {
   transform-origin: center;          /* Padrão */
@@ -1544,8 +1542,6 @@ cssresponse-action-icon
 
 ### Estilo de Transformação 3D
 
-cssresponse-action-icon
-
 ```css
 .container {
   transform-style: flat;             /* Padrão, elementos filhos não preservam espaço 3D */
@@ -1554,8 +1550,6 @@ cssresponse-action-icon
 ```
 
 ### Visibilidade de Face
-
-cssresponse-action-icon
 
 ```css
 .card {
@@ -1567,8 +1561,6 @@ cssresponse-action-icon
 ## Exemplos Práticos
 
 ### Botão com Hover
-
-cssresponse-action-icon
 
 ```css
 .button {
@@ -1594,8 +1586,6 @@ cssresponse-action-icon
 ```
 
 ### Card com Hover
-
-cssresponse-action-icon
 
 ```css
 .card {
@@ -1624,8 +1614,6 @@ cssresponse-action-icon
 
 ### Menu de Navegação
 
-cssresponse-action-icon
-
 ```css
 .nav-link {
   display: inline-block;
@@ -1653,8 +1641,6 @@ cssresponse-action-icon
 
 ### Loading Spinner
 
-cssresponse-action-icon
-
 ```css
 .spinner {
   width: 40px;
@@ -1673,8 +1659,6 @@ cssresponse-action-icon
 ```
 
 ### Flip Card
-
-cssresponse-action-icon
 
 ```css
 .flip-card {
@@ -1720,8 +1704,6 @@ cssresponse-action-icon
 
 ### Animação de Entrada
 
-cssresponse-action-icon
-
 ```css
 .fade-in {
   animation: fadeIn 1s ease-out forwards;
@@ -1752,8 +1734,6 @@ cssresponse-action-icon
 ```
 
 ### Modal Animation
-
-cssresponse-action-icon
 
 ```css
 .modal-overlay {
@@ -1794,8 +1774,6 @@ cssresponse-action-icon
 ```
 
 ### Hamburger Menu Animation
-
-cssresponse-action-icon
 
 ```css
 .hamburger {
@@ -1929,18 +1907,14 @@ cssresponse-action-icon
 ### Animações Prontas
 
 - **Animate.css**: Biblioteca de animações CSS prontas para uso
-    
-    htmlresponse-action-icon
-    
+   
     ```html
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <div class="animate__animated animate__fadeIn">Conteúdo com fade in</div>
     ```
     
 - **Hover.css**: Efeitos de hover para elementos
-    
-    htmlresponse-action-icon
-    
+        
     ```html
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
     <button class="hvr-grow">Botão que cresce</button>
@@ -1953,3 +1927,7 @@ cssresponse-action-icon
 - **Animista**: Biblioteca de animações personalizáveis
 - **CSS Animation Kit**: Coleção de animações e efeitos
 - **Cubic-bezier.com**: Criador de curvas de timing
+
+
+---
+
