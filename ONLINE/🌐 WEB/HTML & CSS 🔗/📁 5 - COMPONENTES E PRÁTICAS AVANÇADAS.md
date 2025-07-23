@@ -1931,3 +1931,106 @@ cssresponse-action-icon
 
 ---
 
+
+# 📄 17 - ACESSIBILIDADE
+
+
+## Princípios Fundamentais
+
+### WCAG (Web Content Accessibility Guidelines)
+
+Os princípios POUR:
+- **Perceptível**: Informações e componentes da interface devem ser apresentados de forma que os usuários possam perceber.
+- **Operável**: Componentes de interface e navegação devem ser operáveis por qualquer usuário.
+- **Compreensível**: Informações e operações da interface devem ser compreensíveis.
+- **Robusto**: O conteúdo deve ser robusto o suficiente para ser interpretado por uma variedade de agentes de usuário, incluindo tecnologias assistivas.
+
+### Níveis de Conformidade
+- **Nível A**: Nível mínimo de conformidade
+- **Nível AA**: Nível intermediário (geralmente o alvo para a maioria dos sites)
+- **Nível AAA**: Nível máximo de conformidade
+
+## HTML Acessível
+
+### Estrutura Semântica
+```html
+<!-- Use elementos semânticos para estruturar o documento -->
+<header>
+  <h1>Título do Site</h1>
+  <nav>
+    <!-- Navegação principal -->
+  </nav>
+</header>
+
+<main>
+  <article>
+    <h2>Título do Artigo</h2>
+    <p>Conteúdo...</p>
+    
+    <section>
+      <h3>Seção do Artigo</h3>
+      <p>Mais conteúdo...</p>
+    </section>
+  </article>
+  
+  <aside>
+    <h2>Conteúdo Relacionado</h2>
+    <!-- Conteúdo secundário -->
+  </aside>
+</main>
+
+<footer>
+  <!-- Rodapé do site -->
+</footer>
+````
+
+### Hierarquia de Títulos
+
+```html
+<!-- Use títulos em ordem hierárquica correta -->
+<h1>Título Principal</h1>
+  <h2>Subtítulo</h2>
+    <h3>Seção</h3>
+    <h3>Outra Seção</h3>
+  <h2>Outro Subtítulo</h2>
+```
+
+### Texto Alternativo para Imagens
+
+```html
+<!-- Imagem informativa -->
+<img src="grafico-vendas.jpg" alt="Gráfico mostrando aumento de 20% nas vendas em 2023">
+
+<!-- Imagem decorativa -->
+<img src="decorativa.jpg" alt="" role="presentation">
+<!-- ou -->
+<div role="img" aria-label="Descrição da imagem de fundo"></div>
+
+<!-- Imagem complexa com descrição longa -->
+<figure>
+  <img src="diagrama.jpg" alt="Diagrama simplificado do processo" aria-describedby="desc-diagrama">
+  <figcaption id="desc-diagrama">
+    O diagrama mostra o fluxo de trabalho completo, começando pela entrada de dados, 
+    passando por processamento e terminando com relatórios...
+  </figcaption>
+</figure>
+```
+
+### Links Acessíveis
+
+```html
+<!-- Link com texto descritivo -->
+<a href="politica.html">Leia nossa política de privacidade</a>
+
+<!-- Evite -->
+<a href="politica.html">Clique aqui</a>
+
+<!-- Link que abre em nova janela -->
+<a href="https://exemplo.com" target="_blank" rel="noopener noreferrer" aria-label="Visitar site exemplo (abre em nova janela)">
+  Visitar site exemplo
+  <span class="sr-only">(abre em nova janela)</span>
+</a>
+
+<!-- Link com ícone -->
+<a href="
+```
