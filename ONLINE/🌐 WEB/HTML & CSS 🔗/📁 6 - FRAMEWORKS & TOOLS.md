@@ -2014,8 +2014,6 @@ Pacotes que incluem Apache, MySQL, PHP e outras ferramentas.
 
 Ambiente JavaScript para desenvolvimento local e gerenciamento de pacotes.
 
-bashresponse-action-icon
-
 ```bash
 # Verificar instalação
 node -v
@@ -2040,8 +2038,6 @@ Opções para executar um servidor HTTP básico:
 
 **Com Python**:
 
-bashresponse-action-icon
-
 ```bash
 # Python 3
 python -m http.server
@@ -2051,8 +2047,6 @@ python -m SimpleHTTPServer
 ```
 
 **Com Node.js**:
-
-bashresponse-action-icon
 
 ```bash
 # Instalar http-server globalmente
@@ -2105,8 +2099,6 @@ Crie e salve trechos de código reutilizáveis para agilizar o desenvolvimento.
 
 **HTML Boilerplate**:
 
-htmlresponse-action-icon
-
 ```html
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -2145,8 +2137,6 @@ htmlresponse-action-icon
 ```
 
 **CSS Reset/Normalize**:
-
-cssresponse-action-icon
 
 ```css
 /* Reset básico */
