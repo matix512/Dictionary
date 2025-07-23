@@ -124,8 +124,6 @@ CREATE TABLE orders (
 
 #### **Ações Referenciais:**
 
-sqlresponse-action-icon
-
 ```sql
 CREATE TABLE orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -147,8 +145,6 @@ CREATE TABLE orders (
 ```
 
 #### **Exemplos de Ações Referenciais:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Exemplo 1: CASCADE - Propagação automática
@@ -196,8 +192,6 @@ CREATE TABLE orders (
 
 #### **Foreign Keys Compostas:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Quando PK da tabela pai é composta
 CREATE TABLE order_items (
@@ -216,8 +210,6 @@ CREATE TABLE order_items (
 ### **✨ UNIQUE:**
 
 #### **Garantir Valores Únicos:**
-
-sqlresponse-action-icon
 
 ```sql
 -- UNIQUE em coluna individual
@@ -257,8 +249,6 @@ CREATE TABLE employees (
 
 #### **UNIQUE vs PRIMARY KEY:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Diferenças:
 -- PRIMARY KEY: 1 por tabela, NOT NULL obrigatório, cria cluster index
@@ -275,8 +265,6 @@ CREATE TABLE example (
 ### **❌ NOT NULL:**
 
 #### **Impedir Valores Nulos:**
-
-sqlresponse-action-icon
 
 ```sql
 CREATE TABLE customers (
@@ -301,8 +289,6 @@ CREATE TABLE products (
 ### **✅ CHECK Constraints:**
 
 #### **Validações Personalizadas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- CHECK simples
@@ -349,8 +335,6 @@ CREATE TABLE customers (
 
 #### **CHECK com ENUM Alternativo:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Em vez de ENUM, usar CHECK
 CREATE TABLE orders (
@@ -373,8 +357,6 @@ CHECK (status IN ('pending', 'confirmed', 'processing', 'shipped', 'delivered', 
 ### **🎯 DEFAULT Values:**
 
 #### **Valores Padrão:**
-
-sqlresponse-action-icon
 
 ```sql
 CREATE TABLE customers (
