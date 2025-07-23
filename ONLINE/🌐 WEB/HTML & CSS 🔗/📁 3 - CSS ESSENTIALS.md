@@ -605,8 +605,6 @@ font-style: oblique;   /* Oblíquo (similar ao itálico) */
 
 ### Text-Decoration
 
-cssresponse-action-icon
-
 ```css
 text-decoration: none;          /* Sem decoração */
 text-decoration: underline;     /* Sublinhado */
@@ -628,8 +626,6 @@ text-decoration: underline wavy red 2px;
 
 ### Text-Transform
 
-cssresponse-action-icon
-
 ```css
 text-transform: none;       /* Sem transformação */
 text-transform: capitalize; /* Primeira Letra De Cada Palavra Em Maiúscula */
@@ -641,8 +637,6 @@ text-transform: lowercase;  /* todas as letras em minúscula */
 
 ### Letter-Spacing
 
-cssresponse-action-icon
-
 ```css
 letter-spacing: normal;  /* Padrão */
 letter-spacing: 2px;     /* Espaçamento entre letras */
@@ -651,16 +645,12 @@ letter-spacing: -1px;    /* Espaçamento negativo (aproxima) */
 
 ### Word-Spacing
 
-cssresponse-action-icon
-
 ```css
 word-spacing: normal;  /* Padrão */
 word-spacing: 5px;     /* Espaçamento entre palavras */
 ```
 
 ### Line-Height
-
-cssresponse-action-icon
 
 ```css
 line-height: normal;    /* Padrão (aproximadamente 1.2) */
@@ -671,8 +661,6 @@ line-height: 150%;      /* Percentual */
 
 ### Text-Align
 
-cssresponse-action-icon
-
 ```css
 text-align: left;      /* Alinhado à esquerda (padrão) */
 text-align: right;     /* Alinhado à direita */
@@ -682,16 +670,12 @@ text-align: justify;   /* Justificado */
 
 ### Text-Indent
 
-cssresponse-action-icon
-
 ```css
 text-indent: 2em;     /* Recuo da primeira linha */
 text-indent: -20px;   /* Recuo negativo (hanging indent) */
 ```
 
 ### Vertical-Align
-
-cssresponse-action-icon
 
 ```css
 /* Para elementos inline ou células de tabela */
