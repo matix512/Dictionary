@@ -191,24 +191,19 @@ FROM Customer;
 ```
 
 ### Funções Matemáticas
+
 ```sql
-`SELECT ROUND(Total, 2)  
+SELECT ROUND(Total, 2)  
 FROM Invoice;`
 ```
-sql
 
-CopyEdit
+ ```sql
+ SELECT SUM(Total) 
+FROM Invoice
+WHERE CustomerId = 5;
+```
 
-`SELECT ROUND(Total, 2)  FROM Invoice;`
-
-sql
-
-CopyEdit
-
-`SELECT SUM(Total)  FROM Invoice WHERE CustomerId = 5;`
-
-sql
-
-CopyEdit
-
-`SELECT AVG(Total)  FROM Invoice;`
+```sql
+SELECT AVG(Total) 
+FROM Invoice;
+```
