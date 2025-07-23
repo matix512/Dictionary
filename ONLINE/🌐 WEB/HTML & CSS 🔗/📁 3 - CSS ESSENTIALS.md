@@ -350,10 +350,8 @@ background: repeating-radial-gradient(circle, white, white 10px, black 10px, bla
 
 # 📄 09 - BOX MODEL
 
-
-# Box Model (Modelo de Caixa)
-
 ## Conceito
+
 Todo elemento HTML é representado como uma caixa retangular. O Box Model descreve como essas caixas são dimensionadas, posicionadas e como interagem entre si.
 
 ## Componentes do Box Model
@@ -372,14 +370,11 @@ Todo elemento HTML é representado como uma caixa retangular. O Box Model descre
 │ └───────────────────────────────────┘ │  
 └───────────────────────────────────────┘
 
-textresponse-action-icon
-
-````text
-
 - **Content**: Área onde o conteúdo é exibido
 - **Padding**: Espaço entre o conteúdo e a borda
 - **Border**: Linha que circunda o padding
 - **Margin**: Espaço externo à borda, entre elementos
+```
 
 ## Propriedades Básicas
 
@@ -398,3 +393,4 @@ max-height: 300px;
 /* Largura percentual (relativa ao container) */
 width: 50%;
 ````
+
