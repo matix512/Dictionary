@@ -163,3 +163,19 @@ FROM Invoice
 WHERE Total > 10 AND BillingCity = 'Paris';
 ```
 
+### 🕳️ Filtrar dados nulos
+
+```sql
+SELECT CustomerId 
+FROM Invoice
+WHERE Total IS NOT NULL;
+```
+
+## 🔧 TRANSFORMING DATA
+
+### Funções de Texto
+
+```sql
+SELECT UPPER(FirstName) 
+FROM Customer;
+```
