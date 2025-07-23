@@ -306,14 +306,14 @@ loading: Comportamento de carregamento (eager, lazy)
 ## Atributos de Vídeo
 
 ```html
-
+<controls> : Mostra controles de reprodução
+<autoplay> : Reproduz automaticamente
+<loop> : Repete o vídeo
+<muted> : Inicia sem áudio
+<poster="thumbnail.jpg"> : Imagem de thumbnail
+<preload="auto|metadata|none"> : Comportamento de pré-carregamento
 ```
-- controls: Mostra controles de reprodução
-- autoplay: Reproduz automaticamente
-- loop: Repete o vídeo
-- muted: Inicia sem áudio
-- poster="thumbnail.jpg": Imagem de thumbnail
-- preload="auto|metadata|none": Comportamento de pré-carregamento
+
 
 ## Áudio
 
