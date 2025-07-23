@@ -755,8 +755,6 @@ body {
 
 ### Layout e Posicionamento
 
-cssresponse-action-icon
-
 ```css
 .elemento {
   /* Display */
@@ -804,8 +802,6 @@ cssresponse-action-icon
 ```
 
 ### Flexbox
-
-cssresponse-action-icon
 
 ```css
 .container {
@@ -881,8 +877,6 @@ cssresponse-action-icon
 ```
 
 ### Grid
-
-cssresponse-action-icon
 
 ```css
 .container {
@@ -969,8 +963,6 @@ cssresponse-action-icon
 
 ### Media Queries
 
-cssresponse-action-icon
-
 ```css
 /* Largura mínima (a partir de) */
 @media (min-width: 768px) {
@@ -1010,8 +1002,6 @@ cssresponse-action-icon
 
 ### Transformações
 
-cssresponse-action-icon
-
 ```css
 .elemento {
   /* Translação (movimento) */
@@ -1045,8 +1035,6 @@ cssresponse-action-icon
 ```
 
 ### Transições
-
-cssresponse-action-icon
 
 ```css
 .elemento {
@@ -1084,8 +1072,6 @@ cssresponse-action-icon
 
 ### Animações
 
-cssresponse-action-icon
-
 ```css
 /* Definindo keyframes */
 @keyframes deslizar {
@@ -1119,8 +1105,6 @@ cssresponse-action-icon
 ```
 
 ### Variáveis CSS (Custom Properties)
-
-cssresponse-action-icon
 
 ```css
 :root {
