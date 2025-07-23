@@ -70,8 +70,6 @@ INNER JOIN countries c ON s.country_id = c.id;
 
 #### **INNER JOIN com Múltiplas Tabelas:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Assumindo uma terceira tabela
 CREATE TABLE enrollments (
@@ -102,8 +100,6 @@ INNER JOIN enrollments e ON s.id = e.student_id;
 
 #### **Exemplos:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Todos os estudantes, mesmo sem país
 SELECT s.first_name, s.last_name, c.name AS country
@@ -124,8 +120,6 @@ LEFT JOIN countries c ON s.country_id = c.id;
 ```
 
 #### **LEFT JOIN para Contar:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Contar estudantes por país (incluindo países sem estudantes)
@@ -156,8 +150,6 @@ ORDER BY student_count DESC;
 
 #### **Exemplos:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Todos os países, mesmo sem estudantes
 SELECT s.first_name, s.last_name, c.name AS country
@@ -177,8 +169,6 @@ LEFT JOIN students s ON c.id = s.country_id;
 > Retorna TODOS os registos quando há correspondência na tabela esquerda OU direita.
 
 #### **Exemplos:**
-
-sqlresponse-action-icon
 
 ```sql
 -- SQL Server/PostgreSQL
