@@ -349,8 +349,6 @@ GROUP BY c.continent;
 
 #### **Exercício 2 - Avançado:**
 
-sqlresponse-action-icon
-
 ```sql
 -- 1. Estudantes do mesmo país
 SELECT 
@@ -374,8 +372,6 @@ LIMIT 1;
 
 #### **1. Índices em Colunas de JOIN:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Sempre indexar foreign keys
 CREATE INDEX idx_students_country ON students(country_id);
@@ -383,8 +379,6 @@ CREATE INDEX idx_enrollments_student ON enrollments(student_id);
 ```
 
 #### **2. Ordem das Tabelas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Geralmente, tabela menor primeiro
@@ -395,8 +389,6 @@ INNER JOIN large_table l ON s.id = l.small_id;
 ```
 
 #### **3. Usar EXPLAIN:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Ver plano de execução

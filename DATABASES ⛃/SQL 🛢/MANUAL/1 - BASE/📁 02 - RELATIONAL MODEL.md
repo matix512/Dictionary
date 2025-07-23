@@ -7,8 +7,6 @@
 
 #### **Regras Fundamentais:**
 
-textresponse-action-icon
-
 ```text
 1. 📋 Informação está em tabelas
 2. 🔑 Cada linha é única (chave primária)

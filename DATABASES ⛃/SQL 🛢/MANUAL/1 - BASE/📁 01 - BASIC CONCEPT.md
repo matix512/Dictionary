@@ -6,8 +6,6 @@
 
 #### **Tipos de Bases de Dados:**
 
-textresponse-action-icon
-
 ```text
 📊 Relacionais (SQL):
 - MySQL, PostgreSQL, SQL Server, Oracle
@@ -28,8 +26,6 @@ textresponse-action-icon
 ### **🏗️ Componentes de uma BD Relacional:**
 
 #### **Tabela (Table):**
-
-textresponse-action-icon
 
 ```text
 ┌─────────────────────────────────┐
@@ -54,8 +50,6 @@ textresponse-action-icon
 ### **💡 Vantagens das BD Relacionais:**
 
 #### **Características ACID:**
-
-textresponse-action-icon
 
 ```text
 🅰️ Atomicity (Atomicidade):
@@ -82,9 +76,6 @@ textresponse-action-icon
 ### **🌍 Casos de Uso Reais:**
 
 #### **E-commerce:**
-
-sqlresponse-action-icon
-
 ```sql
 -- Estrutura típica
 CUSTOMERS → ORDERS → ORDER_ITEMS → PRODUCTS
@@ -93,8 +84,6 @@ ADDRESSES  PAYMENTS
 ```
 
 #### **Sistema Escolar:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Relações típicas

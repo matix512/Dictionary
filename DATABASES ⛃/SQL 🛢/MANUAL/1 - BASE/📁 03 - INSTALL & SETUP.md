@@ -2,8 +2,6 @@
 
 #### **MySQL (Recomendado para iniciantes):**
 
-textresponse-action-icon
-
 ```text
 ✅ Gratuito e open-source
 ✅ Fácil instalação
@@ -14,8 +12,6 @@ textresponse-action-icon
 
 #### **SQL Server (Microsoft):**
 
-textresponse-action-icon
-
 ```text
 ✅ SSMS muito poderoso
 ✅ Integração Windows
@@ -24,8 +20,6 @@ textresponse-action-icon
 ```
 
 #### **PostgreSQL (Avançado):**
-
-textresponse-action-icon
 
 ```text
 ✅ Muito robusto
