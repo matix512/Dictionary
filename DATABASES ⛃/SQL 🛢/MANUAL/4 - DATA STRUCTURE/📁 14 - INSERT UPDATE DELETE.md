@@ -238,8 +238,6 @@ WHERE c1.id > c2.id AND c1.email = c2.email;
 
 #### **DELETE vs TRUNCATE:**
 
-sqlresponse-action-icon
-
 ```sql
 -- DELETE - remove linha por linha, permite WHERE, pode ser rollback
 DELETE FROM temp_table WHERE status = 'processed';
@@ -253,8 +251,6 @@ TRUNCATE TABLE temp_table;
 
 #### **REPLACE (MySQL):**
 
-sqlresponse-action-icon
-
 ```sql
 -- REPLACE = DELETE + INSERT se a chave já existe
 REPLACE INTO customers (id, first_name, last_name, email)
@@ -265,8 +261,6 @@ VALUES (1, 'João', 'Silva', 'joao.novo@email.com');
 ```
 
 #### **INSERT ... ON DUPLICATE KEY UPDATE (MySQL):**
-
-sqlresponse-action-icon
 
 ```sql
 -- Inserir ou atualizar se chave duplicada
@@ -280,8 +274,6 @@ ON DUPLICATE KEY UPDATE
 ```
 
 #### **UPSERT (PostgreSQL/SQL Server):**
-
-sqlresponse-action-icon
 
 ```sql
 -- PostgreSQL
@@ -304,14 +296,13 @@ WHEN NOT MATCHED THEN
 INSERT (id, first_name, last_name, email)  
 VALUES (source.id, source.first_name, source.last_name, source.email);
 
-textresponse-action-icon
-
-````text
+```
 
 ### **🎯 Casos Práticos Completos:**
 
 #### **Sistema de E-commerce - Processar Pedido:**
-```sql
+
+```Text
 -- Cenário: Cliente faz um pedido, precisa atualizar stock e criar registos
 
 START TRANSACTION;
