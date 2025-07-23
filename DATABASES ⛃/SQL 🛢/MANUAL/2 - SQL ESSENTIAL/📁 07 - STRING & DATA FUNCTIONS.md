@@ -49,8 +49,6 @@ SELECT email, SUBSTRING(email, CHARINDEX('@', email) + 1, 100) AS domain FROM st
 
 #### **Mudança de Caso:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Maiúsculas e minúsculas
 SELECT UPPER(first_name) AS upper_name FROM students;
@@ -65,8 +63,6 @@ SELECT CONCAT(UPPER(LEFT(first_name, 1)), LOWER(SUBSTRING(first_name, 2, 100))) 
 ```
 
 #### **Limpeza e Formatação:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Remover espaços
@@ -90,8 +86,6 @@ SELECT REPLICATE('*', 5) AS stars FROM students;                       -- SQL Se
 
 #### **Data e Hora Atual:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Data e hora atual
 SELECT NOW() AS current_datetime FROM students;                        -- MySQL
@@ -108,8 +102,6 @@ SELECT CAST(GETDATE() AS TIME) AS current_time FROM students;         -- SQL Ser
 ```
 
 #### **Extrair Partes da Data:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Extrair componentes
@@ -135,8 +127,6 @@ FROM students;
 
 #### **Cálculos com Datas:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Diferença entre datas
 SELECT birth_date,
@@ -161,8 +151,6 @@ FROM students;
 
 #### **Adicionar/Subtrair Tempo:**
 
-sqlresponse-action-icon
-
 ```sql
 -- MySQL
 SELECT birth_date,
@@ -183,8 +171,6 @@ FROM students;
 
 #### **Formatos Personalizados:**
 
-sqlresponse-action-icon
-
 ```sql
 -- MySQL
 SELECT birth_date,
@@ -204,8 +190,6 @@ FROM students;
 ### **🔢 Funções Numéricas (Bonus):**
 
 #### **Matemáticas Básicas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Arredondamento
@@ -229,8 +213,6 @@ SELECT POWER(2, 3) AS power,
 
 #### **Exemplo 1 - Relatório de Estudantes:**
 
-sqlresponse-action-icon
-
 ```sql
 SELECT 
     CONCAT(UPPER(LEFT(first_name, 1)), LOWER(SUBSTRING(first_name, 2)), ' ', 
@@ -249,8 +231,6 @@ FROM students;
 ```
 
 #### **Exemplo 2 - Análise de Emails:**
-
-sqlresponse-action-icon
 
 ```sql
 SELECT 
