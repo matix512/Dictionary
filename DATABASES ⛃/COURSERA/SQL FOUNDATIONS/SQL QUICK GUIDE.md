@@ -60,30 +60,45 @@ FROM Customer;
 
 ### Limitar resultados
 ```sql
-SELECT DISTINCT State 
+SELECT TOP 5 FirstName, LastName 
 FROM Customer;
 ```
 
-
-CopyEdit
-
-`SELECT DISTINCT State  FROM Customer;`
-
-### Limitar resultados
-
-sql
-
-CopyEdit
-
-`SELECT TOP 5 FirstName, LastName  FROM Customer;`
-
 ### Saltar linhas (OFFSET / FETCH)
+```sql
+SELECT CustomerId, LastName 
+FROM Customer
+ORDER BY CustomerId
+OFFSET 10 ROWS FETCH NEXT 5 ROWS ONLY;
+```
 
-sql
+## 🎯 FILTERING DATA
 
-CopyEdit
+### Operadores comuns
 
-`SELECT CustomerId, LastName  FROM Customer ORDER BY CustomerId OFFSET 10 ROWS FETCH NEXT 5 ROWS ONLY;`
+- `=` : Igual
+    
+- `!=` ou `<>` : Diferente
+    
+- `<` : Menor que
+    
+- `<=` : Menor ou igual
+    
+- `>` : Maior que
+    
+- `>=` : Maior ou igual
+    
+- `AND` : Ambas as condições verdadeiras
+    
+- `OR` : Pelo menos uma condição verdadeira
+    
+- `NOT` : Inverte a condição
+    
+- `BETWEEN` : Dentro de um intervalo
+    
+- `LIKE %` : Qualquer número de caracteres
+    
+- `LIKE _` : Um único caractere
 
 
 
