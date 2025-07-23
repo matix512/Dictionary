@@ -438,8 +438,6 @@ WITH (STATE = ON);
 
 #### **Backup Strategies:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Full Backup
 BACKUP DATABASE ECommerceDB 
@@ -470,8 +468,6 @@ COMPRESSION;
 ```
 
 #### **Restore Operations:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Restore Full Backup
@@ -505,8 +501,6 @@ RECOVERY;
 
 #### **Criar Maintenance Plan:**
 
-textresponse-action-icon
-
 ```text
 Management → Maintenance Plans → Right-click → "New Maintenance Plan..."
 
@@ -520,8 +514,6 @@ Tarefas Comuns:
 ```
 
 #### **Maintenance Plan via T-SQL:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Job para maintenance
