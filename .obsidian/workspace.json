@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 1 - FUNDAMENTOS.md",
+                "file": "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 0 - INDEX.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📁 1 - FUNDAMENTOS"
+              "title": "📁 0 - INDEX"
             }
           }
         ]
@@ -193,8 +193,9 @@
   },
   "active": "19bc7392c8a4f39a",
   "lastOpenFiles": [
-    "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 0 - INDEX.md",
+    "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 2 - FUNDAMENTOS 1.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 1 - FUNDAMENTOS.md",
+    "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 0 - INDEX.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 01 - BASIC CONCEPT.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗",
     "DATABASES ⛃/SQL 🛢/MANUAL/0 - INDEX 📑.md",
@@ -219,7 +220,6 @@
     "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 03 - INSTALL & SETUP.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 02 - RELATIONAL MODEL.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/2 - SQL ESSENTIAL/📁 06 - ORDER BY & LIMIT.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/2 - SQL ESSENTIAL/📁 05 - WHERE & FILTERS.md",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/Untitled",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS",
     "DATABASES ⛃/COURSERA",
