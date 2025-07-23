@@ -615,7 +615,7 @@ h1 {
       <label for="lastname">Sobrenome</label>
 ```
 
-```markdown
+```CSS
     <div class="form-group half">
       <label for="lastname">Sobrenome</label>
       <input type="text" id="lastname" class="form-control">
@@ -639,9 +639,6 @@ h1 {
 ## Vídeos Responsivos
 
 ### Container com Proporção Fixa
-
-cssresponse-action-icon
-
 ```css
 .video-container {
   position: relative;
@@ -661,8 +658,6 @@ cssresponse-action-icon
 }
 ```
 
-htmlresponse-action-icon
-
 ```html
 <div class="video-container">
   <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
@@ -672,8 +667,6 @@ htmlresponse-action-icon
 ## Padrões de Layout Responsivo
 
 ### Layout de Cards
-
-cssresponse-action-icon
 
 ```css
 .cards {
@@ -703,9 +696,6 @@ cssresponse-action-icon
 ```
 
 ### Layout de Alternância Texto-Imagem
-
-cssresponse-action-icon
-
 ```css
 .text-image-section {
   display: flex;
@@ -738,8 +728,6 @@ cssresponse-action-icon
 ```
 
 ### Layout de Hero Responsivo
-
-cssresponse-action-icon
 
 ```css
 .hero {
@@ -819,3 +807,20 @@ cssresponse-action-icon
 6. **Simplifique para telas menores** quando necessário
 7. **Priorize o conteúdo mais importante** em telas pequenas
 8. **Evite elementos que dependem de hover** em interfaces touch
+
+---
+
+
+# 📄 14 - FLEXBOX AVANÇADO
+
+## Fundamentos Revisados
+
+### Container Flex
+```css
+.container {
+  display: flex;
+  /* ou */
+  display: inline-flex;
+}
+````
+
