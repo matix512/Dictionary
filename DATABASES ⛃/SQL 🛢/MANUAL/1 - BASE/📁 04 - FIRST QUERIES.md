@@ -2,8 +2,6 @@
 
 #### **Estrutura Fundamental:**
 
-sqlresponse-action-icon
-
 ```sql
 SELECT [DISTINCT] column1, column2, ...
 FROM table_name
@@ -13,8 +11,6 @@ FROM table_name
 ```
 
 #### **Primeira Query:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Ver todos os dados

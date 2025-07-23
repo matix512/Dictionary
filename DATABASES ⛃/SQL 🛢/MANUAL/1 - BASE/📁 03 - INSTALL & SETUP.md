@@ -32,8 +32,6 @@
 
 #### **Windows:**
 
-textresponse-action-icon
-
 ```text
 1. Download: https://dev.mysql.com/downloads/installer/
 2. Escolher "mysql-installer-web-community"
@@ -47,8 +45,6 @@ textresponse-action-icon
 
 #### **macOS:**
 
-bashresponse-action-icon
-
 ```bash
 # Homebrew (recomendado)
 brew install mysql
@@ -61,8 +57,6 @@ mysql_secure_installation
 
 #### **Linux (Ubuntu/Debian):**
 
-bashresponse-action-icon
-
 ```bash
 sudo apt update
 sudo apt install mysql-server mysql-client
@@ -74,8 +68,6 @@ sudo systemctl enable mysql
 ### **🔧 Configuração Inicial:**
 
 #### **Primeira Conexão:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Conectar como root
@@ -94,9 +86,6 @@ FLUSH PRIVILEGES;
 ```
 
 #### **Verificar Instalação:**
-
-sqlresponse-action-icon
-
 ```sql
 -- Ver versão
 SELECT VERSION();
@@ -116,8 +105,6 @@ SHOW VARIABLES LIKE 'sql_mode';
 
 #### **Criar Conexão:**
 
-textresponse-action-icon
-
 ```text
 1. Abrir MySQL Workbench
 2. "+" ao lado de "MySQL Connections"
@@ -133,8 +120,6 @@ textresponse-action-icon
 
 #### **Interface Essencial:**
 
-textresponse-action-icon
-
 ```text
 📁 Navigator: Schemas, Administration
 📝 Query Tab: Escrever SQL
@@ -147,8 +132,6 @@ textresponse-action-icon
 
 #### **SQL Server Express:**
 
-textresponse-action-icon
-
 ```text
 1. Download: https://www.microsoft.com/sql-server/sql-server-downloads
 2. Escolher "Express"
@@ -158,8 +141,6 @@ textresponse-action-icon
 ```
 
 #### **SQL Server Management Studio:**
-
-textresponse-action-icon
 
 ```text
 1. Download: https://docs.microsoft.com/en-us/sql/ssms/download
@@ -173,8 +154,6 @@ textresponse-action-icon
 ### **📚 Dataset de Prática:**
 
 #### **Criar Estrutura de Aprendizagem:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Base de dados para prática
@@ -204,8 +183,6 @@ INSERT INTO students (first_name, last_name, email, birth_date) VALUES
 
 #### **MySQL my.cnf/my.ini:**
 
-iniresponse-action-icon
-
 ```ini
 [mysql]
 default-character-set = utf8mb4
@@ -217,8 +194,6 @@ sql_mode = STRICT_TRANS_TABLES,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_B
 ```
 
 #### **Verificar Configurações:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Ver charset
@@ -234,9 +209,6 @@ SELECT @@time_zone;
 ### **🚨 Troubleshooting Comum:**
 
 #### **Problemas de Conexão:**
-
-bashresponse-action-icon
-
 ```bash
 # MySQL não inicia
 sudo systemctl status mysql
@@ -252,9 +224,6 @@ netstat -tulpn | grep 3306
 ```
 
 #### **Problemas de Charset:**
-
-sqlresponse-action-icon
-
 ```sql
 -- Se aparecem caracteres estranhos
 ALTER DATABASE practice_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

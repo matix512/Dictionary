@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 03 - INSTALL & SETUP.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 04 - FIRST QUERIES.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📁 03 - INSTALL & SETUP"
+              "title": "📁 04 - FIRST QUERIES"
             }
           }
         ]
@@ -193,6 +193,7 @@
   },
   "active": "19bc7392c8a4f39a",
   "lastOpenFiles": [
+    "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 03 - INSTALL & SETUP.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 02 - RELATIONAL MODEL.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 01 - BASIC CONCEPT.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/3- GROUPS & AGREGATION/📁 09 - GROUP BY & HAVING.md",
@@ -224,7 +225,6 @@
     "DATABASES ⛃/SQL 🛢/MANUAL/0 - INDEX 📑.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 23 - BACKUP & RESTORE.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 22 - DEBUGGING e EXPLAIN.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 21 -MYSQL WORKBENCH.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS",
     "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE",
     "DATABASES ⛃/SQL 🛢/MANUAL/4 - DATA STRUCTURE",
