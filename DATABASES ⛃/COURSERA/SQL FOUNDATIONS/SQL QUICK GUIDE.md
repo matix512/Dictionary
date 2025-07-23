@@ -72,6 +72,9 @@ ORDER BY CustomerId
 OFFSET 10 ROWS FETCH NEXT 5 ROWS ONLY;
 ```
 
+
+---
+
 ## 🎯 FILTERING DATA
 
 ### Operadores comuns
@@ -99,6 +102,8 @@ OFFSET 10 ROWS FETCH NEXT 5 ROWS ONLY;
 - `LIKE %` : Qualquer número de caracteres
     
 - `LIKE _` : Um único caractere
+
+---
 
 ### 🔢 Filtrar dados numéricos
 
@@ -153,8 +158,6 @@ FROM Customer
 WHERE LastName NOT LIKE '%A';
 ```
 
-
----
 
 ### 🧮 Filtros em múltiplas colunas
 
@@ -291,3 +294,26 @@ FULL OUTER JOIN Invoice
 
 
 ---
+
+## 🏷️ USING ALIASES
+
+### 🔹 Alias para colunas
+
+```sql
+```
+
+CopyEdit
+
+`SELECT CONCAT(FirstName, ' ', LastName) AS FullName  FROM Customer;`
+
+### 🔹 Alias para tabelas
+
+sql
+
+CopyEdit
+
+`SELECT      c.CustomerId,      c.FirstName,      c.LastName,      i.Total AS InvoiceTotal FROM Customer c JOIN Invoice i      ON c.CustomerId = i.CustomerId;`
+
+yaml
+
+CopyEdit
