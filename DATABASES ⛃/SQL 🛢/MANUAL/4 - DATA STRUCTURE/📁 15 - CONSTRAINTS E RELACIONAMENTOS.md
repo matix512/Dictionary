@@ -384,8 +384,6 @@ CREATE TABLE logs (
 
 #### **Relacionamento 1:1:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Cada user tem um profile único
 CREATE TABLE users (
@@ -407,8 +405,6 @@ CREATE TABLE user_profiles (
 
 #### **Relacionamento 1:N:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Um customer tem muitas orders
 CREATE TABLE customers (
@@ -426,8 +422,6 @@ CREATE TABLE orders (
 ```
 
 #### **Relacionamento M:N com Tabela Associativa:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Students podem ter muitos courses, courses podem ter muitos students
@@ -460,8 +454,6 @@ CREATE TABLE enrollments (
 
 #### **Self-Referencing (Hierárquicas):**
 
-sqlresponse-action-icon
-
 ```sql
 -- Employees podem ter managers (que também são employees)
 CREATE TABLE employees (
@@ -488,8 +480,6 @@ CREATE TABLE categories (
 ### **🎯 Exercícios Práticos:**
 
 #### **Exercício 1 - E-commerce Completo:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Criar sistema completo com todas as constraints
@@ -679,7 +669,6 @@ INDEX idx_order_items_product (product_id)
 
 ```
 
-
 #### **Exercício 2 - Sistema Escolar Avançado:**
 
 ```sql
@@ -843,8 +832,6 @@ DELIMITER ;
 ### **🔍 Verificar e Gerenciar Constraints:**
 
 #### **Visualizar Constraints Existentes:**
-
-sqlresponse-action-icon
 
 ```sql
 -- MySQL - Ver todas as constraints

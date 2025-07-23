@@ -6,8 +6,6 @@
 
 #### **Como Funcionam:**
 
-textresponse-action-icon
-
 ```text
 📚 Sem Índice: SELECT * FROM users WHERE email = 'joao@email.com'
    → Procura linha por linha (Table Scan) - O(n)
@@ -17,8 +15,6 @@ textresponse-action-icon
 ```
 
 #### **Tipos de Índices:**
-
-textresponse-action-icon
 
 ```text
 🔑 Clustered - Ordena fisicamente os dados (1 por tabela)
@@ -32,8 +28,6 @@ textresponse-action-icon
 ### **🎯 Quando Usar Índices:**
 
 #### **✅ Usar Índices Quando:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Colunas frequentemente usadas em WHERE
