@@ -706,5 +706,162 @@ cssresponse-action-icon
 
 /* Uso da fonte */
 .elemento {
-  font-family: 'MinhaFonte', sans
+  ```markdown
+font-family: 'MinhaFonte', sans-serif;
+}
 ```
+
+### Google Fonts
+
+```html
+<!-- No head do HTML -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+```
+
+```css
+/* No CSS */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+```
+
+## Propriedades Avançadas
+
+### Text-Shadow
+
+```css
+/* Sintaxe: x-offset y-offset blur-radius color */
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);  /* Sombra simples */
+text-shadow: 0 0 5px #fff;                    /* Glow effect */
+
+/* Múltiplas sombras */
+text-shadow: 
+  1px 1px 2px black, 
+  0 0 25px blue, 
+  0 0 5px darkblue;
+```
+
+### White-Space
+
+```css
+white-space: normal;      /* Quebra de linha automática (padrão) */
+white-space: nowrap;      /* Sem quebras de linha */
+white-space: pre;         /* Preserva espaços e quebras de linha (como a tag <pre>) */
+white-space: pre-wrap;    /* Preserva espaços, quebra automaticamente */
+white-space: pre-line;    /* Preserva apenas quebras de linha, colapsa espaços */
+```
+
+### Word-Break
+
+```css
+word-break: normal;       /* Comportamento padrão */
+word-break: break-all;    /* Quebra palavras em qualquer caractere */
+word-break: keep-all;     /* Não quebra palavras */
+```
+
+### Word-Wrap (Overflow-Wrap)
+
+```css
+word-wrap: normal;        /* Comportamento padrão */
+word-wrap: break-word;    /* Quebra palavras longas */
+overflow-wrap: break-word; /* Mesmo que word-wrap (nome mais moderno) */
+```
+
+### Text-Overflow
+
+```css
+/* Requer white-space: nowrap e overflow: hidden */
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;      /* Corta o texto */
+  text-overflow: ellipsis;  /* Mostra "..." */
+}
+```
+
+### Font Shorthand
+
+```css
+/* font: [font-style] [font-variant] [font-weight] [font-size/line-height] [font-family] */
+font: italic bold 16px/1.5 'Helvetica', sans-serif;
+```
+
+## Estilos Responsivos
+
+```css
+/* Tamanho base */
+body {
+  font-size: 16px;
+}
+
+/* Em telas médias */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Em telas pequenas */
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+```
+
+## Sistema de Tipografia Fluida
+
+```css
+/* Tamanho que varia entre 16px e 20px baseado no tamanho da viewport */
+:root {
+  font-size: clamp(16px, 1vw + 14px, 20px);
+}
+
+h1 {
+  font-size: clamp(1.5rem, 3vw + 1rem, 2.5rem);
+}
+```
+
+## Variáveis CSS para Sistema Tipográfico
+
+```css
+:root {
+  --font-primary: 'Roboto', sans-serif;
+  --font-secondary: 'Playfair Display', serif;
+  --font-code: 'Source Code Pro', monospace;
+  
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-loose: 1.75;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+}
+
+h1 {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+}
+```
+
