@@ -1126,5 +1126,469 @@ body {
   color: var(--cor-destaque, #f39c12);
 }
 
-/* Escopo de
+/* Escopo de variáveis */
+.container {
+  --largura-container: 1200px;
+  width: var(--largura-container);
+}
+
+/* Alterando variáveis com JavaScript */
+// elemento.style.setProperty('--cor-primaria', '#ff0000');
+
+```
+
+### Filtros
+
+```css
+.imagem {
+  /* Filtros individuais */
+  filter: blur(5px);
+  filter: brightness(1.5);
+  filter: contrast(150%);
+  filter: grayscale(100%);
+  filter: hue-rotate(90deg);
+  filter: invert(100%);
+  filter: opacity(50%);
+  filter: saturate(200%);
+  filter: sepia(100%);
+  filter: drop-shadow(8px 8px 10px gray);
+  
+  /* Combinação de filtros */
+  filter: contrast(150%) brightness(110%) grayscale(50%);
+}
+```
+
+### Máscaras
+
+```css
+.elemento {
+  /* Máscara com imagem */
+  mask-image: url('mascara.svg');
+  mask-size: cover;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  
+  /* Máscara com gradiente */
+  mask-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+```
+
+## Tabela de Cores HTML
+
+|Nome da Cor|Valor Hexadecimal|
+|---|---|
+|Black|#000000|
+|White|#FFFFFF|
+|Red|#FF0000|
+|Green|#00FF00|
+|Blue|#0000FF|
+|Yellow|#FFFF00|
+|Cyan|#00FFFF|
+|Magenta|#FF00FF|
+|Silver|#C0C0C0|
+|Gray|#808080|
+|Maroon|#800000|
+|Olive|#808000|
+|Purple|#800080|
+|Teal|#008080|
+|Navy|#000080|
+
+## Unidades CSS Comuns
+
+|Unidade|Descrição|
+|---|---|
+|px|Pixels (absoluto)|
+|em|Relativo ao tamanho da fonte do elemento pai|
+|rem|Relativo ao tamanho da fonte do elemento raiz (html)|
+|%|Percentagem relativa ao elemento pai|
+|vw|1% da largura da viewport|
+|vh|1% da altura da viewport|
+|vmin|1% da menor dimensão da viewport (largura ou altura)|
+|vmax|1% da maior dimensão da viewport (largura ou altura)|
+|ch|Largura do caractere "0" na fonte atual|
+|ex|Altura da letra "x" na fonte atual|
+
+## Caracteres Especiais HTML
+
+|Caractere|Entidade|Descrição|
+|---|---|---|
+|&|&amp;|Ampersand|
+|<|&lt;|Menor que|
+|>|&gt;|Maior que|
+|"|&quot;|Aspas duplas|
+|'|&apos;|Aspas simples|
+|©|&copy;|Copyright|
+|®|&reg;|Marca registrada|
+|™|&trade;|Trademark|
+|£|&pound;|Libra|
+|€|&euro;|Euro|
+|¥|&yen;|Iene|
+|§|&sect;|Seção|
+|½|&frac12;|Fração ½|
+|→|&rarr;|Seta para direita →|
+
+## Viewport Meta Tag
+
+```html
+<!-- Básica para design responsivo -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Com escalabilidade desativada (evita zoom) -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+```
+
+## Favicons
+
+```html
+<!-- Favicon básico -->
+<link rel="icon" href="favicon.ico">
+
+<!-- Favicons modernos -->
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+```
+
+## Links para Fontes Externas
+
+```html
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Uso no CSS -->
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+</style>
+```
+
+## Snippets Úteis
+
+### CSS Reset Básico
+
+cssresponse-action-icon
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+```
+
+### Centralização Vertical e Horizontal
+
+cssresponse-action-icon
+
+```css
+/* Flexbox (recomendado) */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Grid */
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+/* Position Absolute */
+.container {
+  position: relative;
+  height: 100vh;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+
+### CSS Triangle
+
+cssresponse-action-icon
+
+```css
+.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid #3498db;
+}
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 50px solid #3498db;
+}
+
+.triangle-left {
+  width: 0;
+  height: 0;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-right: 50px solid #3498db;
+}
+
+.triangle-right {
+  width: 0;
+  height: 0;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 50px solid #3498db;
+}
+```
+
+### Quebra de Texto
+
+cssresponse-action-icon
+
+```css
+/* Quebra de texto normal */
+.texto {
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+/* Impede que palavras longas estourem o container */
+.texto-quebra {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Truncamento com elipse */
+.texto-truncado {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Limitação de linhas (suporte webkit) */
+.texto-multiplas-linhas {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+```
+
+### Scrollbar Customizada
+
+cssresponse-action-icon
+
+```css
+/* Apenas para navegadores WebKit/Blink (Chrome, Safari, etc) */
+.scroll-container::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Scrollbar para Firefox */
+.scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+```
+
+### Botão Estilizado
+
+cssresponse-action-icon
+
+```css
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button:focus {
+  outline: 3px solid rgba(52, 152, 219, 0.5);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+```
+
+### Acessibilidade - Skip to Content
+
+htmlresponse-action-icon
+
+```html
+<a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+<main id="main-content">
+  <!-- Conteúdo principal -->
+</main>
+```
+
+cssresponse-action-icon
+
+```css
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+```
+
+### Grid Responsivo Simples
+
+cssresponse-action-icon
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+```
+
+### Card Básico
+
+htmlresponse-action-icon
+
+```html
+<div class="card">
+  <img src="imagem.jpg" alt="Descrição da imagem" class="card-image">
+  <div class="card-content">
+    <h3 class="card-title">Título do Card</h3>
+    <p class="card-text">Descrição ou conteúdo do card vai aqui.</p>
+    <a href="#" class="card-button">Saiba mais</a>
+  </div>
+</div>
+```
+
+cssresponse-action-icon
+
+```css
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+}
+
+.card-text {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.card-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.card-button:hover {
+  background-color: #2980b9;
+}
 ```
