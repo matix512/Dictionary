@@ -472,7 +472,6 @@ function App() {
 # 📄 19 - PRÉ-PROCESSADORES CSS
 
 
-````markdown
 # Pré-processadores CSS
 
 ## Introdução aos Pré-processadores
@@ -536,8 +535,6 @@ nav {
 
 #### Usando Node.js/npm
 
-bashresponse-action-icon
-
 ```bash
 # Instalar Sass globalmente
 npm install -g sass
@@ -560,8 +557,6 @@ sass --watch scss/:css/
 
 ### Variáveis
 
-scssresponse-action-icon
-
 ```scss
 // Definindo variáveis
 $primary-color: #3498db;
@@ -583,8 +578,6 @@ h1, h2, h3 {
 ```
 
 ### Aninhamento
-
-scssresponse-action-icon
 
 ```scss
 // Aninhamento básico
@@ -642,8 +635,6 @@ scssresponse-action-icon
 
 ### Partials e @import
 
-scssresponse-action-icon
-
 ```scss
 // _variables.scss (partial)
 $primary-color: #3498db;
@@ -667,8 +658,6 @@ $secondary-color: #2ecc71;
 ```
 
 ### Mixins
-
-scssresponse-action-icon
 
 ```scss
 // Definindo mixins simples
@@ -715,8 +704,6 @@ scssresponse-action-icon
 
 ### Extensão/Herança
 
-scssresponse-action-icon
-
 ```scss
 // Definindo um placeholder
 %button-base {
@@ -752,8 +739,6 @@ scssresponse-action-icon
 
 ### Funções e Operações
 
-scssresponse-action-icon
-
 ```scss
 // Funções nativas
 $base-color: #3498db;
@@ -783,8 +768,6 @@ $base-color: #3498db;
 ```
 
 ### Diretivas de Controle
-
-scssresponse-action-icon
 
 ```scss
 // Condicionais (@if, @else if, @else)
@@ -835,8 +818,6 @@ $i: 1;
 
 #### Usando Node.js/npm
 
-bashresponse-action-icon
-
 ```bash
 # Instalar Less globalmente
 npm install -g less
@@ -846,8 +827,6 @@ lessc input.less output.css
 ```
 
 ### Variáveis
-
-lessresponse-action-icon
 
 ```less
 // Definindo variáveis
@@ -871,8 +850,6 @@ body {
 ```
 
 ### Aninhamento
-
-lessresponse-action-icon
 
 ```less
 // Aninhamento básico
@@ -904,8 +881,6 @@ lessresponse-action-icon
 ```
 
 ### Mixins
-
-lessresponse-action-icon
 
 ```less
 // Mixin básico
@@ -941,8 +916,6 @@ lessresponse-action-icon
 
 ### Operações e Funções
 
-lessresponse-action-icon
-
 ```less
 @base: 5px;
 @color: #888;
@@ -960,8 +933,6 @@ lessresponse-action-icon
 ```
 
 ### Importação
-
-lessresponse-action-icon
 
 ```less
 // Importando arquivos
@@ -982,8 +953,6 @@ lessresponse-action-icon
 
 #### Usando Node.js/npm
 
-bashresponse-action-icon
-
 ```bash
 # Instalar Stylus globalmente
 npm install -g stylus
@@ -996,8 +965,6 @@ stylus -w input.styl -o output.css
 ```
 
 ### Sintaxe Flexível
-
-stylusresponse-action-icon
 
 ```stylus
 // Sem chaves, ponto e vírgula ou dois-pontos (opcional)
@@ -1023,8 +990,6 @@ stylusresponse-action-icon
 
 ### Variáveis
 
-stylusresponse-action-icon
-
 ```stylus
 // Definindo variáveis
 primary-color = #3498db
@@ -1038,8 +1003,6 @@ body
 ```
 
 ### Mixins
-
-stylusresponse-action-icon
 
 ```stylus
 // Definindo mixin
@@ -1071,8 +1034,6 @@ media-query(breakpoint)
 ```
 
 ### Funções
-
-stylusresponse-action-icon
 
 ```stylus
 // Função simples
