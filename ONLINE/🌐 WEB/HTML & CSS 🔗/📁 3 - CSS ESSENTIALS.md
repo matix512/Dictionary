@@ -505,8 +505,6 @@ display: grid;         /* Layout em grid */
 
 ## Visibilidade
 
-cssresponse-action-icon
-
 ```css
 visibility: visible;  /* Padrão, elemento visível */
 visibility: hidden;   /* Elemento invisível, mas ocupa espaço */
@@ -518,8 +516,6 @@ visibility: hidden;   /* Elemento invisível, mas ocupa espaço */
 - **border**: largura, estilo, cor
 
 ## Exemplos Práticos
-
-cssresponse-action-icon
 
 ```css
 /* Card básico */
@@ -544,4 +540,166 @@ cssresponse-action-icon
   text-align: center;
   cursor: pointer;
 }
+```
+
+
+
+# 📄 10 - TIPOGRAFIA
+# Tipografia em CSS
+
+## Propriedades Básicas
+
+### Font-Family
+```css
+/* Fonte específica com fallbacks */
+font-family: 'Helvetica Neue', Arial, sans-serif;
+
+/* Famílias genéricas */
+font-family: serif;        /* Com serifa (ex: Times New Roman) */
+font-family: sans-serif;   /* Sem serifa (ex: Arial) */
+font-family: monospace;    /* Mono-espaçada (ex: Courier) */
+font-family: cursive;      /* Cursiva (ex: Brush Script) */
+font-family: fantasy;      /* Decorativa (ex: Impact) */
+```
+
+### Font-Size
+
+```css
+/* Tamanhos absolutos */
+font-size: 16px;      /* Pixels */
+font-size: 12pt;      /* Pontos */
+
+/* Tamanhos relativos */
+font-size: 1.2em;     /* Relativo ao elemento pai */
+font-size: 1.2rem;    /* Relativo ao elemento raiz (html) */
+font-size: 120%;      /* Percentual do tamanho do pai */
+
+/* Tamanhos predefinidos */
+font-size: small;     /* Pequeno */
+font-size: medium;    /* Médio (padrão) */
+font-size: large;     /* Grande */
+font-size: x-large;   /* Extra grande */
+```
+
+### Font-Weight
+
+```css
+/* Numérico (100-900) */
+font-weight: 400;     /* Normal */
+font-weight: 700;     /* Negrito */
+
+/* Palavras-chave */
+font-weight: normal;
+font-weight: bold;
+font-weight: lighter;  /* Mais leve que o elemento pai */
+font-weight: bolder;   /* Mais pesado que o elemento pai */
+```
+
+### Font-Style
+
+```css
+font-style: normal;    /* Estilo normal */
+font-style: italic;    /* Itálico */
+font-style: oblique;   /* Oblíquo (similar ao itálico) */
+```
+
+### Text-Decoration
+
+cssresponse-action-icon
+
+```css
+text-decoration: none;          /* Sem decoração */
+text-decoration: underline;     /* Sublinhado */
+text-decoration: overline;      /* Linha acima */
+text-decoration: line-through;  /* Riscado */
+
+/* Múltiplas decorações */
+text-decoration: underline overline;
+
+/* Propriedades detalhadas */
+text-decoration-line: underline;
+text-decoration-style: wavy;  /* solid, dashed, dotted, wavy */
+text-decoration-color: red;
+text-decoration-thickness: 2px;
+
+/* Shorthand completo */
+text-decoration: underline wavy red 2px;
+```
+
+### Text-Transform
+
+cssresponse-action-icon
+
+```css
+text-transform: none;       /* Sem transformação */
+text-transform: capitalize; /* Primeira Letra De Cada Palavra Em Maiúscula */
+text-transform: uppercase;  /* TODAS AS LETRAS EM MAIÚSCULA */
+text-transform: lowercase;  /* todas as letras em minúscula */
+```
+
+## Espaçamento e Alinhamento
+
+### Letter-Spacing
+
+cssresponse-action-icon
+
+```css
+letter-spacing: normal;  /* Padrão */
+letter-spacing: 2px;     /* Espaçamento entre letras */
+letter-spacing: -1px;    /* Espaçamento negativo (aproxima) */
+```
+
+### Word-Spacing
+
+cssresponse-action-icon
+
+```css
+word-spacing: normal;  /* Padrão */
+word-spacing: 5px;     /* Espaçamento entre palavras */
+```
+
+### Line-Height
+
+cssresponse-action-icon
+
+```css
+line-height: normal;    /* Padrão (aproximadamente 1.2) */
+line-height: 1.5;       /* Multiplicador (sem unidade) - recomendado */
+line-height: 24px;      /* Valor fixo */
+line-height: 150%;      /* Percentual */
+```
+
+### Text-Align
+
+cssresponse-action-icon
+
+```css
+text-align: left;      /* Alinhado à esquerda (padrão) */
+text-align: right;     /* Alinhado à direita */
+text-align: center;    /* Centralizado */
+text-align: justify;   /* Justificado */
+```
+
+### Text-Indent
+
+cssresponse-action-icon
+
+```css
+text-indent: 2em;     /* Recuo da primeira linha */
+text-indent: -20px;   /* Recuo negativo (hanging indent) */
+```
+
+### Vertical-Align
+
+cssresponse-action-icon
+
+```css
+/* Para elementos inline ou células de tabela */
+vertical-align: baseline;   /* Alinha com a linha de base (padrão) */
+vertical-align: top;        /* Alinha com o topo */
+vertical-align: middle;     /* Alinha com o meio */
+vertical-align: bottom;     /* Alinha com a base */
+vertical-align: text-top;   /* Alinha com o topo do texto */
+vertical-align: text-bottom; /* Alinha com a base do texto */
+vertical-align: 5px;        /* Deslocamento específico */
 ```
