@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 01 - BASIC CONCEPT.md",
+                "file": "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 0 - INDEX.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📁 01 - BASIC CONCEPT"
+              "title": "📁 0 - INDEX"
             }
           }
         ]
@@ -193,6 +193,8 @@
   },
   "active": "19bc7392c8a4f39a",
   "lastOpenFiles": [
+    "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 01 - BASIC CONCEPT.md",
+    "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 0 - INDEX.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗",
     "DATABASES ⛃/SQL 🛢/MANUAL/0 - INDEX 📑.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 23 - BACKUP & RESTORE.md",
@@ -215,7 +217,6 @@
     "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 04 - FIRST QUERIES.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 03 - INSTALL & SETUP.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 02 - RELATIONAL MODEL.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 01 - BASIC CONCEPT.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/2 - SQL ESSENTIAL/📁 06 - ORDER BY & LIMIT.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/2 - SQL ESSENTIAL/📁 05 - WHERE & FILTERS.md",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/01. INTRODUCTION.md",
@@ -228,7 +229,6 @@
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS",
     "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE",
     "DATABASES ⛃/SQL 🛢/MANUAL/4 - DATA STRUCTURE",
-    "DATABASES ⛃/SQL 🛢/MANUAL/3- GROUPS & AGREGATION",
     "Pasted image 20250719013940.png",
     "Pasted image 20250719013937.png",
     "Pasted image 20250719014104.png",
