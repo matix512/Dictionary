@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/04. FUNCTIONS.md",
+                "file": "DATABASES ⛃/CURSOEMVIDEO/TIPOS PRIMITIVOS DE DADOS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "04. FUNCTIONS"
+              "title": "TIPOS PRIMITIVOS DE DADOS"
             }
           }
         ]
@@ -179,11 +179,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a9d4e10e066d511e",
+  "active": "19bc7392c8a4f39a",
   "lastOpenFiles": [
+    "DATABASES ⛃/CURSOEMVIDEO",
+    "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/04. FUNCTIONS.md",
+    "DATABASES ⛃/CURSOEMVIDEO/TIPOS PRIMITIVOS DE DADOS.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/03. CONTROL STRUCTURES.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/02. OPERATORS.md",
-    "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/04. FUNCTIONS.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/01. VARIABLES & DATA TYPES.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/02. DATA TYPES.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/10. DEBUGGING.md",
@@ -213,8 +215,6 @@
     "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 04 - FIRST QUERIES.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 03 - INSTALL & SETUP.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 02 - RELATIONAL MODEL.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE/📁 18 - STORED PROCEDURES.md",
-    "17 - Views.md",
     "DATABASES ⛃/SQL 🛢/MANUAL",
     "DATABASES ⛃",
     "Pasted image 20250719013940.png",
