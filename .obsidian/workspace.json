@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b509f5bca3f2a7b3",
+        "id": "7437715b4275e9c9",
         "type": "tabs",
         "children": [
           {
-            "id": "19bc7392c8a4f39a",
+            "id": "6bd1ea7499f25b95",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 501.5,
-    "collapsed": true
+    "width": 501.5
   },
   "right": {
     "id": "3c417fe92f6b15e7",
@@ -231,11 +230,11 @@
       }
     ]
   },
-  "active": "4fdc13c02e7586c0",
+  "active": "6bd1ea7499f25b95",
   "lastOpenFiles": [
+    "FERRAMENTAS & AMBIENTE.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 0 - INDEX.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 2 - HTML ESSENTIALS.md",
-    "FERRAMENTAS & AMBIENTE.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 1 - FUNDAMENTOS.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 7 - RECURSOS E REFERÊNCIAS.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 6 - FRAMEWORKS & TOOLS.md",

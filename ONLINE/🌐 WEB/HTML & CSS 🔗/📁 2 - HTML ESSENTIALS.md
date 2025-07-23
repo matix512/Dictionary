@@ -1,6 +1,6 @@
 
 
-### 📄2.1 [[ESTRUTURA & SEMÂNTICA]]
+### 📄2.1 ESTRUTURA & SEMÂNTICA
 
 ````HTML
 ## Elementos de Estrutura Básica
