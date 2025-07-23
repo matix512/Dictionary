@@ -1215,3 +1215,211 @@ transition: propriedade duração timing-function delay;
   transition: transform 0.5s ease-out 0.2s;
 }
 ````
+
+### Propriedades individuais
+
+```css
+.elemento {
+  transition-property: opacity, transform;  /* Propriedades que terão transição */
+  transition-duration: 0.3s, 0.5s;          /* Duração para cada propriedade */
+  transition-timing-function: ease, linear; /* Função de tempo para cada propriedade */
+  transition-delay: 0s, 0.2s;               /* Delay para cada propriedade */
+}
+```
+
+### Funções de Tempo (timing-functions)
+
+```css
+.elemento {
+  /* Predefinidas */
+  transition-timing-function: ease;        /* Início lento, meio rápido, fim lento (padrão) */
+  transition-timing-function: linear;      /* Velocidade constante */
+  transition-timing-function: ease-in;     /* Início lento */
+  transition-timing-function: ease-out;    /* Fim lento */
+  transition-timing-function: ease-in-out; /* Início e fim lentos */
+  transition-timing-function: step-end;    /* Mudança em etapas no final */
+  transition-timing-function: step-start;  /* Mudança em etapas no início */
+  
+  /* Função cubic-bezier personalizada */
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Elastico */
+  
+  /* Função steps */
+  transition-timing-function: steps(5, end);  /* 5 etapas discretas */
+}
+```
+
+## Propriedades Comuns para Transição
+
+```css
+/* Cores */
+.hover-color {
+  color: #333;
+  transition: color 0.3s ease;
+}
+.hover-color:hover {
+  color: #0066cc;
+}
+
+/* Background */
+.hover-bg {
+  background-color: #f0f0f0;
+  transition: background-color 0.5s ease;
+}
+.hover-bg:hover {
+  background-color: #e0e0ff;
+}
+
+/* Opacidade */
+.fade {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+.fade:hover {
+  opacity: 1;
+}
+
+/* Dimensões */
+.grow {
+  width: 100px;
+  height: 100px;
+  transition: width 0.3s, height 0.3s;
+}
+.grow:hover {
+  width: 120px;
+  height: 120px;
+}
+
+/* Transformações */
+.scale {
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+.scale:hover {
+  transform: scale(1.2);
+}
+
+.rotate {
+  transform: rotate(0deg);
+  transition: transform 0.5s ease;
+}
+.rotate:hover {
+  transform: rotate(360deg);
+}
+
+/* Posição */
+.move {
+  position: relative;
+  left: 0;
+  transition: left 0.5s ease-in-out;
+}
+.move:hover {
+  left: 50px;
+}
+
+/* Sombras */
+.shadow {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+}
+.shadow:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Bordas */
+.border {
+  border: 1px solid #ccc;
+  transition: border 0.3s ease;
+}
+.border:hover {
+  border: 1px solid #0066cc;
+}
+```
+
+## Animações com @keyframes
+
+### Sintaxe Básica
+```css
+/* Definição da animação */
+@keyframes nome-da-animacao {
+  0% {
+    /* Estilos no início da animação */
+  }
+  50% {
+    /* Estilos no meio da animação */
+  }
+  100% {
+    /* Estilos no final da animação */
+  }
+}
+
+/* Aplicação da animação */
+.elemento {
+  animation: nome-da-animacao duração timing-function delay iterações direção fill-mode play-state;
+}
+```
+
+### Exemplos de Keyframes
+
+```css
+/* Animação de Fade In */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animação de Pulso */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Animação de Shake */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(10px);
+  }
+}
+
+/* Animação de Rotação */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animação de Slide In */
+@keyframes slideIn {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animação de Bounce */
+@keyframes bounce {
+  0%, 20%,
+```
