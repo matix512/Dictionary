@@ -29,8 +29,6 @@ SELECT * FROM students;
 
 #### **Colunas Individuais:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Uma coluna
 SELECT first_name FROM students;
@@ -43,8 +41,6 @@ SELECT * FROM students;
 ```
 
 #### **Ordem das Colunas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- A ordem no SELECT define a ordem no resultado
@@ -82,7 +78,6 @@ FROM students;
 
 #### **Aliases para Tabelas:**
 
-
 ```sql
 -- Útil para JOINs posteriores
 SELECT s.first_name, s.last_name
@@ -96,8 +91,6 @@ FROM students s;
 ### **🎨 Expressões e Cálculos:**
 
 #### **Concatenação de Strings:**
-
-sqlresponse-action-icon
 
 ```sql
 -- MySQL
@@ -118,8 +111,6 @@ FROM students;
 
 #### **Cálculos com Números:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Assumindo que temos uma tabela products
 SELECT 
@@ -133,8 +124,6 @@ FROM products;
 ### **📅 Trabalhar com Datas:**
 
 #### **Extrair Partes de Datas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Idade atual
@@ -158,8 +147,6 @@ FROM students;
 
 #### **Eliminar Duplicados:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Anos de nascimento únicos
 SELECT DISTINCT YEAR(birth_date) AS birth_year
@@ -173,8 +160,6 @@ FROM students;
 ### **📊 Comentários no SQL:**
 
 #### **Tipos de Comentários:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Comentário de linha (duas hífenes e espaço)
@@ -199,8 +184,6 @@ FROM students;
 
 #### **Exercício 1 - Básico:**
 
-sqlresponse-action-icon
-
 ```sql
 -- 1. Mostrar apenas nomes e emails
 -- Resposta:
@@ -223,8 +206,6 @@ FROM students;
 
 #### **1. Esquecer FROM:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ Erro
 SELECT first_name;
@@ -234,8 +215,6 @@ SELECT first_name FROM students;
 ```
 
 #### **2. Nomes de Colunas Errados:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Erro (coluna não existe)
@@ -247,8 +226,6 @@ SELECT first_name FROM students;
 
 #### **3. Case Sensitivity:**
 
-sqlresponse-action-icon
-
 ```sql
 -- MySQL não é case-sensitive por padrão, mas é boa prática
 -- ✅ Consistente
@@ -259,8 +236,6 @@ SELECT first_name FROM students;  -- Melhor prática
 ### **💡 Dicas de Produtividade:**
 
 #### **1. Formatação Legível:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Difícil de ler
@@ -275,8 +250,6 @@ FROM students;
 ```
 
 #### **2. Sempre Testar Pequeno:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Primeiro ver estrutura

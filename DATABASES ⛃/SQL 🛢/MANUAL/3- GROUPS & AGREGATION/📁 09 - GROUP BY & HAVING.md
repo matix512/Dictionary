@@ -6,8 +6,6 @@
 
 #### **Fluxo de Execução SQL:**
 
-textresponse-action-icon
-
 ```text
 1. FROM - Selecionar tabelas
 2. WHERE - Filtrar linhas individuais  
