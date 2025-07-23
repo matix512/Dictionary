@@ -2287,8 +2287,6 @@ a:focus {
 
 ### Responsividade e Zoom
 
-cssresponse-action-icon
-
 ```css
 /* Layout que suporta zoom de até 200% */
 body {
@@ -2322,8 +2320,6 @@ a {
 
 ### Esconder Visualmente (mas manter para leitores de tela)
 
-cssresponse-action-icon
-
 ```css
 .sr-only {
   position: absolute;
@@ -2353,8 +2349,6 @@ cssresponse-action-icon
 
 ### Redução de Movimento
 
-cssresponse-action-icon
-
 ```css
 /* Respeitar preferência do usuário por movimento reduzido */
 @media (prefers-reduced-motion: reduce) {
@@ -2374,8 +2368,6 @@ cssresponse-action-icon
 ```
 
 ### Tema Escuro e Preferências de Contraste
-
-cssresponse-action-icon
 
 ```css
 /* Tema escuro automático */
@@ -2409,8 +2401,6 @@ cssresponse-action-icon
 
 ### Menu de Navegação
 
-htmlresponse-action-icon
-
 ```html
 <nav aria-label="Menu principal">
   <button id="menu-toggle" aria-expanded="false" aria-controls="menu-list">
@@ -2425,8 +2415,6 @@ htmlresponse-action-icon
   </ul>
 </nav>
 ```
-
-cssresponse-action-icon
 
 ```css
 /* CSS para o menu */
@@ -2449,8 +2437,6 @@ cssresponse-action-icon
 ```
 
 ### Tabs (Abas)
-
-htmlresponse-action-icon
 
 ```html
 <div class="tabs">
@@ -2517,8 +2503,6 @@ htmlresponse-action-icon
 
 ### Modal (Diálogo)
 
-htmlresponse-action-icon
-
 ```html
 <button id="open-dialog" aria-haspopup="dialog">Abrir Modal</button>
 
@@ -2547,8 +2531,6 @@ htmlresponse-action-icon
 ```
 
 ### Dropdown (Menu Suspenso)
-
-htmlresponse-action-icon
 
 ```html
 <div class="dropdown">
@@ -2581,8 +2563,6 @@ htmlresponse-action-icon
 ```
 
 ### Accordion (Sanfona)
-
-htmlresponse-action-icon
 
 ```html
 <div class="accordion">
@@ -2631,8 +2611,6 @@ htmlresponse-action-icon
 ```
 
 ### Carousel/Slider
-
-htmlresponse-action-icon
 
 ```html
 <div class="carousel" aria-roledescription="carrossel" aria-label="Imagens em destaque">
