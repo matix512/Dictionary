@@ -18,8 +18,6 @@ WHERE condition;
 
 #### **Operadores Básicos:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Igualdade
 SELECT * FROM students WHERE first_name = 'João';
