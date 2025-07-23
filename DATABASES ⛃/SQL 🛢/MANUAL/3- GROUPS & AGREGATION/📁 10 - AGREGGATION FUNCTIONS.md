@@ -374,8 +374,6 @@ ORDER BY total_revenue DESC;
 
 #### **Análise de Produtos:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Performance de produtos
 SELECT 
@@ -411,8 +409,6 @@ ORDER BY total_revenue DESC;
 ### **📈 Agregações Temporais:**
 
 #### **Análise Temporal Detalhada:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Vendas por períodos
@@ -456,8 +452,6 @@ ORDER BY year, month;
 
 #### **Exercício 1 - Básico:**
 
-sqlresponse-action-icon
-
 ```sql
 -- 1. Estatísticas gerais de preços
 SELECT 
@@ -489,8 +483,6 @@ LIMIT 1;
 
 #### **Exercício 2 - Intermediário:**
 
-sqlresponse-action-icon
-
 ```sql
 -- 1. Análise de variação de preços por produto
 SELECT 
@@ -520,8 +512,6 @@ ORDER BY monthly_revenue DESC;
 ```
 
 #### **Exercício 3 - Avançado:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Análise de performance relativa por vendedor
@@ -565,8 +555,6 @@ ORDER BY revenue DESC;
 
 #### **1. Índices para Agregações:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Índices que aceleram agregações
 CREATE INDEX idx_sales_category ON sales(category);
@@ -578,8 +566,6 @@ CREATE INDEX idx_sales_covering ON sales(category, salesperson, sale_date, quant
 ```
 
 #### **2. Evitar Subconsultas Desnecessárias:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Lento - subquery repetida
@@ -602,9 +588,6 @@ GROUP BY product;
 ### **🚨 Erros Comuns:**
 
 #### **1. NULL em Agregações:**
-
-sqlresponse-action-icon
-
 ```sql
 -- COUNT(*) conta NULLs, COUNT(column) não conta
 SELECT 
@@ -618,9 +601,6 @@ SELECT AVG(COALESCE(price, 0)) AS avg_including_nulls_as_zero FROM sales;
 ```
 
 #### **2. Divisão por Zero:**
-
-sqlresponse-action-icon
-
 ```sql
 -- ❌ Pode gerar erro
 SELECT SUM(quantity * price) / COUNT(DISTINCT customer_id) FROM sales;

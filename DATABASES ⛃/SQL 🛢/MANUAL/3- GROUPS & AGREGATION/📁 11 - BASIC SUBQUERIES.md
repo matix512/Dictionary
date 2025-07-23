@@ -6,7 +6,6 @@
 
 #### **Tipos de Subqueries:**
 
-textresponse-action-icon
 
 ```text
 📝 Scalar: Retorna um único valor
