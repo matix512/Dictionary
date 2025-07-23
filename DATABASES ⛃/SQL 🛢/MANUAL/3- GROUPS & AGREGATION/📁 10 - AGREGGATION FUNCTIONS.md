@@ -316,8 +316,6 @@ ORDER BY quartile;
 
 #### **Dashboard Executivo:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Métricas principais do negócio
 SELECT 
@@ -342,8 +340,6 @@ WHERE sale_date >= '2024-01-01';
 ```
 
 #### **Análise de Performance por Vendedor:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Relatório detalhado de vendedores
