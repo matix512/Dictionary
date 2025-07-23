@@ -6,8 +6,6 @@
 
 #### **Tipos de Constraints:**
 
-textresponse-action-icon
-
 ```text
 🔑 PRIMARY KEY - Identifica unicamente cada linha
 🔗 FOREIGN KEY - Mantém integridade referencial  
@@ -20,8 +18,6 @@ textresponse-action-icon
 ### **🔑 PRIMARY KEY:**
 
 #### **Conceito e Características:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Características da Primary Key:
@@ -55,8 +51,6 @@ CREATE TABLE order_items (
 
 #### **AUTO_INCREMENT com Primary Key:**
 
-sqlresponse-action-icon
-
 ```sql
 -- MySQL
 CREATE TABLE customers (
@@ -82,8 +76,6 @@ ALTER TABLE customers AUTO_INCREMENT = 1000;  -- Próximo id será 1000
 
 #### **Primary Keys Naturais vs Substitutas:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Primary Key Natural (dados do negócio)
 CREATE TABLE countries (
@@ -106,8 +98,6 @@ CREATE TABLE countries (
 ### **🔗 FOREIGN KEY:**
 
 #### **Conceito e Integridade Referencial:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Foreign Key garante que valor existe na tabela pai

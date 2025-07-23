@@ -561,8 +561,6 @@ WHERE email IS NOT NULL OR phone IS NOT NULL;
 
 #### **1. Índices para DML:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Índices essenciais para WHERE clauses
 CREATE INDEX idx_customers_email ON customers(email);
@@ -575,8 +573,6 @@ CREATE INDEX idx_customers_status ON customers(status);
 ```
 
 #### **2. Otimizar UPDATEs:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Lento - subquery correlacionada
@@ -599,8 +595,6 @@ SET p.total_sold = totals.total_sold;
 
 #### **3. Bulk Operations:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Para grandes volumes, usar LOAD DATA (MySQL)
 LOAD DATA INFILE '/path/to/data.csv'
@@ -619,9 +613,7 @@ INSERT INTO logs (user_id, action, timestamp) VALUES
 
 ### **🚨 Segurança e Boas Práticas:**
 
-#### **1. Sempre usar WHERE em UPDATE/DELETE:**
-
-sqlresponse-action-icon
+#### **1. Usar sempre WHERE em UPDATE/DELETE:**
 
 ```sql
 -- ❌ PERIGO - sem WHERE atualiza TUDO
@@ -636,8 +628,6 @@ SELECT COUNT(*) FROM customers WHERE last_login < '2022-01-01';
 ```
 
 #### **2. Usar Transações para Operações Críticas:**
-
-sqlresponse-action-icon
 
 ```sql
 START TRANSACTION;
@@ -655,8 +645,6 @@ COMMIT;
 ```
 
 #### **3. Validar Dados Antes de Inserir:**
-
-sqlresponse-action-icon
 
 ```sql
 -- INSERT com validação
