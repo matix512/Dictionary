@@ -35,8 +35,6 @@ SELECT * FROM students WHERE YEAR(birth_date) <= 1990;
 
 #### **Exemplos Práticos:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Estudantes nascidos após 1995
 SELECT first_name, last_name, birth_date
@@ -54,8 +52,6 @@ SELECT * FROM students WHERE first_name != 'João';
 
 #### **AND - Todas as condições devem ser verdadeiras:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Nascidos nos anos 90 E chamados João
 SELECT * FROM students 
@@ -71,8 +67,6 @@ WHERE first_name = 'Maria'
 
 #### **OR - Pelo menos uma condição deve ser verdadeira:**
 
-sqlresponse-action-icon
-
 ```sql
 -- João OU Maria
 SELECT * FROM students
@@ -85,8 +79,6 @@ WHERE YEAR(birth_date) < 1990 OR YEAR(birth_date) > 2000;
 
 #### **NOT - Inverte a condição:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Todos EXCETO João
 SELECT * FROM students WHERE NOT first_name = 'João';
@@ -96,8 +88,6 @@ SELECT * FROM students WHERE NOT (YEAR(birth_date) BETWEEN 1990 AND 1999);
 ```
 
 #### **Precedência e Parênteses:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Ambíguo
@@ -114,16 +104,12 @@ WHERE (first_name = 'João' OR first_name = 'Maria')
 
 #### **Wildcards:**
 
-textresponse-action-icon
-
 ```text
 % - Zero ou mais caracteres
 _ - Exatamente um caractere
 ```
 
 #### **Padrões LIKE:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Começar com 'J'
@@ -147,8 +133,6 @@ SELECT * FROM students WHERE first_name LIKE '_o%';
 
 #### **Case Sensitivity:**
 
-sqlresponse-action-icon
-
 ```sql
 -- MySQL (não case-sensitive por padrão)
 SELECT * FROM students WHERE first_name LIKE 'joão%';  -- Encontra 'João'
@@ -163,8 +147,6 @@ SELECT * FROM students WHERE first_name LIKE 'joão%';
 ### **📊 Operadores de Conjunto:**
 
 #### **IN - Lista de valores:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Múltiplos nomes
