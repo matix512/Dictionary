@@ -565,8 +565,6 @@ ALTER TABLE temp_table MODIFY COLUMN price_text INT;
 
 #### **Antes de Executar:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ✅ 1. Backup da tabela
 CREATE TABLE table_backup AS SELECT * FROM original_table;
@@ -591,8 +589,6 @@ SHOW TABLE STATUS WHERE Name = 'table_name';
 
 #### **Depois de Executar:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ✅ 1. Verificar estrutura
 DESCRIBE table_name;
@@ -613,8 +609,6 @@ SELECT COUNT(*) FROM table_name;  -- Deve ser igual ao anterior
 ### **📚 Scripts Úteis para ALTER TABLE:**
 
 #### **Script para Adicionar Auditoria:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Procedure para adicionar campos de auditoria (MySQL)
@@ -641,8 +635,6 @@ CALL AddAuditFields('products');
 ```
 
 #### **Script para Verificar Integridade:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Verificar todas as FKs de uma base de dados

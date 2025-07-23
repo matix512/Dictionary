@@ -6,8 +6,6 @@
 
 #### **Comandos Principais:**
 
-textresponse-action-icon
-
 ```text
 ➕ INSERT - Inserir novos registos
 🔧 UPDATE - Modificar registos existentes
@@ -19,8 +17,6 @@ textresponse-action-icon
 ### **➕ INSERT - Inserir Dados:**
 
 #### **INSERT Básico:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Sintaxe básica
@@ -38,8 +34,6 @@ VALUES (1, 'Maria', 'Santos', 'maria@email.com', '2024-01-15');
 
 #### **INSERT Múltiplo:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Múltiplos valores de uma vez
 INSERT INTO products (name, price, category, stock)
@@ -53,8 +47,6 @@ VALUES
 ```
 
 #### **INSERT com Subquery:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Inserir dados de outra tabela
@@ -85,8 +77,6 @@ GROUP BY c.id;
 
 #### **INSERT com Valores Especiais:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Usando funções
 INSERT INTO logs (user_id, action, timestamp)
@@ -110,8 +100,6 @@ VALUES ('Pedro', 'Oliveira', 'pedro@email.com');
 
 #### **UPDATE Básico:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Sintaxe básica
 UPDATE table_name 
@@ -130,8 +118,6 @@ WHERE id = 5;
 ```
 
 #### **UPDATE com Condições:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Atualização condicional
@@ -162,8 +148,6 @@ WHERE id IN (
 
 #### **UPDATE com Cálculos:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Incrementar/decrementar
 UPDATE products 
@@ -192,8 +176,6 @@ SET email = LOWER(email),
 
 #### **UPDATE com JOINs:**
 
-sqlresponse-action-icon
-
 ```sql
 -- MySQL/SQL Server syntax
 UPDATE customers c
@@ -220,8 +202,6 @@ SET c.has_orders = CASE WHEN o.id IS NOT NULL THEN TRUE ELSE FALSE END;
 
 #### **DELETE Básico:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Sintaxe básica
 DELETE FROM table_name 
@@ -237,8 +217,6 @@ WHERE stock = 0 AND status = 'discontinued';
 ```
 
 #### **DELETE com Subqueries:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Delete com subquery
