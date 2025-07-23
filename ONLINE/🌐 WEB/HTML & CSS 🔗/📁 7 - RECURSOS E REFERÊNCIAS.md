@@ -369,5 +369,8 @@
 <!-- Áudio -->
 <audio controls>
   <source src="audio.mp3" type="audio/mpeg">
-  <source src="audio.ogg" type="
+  <source src="audio.ogg" type="audio/ogg">
+  Seu navegador não suporta o elemento de áudio.
+</audio>
 ```
+
