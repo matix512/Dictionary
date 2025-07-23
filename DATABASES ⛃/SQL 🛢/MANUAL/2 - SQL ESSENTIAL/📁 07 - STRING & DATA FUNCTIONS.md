@@ -246,8 +246,6 @@ WHERE email IS NOT NULL;
 
 #### **Exercício 1 - Strings:**
 
-sqlresponse-action-icon
-
 ```sql
 -- 1. Nome completo em maiúsculas
 SELECT UPPER(CONCAT(first_name, ' ', last_name)) AS full_name_upper FROM students;
@@ -263,8 +261,6 @@ SELECT CONCAT(LEFT(first_name, 1), LEFT(last_name, 1)) AS initials FROM students
 ```
 
 #### **Exercício 2 - Datas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Idade em anos completos
@@ -286,8 +282,6 @@ SELECT first_name, DATEDIFF(CURDATE(), birth_date) AS days_since_birth FROM stud
 
 #### **1. Evitar Funções em WHERE:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ Lento
 SELECT * FROM students WHERE YEAR(birth_date) = 1995;
@@ -297,8 +291,6 @@ SELECT * FROM students WHERE birth_date >= '1995-01-01' AND birth_date < '1996-0
 ```
 
 #### **2. Usar Colunas Calculadas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Para consultas frequentes, criar coluna calculada

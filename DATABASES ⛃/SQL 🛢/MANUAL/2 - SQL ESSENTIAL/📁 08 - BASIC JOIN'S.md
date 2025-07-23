@@ -6,8 +6,6 @@
 
 #### **Dataset de Exemplo:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Criar tabelas para exemplos
 CREATE TABLE countries (
@@ -46,8 +44,6 @@ INSERT INTO students VALUES
 > Retorna apenas registos que têm correspondência em ambas as tabelas.
 
 #### **Sintaxe e Exemplos:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Sintaxe básica
