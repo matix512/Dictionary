@@ -32,3 +32,40 @@ CSS (Cascading Style Sheets) é a linguagem usada para estilizar os elementos HT
 </html>
 ````
 
+
+### 📄 02 - FERRAMENTAS & AMBIENTE
+
+```markdown
+# Ferramentas & Ambiente de Desenvolvimento
+
+## Editores de Código
+- **Visual Studio Code**: Editor mais popular, extensões para HTML/CSS
+- **Sublime Text**: Leve e rápido
+- **Atom**: Personalizável e integrado com GitHub
+- **Brackets**: Focado em desenvolvimento web
+
+## Extensões Úteis (VS Code)
+- Live Server
+- HTML CSS Support
+- Auto Rename Tag
+- Prettier
+- HTML Snippets
+
+## Browsers & Dev Tools
+- Chrome DevTools (F12 ou Ctrl+Shift+I)
+- Firefox Developer Edition
+- Edge DevTools
+
+## Validadores
+- [W3C HTML Validator](https://validator.w3.org/)
+- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+
+## Configuração básica do VS Code
+```json
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "html.format.wrapLineLength": 100,
+  "css.validate": true
+}
+````
