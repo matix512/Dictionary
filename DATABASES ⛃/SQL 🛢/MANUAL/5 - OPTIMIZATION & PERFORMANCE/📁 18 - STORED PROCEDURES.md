@@ -327,8 +327,6 @@ SELECT @result;
 
 #### **Relatório de Vendas Mensal:**
 
-sqlresponse-action-icon
-
 ```sql
 DELIMITER //
 CREATE PROCEDURE GenerateMonthlySalesReport(
@@ -407,8 +405,6 @@ CALL GenerateMonthlySalesReport(2024, 1);
 
 #### **Procedure para Análise de Cohort:**
 
-sqlresponse-action-icon
-
 ```sql
 DELIMITER //
 CREATE PROCEDURE AnalyzeCustomerCohort(
@@ -463,8 +459,6 @@ CALL AnalyzeCustomerCohort(2024, 1);
 ### **🎯 Procedures de Manutenção:**
 
 #### **Limpeza Automática de Dados:**
-
-sqlresponse-action-icon
 
 ```sql
 DELIMITER //
@@ -567,8 +561,6 @@ CALL BackupCriticalData(CURDATE());
 
 #### **Recalcular Estatísticas de Cliente:**
 
-sqlresponse-action-icon
-
 ```sql
 DELIMITER //
 CREATE PROCEDURE RecalculateCustomerStats()
@@ -649,8 +641,6 @@ DELIMITER ;
 ### **📊 Functions vs Procedures:**
 
 #### **Stored Functions:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Function que retorna um valor
