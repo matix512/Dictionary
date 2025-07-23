@@ -53,8 +53,6 @@ ADD CONSTRAINT fk_products_supplier
 
 #### **Adicionar com Valores Padrão:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Para tabela com dados existentes
 ALTER TABLE customers
@@ -74,8 +72,6 @@ ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ### **🔧 Modificar Colunas Existentes:**
 
 #### **MODIFY vs ALTER COLUMN:**
-
-sqlresponse-action-icon
 
 ```sql
 -- MySQL - MODIFY COLUMN
@@ -100,8 +96,6 @@ MODIFY COLUMN email VARCHAR(200) NOT NULL;  -- Forçar NOT NULL
 
 #### **Modificações Complexas:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Mudar ENUM values
 ALTER TABLE orders
@@ -125,8 +119,6 @@ CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 #### **DROP COLUMN:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Remover coluna simples
 ALTER TABLE products
@@ -149,8 +141,6 @@ DROP COLUMN customer_id;
 ### **🔑 Gerenciar Constraints:**
 
 #### **Adicionar Constraints:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Primary Key
@@ -176,8 +166,6 @@ ALTER COLUMN status SET DEFAULT 'active';  -- MySQL
 ```
 
 #### **Remover Constraints:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Remover Foreign Key
@@ -205,8 +193,6 @@ ALTER COLUMN status DROP DEFAULT;
 
 #### **Adicionar Índices:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Índice simples
 ALTER TABLE products
@@ -227,8 +213,6 @@ ADD FULLTEXT(name, description);
 
 #### **Remover Índices:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Remover índice
 ALTER TABLE products
@@ -247,8 +231,6 @@ DROP INDEX idx_price;
 
 #### **Renomear Tabela:**
 
-sqlresponse-action-icon
-
 ```sql
 -- MySQL
 ALTER TABLE old_table_name 
@@ -264,8 +246,6 @@ RENAME TABLE
 ```
 
 #### **Renomear Colunas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- MySQL 8.0+
@@ -283,8 +263,6 @@ EXEC sp_rename 'customers.old_column', 'new_column', 'COLUMN';
 ### **🎯 Casos Práticos Completos:**
 
 #### **Evolução de Esquema E-commerce:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Situação: Expandir sistema de produtos
@@ -334,8 +312,6 @@ WHERE category_id IN (SELECT id FROM categories WHERE name LIKE '%Digital%');
 
 #### **Sistema de Auditoria:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Adicionar campos de auditoria a tabelas existentes
 
@@ -361,8 +337,6 @@ ALTER TABLE orders ADD COLUMN created_by INT DEFAULT 1, ADD COLUMN updated_by IN
 
 #### **Migração Segura:**
 
-sqlresponse-action-icon
-
 ```sql
 -- 1. Backup primeiro!
 CREATE TABLE customers_backup AS SELECT * FROM customers;
@@ -385,8 +359,6 @@ MODIFY COLUMN full_name VARCHAR(200) NOT NULL;
 ```
 
 #### **Migração de Tipos de Dados:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Situação: price era VARCHAR, precisa ser DECIMAL
@@ -417,8 +389,6 @@ ALTER TABLE products CHANGE price_new price DECIMAL(10,2) NOT NULL;
 
 #### **Exercício 1 - Modificações Básicas:**
 
-sqlresponse-action-icon
-
 ```sql
 -- 1. Adicionar colunas de auditoria à tabela students
 ALTER TABLE students
@@ -441,8 +411,6 @@ ADD INDEX idx_students_name (first_name, last_name);
 ```
 
 #### **Exercício 2 - Reestruturação Complexa:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Cenário: Melhorar sistema de biblioteca
@@ -485,8 +453,6 @@ ALTER TABLE loans ADD COLUMN is_deleted BOOLEAN DEFAULT FALSE;
 ### **⚡ Performance e Considerações:**
 
 #### **1. ALTER TABLE em Tabelas Grandes:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ⚠️ Operações que podem ser lentas em tabelas grandes:
@@ -538,8 +504,6 @@ ALGORITHM=INPLACE, LOCK=NONE;
 
 #### **1. Constraint Violations:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ Erro: Tentar adicionar NOT NULL com dados NULL existentes
 ALTER TABLE customers MODIFY COLUMN phone VARCHAR(20) NOT NULL;
@@ -562,8 +526,6 @@ HAVING COUNT(*) > 1;
 
 #### **2. Foreign Key Issues:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ Erro: Não conseguir dropar coluna com FK
 ALTER TABLE orders DROP COLUMN customer_id;
@@ -585,8 +547,6 @@ WHERE c.id IS NULL;
 ```
 
 #### **3. Tipo de Dados Incompatível:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Erro: Converter VARCHAR para INT com dados inválidos
