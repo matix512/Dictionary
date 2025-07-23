@@ -302,7 +302,7 @@ VALUES (source.id, source.first_name, source.last_name, source.email);
 
 #### **Sistema de E-commerce - Processar Pedido:**
 
-```Text
+```sql
 -- Cenário: Cliente faz um pedido, precisa atualizar stock e criar registos
 
 START TRANSACTION;
@@ -346,11 +346,9 @@ SET
 WHERE id = 1;
 
 COMMIT;
-````
+```
 
 #### **Sistema de Auditoria - Log de Mudanças:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Trigger para log automático de mudanças (conceito)
@@ -376,8 +374,6 @@ DELIMITER ;
 ```
 
 #### **Limpeza e Manutenção de Dados:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Script de limpeza semanal
@@ -424,8 +420,6 @@ SET total_sold = (
 
 #### **INSERT em Lotes:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Para grandes volumes de dados
 INSERT INTO large_table (col1, col2, col3) VALUES
@@ -454,8 +448,6 @@ DELIMITER ;
 ```
 
 #### **UPDATE em Lotes:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Atualizar em lotes para evitar locks longos
@@ -488,8 +480,6 @@ END WHILE;
 
 #### **Exercício 1 - Operações Básicas:**
 
-sqlresponse-action-icon
-
 ```sql
 -- 1. Inserir novos clientes
 INSERT INTO customers (first_name, last_name, email, phone)
@@ -519,8 +509,6 @@ GROUP BY DATE_FORMAT(sale_date, '%Y-%m');
 ```
 
 #### **Exercício 2 - Operações Avançadas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Sistema de pontos de fidelidade
