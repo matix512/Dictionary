@@ -247,6 +247,29 @@ FROM Invoice;
 ### 🔸 INNER JOIN
 
 Retorna apenas linhas com correspondência em ambas as tabelas.
-```sql
 
+```sql
+SELECT 
+    Customer.CustomerId,
+    Customer.LastName,
+    Invoice.InvoiceId
+FROM Customer
+JOIN Invoice 
+    ON Customer.State = Invoice.BillingState;
 ```
+
+### 🔸 LEFT JOIN
+
+Retorna todos os registos da tabela da esquerda, e os correspondentes da direita (se existirem).
+
+```sql
+SELECT 
+    Customer.CustomerId,
+    Customer.LastName,
+    Invoice.InvoiceId
+FROM Customer
+JOIN Invoice 
+    ON Customer.State = Invoice.BillingState;
+```
+
+🔸 FULL OUTER JOIN
