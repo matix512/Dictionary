@@ -132,12 +132,34 @@ WHERE Country = 'Germany' OR Country = 'France';
 ```sql
 SELECT * 
 FROM Customer
-WHERE Country = 'Germany';
+WHERE NOT Country = 'USA';
 ```
 
 ```sql
-SELECT * 
+SELECT FirstName, LastName 
 FROM Customer
-WHERE Country = 'Germany' OR Country = 'France';
+WHERE LastName LIKE 'A%';
+```
+
+```sql
+SELECT FirstName, LastName 
+FROM Customer
+WHERE LastName LIKE '_e%';
+```
+
+```sql
+SELECT FirstName, LastName 
+FROM Customer
+WHERE LastName NOT LIKE '%A';
+```
+
+
+
+### 🧮 Filtros em múltiplas colunas
+
+```sql
+SELECT CustomerId, Total 
+FROM Invoice
+WHERE Total > 10 AND BillingCity = 'Paris';
 ```
 
