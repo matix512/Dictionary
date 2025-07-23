@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/SQL SELECT STATEMENTS.md",
+                "file": "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/SQL QUICK GUIDE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SQL SELECT STATEMENTS"
+              "title": "SQL QUICK GUIDE"
             }
           }
         ]
@@ -192,8 +192,10 @@
   },
   "active": "19bc7392c8a4f39a",
   "lastOpenFiles": [
-    "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/INTRODUCTION.md",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/SQL SELECT STATEMENTS.md",
+    "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/SQL QUICK GUIDE.md",
+    "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/Untitled",
+    "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/INTRODUCTION.md",
     "DATABASES ⛃/CURSOEMVIDEO/TIPOS PRIMITIVOS DE DADOS.md",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS",
     "DATABASES ⛃/COURSERA",
@@ -224,10 +226,8 @@
     "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 01 - BASIC CONCEPT.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/2 - SQL ESSENTIAL/📁 05 - WHERE & FILTERS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/3- GROUPS & AGREGATION",
-    "DATABASES ⛃/SQL 🛢/MANUAL/2 - SQL ESSENTIAL",
     "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE/📁 19 - TRIGGERS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 04 - FIRST QUERIES.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 03 - INSTALL & SETUP.md",
     "Pasted image 20250719013940.png",
     "Pasted image 20250719013937.png",
     "Pasted image 20250719014104.png",
