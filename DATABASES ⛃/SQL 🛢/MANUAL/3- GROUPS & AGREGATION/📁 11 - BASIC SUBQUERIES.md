@@ -6,7 +6,6 @@
 
 #### **Tipos de Subqueries:**
 
-
 ```text
 📝 Scalar: Retorna um único valor
 📊 Table: Retorna uma tabela de resultados  
@@ -16,8 +15,6 @@
 ```
 
 #### **Onde Usar Subqueries:**
-
-sqlresponse-action-icon
 
 ```sql
 SELECT ... (scalar subquery)
@@ -82,8 +79,6 @@ GROUP BY category;
 
 #### **Comparações Simples:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Produtos com preço acima da média
 SELECT product, price
@@ -115,8 +110,6 @@ WHERE sale_date = (
 
 #### **IN e NOT IN:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Produtos vendidos por João
 SELECT DISTINCT product
@@ -145,8 +138,6 @@ WHERE product NOT IN (
 ```
 
 #### **EXISTS e NOT EXISTS:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Vendedores que venderam eletrônicos
@@ -187,8 +178,6 @@ WHERE NOT EXISTS (
 ### **📋 Subqueries como Tabelas (FROM):**
 
 #### **Derived Tables:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Top 3 vendedores como tabela
