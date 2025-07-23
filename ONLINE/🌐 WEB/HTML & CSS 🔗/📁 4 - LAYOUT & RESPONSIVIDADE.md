@@ -824,3 +824,505 @@ h1 {
 }
 ````
 
+### Direção e Quebra
+
+```css
+.container {
+  flex-direction: row | row-reverse | column | column-reverse;
+  flex-wrap: nowrap | wrap | wrap-reverse;
+  
+  /* Shorthand */
+  flex-flow: row wrap;
+}
+```
+
+### Alinhamento
+
+```css
+.container {
+  /* Alinhamento no eixo principal */
+  justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly;
+  
+  /* Alinhamento no eixo transversal */
+  align-items: stretch | flex-start | flex-end | center | baseline;
+  
+  /* Alinhamento de múltiplas linhas */
+  align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+}
+```
+
+## Técnicas Avançadas
+
+### Holy Grail Layout com Flexbox
+
+Layout clássico com cabeçalho, rodapé, conteúdo principal e barras laterais.
+
+```html
+<div class="holy-grail">
+  <header class="holy-grail-header">Cabeçalho</header>
+  <div class="holy-grail-body">
+    <nav class="holy-grail-nav">Navegação</nav>
+    <main class="holy-grail-content">Conteúdo Principal</main>
+    <aside class="holy-grail-aside">Barra Lateral</aside>
+  </div>
+  <footer class="holy-grail-footer">Rodapé</footer>
+</div>
+```
+
+```css
+.holy-grail {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.holy-grail-header,
+.holy-grail-footer {
+  flex: 0 0 auto;
+  padding: 20px;
+}
+
+.holy-grail-body {
+  display: flex;
+  flex: 1 0 auto;
+}
+
+.holy-grail-content {
+  flex: 1 0 0;
+  padding: 20px;
+}
+
+.holy-grail-nav,
+.holy-grail-aside {
+  flex: 0 0 200px;
+  padding: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .holy-grail-body {
+    flex-direction: column;
+  }
+  
+  .holy-grail-nav,
+  .holy-grail-aside,
+  .holy-grail-content {
+    flex-basis: auto;
+  }
+}
+```
+
+### Card com Proporção Fixa
+
+```css
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-image {
+  /* Mantém proporção 16:9 */
+  padding-top: 56.25%;
+  position: relative;
+}
+
+.card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 16px;
+  flex-grow: 1; /* Cresce para ocupar espaço disponível */
+}
+
+.card-footer {
+  padding: 16px;
+  border-top: 1px solid #eee;
+}
+```
+
+### Navegação Horizontal/Vertical Responsiva
+
+```css
+.nav {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  padding: 10px 15px;
+}
+
+/* Vertical em mobile, horizontal em desktop */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+  }
+}
+
+/* Ou usando flex-wrap para menu que quebra */
+.nav-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nav-wrap .nav-item {
+  flex: 1 1 auto;
+  text-align: center;
+  min-width: 100px;
+}
+```
+
+### Centralizando com Flexbox
+
+```css
+/* Centralização perfeita horizontal e vertical */
+.center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* ou qualquer altura desejada */
+}
+
+/* Centralização em coluna */
+.center-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+}
+```
+
+### Layout de Grade com Flexbox
+
+Antes do CSS Grid, flexbox era usado para criar layouts em grade:
+
+```css
+.flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px; /* Compensa o padding dos itens */
+}
+
+.flex-grid-item {
+  flex: 1 1 300px; /* Cresce, encolhe, base 300px */
+  margin: 10px;
+}
+
+/* Definindo número de colunas */
+.flex-grid-2 .flex-grid-item {
+  flex-basis: calc(50% - 20px);
+}
+
+.flex-grid-3 .flex-grid-item {
+  flex-basis: calc(33.333% - 20px);
+}
+
+.flex-grid-4 .flex-grid-item {
+  flex-basis: calc(25% - 20px);
+}
+
+@media (max-width: 768px) {
+  .flex-grid-item {
+    flex-basis: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .flex-grid-item {
+    flex-basis: 100%;
+  }
+}
+```
+
+### Sticky Footer com Flexbox
+
+```css
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.content {
+  flex: 1 0 auto; /* Cresce para preencher espaço */
+}
+
+.footer {
+  flex-shrink: 0; /* Não encolhe */
+}
+```
+
+### Layout de Cartões com Alturas Iguais
+
+```css
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+}
+
+.card-body {
+  flex-grow: 1; /* Faz todos os cards terem a mesma altura */
+}
+```
+
+### Espaçamento com gap
+
+O gap é uma propriedade moderna que substitui margens entre itens flex:
+
+```css
+.flex-container {
+  display: flex;
+  gap: 20px; /* Espaçamento igual entre todos os itens */
+  row-gap: 20px; /* Apenas entre linhas */
+  column-gap: 10px; /* Apenas entre colunas */
+}
+```
+
+### Ordem Flexível dos Elementos
+
+```css
+.flex-container {
+  display: flex;
+}
+
+.first {
+  order: -1; /* Aparece primeiro */
+}
+
+.last {
+  order: 1; /* Aparece por último */
+}
+
+/* Reordenando em mobile */
+@media (max-width: 768px) {
+  .mobile-first {
+    order: -1;
+  }
+}
+```
+
+### Alinhamento Responsivo
+
+```css
+.flex-container {
+  display: flex;
+  justify-content: space-between; /* Desktop */
+}
+
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column;
+    justify-content: flex-start; /* Mobile */
+  }
+}
+```
+
+### Flexbox e Overflow
+
+```css
+.flex-container {
+  display: flex;
+}
+
+.truncate {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fixed {
+  flex: 0 0 auto; /* Não cresce, não encolhe */
+}
+```
+
+### Flexbox para Formulários
+
+cssresponse-action-icon
+
+```css
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  flex: 1; /* Distribui espaço igualmente */
+}
+
+.form-group.small {
+  flex: 0 0 100px; /* Largura fixa */
+}
+
+.form-group.large {
+  flex: 2; /* Duas vezes mais largo que os outros */
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .form-group.small,
+  .form-group.large {
+    flex: auto;
+  }
+}
+```
+
+### Diagonal Layout com Flexbox
+
+cssresponse-action-icon
+
+```css
+.diagonal-layout {
+  display: flex;
+  height: 300px;
+}
+
+.diagonal-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Cada item desloca mais que o anterior */
+.diagonal-item:nth-child(1) { align-self: flex-start; }
+.diagonal-item:nth-child(2) { align-self: center; }
+.diagonal-item:nth-child(3) { align-self: flex-end; }
+```
+
+### Split Screen com Flexbox
+
+cssresponse-action-icon
+
+```css
+.split-screen {
+  display: flex;
+  height: 100vh;
+}
+
+.split-left,
+.split-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Divisão assimétrica */
+.split-left {
+  flex: 0 0 60%; /* 60% da largura */
+  background-color: #f5f5f5;
+}
+
+.split-right {
+  flex: 1; /* Resto do espaço */
+  background-color: #333;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .split-screen {
+    flex-direction: column;
+  }
+  
+  .split-left {
+    flex: 0 0 50vh; /* Metade da altura da viewport */
+  }
+}
+```
+
+## Flexbox vs. Grid
+
+- **Use Flexbox para:**
+    - Layouts unidimensionais (linha OU coluna)
+    - Quando o conteúdo deve ditar o tamanho
+    - Distribuição de espaço entre itens
+    - Alinhamento preciso de itens
+- **Use Grid para:**
+    - Layouts bidimensionais (linhas E colunas)
+    - Quando o layout deve ditar o conteúdo
+    - Posicionamento preciso em duas dimensões
+    - Sobreposição de elementos
+
+## Desafios Comuns e Soluções
+
+### Larguras Iguais Independente do Conteúdo
+
+cssresponse-action-icon
+
+```css
+.equal-width {
+  display: flex;
+}
+
+.equal-width > * {
+  flex: 1;
+}
+```
+
+### Último Item na Direita
+
+cssresponse-action-icon
+
+```css
+.navbar {
+  display: flex;
+}
+
+.spacer {
+  flex: 1; /* Empurra o próximo item para a direita */
+}
+```
+
+### Evitando que Itens Encolham Abaixo do Conteúdo
+
+cssresponse-action-icon
+
+```css
+.no-shrink {
+  flex-shrink: 0; /* Não encolhe abaixo do tamanho do conteúdo */
+}
+```
+
+### Distribução Automática em Múltiplas Linhas
+
+cssresponse-action-icon
+
+```css
+.auto-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.auto-grid-item {
+  flex: 1 1 300px; /* Cresce, encolhe, base mínima */
+}
+```
