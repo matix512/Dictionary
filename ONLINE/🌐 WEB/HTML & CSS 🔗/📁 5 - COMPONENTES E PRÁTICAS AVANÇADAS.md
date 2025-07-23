@@ -2039,3 +2039,680 @@ Os princípios POUR:
 </a>
 ```
 
+```markdown
+<a href="https://twitter.com/perfil">
+  <span class="icon-twitter" aria-hidden="true"></span>
+  <span>Siga-nos no Twitter</span>
+</a>
+```
+
+
+### Formulários Acessíveis
+
+```html
+<form>
+  <!-- Label associado ao input -->
+  <div class="form-group">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required aria-required="true">
+  </div>
+  
+  <!-- Grupo de campos relacionados -->
+  <fieldset>
+    <legend>Preferências de contato</legend>
+    
+    <div class="form-group">
+      <input type="checkbox" id="email-contato" name="contato" value="email">
+      <label for="email-contato">Email</label>
+    </div>
+    
+    <div class="form-group">
+      <input type="checkbox" id="telefone-contato" name="contato" value="telefone">
+      <label for="telefone-contato">Telefone</label>
+    </div>
+  </fieldset>
+  
+  <!-- Indicador de campo obrigatório -->
+  <div class="form-group">
+    <label for="email">
+      Email <span aria-hidden="true">*</span>
+      <span class="sr-only">obrigatório</span>
+    </label>
+    <input type="email" id="email" name="email" required aria-required="true">
+  </div>
+  
+  <!-- Mensagens de erro acessíveis -->
+  <div class="form-group">
+    <label for="senha">Senha:</label>
+    <input 
+      type="password" 
+      id="senha" 
+      name="senha"
+      aria-describedby="senha-requisitos senha-erro"
+      required
+    >
+    <p id="senha-requisitos" class="form-hint">
+      A senha deve ter pelo menos 8 caracteres.
+    </p>
+    <div id="senha-erro" class="error-message" role="alert" aria-live="assertive"></div>
+  </div>
+  
+  <button type="submit">Enviar</button>
+</form>
+```
+
+### Tabelas Acessíveis
+
+```html
+<table>
+  <!-- Legenda e resumo -->
+  <caption>Vendas trimestrais por região</caption>
+  
+  <!-- Cabeçalhos claramente definidos -->
+  <thead>
+    <tr>
+      <th scope="col">Região</th>
+      <th scope="col">Q1</th>
+      <th scope="col">Q2</th>
+      <th scope="col">Q3</th>
+      <th scope="col">Q4</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+      <th scope="row">Norte</th>
+      <td>10.000</td>
+      <td>12.500</td>
+      <td>15.000</td>
+      <td>18.000</td>
+    </tr>
+    <tr>
+      <th scope="row">Sul</th>
+      <td>8.000</td>
+      <td>9.500</td>
+      <td>11.000</td>
+      <td>13.000</td>
+    </tr>
+  </tbody>
+  
+  <!-- Rodapé da tabela -->
+  <tfoot>
+    <tr>
+      <th scope="row">Total</th>
+      <td>18.000</td>
+      <td>22.000</td>
+      <td>26.000</td>
+      <td>31.000</td>
+    </tr>
+  </tfoot>
+</table>
+```
+
+## ARIA (Accessible Rich Internet Applications)
+
+### Roles, States e Properties
+
+```html
+<!-- Exemplo de role -->
+<div role="alert">Esta mensagem é importante!</div>
+
+<!-- Exemplo de state -->
+<button aria-pressed="false">Toggle</button>
+
+<!-- Exemplo de property -->
+<div aria-label="Descrição do elemento">Conteúdo</div>
+```
+
+### Roles Comuns
+
+```html
+<!-- Landmarks (pontos de referência) -->
+<header role="banner">...</header>
+<nav role="navigation">...</nav>
+<main role="main">...</main>
+<aside role="complementary">...</aside>
+<footer role="contentinfo">...</footer>
+<form role="search">...</form>
+
+<!-- Outros papéis -->
+<div role="tablist">
+  <button role="tab" aria-selected="true" id="tab1">Aba 1</button>
+  <button role="tab" aria-selected="false" id="tab2">Aba 2</button>
+</div>
+
+<div role="tabpanel" aria-labelledby="tab1">Conteúdo da Aba 1</div>
+<div role="tabpanel" aria-labelledby="tab2" hidden>Conteúdo da Aba 2</div>
+
+<div role="dialog" aria-labelledby="dialog-title" aria-modal="true">
+  <h2 id="dialog-title">Título do Diálogo</h2>
+  <!-- Conteúdo do diálogo -->
+</div>
+```
+
+### Estados e Propriedades Comuns
+
+```html
+<!-- Rótulos e descrições -->
+<button aria-label="Fechar" aria-describedby="tooltip">X</button>
+<div id="tooltip">Fecha este painel</div>
+
+<!-- Estados -->
+<button aria-expanded="false">Mostrar mais</button>
+<input type="checkbox" aria-checked="true">
+<span aria-hidden="true">Ícone decorativo</span>
+<div aria-live="polite">Conteúdo que será atualizado</div>
+
+<!-- Relacionamentos -->
+<div id="error-summary" role="alert" aria-live="assertive">
+  Há erros no formulário
+</div>
+<input aria-invalid="true" aria-errormessage="email-error">
+<div id="email-error">Email inválido, por favor use um formato correto</div>
+```
+
+### Live Regions
+
+```html
+<!-- Atualizações polidas (espera até que o usuário termine a ação atual) -->
+<div aria-live="polite">
+  Seu pedido foi processado com sucesso!
+</div>
+
+<!-- Atualizações assertivas (interrompe imediatamente o que o usuário está fazendo) -->
+<div aria-live="assertive" role="alert">
+  Sua sessão expirará em 1 minuto!
+</div>
+
+<!-- Controle de atualizações -->
+<div aria-live="polite" aria-atomic="true">
+  <!-- atomic=true faz com que todo o conteúdo seja anunciado quando atualizado -->
+</div>
+
+<div aria-live="polite" aria-relevant="additions">
+  <!-- relevant controla quais alterações são anunciadas (additions, removals, text, all) -->
+</div>
+```
+
+## CSS Acessível
+
+### Contraste e Cores
+
+```css
+/* Bom contraste */
+.text {
+  color: #333; /* Texto escuro */
+  background-color: #fff; /* Fundo claro */
+}
+
+/* Não dependa apenas de cor para transmitir informação */
+.error {
+  color: #e00;
+  border: 1px solid #e00;
+  background-color: #fff;
+  padding-left: 20px;
+  background-image: url('error-icon.svg');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 16px;
+}
+```
+
+### Focus Styles
+
+```css
+/* Estilo de foco claro e visível (nunca remova o outline sem substituí-lo) */
+:focus {
+  outline: 3px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+/* Foco personalizado para links */
+a:focus {
+  outline: 3px solid #4a90e2;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+}
+
+/* Estilo de foco apenas para navegação por teclado */
+.focus-visible-only:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.focus-visible-only:focus-visible {
+  outline: 3px solid #4a90e2;
+  outline-offset: 2px;
+}
+```
+
+### Responsividade e Zoom
+
+cssresponse-action-icon
+
+```css
+/* Layout que suporta zoom de até 200% */
+body {
+  font-size: 100%;
+  line-height: 1.5;
+}
+
+/* Use unidades relativas */
+.container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Layout fluido que se adapta */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+/* Garanta tamanhos mínimos para interação em dispositivos touch */
+button, 
+.clickable,
+a {
+  min-height: 44px;
+  min-width: 44px;
+}
+```
+
+### Esconder Visualmente (mas manter para leitores de tela)
+
+cssresponse-action-icon
+
+```css
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Visível apenas ao receber foco */
+.sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+```
+
+### Redução de Movimento
+
+cssresponse-action-icon
+
+```css
+/* Respeitar preferência do usuário por movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Oferecer opção explícita */
+.reduced-motion {
+  animation: none;
+  transition: none;
+}
+```
+
+### Tema Escuro e Preferências de Contraste
+
+cssresponse-action-icon
+
+```css
+/* Tema escuro automático */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #121212;
+    --text-color: #f0f0f0;
+    --link-color: #90caf9;
+  }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: more) {
+  :root {
+    --background-color: #000;
+    --text-color: #fff;
+    --border-color: #fff;
+  }
+  
+  * {
+    border-color: var(--border-color) !important;
+  }
+  
+  a {
+    text-decoration: underline !important;
+  }
+}
+```
+
+## Componentes Acessíveis
+
+### Menu de Navegação
+
+htmlresponse-action-icon
+
+```html
+<nav aria-label="Menu principal">
+  <button id="menu-toggle" aria-expanded="false" aria-controls="menu-list">
+    Menu <span aria-hidden="true">☰</span>
+  </button>
+  
+  <ul id="menu-list" hidden>
+    <li><a href="/" aria-current="page">Início</a></li>
+    <li><a href="/sobre">Sobre</a></li>
+    <li><a href="/servicos">Serviços</a></li>
+    <li><a href="/contato">Contato</a></li>
+  </ul>
+</nav>
+```
+
+cssresponse-action-icon
+
+```css
+/* CSS para o menu */
+@media (min-width: 768px) {
+  #menu-toggle {
+    display: none;
+  }
+  
+  #menu-list {
+    display: flex !important; /* Garante visibilidade em desktop */
+    gap: 1rem;
+  }
+}
+
+/* Estilo para item atual */
+[aria-current="page"] {
+  font-weight: bold;
+  text-decoration: underline;
+}
+```
+
+### Tabs (Abas)
+
+htmlresponse-action-icon
+
+```html
+<div class="tabs">
+  <div role="tablist" aria-label="Informações do produto">
+    <button 
+      id="tab1" 
+      role="tab" 
+      aria-selected="true" 
+      aria-controls="panel1"
+      tabindex="0"
+    >
+      Descrição
+    </button>
+    <button 
+      id="tab2" 
+      role="tab" 
+      aria-selected="false" 
+      aria-controls="panel2"
+      tabindex="-1"
+    >
+      Especificações
+    </button>
+    <button 
+      id="tab3" 
+      role="tab" 
+      aria-selected="false" 
+      aria-controls="panel3"
+      tabindex="-1"
+    >
+      Avaliações
+    </button>
+  </div>
+  
+  <div 
+    id="panel1" 
+    role="tabpanel" 
+    aria-labelledby="tab1"
+    tabindex="0"
+  >
+    <p>Conteúdo da descrição...</p>
+  </div>
+  
+  <div 
+    id="panel2" 
+    role="tabpanel" 
+    aria-labelledby="tab2"
+    tabindex="0"
+    hidden
+  >
+    <p>Conteúdo das especificações...</p>
+  </div>
+  
+  <div 
+    id="panel3" 
+    role="tabpanel" 
+    aria-labelledby="tab3"
+    tabindex="0"
+    hidden
+  >
+    <p>Conteúdo das avaliações...</p>
+  </div>
+</div>
+```
+
+### Modal (Diálogo)
+
+htmlresponse-action-icon
+
+```html
+<button id="open-dialog" aria-haspopup="dialog">Abrir Modal</button>
+
+<div 
+  id="dialog" 
+  role="dialog" 
+  aria-labelledby="dialog-title" 
+  aria-describedby="dialog-desc"
+  aria-modal="true"
+  hidden
+>
+  <div class="dialog-content">
+    <h2 id="dialog-title">Título do Modal</h2>
+    <p id="dialog-desc">Descrição ou instruções para o modal.</p>
+    
+    <div class="dialog-body">
+      <!-- Conteúdo do modal -->
+    </div>
+    
+    <div class="dialog-actions">
+      <button id="dialog-close">Fechar</button>
+      <button id="dialog-confirm">Confirmar</button>
+    </div>
+  </div>
+</div>
+```
+
+### Dropdown (Menu Suspenso)
+
+htmlresponse-action-icon
+
+```html
+<div class="dropdown">
+  <button 
+    id="dropdown-toggle" 
+    aria-haspopup="true" 
+    aria-expanded="false"
+    aria-controls="dropdown-menu"
+  >
+    Opções <span aria-hidden="true">▼</span>
+  </button>
+  
+  <ul 
+    id="dropdown-menu" 
+    role="menu" 
+    aria-labelledby="dropdown-toggle"
+    hidden
+  >
+    <li role="none">
+      <a role="menuitem" href="#option1">Opção 1</a>
+    </li>
+    <li role="none">
+      <a role="menuitem" href="#option2">Opção 2</a>
+    </li>
+    <li role="none">
+      <a role="menuitem" href="#option3">Opção 3</a>
+    </li>
+  </ul>
+</div>
+```
+
+### Accordion (Sanfona)
+
+htmlresponse-action-icon
+
+```html
+<div class="accordion">
+  <h3>
+    <button 
+      aria-expanded="false"
+      aria-controls="section1"
+      id="accordion1"
+      class="accordion-trigger"
+    >
+      Seção 1
+      <span aria-hidden="true" class="accordion-icon">+</span>
+    </button>
+  </h3>
+  
+  <div 
+    id="section1" 
+    role="region" 
+    aria-labelledby="accordion1"
+    hidden
+  >
+    <p>Conteúdo da seção 1...</p>
+  </div>
+  
+  <h3>
+    <button 
+      aria-expanded="false"
+      aria-controls="section2"
+      id="accordion2"
+      class="accordion-trigger"
+    >
+      Seção 2
+      <span aria-hidden="true" class="accordion-icon">+</span>
+    </button>
+  </h3>
+  
+  <div 
+    id="section2" 
+    role="region" 
+    aria-labelledby="accordion2"
+    hidden
+  >
+    <p>Conteúdo da seção 2...</p>
+  </div>
+</div>
+```
+
+### Carousel/Slider
+
+htmlresponse-action-icon
+
+```html
+<div class="carousel" aria-roledescription="carrossel" aria-label="Imagens em destaque">
+  <div class="carousel-inner">
+    <div 
+      id="slide1" 
+      class="carousel-item active" 
+      role="group" 
+      aria-roledescription="slide" 
+      aria-label="1 de 3"
+    >
+      <img src="slide1.jpg" alt="Descrição detalhada da imagem 1">
+    </div>
+    
+    <div 
+      id="slide2" 
+      class="carousel-item" 
+      role="group" 
+      aria-roledescription="slide" 
+      aria-label="2 de 3"
+      hidden
+    >
+      <img src="slide2.jpg" alt="Descrição detalhada da imagem 2">
+    </div>
+    
+    <div 
+      id="slide3" 
+      class="carousel-item" 
+      role="group" 
+      aria-roledescription="slide" 
+      aria-label="3 de 3"
+      hidden
+    >
+      <img src="slide3.jpg" alt="Descrição detalhada da imagem 3">
+    </div>
+  </div>
+  
+  <div class="carousel-controls">
+    <button 
+      aria-label="Slide anterior" 
+      class="carousel-prev"
+    >
+      <span aria-hidden="true">&#8249;</span>
+    </button>
+    
+    <div role="tablist" class="carousel-indicators">
+      <button 
+        role="tab" 
+        aria-label="Mostrar slide 1" 
+        aria-selected="true" 
+        aria-controls="slide1"
+      ></button>
+      <button 
+        role="tab" 
+        aria-label="Mostrar slide 2" 
+        aria-selected="false" 
+        aria-controls="slide2"
+      ></button>
+      <button 
+        role="tab" 
+        aria-label="Mostrar slide 3" 
+        aria-selected="false" 
+        aria-controls="slide3"
+      ></button>
+    </div>
+    
+    <button 
+      aria-label="Próximo slide" 
+      class="carousel-next"
+    >
+      <span aria-hidden="true">&#8250;</span>
+    </button>
+  </div>
+</div>
+```
+
+## Testando Acessibilidade
+
+### Ferramentas Automatizadas
+
+- **Lighthouse** (Chrome DevTools)
+- **axe DevTools** (extensão do navegador)
+- **WAVE** (Web Accessibility Evaluation Tool
