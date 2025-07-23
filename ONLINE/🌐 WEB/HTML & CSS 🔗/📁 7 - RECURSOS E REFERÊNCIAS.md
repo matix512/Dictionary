@@ -1672,6 +1672,141 @@ button, input, select, textarea {
 ### Pré-processadores
 - [Sass](https://sass-lang.com/) - O mais popular pré-processador CSS
 - [Less](https://lesscss.org/) - Pré-processador CSS semelhante ao CSS
-- [Stylus](https://stylus-lang.com
-````
+- [Stylus](https://stylus-lang.com/) - Pré-processador CSS com sintaxe mais flexível
+- [PostCSS](https://postcss.org/) - Ferramenta para transformar CSS com plugins JavaScript
+
+### Animações
+- [Animate.css](https://animate.style/) - Biblioteca de animações prontas para uso
+- [Hover.css](https://ianlunn.github.io/Hover/) - Coleção de efeitos hover em CSS
+- [AOS](https://michalsnik.github.io/aos/) - Biblioteca de animações de rolagem
+- [GSAP](https://greensock.com/gsap/) - Biblioteca de animação poderosa
+
+### UI Components
+- [Material Components](https://material.io/components) - Componentes do Material Design
+- [Shoelace](https://shoelace.style/) - Biblioteca de componentes web leves e customizáveis
+- [Skeleton](http://getskeleton.com/) - Framework CSS minimalista
+- [PaperCSS](https://www.getpapercss.com/) - Framework CSS com estilo desenhado à mão
+
+## Comunidade e Inspiração
+
+### Comunidades
+- [Stack Overflow](https://stackoverflow.com/) - Maior comunidade de perguntas e respostas para desenvolvedores
+- [GitHub](https://github.com/) - Plataforma de hospedagem de código e colaboração
+- [Dev.to](https://dev.to/) - Comunidade de desenvolvedores para compartilhar ideias e ajudar uns aos outros
+- [CodePen](https://codepen.io/) - Comunidade para testar e mostrar snippets de HTML, CSS e JavaScript
+
+### Inspiração de Design
+- [Awwwards](https://www.awwwards.com/) - Premiação para design, criatividade e inovação na web
+- [Dribbble](https://dribbble.com/) - Comunidade de designers compartilhando trabalhos
+- [Behance](https://www.behance.net/) - Plataforma para mostrar e descobrir trabalhos criativos
+- [CSS Zen Garden](http://www.csszengarden.com/) - Demonstração de design com CSS
+- [One Page Love](https://onepagelove.com/) - Inspiração e recursos para sites de uma página
+
+### Newsletters
+- [CSS-Tricks Newsletter](https://css-tricks.com/newsletters/) - Atualizações semanais sobre CSS
+- [Frontend Focus](https://frontendfoc.us/) - Notícias, artigos e tutoriais semanais sobre frontend
+- [Smashing Magazine Newsletter](https://www.smashingmagazine.com/the-smashing-newsletter/) - Dicas, truques e recursos para web designers
+- [Sidebar](https://sidebar.io/) - Os 5 melhores links de design todos os dias
+
+## Tendências e Técnicas Modernas
+
+### CSS Moderno
+- [CSS Grid Layout](https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_Grid_Layout) - Sistema de layout bidimensional
+- [CSS Flexbox](https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_Flexible_Box_Layout) - Layout unidimensional
+- [CSS Custom Properties](https://developer.mozilla.org/pt-BR/docs/Web/CSS/Using_CSS_custom_properties) - Variáveis nativas do CSS
+- [CSS Shapes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Shapes) - Formas geométricas para layout
+- [CSS Backdrop Filters](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter) - Efeitos de filtro para o fundo
+
+### Web Design Responsivo
+- [Responsive Web Design Basics](https://web.dev/responsive-web-design-basics/) - Guia do Google sobre design responsivo
+- [Media Queries](https://developer.mozilla.org/pt-BR/docs/Web/CSS/Media_Queries) - Adaptação do layout para diferentes dispositivos
+- [Viewport Meta Tag](https://developer.mozilla.org/pt-BR/docs/Mozilla/Mobile/Viewport_meta_tag) - Controle da viewport em dispositivos móveis
+- [Responsive Images](https://developer.mozilla.org/pt-BR/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) - Imagens que se adaptam a diferentes tamanhos de tela
+
+### Acessibilidade Web
+- [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/) - Diretrizes de acessibilidade para conteúdo web
+- [The A11Y Project](https://www.a11yproject.com/) - Recursos e dicas de acessibilidade
+- [Accessible Rich Internet Applications (ARIA)](https://developer.mozilla.org/pt-BR/docs/Web/Accessibility/ARIA) - Melhorar a acessibilidade de aplicações web
+- [Contrast Checker](https://webaim.org/resources/contrastchecker/) - Verificador de contraste para acessibilidade
+
+### Performance Web
+- [Web Vitals](https://web.dev/vitals/) - Métricas essenciais para uma experiência web de qualidade
+- [PageSpeed Insights](https://pagespeed.web.dev/) - Ferramenta do Google para medir desempenho
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse) - Ferramenta automatizada para melhorar a qualidade das páginas web
+- [WebPageTest](https://www.webpagetest.org/) - Teste de performance avançado
+
+## Extensões de Navegador Úteis
+
+### Para Desenvolvimento
+- [Web Developer](https://chromewebstore.google.com/detail/web-developer/bfbameneiokkgbdmiekhjnmfkcnldhhm) - Ferramentas adicionais para desenvolvimento web
+- [ColorZilla](https://chromewebstore.google.com/detail/colorzilla/bhlhnicpbhignbdhedgjhgdocnmhomnp) - Seletor de cores e conta-gotas
+- [Dimensions](https://chromewebstore.google.com/detail/dimensions/baocaagndhipibgklemoalmkljaimfdj) - Medição de elementos na página
+- [Wappalyzer](https://chromewebstore.google.com/detail/wappalyzer-technology-pro/gppongmhjkpfnbhagpmjfkannfbllamg) - Detecta tecnologias usadas em sites
+- [Responsive Viewer](https://chromewebstore.google.com/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb) - Visualiza site em múltiplas resoluções
+- [CSS Peeper](https://chromewebstore.google.com/detail/css-peeper/lkfkkhfhhdkiemehlpkgjeojomhpccnh) - Extrai CSS e assets de sites
+
+### Para Acessibilidade
+- [WAVE Evaluation Tool](https://chromewebstore.google.com/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh) - Avaliação de acessibilidade web
+- [Accessibility Insights for Web](https://chromewebstore.google.com/detail/accessibility-insights-fo/pbjjkligggfmakdaogkfomddhfmpjeni) - Teste de acessibilidade completo
+- [axe DevTools](https://chromewebstore.google.com/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd) - Ferramentas de testes de acessibilidade
+
+### Para Performance
+- [Lighthouse](https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk) - Análise de performance, acessibilidade, SEO e mais
+- [Performance-Analyser](https://chromewebstore.google.com/detail/performance-analyser/djgfmlohefpomchfabngccpbaflcahjf) - Análise de performance de sites
+
+## Livros Recomendados
+
+### HTML e CSS
+- "HTML & CSS: Design and Build Websites" por Jon Duckett
+- "CSS: The Definitive Guide" por Eric Meyer e Estelle Weyl
+- "CSS Secrets" por Lea Verou
+- "Responsive Web Design" por Ethan Marcotte
+- "Atomic Design" por Brad Frost (disponível online gratuitamente)
+
+### Design Web
+- "Don't Make Me Think" por Steve Krug
+- "Designing for the Web" por Mark Boulton
+- "Mobile First" por Luke Wroblewski
+- "Inclusive Design Patterns" por Heydon Pickering
+
+### Acessibilidade
+- "Accessibility for Everyone" por Laura Kalbag
+- "Practical Web Inclusion and Accessibility" por Ashley Firth
+- "A Web for Everyone" por Sarah Horton e Whitney Quesenbery
+
+## Canais do YouTube
+
+### Tutoriais e Dicas
+- [Traversy Media](https://www.youtube.com/c/TraversyMedia) - Tutoriais sobre desenvolvimento web
+- [Kevin Powell](https://www.youtube.com/kevinpowell) - Especializado em CSS
+- [Web Dev Simplified](https://www.youtube.com/c/WebDevSimplified) - Explicações simples sobre conceitos de desenvolvimento web
+- [DesignCourse](https://www.youtube.com/c/DesignCourse) - Design e desenvolvimento frontend
+- [Fireship](https://www.youtube.com/c/Fireship) - Vídeos curtos e informativos sobre tecnologias web
+
+### Palestras e Conferências
+- [Google Chrome Developers](https://www.youtube.com/c/GoogleChromeDevelopers) - Atualizações e melhores práticas do Chrome
+- [CSSconf](https://www.youtube.com/c/CSSconfeu) - Palestras de conferências CSS
+- [JSConf](https://www.youtube.com/c/JSConfEU) - Palestras de conferências JavaScript
+
+## Podcasts
+
+### Desenvolvimento Web
+- [ShopTalk Show](https://shoptalkshow.com/) - Podcast sobre frontend
+- [Syntax](https://syntax.fm/) - Podcast sobre desenvolvimento web
+- [CSS Podcast](https://thecsspodcast.libsyn.com/) - Podcast sobre CSS
+- [Frontend Happy Hour](https://frontendhappyhour.com/) - Podcast sobre frontend
+- [CodePen Radio](https://blog.codepen.io/radio/) - Podcast sobre desenvolvimento web e CodePen
+
+## Aplicativos Móveis
+
+### Aprendizado
+- [SoloLearn](https://www.sololearn.com/) - Aprendizado de programação com cursos e desafios
+- [Mimo](https://getmimo.com/) - Aprendizado de programação em pequenos blocos
+- [Grasshopper](https://grasshopper.app/) - Aprendizado de codificação para iniciantes
+
+### Ferramentas
+- [ColorSlurp](https://colorslurp.com/) (iOS) - Seletor de cores
+- [Codeanywhere](https://codeanywhere.com/) - IDE para edição de código em dispositivos móveis
+- [Inspect Browser](https://inspectbrowser.com/) - Ferramenta para inspecionar sites em dispositivos móveis
+```
 
