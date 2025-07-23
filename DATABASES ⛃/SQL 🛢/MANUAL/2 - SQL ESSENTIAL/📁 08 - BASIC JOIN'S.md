@@ -194,8 +194,6 @@ RIGHT JOIN countries c ON s.country_id = c.id;
 
 #### **Exemplos:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Todas as combinações possíveis (cuidado com tabelas grandes!)
 SELECT s.first_name, c.name AS country
@@ -219,8 +217,6 @@ CROSS JOIN countries c;
 
 #### **JOIN com Múltiplas Condições:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Múltiplas condições no ON
 SELECT s.first_name, c.name
@@ -236,8 +232,6 @@ WHERE c.continent = 'Europe';
 ```
 
 #### **Diferença ON vs WHERE:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Com LEFT JOIN, WHERE filtra DEPOIS do JOIN
@@ -260,8 +254,6 @@ LEFT JOIN countries c ON s.country_id = c.id
 > Uma tabela faz JOIN consigo mesma. Útil para hierarquias.
 
 #### **Exemplo - Estrutura de Funcionários:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Tabela de funcionários
@@ -301,8 +293,6 @@ LEFT JOIN employees m ON e.manager_id = m.id;
 
 #### **Estatísticas com GROUP BY:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Número de estudantes por país e continente
 SELECT 
@@ -317,8 +307,6 @@ ORDER BY c.continent, student_count DESC;
 ```
 
 #### **Subquery vs JOIN Performance:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Lento com subquery
@@ -338,8 +326,6 @@ WHERE c.continent = 'Europe';
 ### **🎯 Exercícios Práticos:**
 
 #### **Exercício 1 - JOINs Básicos:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Todos os estudantes europeus
