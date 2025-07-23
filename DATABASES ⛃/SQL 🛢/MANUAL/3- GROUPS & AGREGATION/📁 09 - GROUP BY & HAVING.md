@@ -545,8 +545,6 @@ LIMIT 5;  -- Top 5 categorias
 
 #### **1. Colunas não agregadas no SELECT:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ Erro - sale_date não está no GROUP BY nem agregada
 SELECT salesperson, sale_date, COUNT(*)
@@ -565,8 +563,6 @@ GROUP BY salesperson;
 ```
 
 #### **2. Usar WHERE em vez de HAVING:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Erro - função de agregação no WHERE
