@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "DATABASES ⛃/CURSOEMVIDEO/TIPOS PRIMITIVOS DE DADOS.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -162,7 +162,7 @@
             }
           },
           {
-            "id": "7b9e3b7034851142",
+            "id": "2e746ec6b027cf11",
             "type": "leaf",
             "state": {
               "type": "mermaid-toolbar-view",
@@ -190,7 +190,7 @@
       "mermaid-tools:Open Mermaid Toolbar": false
     }
   },
-  "active": "7b9e3b7034851142",
+  "active": "19bc7392c8a4f39a",
   "lastOpenFiles": [
     "DATABASES ⛃/CURSOEMVIDEO",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/04. FUNCTIONS.md",
