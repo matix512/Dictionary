@@ -1279,9 +1279,7 @@ body, h1, p {
 ### Desempenho e Manutenção
 
 1. **Evite aninhamento excessivo**: Limite a 3 níveis para melhor desempenho e legibilidade
-    
-    scssresponse-action-icon
-    
+        
     ```scss
     // Ruim
     .container {
@@ -1312,9 +1310,7 @@ body, h1, p {
     ```
     
 2. **Use variáveis para valores repetidos**:
-    
-    scssresponse-action-icon
-    
+        
     ```scss
     // Defina e use variáveis para cores, espaçamentos, fontes
     $primary-color: #3498db;
@@ -1328,8 +1324,6 @@ body, h1, p {
     
 3. **Modularize seu código**:
     
-    scssresponse-action-icon
-    
     ```scss
     // Divida em arquivos menores e importe-os
     @import 'variables';
@@ -1340,8 +1334,6 @@ body, h1, p {
     ```
     
 4. **Prefira extend/herança com moderação**:
-    
-    scssresponse-action-icon
     
     ```scss
     // Extender pode gerar CSS bloat se usado em excesso
@@ -1366,9 +1358,7 @@ body, h1, p {
 ### Dicas Avançadas
 
 1. **Use maps para conjuntos de valores relacionados**:
-    
-    scssresponse-action-icon
-    
+        
     ```scss
     // Mapa de cores
     $colors: (
@@ -1395,9 +1385,7 @@ body, h1, p {
     ```
     
 2. **Crie mixins para media queries**:
-    
-    scssresponse-action-icon
-    
+        
     ```scss
     // Definindo breakpoints
     $breakpoints: (
@@ -1436,8 +1424,6 @@ body, h1, p {
     
 3. **Utilização de funções para cálculos**:
     
-    scssresponse-action-icon
-    
     ```scss
     // Função para converter px para rem
     @function rem($px, $base: 16px) {
@@ -1461,8 +1447,6 @@ body, h1, p {
     ```
     
 4. **Estilos condicionais com mixins**:
-    
-    scssresponse-action-icon
     
     ```scss
     // Mixin para gerar variantes de componentes
@@ -1492,7 +1476,6 @@ body, h1, p {
       }
     }
     ```
-    
 
 ### Comparação Final dos Pré-processadores
 
@@ -1510,3 +1493,15 @@ body, h1, p {
 |Curva de aprendizado|Média|Baixa|Média-Alta|Baixa|
 |Customização|Boa|Boa|Excelente|Extremamente flexível|
 |Quando usar|Projetos grandes|Projetos simples|Desenvolvedores avançados|Personalização específica|
+
+
+
+
+
+---
+
+
+
+# 📄 20 - FERRAMENTAS DE DESENVOLVIMENTO
+
+
