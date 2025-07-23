@@ -326,8 +326,6 @@ SELECT first_name, birth_date FROM students ORDER BY birth_date;
 
 #### **3. Usar ORDER BY com agregações:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ ORDER BY antes do GROUP BY
 SELECT country, COUNT(*) FROM students ORDER BY first_name GROUP BY country;

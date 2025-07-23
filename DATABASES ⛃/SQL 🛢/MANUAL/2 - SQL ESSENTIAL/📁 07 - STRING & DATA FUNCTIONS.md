@@ -2,8 +2,6 @@
 
 #### **Concatenação:**
 
-sqlresponse-action-icon
-
 ```sql
 -- MySQL
 SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM students;
@@ -19,8 +17,6 @@ SELECT CONCAT_WS(' ', 'Sr.', first_name, last_name) AS full_name FROM students;
 ```
 
 #### **Comprimento e Posição:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Comprimento da string
