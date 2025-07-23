@@ -52,8 +52,6 @@ CREATE INDEX idx_customers_email ON customers(email);  -- Emails únicos
 
 #### **❌ NÃO Usar Índices Quando:**
 
-sqlresponse-action-icon
-
 ```sql
 -- 1. Tabelas muito pequenas (< 1000 linhas)
 -- O overhead do índice > benefício
@@ -72,8 +70,6 @@ sqlresponse-action-icon
 ### **🔧 Criar e Gerenciar Índices:**
 
 #### **Criar Índices:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Índice simples
@@ -375,8 +371,6 @@ CREATE INDEX idx_customers_phone ON customers(phone);
 
 #### **Exercício 1 - E-commerce Indexes:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Cenário: Sistema de e-commerce com consultas típicas
 
@@ -411,8 +405,6 @@ GROUP BY c.id, c.name;
 ```
 
 #### **Exercício 2 - Otimização de Queries Lentas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Identificar queries lentas
@@ -451,8 +443,6 @@ SELECT BENCHMARK(1000, [query]);
 
 #### **1. Muitos Índices:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ Problema: Tabela com 20+ índices
 -- Cada INSERT/UPDATE/DELETE fica lento
@@ -475,9 +465,6 @@ GROUP BY a.TABLE_NAME, a.INDEX_NAME, b.INDEX_NAME;
 ```
 
 #### **2. Índices em Colunas de Baixa Seletividade:**
-
-sqlresponse-action-icon
-
 ```sql
 -- ❌ Má escolha: status com apenas 2-3 valores
 CREATE INDEX idx_products_status ON products(status);
@@ -496,8 +483,6 @@ FROM products;
 ```
 
 #### **3. Índices Não Utilizados por Funções:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Índice não é usado
@@ -519,8 +504,6 @@ CREATE INDEX idx_customers_email_upper ON customers(email_upper);
 ### **⚡ Performance Monitoring:**
 
 #### **Scripts de Monitorização:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Top 10 tabelas por tamanho de índices
@@ -611,8 +594,6 @@ ALTER INDEX idx_products_name ON products REBUILD;
 
 #### **Estratégia de Manutenção:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Script de manutenção semanal
 -- 1. Atualizar estatísticas
@@ -636,8 +617,6 @@ ORDER BY INDEX_LENGTH DESC;
 
 #### **✅ Antes de Criar Índice:**
 
-sqlresponse-action-icon
-
 ```sql
 -- 1. Analisar padrões de query
 SELECT * FROM slow_query_log WHERE query_time > 1;
@@ -657,8 +636,6 @@ FROM table_name;
 ```
 
 #### **✅ Monitorização Contínua:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Weekly index health check
@@ -685,8 +662,6 @@ END;
 
 #### **OLTP (Online Transaction Processing):**
 
-sqlresponse-action-icon
-
 ```sql
 -- Características: Muitos INSERTs/UPDATEs, queries simples
 -- Estratégia: Poucos índices, muito específicos
@@ -702,8 +677,6 @@ CREATE INDEX idx_customers_email ON customers(email);     -- Para login
 
 #### **OLAP (Online Analytical Processing):**
 
-sqlresponse-action-icon
-
 ```sql
 -- Características: Muitos SELECTs complexos, poucos writes
 -- Estratégia: Muitos índices, otimizar para leitura
@@ -718,8 +691,6 @@ INCLUDE (total_orders, total_spent, last_order_date);
 ```
 
 #### **Aplicações Híbridas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Balancear entre leitura e escrita
@@ -738,8 +709,6 @@ WHERE status = 'active';
 ### **🚨 Troubleshooting de Performance:**
 
 #### **Query Lenta - Processo de Diagnóstico:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Capturar query problemática
