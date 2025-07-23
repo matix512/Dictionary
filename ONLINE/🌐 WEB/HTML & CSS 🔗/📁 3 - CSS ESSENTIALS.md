@@ -865,3 +865,372 @@ h1 {
 }
 ```
 
+
+
+# 📄 11 - LAYOUT & POSICIONAMENTO
+
+
+## Display
+
+### Display Básico
+```css
+display: block;        /* Ocupa toda a largura disponível */
+display: inline;       /* Em linha, lado a lado, sem width/height */
+display: inline-block; /* Combina propriedades de inline e block */
+display: none;         /* Remove o elemento (não ocupa espaço) */
+```
+
+### Display Moderno
+
+cssresponse-action-icon
+
+```css
+display: flex;         /* Layout flexível unidimensional */
+display: grid;         /* Layout em grade bidimensional */
+display: table;        /* Comportamento de tabela */
+```
+
+## Position
+
+### Valores
+
+cssresponse-action-icon
+
+```css
+position: static;      /* Padrão, segue o fluxo normal */
+position: relative;    /* Posicionado relativo à sua posição normal */
+position: absolute;    /* Posicionado relativo ao ancestral posicionado mais próximo */
+position: fixed;       /* Posicionado relativo à viewport (janela) */
+position: sticky;      /* Híbrido entre relative e fixed */
+```
+
+### Propriedades de Deslocamento
+
+cssresponse-action-icon
+
+```css
+top: 10px;            /* Distância do topo */
+right: 20px;          /* Distância da direita */
+bottom: 30px;         /* Distância da base */
+left: 40px;           /* Distância da esquerda */
+```
+
+### Exemplos
+
+cssresponse-action-icon
+
+```css
+/* Elemento centralizado absolutamente */
+.centralizado {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Elemento fixo no topo (navbar) */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+/* Elemento sticky */
+.sidebar {
+  position: sticky;
+  top: 20px;
+  /* Permanece em posição "static" até rolar até 20px do topo,
+     então se torna "fixed" com top: 20px */
+}
+```
+
+## Float
+
+### Valores Básicos
+
+cssresponse-action-icon
+
+```css
+float: left;          /* Flutua à esquerda */
+float: right;         /* Flutua à direita */
+float: none;          /* Não flutua (padrão) */
+```
+
+### Clearing Floats
+
+cssresponse-action-icon
+
+```css
+clear: left;          /* Limpa floats à esquerda */
+clear: right;         /* Limpa floats à direita */
+clear: both;          /* Limpa floats em ambos os lados */
+
+/* Técnica clearfix (para containers com elementos flutuantes) */
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+```
+
+## Z-Index
+
+cssresponse-action-icon
+
+```css
+/* Controla a ordem de empilhamento (apenas para position != static) */
+z-index: 1;           /* Valor numérico, maior = mais à frente */
+z-index: 10;
+z-index: -1;          /* Valores negativos colocam atrás do fluxo normal */
+z-index: auto;        /* Valor padrão */
+```
+
+## Flexbox
+
+### Container Flex
+
+cssresponse-action-icon
+
+```css
+.container {
+  display: flex;
+  
+  /* Direção */
+  flex-direction: row;            /* Padrão, horizontal */
+  flex-direction: row-reverse;    /* Horizontal invertido */
+  flex-direction: column;         /* Vertical */
+  flex-direction: column-reverse; /* Vertical invertido */
+  
+  /* Quebra de linha */
+  flex-wrap: nowrap;              /* Sem quebra (padrão) */
+  flex-wrap: wrap;                /* Quebra quando necessário */
+  flex-wrap: wrap-reverse;        /* Quebra na direção oposta */
+  
+  /* Shorthand para direction + wrap */
+  flex-flow: row wrap;
+  
+  /* Alinhamento horizontal */
+  justify-content: flex-start;    /* Início (padrão) */
+  justify-content: flex-end;      /* Fim */
+  justify-content: center;        /* Centro */
+  justify-content: space-between; /* Espaço igual entre itens */
+  justify-content: space-around;  /* Espaço igual ao redor dos itens */
+  justify-content: space-evenly;  /* Espaço perfeitamente igual */
+  
+  /* Alinhamento vertical */
+  align-items: stretch;           /* Estica para preencher (padrão) */
+  align-items: flex-start;        /* Início */
+  align-items: flex-end;          /* Fim */
+  align-items: center;            /* Centro */
+  align-items: baseline;          /* Alinha pela linha de base do texto */
+  
+  /* Alinhamento de múltiplas linhas */
+  align-content: flex-start;      /* Linhas no início */
+  align-content: flex-end;        /* Linhas no fim */
+  align-content: center;          /* Linhas no centro */
+  align-content: space-between;   /* Espaço igual entre linhas */
+  align-content: space-around;    /* Espaço igual ao redor das linhas */
+  align-content: stretch;         /* Linhas esticadas (padrão) */
+  
+  /* Espaçamento entre itens */
+  gap: 10px;                      /* Igual em todas as direções */
+  gap: 20px 10px;                 /* Row-gap column-gap */
+  row-gap: 20px;                  /* Apenas entre linhas */
+  column-gap: 10px;               /* Apenas entre colunas */
+}
+```
+
+### Itens Flex
+
+cssresponse-action-icon
+
+```css
+.item {
+  /* Ordem de exibição */
+  order: 0;                /* Padrão, valor maior = aparece depois */
+  
+  /* Crescimento proporcional */
+  flex-grow: 0;            /* Não cresce (padrão) */
+  flex-grow: 1;            /* Cresce proporcionalmente */
+  flex-grow: 2;            /* Cresce 2x mais que itens com flex-grow: 1 */
+  
+  /* Encolhimento proporcional */
+  flex-shrink: 1;          /* Encolhe proporcionalmente (padrão) */
+  flex-shrink: 0;          /* Não encolhe */
+  flex-shrink: 2;          /* Encolhe 2x mais */
+  
+  /* Tamanho base */
+  flex-basis: auto;        /* Baseado no conteúdo (padrão) */
+  flex-basis: 200px;       /* Tamanho inicial específico */
+  flex-basis: 0;           /* Não considera tamanho inicial */
+  
+  /* Shorthand para grow, shrink e basis */
+  flex: 0 1 auto;          /* Padrão (não cresce, encolhe, auto) */
+  flex: 1;                 /* Equivalente a flex: 1 1 0% */
+  flex: auto;              /* Equivalente a flex: 1 1 auto */
+  flex: none;              /* Equivalente a flex: 0 0 auto */
+  
+  /* Alinhamento individual (sobrepõe align-items) */
+  align-self: auto;        /* Herda do container (padrão) */
+  align-self: flex-start;  /* Início */
+  align-self: flex-end;    /* Fim */
+  align-self: center;      /* Centro */
+  align-self: baseline;    /* Linha de base */
+  align-self: stretch;     /* Esticado */
+}
+```
+
+## Grid
+
+### Container Grid
+
+cssresponse-action-icon
+
+```css
+.grid-container {
+  display: grid;
+  
+  /* Definição de colunas */
+  grid-template-columns: 100px 200px 100px;          /* 3 colunas fixas */
+  grid-template-columns: 1fr 2fr 1fr;                /* Proporção fracionária */
+  grid-template-columns: repeat(3, 1fr);             /* 3 colunas iguais */
+  grid-template-columns: minmax(100px, 1fr) 2fr;     /* Mínimo e máximo */
+  grid-template-columns: auto 1fr auto;              /* Auto = tamanho do conteúdo */
+  
+  /* Definição de linhas */
+  grid-template-rows: 100px 200px;                   /* 2 linhas fixas */
+  grid-template-rows: repeat(3, minmax(100px, auto)); /* 3 linhas adaptáveis */
+  
+  /* Áreas nomeadas */
+  grid-template-areas: 
+    "header header header"
+    "sidebar main main"
+    "footer footer footer";
+  
+  /* Espaçamento entre células */
+  gap: 10px;                                         /* Igual em todas as direções */
+  row-gap: 15px;                                     /* Apenas entre linhas */
+  column-gap: 10px;                                  /* Apenas entre colunas */
+  
+  /* Alinhamento horizontal de todas as células */
+  justify-items: stretch;                            /* Esticado (padrão) */
+  justify-items: start;                              /* Início */
+  justify-items: end;                                /* Fim */
+  justify-items: center;                             /* Centro */
+  
+  /* Alinhamento vertical de todas as células */
+  align-items: stretch;                              /* Esticado (padrão) */
+  align-items: start;                                /* Início */
+  align-items: end;                                  /* Fim */
+  align-items: center;                               /* Centro */
+  
+  /* Alinhamento horizontal do grid na área */
+  justify-content: start;                            /* Início (padrão) */
+  justify-content: end;                              /* Fim */
+  justify-content: center;                           /* Centro */
+  justify-content: space-between;                    /* Espaço entre */
+  justify-content: space-around;                     /* Espaço ao redor */
+  justify-content: space-evenly;                     /* Espaço igual */
+  
+  /* Alinhamento vertical do grid na área */
+  align-content: start;                              /* Início (padrão) */
+  align-content: end;                                /* Fim */
+  align-content: center;                             /* Centro */
+  align-content: space-between;                      /* Espaço entre */
+  align-content: space-around;                       /* Espaço ao redor */
+  align-content: space-evenly;                       /* Espaço igual */
+  
+  /* Fluxo automático */
+  grid-auto-flow: row;                               /* Por linha (padrão) */
+  grid-auto-flow: column;                            /* Por coluna */
+  grid-auto-flow: dense;                             /* Preenche espaços vazios */
+  
+  /* Tamanho de linhas/colunas implícitas */
+  grid-auto-rows: 100px;                             /* Linhas automáticas */
+  grid-auto-columns: 1fr;                            /* Colunas automáticas */
+}
+```
+
+### Itens Grid
+
+cssresponse-action-icon
+
+```css
+.grid-item {
+  /* Posicionamento por linha/coluna */
+  grid-column-start: 1;                  /* Coluna inicial */
+  grid-column-end: 3;                    /* Coluna final (exclusiva) */
+  grid-row-start: 2;                     /* Linha inicial */
+  grid-row-end: 4;                       /* Linha final (exclusiva) */
+  
+  /* Shorthand para posicionamento */
+  grid-column: 1 / 3;                    /* Coluna início / fim */
+  grid-column: 1 / span 2;               /* Coluna início / extensão */
+  grid-row: 2 / 4;                       /* Linha início / fim */
+  
+  /* Posicionamento por área nomeada */
+  grid-area: header;                     /* Nome da área definida em grid-template-areas */
+  
+  /* Shorthand para row-start / column-start / row-end / column-end */
+  grid-area: 2 / 1 / 4 / 3;              
+  
+  /* Alinhamento horizontal individual */
+  justify-self: stretch;                 /* Esticado (padrão) */
+  justify-self: start;                   /* Início */
+  justify-self: end;                     /* Fim */
+  justify-self: center;                  /* Centro */
+  
+  /* Alinhamento vertical individual */
+  align-self: stretch;                   /* Esticado (padrão) */
+  align-self: start;                     /* Início */
+  align-self: end;                       /* Fim */
+  align-self: center;                    /* Centro */
+}
+```
+
+## Exemplos de Layout Completo
+
+### Layout com Flexbox
+
+cssresponse-action-icon
+
+```css
+/* Container principal */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Cabeçalho */
+.header {
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+/* Área de conteúdo (flexível) */
+.content-area {
+  display: flex;
+  flex: 1;  /* Ocupa todo espaço disponível */
+}
+
+/* Barra lateral */
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  background-color: #e0e0e0;
+}
+
+/* Conteúdo principal */
+.main-content {
+  flex: 1;  /* Ocupa resto do espaço */
+  padding: 20px;
+}
+
+/* Rodapé */
+.footer {
+  padding: 20px;
+  background-color: #d0d0d0
+```
