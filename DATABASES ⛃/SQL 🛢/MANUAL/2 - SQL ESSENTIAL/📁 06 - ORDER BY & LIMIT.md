@@ -306,8 +306,6 @@ ORDER BY first_name;
 
 #### **1. ORDER BY sem LIMIT pode ser lento:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ Ordena milhões de registos desnecessariamente
 SELECT * FROM large_table ORDER BY created_at;
@@ -317,8 +315,6 @@ SELECT * FROM large_table ORDER BY created_at DESC LIMIT 20;
 ```
 
 #### **2. Ordenar por colunas não selecionadas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ✅ Funciona, mas pode ser confuso
