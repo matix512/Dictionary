@@ -163,8 +163,6 @@ WHERE YEAR(birth_date) IN (1990, 1995, 2000);
 
 ## **NOT IN - Excluir valores:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Todos exceto alguns nomes
 SELECT * FROM students 
@@ -177,8 +175,6 @@ WHERE first_name NOT IN ('João', NULL);  -- Retorna 0 linhas!
 ```
 
 #### **BETWEEN - Intervalo de valores:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Entre duas datas
@@ -201,8 +197,6 @@ WHERE birth_date NOT BETWEEN '1990-01-01' AND '1999-12-31';
 
 #### **IS NULL / IS NOT NULL:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Registos sem email
 SELECT * FROM students WHERE email IS NULL;
@@ -216,8 +210,6 @@ SELECT * FROM students WHERE email != NULL;  -- Sempre retorna 0 linhas
 ```
 
 #### **Lidar com NULL em Condições:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Considerar NULL como valor específico
@@ -234,8 +226,6 @@ FROM students;
 ### **📅 Filtros com Datas:**
 
 #### **Comparações de Data:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Data específica
@@ -259,8 +249,6 @@ WHERE YEAR(created_at) = YEAR(CURDATE())
 
 #### **Funções de Data em WHERE:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Nascidos em março
 SELECT * FROM students WHERE MONTH(birth_date) = 3;
@@ -277,8 +265,6 @@ WHERE YEAR(CURDATE()) - YEAR(birth_date) = 25;
 
 #### **Cálculos no WHERE:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Assumindo tabela orders com total
 SELECT * FROM orders WHERE total * 1.23 > 1000;  -- Com IVA
@@ -291,8 +277,6 @@ WHERE (YEAR(CURDATE()) - YEAR(birth_date)) / YEAR(CURDATE()) * 100 > 25;
 ### **🎯 Exercícios Práticos:**
 
 #### **Exercício 1 - Filtros Básicos:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Estudantes chamados Maria
@@ -312,8 +296,6 @@ SELECT * FROM students WHERE first_name NOT IN ('João', 'Maria');
 ```
 
 #### **Exercício 2 - Combinações:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. João ou Maria nascidos após 1992
