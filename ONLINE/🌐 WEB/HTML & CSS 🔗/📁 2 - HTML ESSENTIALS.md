@@ -2,17 +2,7 @@
 
 ### 📄 03 - ESTRUTURA & SEMÂNTICA
 
-```markdown
-# Estrutura & Semântica HTML
-
-## Anatomia de um elemento HTML
-````
-
-Conteúdo
-
-
-````text
-
+````HTML
 ## Elementos de Estrutura Básica
 - `<!DOCTYPE html>`: Declaração do tipo de documento
 - `<html>`: Elemento raiz
@@ -78,13 +68,8 @@ Conteúdo
 - Código mais legível
 - Manutenção facilitada
 
-textresponse-action-icon
-
-````text
-
 ### 📄 04 - TEXTO & TIPOGRAFIA
 
-```markdown
 # Texto & Tipografia HTML
 
 ## Títulos
@@ -98,8 +83,6 @@ textresponse-action-icon
 ````
 
 ## Parágrafos e Quebras
-
-htmlresponse-action-icon
 
 ```html
 <p>Este é um parágrafo de texto.</p>
