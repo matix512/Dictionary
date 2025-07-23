@@ -179,3 +179,36 @@ WHERE Total IS NOT NULL;
 SELECT UPPER(FirstName) 
 FROM Customer;
 ```
+
+```sql
+SELECT CONCAT(FirstName, ' ', LastName) 
+FROM Customer;
+```
+
+```sql
+SELECT SUBSTRING(LastName, 1, 4) 
+FROM Customer;
+```
+
+### Funções Matemáticas
+```sql
+`SELECT ROUND(Total, 2)  
+FROM Invoice;`
+```
+sql
+
+CopyEdit
+
+`SELECT ROUND(Total, 2)  FROM Invoice;`
+
+sql
+
+CopyEdit
+
+`SELECT SUM(Total)  FROM Invoice WHERE CustomerId = 5;`
+
+sql
+
+CopyEdit
+
+`SELECT AVG(Total)  FROM Invoice;`
