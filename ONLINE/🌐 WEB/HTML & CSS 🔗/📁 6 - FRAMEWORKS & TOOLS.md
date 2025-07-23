@@ -49,8 +49,6 @@ Bootstrap é um dos frameworks CSS mais populares, desenvolvido pelo Twitter. Of
 
 ### Componentes Comuns
 
-htmlresponse-action-icon
-
 ```html
 <!-- Botões -->
 <button class="btn btn-primary">Primário</button>
@@ -96,8 +94,6 @@ htmlresponse-action-icon
 
 ### Utilitários
 
-htmlresponse-action-icon
-
 ```html
 <!-- Espaçamento (margin e padding) -->
 <div class="mt-4 mb-2 ms-3 me-3 p-3">
@@ -120,9 +116,6 @@ htmlresponse-action-icon
 ```
 
 ### Personalização
-
-scssresponse-action-icon
-
 ```scss
 // Usando Sass para personalizar
 $primary: #0074d9;
@@ -145,8 +138,6 @@ Tailwind CSS é um framework utilitário que permite construir designs personali
 
 ### Instalação
 
-htmlresponse-action-icon
-
 ```html
 <!-- Via CDN (não recomendado para produção) -->
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -155,8 +146,6 @@ htmlresponse-action-icon
 Para projetos reais, é recomendada a instalação via npm e configuração com PostCSS.
 
 ### Filosofia Utility-First
-
-htmlresponse-action-icon
 
 ```html
 <!-- Em vez de estilos semânticos como -->
@@ -169,8 +158,6 @@ htmlresponse-action-icon
 ```
 
 ### Grid e Layout
-
-htmlresponse-action-icon
 
 ```html
 <!-- Grid simples de 3 colunas -->
@@ -196,8 +183,6 @@ htmlresponse-action-icon
 ```
 
 ### Componentes Comuns
-
-htmlresponse-action-icon
 
 ```html
 <!-- Card -->
@@ -231,8 +216,6 @@ htmlresponse-action-icon
 
 No arquivo tailwind.config.js:
 
-javascriptresponse-action-icon
-
 ```javascript
 module.exports = {
   theme: {
@@ -264,8 +247,6 @@ module.exports = {
 
 ### Classes Responsivas
 
-htmlresponse-action-icon
-
 ```html
 <div class="text-sm md:text-base lg:text-lg">
   Texto que muda de tamanho em diferentes breakpoints
@@ -284,15 +265,11 @@ Bulma é um framework CSS moderno baseado em Flexbox, sem JavaScript, modular e 
 
 ### Instalação
 
-htmlresponse-action-icon
-
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 ```
 
 ### Componentes e Layout
-
-htmlresponse-action-icon
 
 ```html
 <!-- Colunas -->
@@ -357,8 +334,6 @@ Foundation é um framework front-end responsivo, mobile-first, altamente persona
 
 ### Instalação
 
-htmlresponse-action-icon
-
 ```html
 <!-- CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css">
@@ -369,8 +344,6 @@ htmlresponse-action-icon
 ```
 
 ### Grid e Componentes
-
-htmlresponse-action-icon
 
 ```html
 <!-- Grid responsivo -->
@@ -410,15 +383,11 @@ Material UI é uma biblioteca de componentes React que implementa o Material Des
 
 ### Instalação
 
-bashresponse-action-icon
-
 ```bash
 npm install @mui/material @emotion/react @emotion/styled
 ```
 
 ### Exemplo de Uso
-
-jsxresponse-action-icon
 
 ```jsx
 import React from 'react';
