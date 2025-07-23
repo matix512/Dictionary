@@ -33,8 +33,6 @@ SELECT email, LENGTH(email) - LENGTH(SUBSTRING_INDEX(email, '.', -1)) AS last_do
 
 #### **Extração de Substrings:**
 
-sqlresponse-action-icon
-
 ```sql
 -- SUBSTRING/SUBSTR
 SELECT first_name, SUBSTRING(first_name, 1, 3) AS first_3_chars FROM students;  -- Universal
