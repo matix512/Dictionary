@@ -866,6 +866,7 @@ h1 {
 ```
 
 
+---
 
 # 📄 11 - LAYOUT & POSICIONAMENTO
 
@@ -881,9 +882,6 @@ display: none;         /* Remove o elemento (não ocupa espaço) */
 ```
 
 ### Display Moderno
-
-cssresponse-action-icon
-
 ```css
 display: flex;         /* Layout flexível unidimensional */
 display: grid;         /* Layout em grade bidimensional */
@@ -893,9 +891,6 @@ display: table;        /* Comportamento de tabela */
 ## Position
 
 ### Valores
-
-cssresponse-action-icon
-
 ```css
 position: static;      /* Padrão, segue o fluxo normal */
 position: relative;    /* Posicionado relativo à sua posição normal */
@@ -905,9 +900,6 @@ position: sticky;      /* Híbrido entre relative e fixed */
 ```
 
 ### Propriedades de Deslocamento
-
-cssresponse-action-icon
-
 ```css
 top: 10px;            /* Distância do topo */
 right: 20px;          /* Distância da direita */
@@ -916,8 +908,6 @@ left: 40px;           /* Distância da esquerda */
 ```
 
 ### Exemplos
-
-cssresponse-action-icon
 
 ```css
 /* Elemento centralizado absolutamente */
@@ -950,8 +940,6 @@ cssresponse-action-icon
 
 ### Valores Básicos
 
-cssresponse-action-icon
-
 ```css
 float: left;          /* Flutua à esquerda */
 float: right;         /* Flutua à direita */
@@ -959,8 +947,6 @@ float: none;          /* Não flutua (padrão) */
 ```
 
 ### Clearing Floats
-
-cssresponse-action-icon
 
 ```css
 clear: left;          /* Limpa floats à esquerda */
@@ -977,8 +963,6 @@ clear: both;          /* Limpa floats em ambos os lados */
 
 ## Z-Index
 
-cssresponse-action-icon
-
 ```css
 /* Controla a ordem de empilhamento (apenas para position != static) */
 z-index: 1;           /* Valor numérico, maior = mais à frente */
@@ -990,8 +974,6 @@ z-index: auto;        /* Valor padrão */
 ## Flexbox
 
 ### Container Flex
-
-cssresponse-action-icon
 
 ```css
 .container {
@@ -1043,9 +1025,6 @@ cssresponse-action-icon
 ```
 
 ### Itens Flex
-
-cssresponse-action-icon
-
 ```css
 .item {
   /* Ordem de exibição */
@@ -1085,8 +1064,6 @@ cssresponse-action-icon
 ## Grid
 
 ### Container Grid
-
-cssresponse-action-icon
 
 ```css
 .grid-container {
@@ -1155,8 +1132,6 @@ cssresponse-action-icon
 
 ### Itens Grid
 
-cssresponse-action-icon
-
 ```css
 .grid-item {
   /* Posicionamento por linha/coluna */
@@ -1193,9 +1168,6 @@ cssresponse-action-icon
 ## Exemplos de Layout Completo
 
 ### Layout com Flexbox
-
-cssresponse-action-icon
-
 ```css
 /* Container principal */
 .layout {
@@ -1234,3 +1206,4 @@ cssresponse-action-icon
   padding: 20px;
   background-color: #d0d0d0
 ```
+
