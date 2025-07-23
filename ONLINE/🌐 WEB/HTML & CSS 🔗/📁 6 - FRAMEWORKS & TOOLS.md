@@ -1655,3 +1655,570 @@ Ferramenta de auditoria automatizada para melhorar a qualidade das páginas web.
 - **PWA**: Recursos de Progressive Web App
 
 
+````markdown
+### Google PageSpeed Insights
+- Site: [pagespeed.web.dev](https://pagespeed.web.dev/)
+- Análise de desempenho baseada no Lighthouse
+- Fornece sugestões específicas para melhorias
+- Testa em dispositivos móveis e desktop
+
+### Wave (Web Accessibility Evaluation Tool)
+- Site: [wave.webaim.org](https://wave.webaim.org/)
+- Avalia a acessibilidade de páginas web
+- Identifica erros e avisos
+- Mostra problemas visualmente na própria página
+
+### CSS Stats
+- Site: [cssstats.com](https://cssstats.com/)
+- Analisa estatísticas do CSS
+- Mostra uso de cores, fontes, especificidade
+- Ajuda a identificar redundâncias e oportunidades de otimização
+
+## Sistemas de Build e Bundlers
+
+### Webpack
+Empacotador de módulos JavaScript que também processa HTML, CSS e assets.
+
+#### Instalação Básica
+```bash
+# Iniciar um projeto npm
+npm init -y
+
+# Instalar webpack
+npm install --save-dev webpack webpack-cli
+
+# Instalar loaders para CSS
+npm install --save-dev css-loader style-loader
+
+# Instalar plugins úteis
+npm install --save-dev html-webpack-plugin mini-css-extract-plugin
+````
+
+#### Configuração Básica (webpack.config.js)
+
+```javascript
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+        ],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'styles.css',
+    }),
+  ],
+  devServer: {
+    static: './dist',
+    hot: true,
+  },
+};
+```
+
+#### Comandos Básicos
+
+```bash
+# Construir o projeto
+npx webpack
+
+# Iniciar servidor de desenvolvimento
+npx webpack serve
+```
+
+### Vite
+
+Ferramenta de build mais moderna e rápida, com suporte nativo a ESM.
+
+#### Instalação e Uso
+
+```bash
+# Criar um novo projeto
+npm create vite@latest my-project -- --template vanilla
+
+# Navegar para o diretório do projeto
+cd my-project
+
+# Instalar dependências
+npm install
+
+# Iniciar servidor de desenvolvimento
+npm run dev
+
+# Construir para produção
+npm run build
+```
+
+### Parcel
+
+Bundler zero-config que funciona bem para projetos simples.
+
+#### Instalação e Uso
+
+```bash
+# Instalar globalmente
+npm install -g parcel-bundler
+
+# Ou no projeto
+npm install --save-dev parcel
+
+# Executar em modo de desenvolvimento
+parcel index.html
+
+# Construir para produção
+parcel build index.html
+```
+
+### Gulp
+
+Automatizador de tarefas para workflows personalizados.
+
+#### Instalação Básica
+
+```bash
+# Instalar globalmente
+npm install --global gulp-cli
+
+# Instalar no projeto
+npm install --save-dev gulp
+```
+
+#### gulpfile.js Básico
+
+```javascript
+const gulp = require('gulp');
+const sass = require('gulp-sass')(require('sass'));
+const autoprefixer = require('gulp-autoprefixer');
+const cleanCSS = require('gulp-clean-css');
+const browserSync = require('browser-sync').create();
+
+// Compilar Sass
+function compileSass() {
+  return gulp.src('./src/scss/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('./dist/css'))
+    .pipe(browserSync.stream());
+}
+
+// Servidor de desenvolvimento
+function serve() {
+  browserSync.init({
+    server: './'
+  });
+
+  gulp.watch('./src/scss/**/*.scss', compileSass);
+  gulp.watch('./*.html').on('change', browserSync.reload);
+}
+
+exports.sass = compileSass;
+exports.serve = serve;
+exports.default = serve;
+```
+
+## Ferramentas de Wireframing e Prototipagem
+
+### Figma
+
+Ferramenta de design colaborativo baseada na web.
+
+#### Recursos
+
+- Interface intuitiva
+- Componentes reutilizáveis
+- Design responsivo
+- Colaboração em tempo real
+- Protótipos interativos
+- Modo de desenvolvedor para extrair código
+
+#### Uso para Desenvolvedores
+
+- Acesse o modo "Desenvolvedor" para ver propriedades CSS
+- Use a ferramenta de inspeção para obter medidas precisas
+- Exporte assets em múltiplos formatos
+- Veja fluxos de protótipos para entender interações
+
+### Adobe XD
+
+Ferramenta de design e prototipagem da Adobe.
+
+### Sketch
+
+Ferramenta de design para Mac com foco em UI/UX.
+
+### Balsamiq
+
+Ferramenta para wireframes de baixa fidelidade.
+
+
+#### Fluxo de Trabalho Básico
+
+1. Crie uma branch para trabalhar: git checkout -b feature-name
+2. Faça alterações no código
+3. Adicione e commit as alterações: git add . && git commit -m "Descrição"
+4. Mescle de volta para a branch principal: git checkout main && git merge feature-name
+5. Envie para o repositório remoto: git push origin main
+
+### GitHub/GitLab/Bitbucket
+
+Plataformas de hospedagem Git com ferramentas adicionais.
+
+#### Recursos
+
+- Hospedagem de repositórios
+- Issues e Pull Requests
+- Code Reviews
+- Integração contínua
+- Pages (hospedagem estática gratuita)
+- Wikis e documentação
+
+#### GitHub Pages
+
+Hospedagem gratuita para sites estáticos diretamente do repositório:
+
+1. Crie um repositório: username.github.io
+2. Clone para sua máquina
+3. Adicione seus arquivos HTML/CSS
+4. Faça push para o GitHub
+5. Acesse username.github.io no navegador
+
+Ou para um projeto específico:
+
+1. Vá para Settings > Pages no seu repositório
+2. Selecione a branch (geralmente main ou gh-pages)
+3. Acesse username.github.io/repository-name
+
+## Ferramentas de Teste de Responsividade
+
+### Responsive Design Mode (Navegadores)
+
+- **Chrome**: DevTools > Toggle Device Toolbar (Ctrl+Shift+M / Cmd+Option+M)
+- **Firefox**: DevTools > Responsive Design Mode (Ctrl+Shift+M / Cmd+Option+M)
+- **Edge**: DevTools > Toggle device emulation (Ctrl+Shift+M)
+
+### Screenfly
+
+- Site: [screenfly.org](http://screenfly.org/)
+- Teste seu site em diferentes resoluções de tela
+- Suporte para múltiplos dispositivos
+
+### Responsively App
+
+- Site: [responsively.app](https://responsively.app/)
+- Aplicativo desktop para testar designs responsivos
+- Mostra múltiplas telas simultaneamente
+- Espelhamento de ações entre dispositivos
+- Ferramentas de depuração integradas
+
+### BrowserStack
+
+- Site: [browserstack.com](https://www.browserstack.com/)
+- Teste em navegadores e dispositivos reais
+- Suporte para iOS, Android, diversos navegadores
+- Captura de tela e ferramentas de depuração
+
+## Ferramentas de Otimização
+
+### Compressores de Imagem
+
+- **TinyPNG/TinyJPG**: [tinypng.com](https://tinypng.com/)
+- **Squoosh**: [squoosh.app](https://squoosh.app/)
+- **ImageOptim**: [imageoptim.com](https://imageoptim.com/) (Mac)
+- **Kraken.io**: [kraken.io](https://kraken.io/)
+
+### Otimizadores de SVG
+
+- **SVGOMG**: [jakearchibald.github.io/svgomg](https://jakearchibald.github.io/svgomg/)
+- **SVG Optimizer**: [github.com/svg/svgo](https://github.com/svg/svgo)
+
+### Minificadores CSS/JS
+
+- **CSS Minifier**: [cssminifier.com](https://cssminifier.com/)
+- **UglifyJS**: [github.com/mishoo/UglifyJS](https://github.com/mishoo/UglifyJS)
+- **Clean-CSS**: [github.com/clean-css/clean-css](https://github.com/clean-css/clean-css)
+
+### Analisadores de Performance
+
+- **WebPageTest**: [webpagetest.org](https://www.webpagetest.org/)
+- **GTmetrix**: [gtmetrix.com](https://gtmetrix.com/)
+- **Yellow Lab Tools**: [yellowlab.tools](https://yellowlab.tools/)
+
+## Geradores e Ferramentas de Referência
+
+### Geradores CSS
+
+- **CSS Grid Generator**: [cssgrid-generator.netlify.app](https://cssgrid-generator.netlify.app/)
+- **Flexbox Generator**: [loading.io/flexbox](https://loading.io/flexbox/)
+- **Gradient Generator**: [cssgradient.io](https://cssgradient.io/)
+- **Box Shadow Generator**: [cssmatic.com/box-shadow](https://www.cssmatic.com/box-shadow)
+- **Animation Generator**: [animista.net](https://animista.net/)
+
+### Ferramentas de Cores
+
+- **Color Hunt**: [colorhunt.co](https://colorhunt.co/)
+- **Coolors**: [coolors.co](https://coolors.co/)
+- **Adobe Color**: [color.adobe.com](https://color.adobe.com/)
+- **Paletton**: [paletton.com](https://paletton.com/)
+- **Contrast Checker**: [webaim.org/resources/contrastchecker](https://webaim.org/resources/contrastchecker/)
+
+### Ferramentas de Fontes
+
+- **Google Fonts**: [fonts.google.com](https://fonts.google.com/)
+- **Font Pair**: [fontpair.co](https://www.fontpair.co/)
+- **Fontjoy**: [fontjoy.com](https://fontjoy.com/)
+- **Type Scale**: [type-scale.com](https://type-scale.com/)
+
+### Inspiração e Referência
+
+- **CSS-Tricks**: [css-tricks.com](https://css-tricks.com/)
+- **CodePen**: [codepen.io](https://codepen.io/)
+- **Dribbble**: [dribbble.com](https://dribbble.com/)
+- **Behance**: [behance.net](https://www.behance.net/)
+- **Awwwards**: [awwwards.com](https://www.awwwards.com/)
+
+## Configuração de Ambiente de Desenvolvimento
+
+### Ambiente Local
+
+#### XAMPP/MAMP/WAMP
+
+Pacotes que incluem Apache, MySQL, PHP e outras ferramentas.
+
+- **XAMPP**: [apachefriends.org](https://www.apachefriends.org/) (Windows, Mac, Linux)
+- **MAMP**: [mamp.info](https://www.mamp.info/) (Mac, Windows)
+- **WAMP**: [wampserver.com](https://www.wampserver.com/) (Windows)
+
+#### Node.js e npm
+
+Ambiente JavaScript para desenvolvimento local e gerenciamento de pacotes.
+
+bashresponse-action-icon
+
+```bash
+# Verificar instalação
+node -v
+npm -v
+
+# Iniciar projeto
+npm init -y
+
+# Instalar pacote
+npm install package-name
+
+# Instalar pacote de desenvolvimento
+npm install --save-dev package-name
+
+# Executar script
+npm run script-name
+```
+
+#### Servidor Local Simples
+
+Opções para executar um servidor HTTP básico:
+
+**Com Python**:
+
+bashresponse-action-icon
+
+```bash
+# Python 3
+python -m http.server
+
+# Python 2
+python -m SimpleHTTPServer
+```
+
+**Com Node.js**:
+
+bashresponse-action-icon
+
+```bash
+# Instalar http-server globalmente
+npm install -g http-server
+
+# Executar no diretório atual
+http-server
+```
+
+**Com VS Code**:
+
+- Instale a extensão "Live Server"
+- Clique em "Go Live" na barra de status
+
+### Ambientes Online
+
+#### CodePen
+
+- Site: [codepen.io](https://codepen.io/)
+- Editor online para HTML, CSS e JavaScript
+- Ideal para protótipos rápidos e compartilhamento
+- Suporte para preprocessadores (Sass, LESS)
+- Acesso a bibliotecas populares
+
+#### JSFiddle
+
+- Site: [jsfiddle.net](https://jsfiddle.net/)
+- Ambiente de teste online
+- Suporte para frameworks
+
+#### CodeSandbox
+
+- Site: [codesandbox.io](https://codesandbox.io/)
+- IDE online com suporte a projetos completos
+- Integração com GitHub
+- Suporte para templates (React, Vue, Angular, etc.)
+
+#### StackBlitz
+
+- Site: [stackblitz.com](https://stackblitz.com/)
+- IDE web para aplicações completas
+- Ambiente Node.js no navegador
+- Suporte para frameworks modernos
+
+## Dicas e Truques para Desenvolvimento Eficiente
+
+### Snippets e Templates
+
+Crie e salve trechos de código reutilizáveis para agilizar o desenvolvimento.
+
+**HTML Boilerplate**:
+
+htmlresponse-action-icon
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título da Página</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Título do Site</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section>
+            <h2>Seção Principal</h2>
+            <p>Conteúdo aqui...</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 Meu Site. Todos os direitos reservados.</p>
+    </footer>
+    
+    <script src="js/scripts.js"></script>
+</body>
+</html>
+```
+
+**CSS Reset/Normalize**:
+
+cssresponse-action-icon
+
+```css
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Tipografia base */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Links */
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Imagens responsivas */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Listas */
+ul, ol {
+  list-style-position: inside;
+}
+```
+
+### Atalhos e Produtividade
+
+#### Emmet
+
+Linguagem de abreviação para HTML e CSS, integrada em muitos editores.
+
+**Exemplos HTML**:
+
+- ! → Doctype HTML5 completo
+- header>nav>ul>li*5>a → Estrutura de navegação com 5 itens
+- .container>.row>.col-md-6*2 → Layout de grid Bootstrap
+- ul>li.item$*5{Item $} → Lista com 5 itens numerados
+
+**Exemplos CSS**:
+
+- m10 → margin: 10px;
+- p20-30 → padding: 20px 30px;
+- fw:b → font-weight: bold;
+- bg:url → background: url();
+
+#### DevTools como Editor
+
+Use as ferramentas de desenvolvedor do navegador para experimentar antes de implementar:
+
+1. Inspecione um elemento
+2. Modifique CSS no painel Styles
+3. Teste diferentes valores e veja resultados em tempo real
+4. Copie o CSS final para seu arquivo
+
+#### Extensões de Navegador Úteis
+
+- **Web Developer**: Ferramentas adicionais para desenvolvimento web
+- **ColorZilla**: Seletor de cores e conta-gotas
+- **Dimensions**: Medição de elementos na página
+- **Wappalyzer**: Detecta tecnologias usadas em sites
+- **Responsive Viewer**: Visualiza site em múltiplas resoluções
+- **CSS Peeper**: Extrai CSS e assets de sites
