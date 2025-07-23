@@ -10,14 +10,12 @@ Este manual serve como referência completa para HTML e CSS, organizado progress
 ## 📁 1 - FUNDAMENTOS
 
 - 1.1 [[Introdução ao HTML & CSS]]
-    
     - 1.1.1 O que é HTML
     - 1.1.2 O que é CSS
     - 1.1.3 Como Funcionam Juntos
     - 1.1.4 Estrutura Básica de uma Página Web
     
-- 1.2 [Ferramentas & Ambiente](https://app.outlier.ai/playground/688156ffe0777f1ce2cf8773#ferramentas--ambiente)
-    
+- 1.2 [[FERRAMENTAS & AMBIENTE]]
     - 1.2.1 Editores de Código
     - 1.2.2 Extensões Úteis
     - 1.2.3 Browsers & Dev Tools
