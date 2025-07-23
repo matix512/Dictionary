@@ -1059,8 +1059,6 @@ light-or-dark(color)
 
 ### Iteração
 
-stylusresponse-action-icon
-
 ```stylus
 // For loop
 for i in (1..5)
@@ -1084,3 +1082,431 @@ for key, value in sizes
 ### O que é PostCSS?
 
 PostCSS é uma ferramenta para transformar CSS com plugins JavaScript. Diferente dos pré-processadores tradicionais, PostCSS é modular e permite que você escolha apenas as funcionalidades que precisa.
+
+### Plugins Populares
+
+- **Autoprefixer**: Adiciona prefixos de navegador automaticamente
+- **postcss-preset-env**: Converte CSS moderno para compatibilidade com navegadores
+- **cssnano**: Minifica e otimiza CSS
+- **postcss-nested**: Suporte para regras aninhadas como Sass
+- **postcss-import**: Resolve e junta imports de @import
+- **postcss-simple-vars**: Suporte para variáveis simples
+- **postcss-mixins**: Suporte para mixins
+
+### Instalação e Configuração
+
+#### Usando Node.js/npm
+```bash
+# Instalar PostCSS CLI e plugins
+npm install --save-dev postcss postcss-cli autoprefixer postcss-preset-env postcss-nested
+
+# Criar arquivo de configuração (postcss.config.js)
+module.exports = {
+  plugins: [
+    require('postcss-import'),
+    require('postcss-nested'),
+    require('postcss-preset-env')({ stage: 1 }),
+    require('autoprefixer')
+  ]
+}
+
+# Compilar CSS
+postcss input.css -o output.css
+````
+
+### Exemplo de Uso
+
+```css
+/* Usando variáveis com postcss-simple-vars */
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+
+/* Usando aninhamento com postcss-nested */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  & header {
+    background-color: $primary-color;
+    color: white;
+    
+    & h1 {
+      margin: 0;
+    }
+  }
+}
+
+/* Usando recursos CSS modernos com postcss-preset-env */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.box {
+  background-color: hsl(210 50% 50% / 80%);
+  color: white;
+}
+```
+
+## Organização e Metodologias CSS
+
+### Estrutura de Arquivos Recomendada (7-1 Pattern)
+
+```text
+scss/
+|-- abstracts/         # Variáveis, mixins, funções
+|   |-- _variables.scss
+|   |-- _mixins.scss
+|   |-- _functions.scss
+|
+|-- base/              # Estilos base, reset, tipografia
+|   |-- _reset.scss
+|   |-- _typography.scss
+|   |-- _animations.scss
+|
+|-- components/        # Componentes reutilizáveis
+|   |-- _buttons.scss
+|   |-- _cards.scss
+|   |-- _forms.scss
+|
+|-- layout/            # Estruturas maiores
+|   |-- _header.scss
+|   |-- _navigation.scss
+|   |-- _grid.scss
+|   |-- _footer.scss
+|
+|-- pages/             # Estilos específicos de páginas
+|   |-- _home.scss
+|   |-- _about.scss
+|   |-- _contact.scss
+|
+|-- themes/            # Diferentes temas
+|   |-- _default.scss
+|   |-- _dark.scss
+|
+|-- vendors/           # CSS de terceiros
+|   |-- _bootstrap.scss
+|   |-- _jquery-ui.scss
+|
+|-- main.scss          # Arquivo principal que importa todos os outros
+```
+
+### BEM (Block Element Modifier)
+
+```scss
+// Block (bloco): componente independente
+.card {
+  background: white;
+  border-radius: 4px;
+  
+  // Element (elemento): parte de um bloco
+  &__title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  &__content {
+    padding: 15px;
+  }
+  
+  &__image {
+    width: 100%;
+  }
+  
+  // Modifier (modificador): variação do bloco ou elemento
+  &--featured {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  &__title--large {
+    font-size: 24px;
+  }
+}
+
+// Uso no HTML:
+// <div class="card card--featured">
+//   <h2 class="card__title card__title--large">Título</h2>
+//   <div class="card__content">Conteúdo</div>
+// </div>
+```
+
+### SMACSS (Scalable and Modular Architecture for CSS)
+
+```scss
+// Base
+body, h1, p {
+  margin: 0;
+  padding: 0;
+}
+
+// Layout
+.l-header {
+  height: 80px;
+}
+
+.l-sidebar {
+  width: 250px;
+}
+
+// Módulos
+.btn {
+  // estilos base
+  
+  &.is-active {
+    // estado ativo
+  }
+}
+
+// Estado
+.is-hidden {
+  display: none;
+}
+
+.is-expanded {
+  height: auto;
+}
+
+// Tema
+.theme-dark {
+  background: #333;
+  color: white;
+}
+```
+
+## Guia de Melhores Práticas
+
+### Desempenho e Manutenção
+
+1. **Evite aninhamento excessivo**: Limite a 3 níveis para melhor desempenho e legibilidade
+    
+    scssresponse-action-icon
+    
+    ```scss
+    // Ruim
+    .container {
+      .header {
+        .navigation {
+          .menu {
+            .item {
+              a {
+                color: red;
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    // Melhor
+    .container .header .navigation {
+      .menu-item a {
+        color: red;
+      }
+    }
+    
+    // Ou melhor ainda
+    .nav-link {
+      color: red;
+    }
+    ```
+    
+2. **Use variáveis para valores repetidos**:
+    
+    scssresponse-action-icon
+    
+    ```scss
+    // Defina e use variáveis para cores, espaçamentos, fontes
+    $primary-color: #3498db;
+    $spacing-unit: 8px;
+    
+    .element {
+      color: $primary-color;
+      margin: $spacing-unit * 2;
+    }
+    ```
+    
+3. **Modularize seu código**:
+    
+    scssresponse-action-icon
+    
+    ```scss
+    // Divida em arquivos menores e importe-os
+    @import 'variables';
+    @import 'reset';
+    @import 'typography';
+    @import 'buttons';
+    @import 'forms';
+    ```
+    
+4. **Prefira extend/herança com moderação**:
+    
+    scssresponse-action-icon
+    
+    ```scss
+    // Extender pode gerar CSS bloat se usado em excesso
+    // Use mixins para blocos repetidos com variáveis
+    @mixin button($bg-color) {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: $bg-color;
+      border-radius: 4px;
+    }
+    
+    .primary-button {
+      @include button(blue);
+    }
+    
+    .secondary-button {
+      @include button(gray);
+    }
+    ```
+    
+
+### Dicas Avançadas
+
+1. **Use maps para conjuntos de valores relacionados**:
+    
+    scssresponse-action-icon
+    
+    ```scss
+    // Mapa de cores
+    $colors: (
+      'primary': #3498db,
+      'secondary': #2ecc71,
+      'danger': #e74c3c,
+      'warning': #f39c12,
+      'info': #1abc9c
+    );
+    
+    // Função para acessar o mapa
+    @function color($key) {
+      @return map-get($colors, $key);
+    }
+    
+    // Uso
+    .alert {
+      background-color: color('warning');
+    }
+    
+    .button-danger {
+      background-color: color('danger');
+    }
+    ```
+    
+2. **Crie mixins para media queries**:
+    
+    scssresponse-action-icon
+    
+    ```scss
+    // Definindo breakpoints
+    $breakpoints: (
+      'small': 576px,
+      'medium': 768px,
+      'large': 992px,
+      'xlarge': 1200px
+    );
+    
+    // Mixin de media query
+    @mixin media-breakpoint-up($breakpoint) {
+      $min-width: map-get($breakpoints, $breakpoint);
+      @if $min-width {
+        @media (min-width: $min-width) {
+          @content;
+        }
+      } @else {
+        @error "Breakpoint '#{$breakpoint}' não encontrado.";
+      }
+    }
+    
+    // Uso
+    .container {
+      padding: 15px;
+      
+      @include media-breakpoint-up('medium') {
+        padding: 30px;
+      }
+      
+      @include media-breakpoint-up('large') {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+    }
+    ```
+    
+3. **Utilização de funções para cálculos**:
+    
+    scssresponse-action-icon
+    
+    ```scss
+    // Função para converter px para rem
+    @function rem($px, $base: 16px) {
+      @return ($px / $base) * 1rem;
+    }
+    
+    // Função para calcular porcentagens
+    @function percentage-width($target, $container) {
+      @return ($target / $container) * 100%;
+    }
+    
+    // Uso
+    .heading {
+      font-size: rem(24px);
+      margin-bottom: rem(16px);
+    }
+    
+    .sidebar {
+      width: percentage-width(300px, 1200px);  // 25%
+    }
+    ```
+    
+4. **Estilos condicionais com mixins**:
+    
+    scssresponse-action-icon
+    
+    ```scss
+    // Mixin para gerar variantes de componentes
+    @mixin theme($theme: 'light') {
+      @if $theme == 'light' {
+        background-color: white;
+        color: #333;
+      } @else if $theme == 'dark' {
+        background-color: #333;
+        color: white;
+      } @else if $theme == 'primary' {
+        background-color: $primary-color;
+        color: white;
+      }
+    }
+    
+    // Uso
+    .card {
+      @include theme('light');
+      
+      &--dark {
+        @include theme('dark');
+      }
+      
+      &--primary {
+        @include theme('primary');
+      }
+    }
+    ```
+    
+
+### Comparação Final dos Pré-processadores
+
+|Característica|Sass/SCSS|Less|Stylus|PostCSS|
+|---|---|---|---|---|
+|Sintaxe|Indentada (Sass) ou CSS-like (SCSS)|CSS-like|Flexível, opcional|CSS padrão|
+|Variáveis|$var|@var|var|--var ou plugins|
+|Aninhamento|Sim|Sim|Sim|Com plugin|
+|Mixins|@mixin, @include|.mixin()|mixin()|Com plugin|
+|Herança|@extend|N/A|@extend|Com plugin|
+|Funções|Sim|Sim|Sim|Com plugin|
+|Condicionais|@if, @else|guard mixins|if/else|Com plugin|
+|Loops|@for, @each, @while|recursão|for/each|Com plugin|
+|Popularidade|Alta|Média|Baixa|Alta|
+|Curva de aprendizado|Média|Baixa|Média-Alta|Baixa|
+|Customização|Boa|Boa|Excelente|Extremamente flexível|
+|Quando usar|Projetos grandes|Projetos simples|Desenvolvedores avançados|Personalização específica|
