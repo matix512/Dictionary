@@ -804,8 +804,6 @@ form.addEventListener('submit', function(event) {
 
 ### CSS para Acessibilidade
 
-cssresponse-action-icon
-
 ```css
 /* Destacar o foco claramente */
 input:focus,
@@ -863,8 +861,6 @@ label {
 
 ### Formulário de Login
 
-htmlresponse-action-icon
-
 ```html
 <form class="login-form">
   <h2>Entrar</h2>
@@ -913,7 +909,6 @@ htmlresponse-action-icon
 </form>
 ```
 
-cssresponse-action-icon
 
 ```css
 .login-form {
@@ -968,8 +963,6 @@ cssresponse-action-icon
 
 ### Formulário de Contato Responsivo
 
-htmlresponse-action-icon
-
 ```html
 <form class="contact-form">
   <h2>Entre em Contato</h2>
@@ -1010,8 +1003,6 @@ htmlresponse-action-icon
   </div>
 </form>
 ```
-
-cssresponse-action-icon
 
 ```css
 .contact-form {
@@ -1057,8 +1048,6 @@ cssresponse-action-icon
 ```
 
 ### Formulário de Registro com Validação
-
-htmlresponse-action-icon
 
 ```html
 <form class="signup-form" novalidate>
@@ -1136,8 +1125,6 @@ htmlresponse-action-icon
 </form>
 ```
 
-cssresponse-action-icon
-
 ```css
 .signup-form {
   max-width: 500px;
@@ -1200,3 +1187,31 @@ input.is-invalid {
 3. Ofereça opção de opt-out para newsletters
 4. Não colete mais dados do que o necessário
 5. Informe sobre cookies e rastreamento
+
+---
+
+
+# 📄 16 - ANIMAÇÕES & TRANSIÇÕES
+
+## Transições Básicas
+
+### Propriedade transition
+```css
+/* Sintaxe básica */
+transition: propriedade duração timing-function delay;
+
+/* Exemplos */
+.elemento {
+  /* Transição simples */
+  transition: color 0.3s ease;
+  
+  /* Transição múltipla */
+  transition: color 0.3s ease, background-color 0.5s ease;
+  
+  /* Transição para todas as propriedades */
+  transition: all 0.3s ease-in-out;
+  
+  /* Com delay */
+  transition: transform 0.5s ease-out 0.2s;
+}
+````
