@@ -1268,8 +1268,6 @@ body {
 
 ### CSS Reset Básico
 
-cssresponse-action-icon
-
 ```css
 * {
   margin: 0;
@@ -1305,8 +1303,6 @@ button, input, select, textarea {
 
 ### Centralização Vertical e Horizontal
 
-cssresponse-action-icon
-
 ```css
 /* Flexbox (recomendado) */
 .container {
@@ -1338,8 +1334,6 @@ cssresponse-action-icon
 ```
 
 ### CSS Triangle
-
-cssresponse-action-icon
 
 ```css
 .triangle-up {
@@ -1377,8 +1371,6 @@ cssresponse-action-icon
 
 ### Quebra de Texto
 
-cssresponse-action-icon
-
 ```css
 /* Quebra de texto normal */
 .texto {
@@ -1412,8 +1404,6 @@ cssresponse-action-icon
 
 ### Scrollbar Customizada
 
-cssresponse-action-icon
-
 ```css
 /* Apenas para navegadores WebKit/Blink (Chrome, Safari, etc) */
 .scroll-container::-webkit-scrollbar {
@@ -1442,8 +1432,6 @@ cssresponse-action-icon
 ```
 
 ### Botão Estilizado
-
-cssresponse-action-icon
 
 ```css
 .button {
@@ -1486,8 +1474,6 @@ cssresponse-action-icon
 
 ### Acessibilidade - Skip to Content
 
-htmlresponse-action-icon
-
 ```html
 <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
@@ -1495,8 +1481,6 @@ htmlresponse-action-icon
   <!-- Conteúdo principal -->
 </main>
 ```
-
-cssresponse-action-icon
 
 ```css
 .skip-link {
@@ -1516,8 +1500,6 @@ cssresponse-action-icon
 
 ### Grid Responsivo Simples
 
-cssresponse-action-icon
-
 ```css
 .grid {
   display: grid;
@@ -1527,8 +1509,6 @@ cssresponse-action-icon
 ```
 
 ### Card Básico
-
-htmlresponse-action-icon
 
 ```html
 <div class="card">
@@ -1540,8 +1520,6 @@ htmlresponse-action-icon
   </div>
 </div>
 ```
-
-cssresponse-action-icon
 
 ```css
 .card {
@@ -1592,3 +1570,9 @@ cssresponse-action-icon
   background-color: #2980b9;
 }
 ```
+
+---
+
+# 📄 23 - RECURSOS E LINKS ÚTEIS
+
+
