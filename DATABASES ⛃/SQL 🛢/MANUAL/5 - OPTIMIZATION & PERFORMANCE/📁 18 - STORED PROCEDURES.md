@@ -6,8 +6,6 @@
 
 #### **Vantagens:**
 
-textresponse-action-icon
-
 ```text
 ⚡ Performance - Pré-compiladas, execução mais rápida
 🛡️ Segurança - Encapsulam lógica, previnem SQL injection
@@ -19,8 +17,6 @@ textresponse-action-icon
 
 #### **Desvantagens:**
 
-textresponse-action-icon
-
 ```text
 🏃‍♂️ Portabilidade - Específicas do SGBD
 🐛 Debug - Mais difícil de debuggar
@@ -31,8 +27,6 @@ textresponse-action-icon
 ### **🆕 Criar Stored Procedures:**
 
 #### **Sintaxe Básica (MySQL):**
-
-sqlresponse-action-icon
 
 ```sql
 DELIMITER //
@@ -49,8 +43,6 @@ DELIMITER ;
 ```
 
 #### **Exemplo Simples:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Procedure básica sem parâmetros
@@ -69,8 +61,6 @@ CALL GetAllCustomers();
 ```
 
 #### **Procedure com Parâmetros IN:**
-
-sqlresponse-action-icon
 
 ```sql
 DELIMITER //
@@ -95,8 +85,6 @@ CALL GetCustomerOrders(123);
 ```
 
 #### **Procedure com Parâmetros OUT:**
-
-sqlresponse-action-icon
 
 ```sql
 DELIMITER //
@@ -125,8 +113,6 @@ SELECT @orders AS total_orders, @spent AS total_spent, @last_date AS last_order_
 ### **🔄 Controlo de Fluxo:**
 
 #### **Condições IF-THEN-ELSE:**
-
-sqlresponse-action-icon
 
 ```sql
 DELIMITER //
@@ -168,8 +154,6 @@ SELECT @result;
 
 #### **Loops - WHILE:**
 
-sqlresponse-action-icon
-
 ```sql
 DELIMITER //
 CREATE PROCEDURE GenerateTestData(
@@ -196,8 +180,6 @@ CALL GenerateTestData(100);
 ```
 
 #### **Loops - REPEAT:**
-
-sqlresponse-action-icon
 
 ```sql
 DELIMITER //
