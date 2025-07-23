@@ -105,8 +105,6 @@ ORDER BY LENGTH(first_name) DESC;
 
 #### **LIMIT Básico:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Primeiros 5 registos
 SELECT * FROM students LIMIT 5;
@@ -124,8 +122,6 @@ LIMIT 1;
 ```
 
 #### **LIMIT com OFFSET (Paginação):**
-
-sqlresponse-action-icon
 
 ```sql
 -- MySQL/PostgreSQL
@@ -149,8 +145,6 @@ FETCH NEXT 5 ROWS ONLY;
 
 #### **Top N Queries:**
 
-sqlresponse-action-icon
-
 ```sql
 -- 3 estudantes mais novos
 SELECT first_name, last_name, birth_date 
@@ -172,8 +166,6 @@ UNION ALL
 
 #### **Paginação Simples:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Página 1 (primeiros 10)
 SELECT * FROM students ORDER BY first_name LIMIT 10 OFFSET 0;
@@ -190,8 +182,6 @@ SELECT * FROM students ORDER BY first_name LIMIT 10 OFFSET 20;
 ### **🎯 Ordenação com NULL:**
 
 #### **Comportamento de NULL:**
-
-sqlresponse-action-icon
 
 ```sql
 -- MySQL: NULL vem primeiro em ASC
@@ -214,8 +204,6 @@ ORDER BY email IS NOT NULL, email ASC;
 
 #### **Case Sensitivity:**
 
-sqlresponse-action-icon
-
 ```sql
 -- MySQL (geralmente não case-sensitive)
 SELECT first_name FROM students ORDER BY first_name;
@@ -229,8 +217,6 @@ SELECT first_name FROM students ORDER BY first_name COLLATE utf8mb4_unicode_ci;
 
 #### **Ordenação Natural:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Para strings com números (item1, item10, item2 -> item1, item2, item10)
 -- MySQL 8.0+
@@ -243,8 +229,6 @@ SELECT name FROM products ORDER BY CAST(REGEXP_SUBSTR(name, '[0-9]+') AS SIGNED)
 ### **🎯 Exercícios Práticos:**
 
 #### **Exercício 1 - Ordenação Básica:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Estudantes por ordem alfabética
@@ -261,8 +245,6 @@ SELECT * FROM students ORDER BY last_name, first_name;
 ```
 
 #### **Exercício 2 - Avançado:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Top 2 nomes mais compridos
@@ -287,8 +269,6 @@ ORDER BY MONTH(birth_date);
 
 #### **1. Índices para ORDER BY:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Criar índice para ordenação frequente
 CREATE INDEX idx_students_name ON students(first_name, last_name);
@@ -300,8 +280,6 @@ CREATE INDEX idx_students_name_date ON students(last_name, first_name, birth_dat
 
 #### **2. LIMIT com ORDER BY:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ✅ Eficiente - para quando só precisas de poucos registos
 SELECT * FROM students ORDER BY birth_date DESC LIMIT 10;
@@ -311,8 +289,6 @@ SELECT * FROM (SELECT * FROM students ORDER BY birth_date DESC) subquery LIMIT 1
 ```
 
 #### **3. Evitar ORDER BY em Subqueries:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ❌ ORDER BY desnecessário em subquery
