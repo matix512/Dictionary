@@ -100,75 +100,23 @@ OFFSET 10 ROWS FETCH NEXT 5 ROWS ONLY;
     
 - `LIKE _` : Um único caractere
 
+### 🔢 Filtrar dados numéricos
+
+```sql
+SELECT CustomerId, Total 
+FROM Invoice
+WHERE Total >= 0.99;
+```
+
+```sql
+SELECT CustomerId, Total 
+FROM Invoice
+WHERE Total BETWEEN 0.50 AND 9.99;
+```
 
 
-SELECT Country 
-FROM Customer;
-Obter várias colunas
-sql
-Copy
-Edit
-SELECT FirstName, LastName 
-FROM Customer;
-Ordenar por coluna (ascendente)
-sql
-Copy
-Edit
-SELECT FirstName, LastName 
-FROM Customer
-ORDER BY LastName ASC;
-Ordenar por coluna (descendente)
-sql
-Copy
-Edit
-SELECT FirstName, LastName 
-FROM Customer
-ORDER BY State DESC;
-Listagem única (valores distintos)
-sql
-Copy
-Edit
-SELECT DISTINCT State 
-FROM Customer;
-Limitar resultados
-sql
-Copy
-Edit
-SELECT TOP 5 FirstName, LastName 
-FROM Customer;
-Saltar linhas (OFFSET / FETCH)
-sql
-Copy
-Edit
-SELECT CustomerId, LastName 
-FROM Customer
-ORDER BY CustomerId
-OFFSET 10 ROWS FETCH NEXT 5 ROWS ONLY;
-🎯 FILTERING DATA
-Operadores comuns
-= : Igual
 
-!= ou <> : Diferente
-
-< : Menor que
-
-<= : Menor ou igual
-
-> : Maior que
-
->= : Maior ou igual
-
-AND : Ambas as condições verdadeiras
-
-OR : Pelo menos uma condição verdadeira
-
-NOT : Inverte a condição
-
-BETWEEN : Dentro de um intervalo
-
-LIKE % : Qualquer número de caracteres
-
-LIKE _ : Um único caractere
+CopyEdit
 
 🔢 Filtrar dados numéricos
 sql
