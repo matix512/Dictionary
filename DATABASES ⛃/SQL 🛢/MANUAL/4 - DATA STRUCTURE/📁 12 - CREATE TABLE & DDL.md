@@ -6,8 +6,6 @@
 
 #### **Comandos Principais:**
 
-textresponse-action-icon
-
 ```text
 🆕 CREATE - Criar objetos (tabelas, índices, views)
 🔧 ALTER - Modificar estrutura existente

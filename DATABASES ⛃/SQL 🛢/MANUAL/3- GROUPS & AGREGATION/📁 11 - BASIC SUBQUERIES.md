@@ -218,8 +218,6 @@ ORDER BY month;
 
 #### **Common Table Expressions (CTEs):**
 
-sqlresponse-action-icon
-
 ```sql
 -- MySQL 8.0+, SQL Server, PostgreSQL
 WITH top_products AS (
@@ -249,8 +247,6 @@ CROSS JOIN product_stats ps;
 ### **🔄 Correlated Subqueries:**
 
 #### **Referenciando Query Externa:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Vendas de cada vendedor acima de sua própria média
@@ -297,8 +293,6 @@ WHERE product = (
 
 #### **HAVING com Subqueries:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Vendedores com receita acima da média geral
 SELECT 
@@ -328,8 +322,6 @@ HAVING SUM(quantity * price) > (SELECT SUM(quantity * price) FROM sales) * 0.2;
 ### **🎯 Casos Práticos Avançados:**
 
 #### **Ranking e Top N:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Top 3 produtos por categoria
@@ -365,8 +357,6 @@ HAVING SUM(quantity * price) >= (
 ```
 
 #### **Análise Temporal:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Crescimento mês a mês
@@ -413,8 +403,6 @@ WHERE customer_id NOT IN (
 
 #### **Quando Usar Cada Um:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ✅ Subquery é melhor - apenas verificar existência
 SELECT product
@@ -450,8 +438,6 @@ INNER JOIN (
 
 #### **Exercício 1 - Básico:**
 
-sqlresponse-action-icon
-
 ```sql
 -- 1. Produtos mais caros que a média
 SELECT product, price
@@ -473,8 +459,6 @@ GROUP BY salesperson;
 ```
 
 #### **Exercício 2 - Intermediário:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Produtos vendidos por mais vendedores que a média
@@ -513,8 +497,6 @@ GROUP BY salesperson;
 ```
 
 #### **Exercício 3 - Avançado:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Produtos que tiveram vendas em todos os meses do ano
@@ -566,8 +548,6 @@ WHERE (
 
 #### **1. Subqueries Eficientes:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ Lento - subquery correlacionada pesada
 SELECT *
@@ -598,8 +578,6 @@ WHERE s.quantity * s.price > csa.avg_sale_value;
 
 #### **2. Evitar Subqueries em SELECT quando possível:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ Lento - múltiplas subqueries escalares
 SELECT 
@@ -622,8 +600,6 @@ GROUP BY salesperson;
 
 #### **1. NULL com NOT IN:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ Pode retornar 0 linhas se houver NULL
 SELECT product
@@ -645,8 +621,6 @@ WHERE NOT EXISTS (
 ```
 
 #### **2. Subquery retornando múltiplos valores:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Erro se subquery retorna mais de um valor
