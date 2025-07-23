@@ -1505,3 +1505,153 @@ body, h1, p {
 # 📄 20 - FERRAMENTAS DE DESENVOLVIMENTO
 
 
+## Editores de Código
+
+### Visual Studio Code
+Visual Studio Code (VS Code) é um editor de código-fonte gratuito e altamente personalizável desenvolvido pela Microsoft.
+
+#### Instalação
+1. Acesse [code.visualstudio.com](https://code.visualstudio.com/)
+2. Baixe a versão para seu sistema operacional
+3. Siga as instruções de instalação
+
+#### Extensões Essenciais para HTML/CSS
+- **Live Server**: Servidor local com reload automático
+- **HTML CSS Support**: Autocompletar para HTML/CSS
+- **IntelliSense for CSS**: Autocomplete e informações para classes e IDs
+- **HTML Snippets**: Snippets para HTML5
+- **CSS Peek**: Navegar de seletores HTML para definições CSS
+- **Prettier**: Formatador de código
+- **Auto Rename Tag**: Renomeia tags de fechamento automaticamente
+- **Live Sass Compiler**: Compila arquivos Sass/SCSS em tempo real
+- **Color Highlight**: Destaca cores no código
+
+#### Atalhos Úteis
+## Windows/Linux Mac Ação
+
+Ctrl+S Cmd+S Salvar  
+Ctrl+C, Ctrl+V Cmd+C, Cmd+V Copiar, Colar  
+Ctrl+Z, Ctrl+Y Cmd+Z, Cmd+Shift+Z Desfazer, Refazer  
+Ctrl+F Cmd+F Procurar  
+Ctrl+H Cmd+Option+F Substituir  
+Alt+Up/Down Option+Up/Down Mover linha para cima/baixo  
+Shift+Alt+Down Shift+Option+Down Duplicar linha  
+Ctrl+/ Cmd+/ Comentar linha  
+Ctrl+Space Cmd+Space Sugestões de código  
+Ctrl+Shift+P Cmd+Shift+P Abrir paleta de comandos  
+Alt+Click Option+Click Múltiplos cursores
+
+### Sublime Text
+Editor de código leve e rápido com suporte para plugins.
+
+#### Instalação
+1. Acesse [sublimetext.com](https://www.sublimetext.com/)
+2. Baixe e instale conforme instruções
+
+#### Pacotes Recomendados
+- **Package Control**: Gerenciador de pacotes
+- **Emmet**: Atalhos para HTML/CSS
+- **HTML5**: Snippets e autocompletar para HTML5
+- **Color Highlighter**: Destaca cores no código
+- **AutoFileName**: Completa nomes de arquivos
+- **SideBarEnhancements**: Melhora a barra lateral
+
+### Atom
+Editor de código desenvolvido pelo GitHub (descontinuado, mas ainda usado).
+
+### Brackets
+Editor focado em web design desenvolvido pela Adobe.
+
+## Browsers e DevTools
+
+### Chrome DevTools
+Ferramentas de desenvolvimento integradas ao Google Chrome.
+
+#### Abrindo o DevTools
+- **Windows/Linux**: F12 ou Ctrl+Shift+I ou clique direito > Inspecionar
+- **Mac**: Cmd+Option+I ou clique direito > Inspecionar
+
+#### Principais Painéis
+1. **Elements/Elementos**: Inspeção e edição de HTML/CSS
+   - Visualize e edite a árvore DOM
+   - Modifique estilos CSS em tempo real
+   - Veja o box model
+   - Altere estados (hover, focus, etc.)
+
+2. **Console**: Interação com JavaScript e mensagens
+   - Visualize erros e warnings
+   - Execute comandos JavaScript
+   - Teste snippets de código
+
+3. **Network/Rede**: Monitoramento de requisições
+   - Analise tempo de carregamento
+   - Veja tamanho dos arquivos
+   - Inspecione cabeçalhos e respostas
+
+4. **Performance**: Análise de desempenho
+   - Grave e analise performance de carregamento
+   - Identifique gargalos
+
+5. **Application/Aplicativo**: Armazenamento e recursos
+   - Gerencie cookies, localStorage, sessionStorage
+   - Inspecione service workers
+   - Gerencie cache
+
+#### Recursos Úteis para HTML/CSS
+- **DOM Tree**: Visualize e edite a estrutura HTML
+- **Styles Panel**: Edite estilos CSS em tempo real
+- **Computed**: Veja os estilos finais aplicados
+- **Layout**: Visualize o box model
+- **Device Mode**: Teste responsividade em diferentes dispositivos
+- **CSS Overview**: Analise o uso de CSS no site (cores, fontes, etc.)
+- **Animations**: Controle e depure animações CSS
+
+### Firefox Developer Tools
+Ferramentas similares às do Chrome, com alguns recursos exclusivos.
+
+#### Recursos Destacados
+- **Grid Inspector**: Visualização avançada de CSS Grid
+- **Flexbox Inspector**: Visualização de layouts Flexbox
+- **Font Inspector**: Informações detalhadas sobre fontes
+- **Responsive Design Mode**: Teste responsivo mais avançado
+- **Accessibility Inspector**: Verifica problemas de acessibilidade
+
+### Safari Web Inspector
+Ferramentas de desenvolvedor para Safari (Mac/iOS).
+
+### Edge DevTools
+Semelhante ao Chrome DevTools, com algumas integrações específicas.
+
+## Ferramentas de Validação e Análise
+
+### W3C Validators
+Ferramentas oficiais de validação do W3C.
+
+#### HTML Validator
+- Site: [validator.w3.org](https://validator.w3.org/)
+- Valida código HTML conforme os padrões web
+- Opções para validar por URL, upload ou entrada direta
+- Mostra erros e avisos detalhados
+
+#### CSS Validator
+- Site: [jigsaw.w3.org/css-validator](https://jigsaw.w3.org/css-validator/)
+- Valida código CSS conforme especificações
+- Identifica erros de sintaxe e propriedades inválidas
+
+### Lighthouse
+Ferramenta de auditoria automatizada para melhorar a qualidade das páginas web.
+
+#### Uso
+1. Abra o Chrome DevTools
+2. Vá para a aba "Lighthouse"
+3. Selecione as categorias (Performance, Acessibilidade, SEO, etc.)
+4. Clique em "Generate report"
+
+#### Categorias de Auditoria
+- **Performance**: Velocidade e otimização
+- **Accessibility**: Acessibilidade
+- **Best Practices**: Boas práticas de desenvolvimento
+- **SEO**: Otimização para motores de busca
+- **PWA**: Recursos de Progressive Web App
+
+
