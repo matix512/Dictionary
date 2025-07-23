@@ -1,289 +1,298 @@
-# SAMPLE DATA
-
-_The data used in examples throughout this guide are taken from the Chinook database and limited to the following tables and columns._
-
-Table 1: Invoice Table
-
-|   |   |   |   |   |
-|---|---|---|---|---|
-|COLUMN 1|COLUMN 2|COLUMN 3|COLUMN 4|COLUMN 5|
-|InvoiceId|CustomerId|InvoiceDate|BillingState|Total|
-
-Table 2: Customer Table
-
-|   |   |   |   |   |   |
-|---|---|---|---|---|---|
-|COLUMN 1|COLUMN 2|COLUMN 3|COLUMN 4|COLUMN 5|COLUMN 6|
-|CustomerID|FirstName|LastName|City|State|Country|
-
-# QUERYING TABLES
-
-  
-
-_Get all the columns from a table._
-
-
-**SELECT** *
-
-**FROM** Custome r;
-
-_Get one column from a table._
-
-**SELECT** Country  
-**FROM** Custome r;
-
-_Get two or more columns from a table._
-
-**SELECT** FirstName, LastName  
-**FROM** Custome r;
-
-_Get two columns from a table displayed in ascending order.  
-_**SELECT** FirstName, LastName  
-**FROM** Customer
-
-**ORDER BY** LastName **ASC** ;
-
-_Get two columns from a table displayed in descending order._
-
-**SELECT** FirstName, LastName  
-**FROM** Customer
-
-**ORDER BY** State **DESC** ;
-
-_Get a unique list from a table._
-
-**SELECT DISTINCT** State
-
-**FROM** Custome r;
-
-Get the first 5 rows from a table
-
-**SELECT TOP 5**  FirstName, LastName
-
-**FROM** Customer ;
-
-_Get an offset number of rows from a table._
-
-**SELECT** CustomerId, LastName  
-**FROM** Customer
-
-**ORDER BY** CustomerId
-
-**OFFSET** 10 ROWS **FETCH** NEXT 5 ROWS ONLY ;
-
-  
-
-# FILTERING DATA
-
-  
-
-●      **=**: Equal to
-
-●      **!=** **or <>**: Not equal to
-
-●      **<**: Less than
-
-●      **<=**: Less than or equal to
-
-●      **>**: Greater than
-
-●      **>=**: Greater than or equal to
-
-●      **AND**: All conditions must be true.
-
-●      **OR**: At least one condition must be true.
-
-●      **NOT**: The condition must be false.
-
-●      **BETWEEN**: Finds data within a range
-
-●      **LIKE %**: Any number of characters
-
-●      **LIKE _**: A single character
-
-## Filtering on Numeric Columns
-
-_Get information where criteria is more than or equal to other records._  
-**SELECT** CustomerId, Total  
-**FROM** Invoice  
-**WHERE** Total **>=** 0.99
-
-_Get all information that meets two criteria exclusively.  
-_**SELECT** CustomerId, Total  
-**FROM** Invoice  
-**WHERE** Total **BETWEEN** .50 **AND** 9.99;
-
-## Filtering on Text Columns
-
-_Get all information that meets one criteria.  
-_**SELECT** *  
-**FROM** Customer  
-**WHERE** Country **=** ‘Germany’ ;
-
-_Get all information that meets two criteria inclusively.  
-_**SELECT** *  
-**FROM** Customer  
-**WHERE** Country **=** ‘Germany’ **OR** Country **=** ‘France’ ;
-
-_Get all information excluding one criteria.  
-_**SELECT** *  
-**FROM** Customer  
-**WHERE NOT** Country **=** ‘USA’ ;
-
-_Get information where criteria starts with something.  
-_**SELECT** FirstName, LastName  
-**FROM** Customer  
-**WHERE** LastName **LIKE** ‘A**%**’ ;
-
-_Get information where criteria skips one (or more) characters.  
-_**SELECT** FirstName, LastName  
-**FROM** Customer  
-**WHERE** LastName **LIKE** ‘**_**e**%**’ ;
-
-_Get information where criteria does not end with something.  
-_**SELECT** FirstName, LastName  
-**FROM** Customer  
-**WHERE** LastName **NOT** **LIKE** ‘**%**A’ ;
-
-## Filtering on Multiple Columns
-
-_Get all information that meets criteria from two columns.  
-_**SELECT** CustomerId, Total  
-**FROM** Invoice  
-**WHERE** Total > 10 **AND** BillingCity = ‘Paris’;
-
-## Filtering on Missing Data
-
-_Get all information that meets criteria from two columns.  
-_**SELECT** CustomerId  
-**FROM** Invoice  
-**WHERE** Total **IS NOT NULL** ;
-
-  
-
-  
-
-# TRANSFORMING DATA
-
-  
-
-●      **UPPER/LOWER**: Converts text case
-
-●      **CONCAT**: Joins text together
-
-●      **SUBSTRING**: Extracts parts of text
-
-●      **ROUND**: Rounds to a specified number of decimal places
-
-●      **SUM**: Adds values for total calculation
-
-●      **AVG**: Calculates mean average of data
-
-●      **COUNT**: Adds the number of rows
-
-●      **MIN/MAX**: Identifies smallest/largest number.
-
-●      **FORMAT**: Displays components as specified
-
-●      **GETDATE**: Retrieves current date/time
-
-## String Data
-
-_Convert text data to upper case letters._  
-**SELECT UPPER**(FirstName)  
-**FROM** Customer ;
-
-_Join text to create composite information.  
-_**SELECT CONCAT**(FirstName, ‘ ‘ , LastName)  
-**FROM** Customer ;
-
-_Extract parts of a text string (e.g. 1st through 4th characters)._  
-**SELECT SUBSTRING**(LastName, 1, 4)  
-**FROM** Customer ;
-
-## Mathematical Functions
-
-_Round to the nearest two decimal places.  
-_**SELECT ROUND**(Total, 2)  
-**FROM** Invoice ;
-
-_Add values in a set of numbers.  
-_**SELECT SUM**(Total)  
-**FROM** Invoice  
-**WHERE** CustomerId = 5 ;
-
-_Calculate the mean average of a set of numbers.  
-_**SELECT AVG**(Total)  
-**FROM** Invoice ;
-
-## Date and Time Functions
-
-_Display date in mm-dd-yyyy format.  
-_**SELECT FORMAT**(InvoiceDate, ‘MM-dd-yyyy’)  
-**FROM** Invoice ;
-
-_Get the current date displayed in mm-dd-yyyy format.  
-_**SELECT FORMAT (GETDATE()**, ‘MM-dd-yyyy’) ;
-
-_Calculate the difference between two dates.  
-_**SELECT DATEDIFF**(day, ‘01-01-2022’, ‘01-01-2023’) ;
-
-## Aggregation Functions
-
-_Add up the number of records returned.  
-_**SELECT COUNT**(InvoiceId)  
-**FROM** Invoice  
-**WHERE** Total > 10
-
-_Identify the smallest value in a dataset.  
-_**SELECT MIN**(Total)  
-**FROM** Invoice ;
-
-_Identify the largest value in a dataset.  
-_**SELECT MAX**(Total)  
-**FROM** Invoice ;
-
-  
-
-# JOINING TABLES![](file:///C:/Users/Diogo/AppData/Local/Packages/oice_16_974fa576_32c1d314_bf8/AC/Temp/msohtmlclip1/01/clip_image002.gif)
-
-_INNER JOIN: Return rows with a match in both tables  
-(no null values)  
-_**SELECT  
-**            Customer.CustomerId,  
-            Customer.LastName,  
-            Invoice.InvoiceId  
-**FROM** Customer  
-**JOIN** Invoice **ON** Customer.State = Invoice.BillingState ;![](file:///C:/Users/Diogo/AppData/Local/Packages/oice_16_974fa576_32c1d314_bf8/AC/Temp/msohtmlclip1/01/clip_image003.gif)
-
-_LEFT/RIGHT JOIN: Return all rows in the left or right table, and only matching rows in the other table  
-(null values may be present from the table with all rows)  
-_**SELECT  
-**            Customer.CustomerId,  
-            Customer.LastName,  
-            Invoice.InvoiceId  
-**FROM** Customer  
-**LEFT JOIN** Invoice **ON** Customer.State = Invoice.BillingState ;![](file:///C:/Users/Diogo/AppData/Local/Packages/oice_16_974fa576_32c1d314_bf8/AC/Temp/msohtmlclip1/01/clip_image004.gif)
-
-_FULL OUTER JOIN: Return all rows in both tables  
-(null values may be present from either table)  
-_**SELECT  
-**            Customer.CustomerId,  
-            Customer.LastName,  
-            Invoice.InvoiceId  
-**FROM** Customer  
-**FULL OUTER JOIN** Invoice **ON** Customer.State = Invoice.BillingState ;![](file:///C:/Users/Diogo/AppData/Local/Packages/oice_16_974fa576_32c1d314_bf8/AC/Temp/msohtmlclip1/01/clip_image005.gif)
-
-# USING ALIASES
-
-_COLUMN NAMES: Clarify a new column in the results which is created by concatenating two separate columns._
-
-**SELECT CONCAT**(FirstName, ‘ ‘ , LastName) **AS** FullName  
-**FROM** Customer ;
-
-_TABLE NAMES: Simplify the readability of a complex query by assigning aliases to tables._
-
-**SELECT** c.CustomerId, c.FirstName, c.LastName, i.Total **AS** InvoiceTotal  
-**FROM** Customer c
-
-**JOIN** Invoice i **ON** c.CustomerId = i.CustomerId ;
+# 📊 SQL – Guia de Consulta com Base no Chinook
+
+_Exemplos baseados nas tabelas **Customer** e **Invoice** do conjunto de dados Chinook._
+
+---
+
+## 🧾 Tabelas e Colunas Utilizadas
+
+### 🧮 Tabela: `Invoice`
+| Coluna        | Descrição         |
+|---------------|-------------------|
+| InvoiceId     | ID da fatura      |
+| CustomerId    | ID do cliente     |
+| InvoiceDate   | Data da fatura    |
+| BillingState  | Estado de faturação |
+| Total         | Total da fatura   |
+
+### 👤 Tabela: `Customer`
+| Coluna     | Descrição       |
+|------------|-----------------|
+| CustomerId | ID do cliente   |
+| FirstName  | Nome próprio    |
+| LastName   | Apelido         |
+| City       | Cidade          |
+| State      | Estado          |
+| Country    | País            |
+
+---
+
+## 🔍 QUERYING TABLES
+
+### Obter todas as colunas
+```sql
+SELECT * 
+FROM Customer;
+```
+
+
+
+```
+Copy
+Edit
+SELECT Country 
+FROM Customer;
+Obter várias colunas
+sql
+Copy
+Edit
+SELECT FirstName, LastName 
+FROM Customer;
+Ordenar por coluna (ascendente)
+sql
+Copy
+Edit
+SELECT FirstName, LastName 
+FROM Customer
+ORDER BY LastName ASC;
+Ordenar por coluna (descendente)
+sql
+Copy
+Edit
+SELECT FirstName, LastName 
+FROM Customer
+ORDER BY State DESC;
+Listagem única (valores distintos)
+sql
+Copy
+Edit
+SELECT DISTINCT State 
+FROM Customer;
+Limitar resultados
+sql
+Copy
+Edit
+SELECT TOP 5 FirstName, LastName 
+FROM Customer;
+Saltar linhas (OFFSET / FETCH)
+sql
+Copy
+Edit
+SELECT CustomerId, LastName 
+FROM Customer
+ORDER BY CustomerId
+OFFSET 10 ROWS FETCH NEXT 5 ROWS ONLY;
+🎯 FILTERING DATA
+Operadores comuns
+= : Igual
+
+!= ou <> : Diferente
+
+< : Menor que
+
+<= : Menor ou igual
+
+> : Maior que
+
+>= : Maior ou igual
+
+AND : Ambas as condições verdadeiras
+
+OR : Pelo menos uma condição verdadeira
+
+NOT : Inverte a condição
+
+BETWEEN : Dentro de um intervalo
+
+LIKE % : Qualquer número de caracteres
+
+LIKE _ : Um único caractere
+
+🔢 Filtrar dados numéricos
+sql
+Copy
+Edit
+SELECT CustomerId, Total 
+FROM Invoice
+WHERE Total >= 0.99;
+sql
+Copy
+Edit
+SELECT CustomerId, Total 
+FROM Invoice
+WHERE Total BETWEEN 0.50 AND 9.99;
+🔤 Filtrar dados de texto
+sql
+Copy
+Edit
+SELECT * 
+FROM Customer
+WHERE Country = 'Germany';
+sql
+Copy
+Edit
+SELECT * 
+FROM Customer
+WHERE Country = 'Germany' OR Country = 'France';
+sql
+Copy
+Edit
+SELECT * 
+FROM Customer
+WHERE NOT Country = 'USA';
+sql
+Copy
+Edit
+SELECT FirstName, LastName 
+FROM Customer
+WHERE LastName LIKE 'A%';
+sql
+Copy
+Edit
+SELECT FirstName, LastName 
+FROM Customer
+WHERE LastName LIKE '_e%';
+sql
+Copy
+Edit
+SELECT FirstName, LastName 
+FROM Customer
+WHERE LastName NOT LIKE '%A';
+🧮 Filtros em múltiplas colunas
+sql
+Copy
+Edit
+SELECT CustomerId, Total 
+FROM Invoice
+WHERE Total > 10 AND BillingCity = 'Paris';
+🕳️ Filtrar dados nulos
+sql
+Copy
+Edit
+SELECT CustomerId 
+FROM Invoice
+WHERE Total IS NOT NULL;
+🔧 TRANSFORMING DATA
+Funções de Texto
+sql
+Copy
+Edit
+SELECT UPPER(FirstName) 
+FROM Customer;
+sql
+Copy
+Edit
+SELECT CONCAT(FirstName, ' ', LastName) 
+FROM Customer;
+sql
+Copy
+Edit
+SELECT SUBSTRING(LastName, 1, 4) 
+FROM Customer;
+Funções Matemáticas
+sql
+Copy
+Edit
+SELECT ROUND(Total, 2) 
+FROM Invoice;
+sql
+Copy
+Edit
+SELECT SUM(Total) 
+FROM Invoice
+WHERE CustomerId = 5;
+sql
+Copy
+Edit
+SELECT AVG(Total) 
+FROM Invoice;
+Funções de Data e Hora
+sql
+Copy
+Edit
+SELECT FORMAT(InvoiceDate, 'MM-dd-yyyy') 
+FROM Invoice;
+sql
+Copy
+Edit
+SELECT FORMAT(GETDATE(), 'MM-dd-yyyy');
+sql
+Copy
+Edit
+SELECT DATEDIFF(day, '2022-01-01', '2023-01-01');
+Funções de Agregação
+sql
+Copy
+Edit
+SELECT COUNT(InvoiceId) 
+FROM Invoice
+WHERE Total > 10;
+sql
+Copy
+Edit
+SELECT MIN(Total) 
+FROM Invoice;
+sql
+Copy
+Edit
+SELECT MAX(Total) 
+FROM Invoice;
+🔗 JOINING TABLES
+🔸 INNER JOIN
+Retorna apenas linhas com correspondência em ambas as tabelas.
+
+sql
+Copy
+Edit
+SELECT 
+    Customer.CustomerId,
+    Customer.LastName,
+    Invoice.InvoiceId
+FROM Customer
+JOIN Invoice 
+    ON Customer.State = Invoice.BillingState;
+🔸 LEFT JOIN
+Retorna todos os registos da tabela da esquerda, e os correspondentes da direita (se existirem).
+
+sql
+Copy
+Edit
+SELECT 
+    Customer.CustomerId,
+    Customer.LastName,
+    Invoice.InvoiceId
+FROM Customer
+LEFT JOIN Invoice 
+    ON Customer.State = Invoice.BillingState;
+🔸 FULL OUTER JOIN
+Retorna todos os registos de ambas as tabelas, com NULL onde não houver correspondência.
+
+sql
+Copy
+Edit
+SELECT 
+    Customer.CustomerId,
+    Customer.LastName,
+    Invoice.InvoiceId
+FROM Customer
+FULL OUTER JOIN Invoice 
+    ON Customer.State = Invoice.BillingState;
+🏷️ USING ALIASES
+🔹 Alias para colunas
+sql
+Copy
+Edit
+SELECT CONCAT(FirstName, ' ', LastName) AS FullName 
+FROM Customer;
+🔹 Alias para tabelas
+sql
+Copy
+Edit
+SELECT 
+    c.CustomerId, 
+    c.FirstName, 
+    c.LastName, 
+    i.Total AS InvoiceTotal
+FROM Customer c
+JOIN Invoice i 
+    ON c.CustomerId = i.CustomerId;
