@@ -394,3 +394,154 @@ max-height: 300px;
 width: 50%;
 ````
 
+### Padding
+
+```css
+/* Padding em todos os lados */
+padding: 20px;
+
+/* Padding por lado (topo, direita, baixo, esquerda) */
+padding: 10px 20px 15px 25px;
+
+/* Padding em lados específicos */
+padding-top: 10px;
+padding-right: 20px;
+padding-bottom: 15px;
+padding-left: 25px;
+```
+
+### Border
+
+```css
+/* Border completa */
+border: 1px solid #000;
+
+/* Border por lado */
+border-top: 2px dashed red;
+border-right: 1px dotted blue;
+border-bottom: 3px double green;
+border-left: 1px solid black;
+
+/* Propriedades individuais */
+border-width: 1px;
+border-style: solid;
+border-color: #333;
+
+/* Border-radius (arredondamento) */
+border-radius: 5px;  /* Todos os cantos */
+border-radius: 10px 5px 8px 15px;  /* TL, TR, BR, BL */
+
+/* Border-radius circular/elíptico */
+border-radius: 50%;  /* Círculo (para um quadrado) */
+border-radius: 10px / 20px;  /* Elipse (x/y) */
+```
+
+### Margin
+
+```css
+/* Margin em todos os lados */
+margin: 20px;
+
+/* Margin por lado (topo, direita, baixo, esquerda) */
+margin: 10px 20px 15px 25px;
+
+/* Margin em lados específicos */
+margin-top: 10px;
+margin-right: 20px;
+margin-bottom: 15px;
+margin-left: 25px;
+
+/* Centralização horizontal */
+margin: 0 auto;
+
+/* Margin negativa (para sobreposição) */
+margin-top: -10px;
+```
+
+## Box Sizing
+
+```css
+/* Comportamento padrão (content-box) */
+box-sizing: content-box;
+/* width/height define apenas conteúdo, padding e border são adicionados */
+
+/* Comportamento alternativo (border-box) */
+box-sizing: border-box;
+/* width/height inclui conteúdo, padding e border */
+
+/* Aplicar a todos os elementos (recomendado) */
+* {
+  box-sizing: border-box;
+}
+```
+
+## Overflow
+
+```css
+/* Comportamento quando o conteúdo é maior que o container */
+overflow: visible;  /* Padrão, conteúdo transborda */
+overflow: hidden;   /* Esconde o conteúdo excedente */
+overflow: scroll;   /* Sempre mostra barras de rolagem */
+overflow: auto;     /* Barras de rolagem apenas quando necessário */
+
+/* Controle por eixo */
+overflow-x: scroll;
+overflow-y: hidden;
+```
+
+## Display
+
+```css
+/* Valores comuns */
+display: block;        /* Elemento de bloco (toda a largura) */
+display: inline;       /* Elemento em linha (lado a lado) */
+display: inline-block; /* Híbrido (lado a lado, mas aceita width/height) */
+display: none;         /* Remove o elemento do fluxo (não ocupa espaço) */
+
+/* Valores modernos */
+display: flex;         /* Layout flexível */
+display: grid;         /* Layout em grid */
+```
+
+## Visibilidade
+
+cssresponse-action-icon
+
+```css
+visibility: visible;  /* Padrão, elemento visível */
+visibility: hidden;   /* Elemento invisível, mas ocupa espaço */
+```
+
+## Ordem de Cascata para Shorthand
+
+- **margin/padding**: topo, direita, baixo, esquerda (sentido horário)
+- **border**: largura, estilo, cor
+
+## Exemplos Práticos
+
+cssresponse-action-icon
+
+```css
+/* Card básico */
+.card {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Botão */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  background-color: #3498db;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+```
