@@ -300,20 +300,19 @@ FULL OUTER JOIN Invoice
 ### 🔹 Alias para colunas
 
 ```sql
+SELECT CONCAT(FirstName, ' ', LastName) AS FullName 
+FROM Customer;
 ```
-
-CopyEdit
-
-`SELECT CONCAT(FirstName, ' ', LastName) AS FullName  FROM Customer;`
 
 ### 🔹 Alias para tabelas
 
-sql
-
-CopyEdit
-
-`SELECT      c.CustomerId,      c.FirstName,      c.LastName,      i.Total AS InvoiceTotal FROM Customer c JOIN Invoice i      ON c.CustomerId = i.CustomerId;`
-
-yaml
-
-CopyEdit
+```sql
+SELECT 
+    c.CustomerId, 
+    c.FirstName, 
+    c.LastName, 
+    i.Total AS InvoiceTotal
+FROM Customer c
+JOIN Invoice i 
+    ON c.CustomerId = i.CustomerId;
+```
