@@ -16,8 +16,6 @@ seletor {
 
 ## Como Incluir CSS
 
-htmlresponse-action-icon
-
 ```html
 <!-- CSS Inline -->
 <p style="color: blue; font-size: 16px;">Texto azul</p>
@@ -39,8 +37,6 @@ htmlresponse-action-icon
 ```
 
 ## Seletores Básicos
-
-cssresponse-action-icon
 
 ```css
 /* Seletor de elemento */
@@ -67,8 +63,6 @@ p {
 
 ## Seletores Combinados
 
-cssresponse-action-icon
-
 ```css
 /* Descendente: todos os parágrafos dentro de div */
 div p {
@@ -92,8 +86,6 @@ h2 ~ p {
 ```
 
 ## Seletores de Atributo
-
-cssresponse-action-icon
 
 ```css
 /* Elementos com atributo específico */
@@ -129,8 +121,6 @@ cssresponse-action-icon
 
 ## Pseudo-classes
 
-cssresponse-action-icon
-
 ```css
 /* Estado de links */
 a:link { color: blue; }
@@ -152,8 +142,6 @@ input:checked { border: 2px solid green; }
 
 ## Pseudo-elementos
 
-cssresponse-action-icon
-
 ```css
 /* Primeira letra */
 p::first-letter {
@@ -162,5 +150,25 @@ p::first-letter {
 }
 
 /* Primeira linha */
+```markdown
 p::first-line {
+  font-variant: small-caps;
+}
+
+/* Conteúdo antes/depois */
+.nota::before {
+  content: "Nota: ";
+  font-weight: bold;
+}
+
+.aviso::after {
+  content: " ⚠️";
+}
+
+/* Seleção */
+::selection {
+  background-color: yellow;
+  color: black;
+}
 ```
+
