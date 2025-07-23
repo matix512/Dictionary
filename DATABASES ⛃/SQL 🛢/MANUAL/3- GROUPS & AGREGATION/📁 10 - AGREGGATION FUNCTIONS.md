@@ -6,8 +6,6 @@
 
 #### **Categorias Principais:**
 
-textresponse-action-icon
-
 ```text
 📈 Numéricas: SUM, AVG, MIN, MAX, COUNT
 📊 Estatísticas: STDDEV, VARIANCE
@@ -19,8 +17,6 @@ textresponse-action-icon
 ### **🔢 Funções Numéricas Básicas:**
 
 #### **COUNT - Contar Registos:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Contar todas as linhas (incluindo NULL)
@@ -42,8 +38,6 @@ FROM sales;
 ```
 
 #### **SUM - Somar Valores:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Soma simples
@@ -67,8 +61,6 @@ WHERE sale_date >= '2024-01-01';
 
 #### **AVG - Calcular Média:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Média simples
 SELECT AVG(price) AS average_price FROM sales;
@@ -88,8 +80,6 @@ FROM sales;
 ```
 
 #### **MIN/MAX - Valores Extremos:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Valores mínimos e máximos
@@ -116,8 +106,6 @@ GROUP BY category;
 ### **📈 Funções Estatísticas Avançadas:**
 
 #### **STDDEV e VARIANCE:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Desvio padrão e variância
@@ -147,8 +135,6 @@ GROUP BY category;
 ### **📝 Agregação de Strings:**
 
 #### **GROUP_CONCAT (MySQL) / STRING_AGG (SQL Server/PostgreSQL):**
-
-sqlresponse-action-icon
 
 ```sql
 -- MySQL - GROUP_CONCAT
