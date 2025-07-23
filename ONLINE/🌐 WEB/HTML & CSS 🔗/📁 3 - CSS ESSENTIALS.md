@@ -172,3 +172,189 @@ p::first-line {
 }
 ```
 
+## Especificidade
+
+1. Estilos inline (1000)
+2. IDs (100)
+3. Classes, atributos e pseudo-classes (10)
+4. Elementos e pseudo-elementos (1)
+
+Exemplo de cálculo:
+
+- #nav .lista li:hover = 100 + 10 + 1 + 10 = 121
+- body #content .item p = 1 + 100 + 10 + 1 = 112
+
+
+# 📄 08 - CORES & FUNDOS
+
+
+
+# Cores & Fundos
+
+## Formatos de Cores
+
+```css
+/* Nome da cor */
+color: red;
+
+/* Hexadecimal */
+color: #ff0000;  /* Formato longo */
+color: #f00;     /* Formato curto */
+
+/* RGB */
+color: rgb(255, 0, 0);
+
+/* RGBA (com transparência) */
+color: rgba(255, 0, 0, 0.5);  /* 50% transparente */
+
+/* HSL (Hue, Saturation, Lightness) */
+color: hsl(0, 100%, 50%);
+
+/* HSLA (com transparência) */
+color: hsla(0, 100%, 50%, 0.5);
+
+/* Valor atual + transparência */
+color: red;
+opacity: 0.5;  /* Afeta todo o elemento e seus filhos */
+```
+
+## Propriedades de Cor
+
+cssresponse-action-icon
+
+```css
+/* Cor do texto */
+color: #333;
+
+/* Cor de fundo */
+background-color: #f0f0f0;
+
+/* Cor da borda */
+border-color: #999;
+
+/* Cor de outline */
+outline-color: blue;
+```
+
+## Propriedades de Fundo
+
+cssresponse-action-icon
+
+```css
+/* Cor de fundo */
+background-color: lightblue;
+
+/* Imagem de fundo */
+background-image: url('imagem.jpg');
+
+/* Repetição de fundo */
+background-repeat: no-repeat;  /* Não repete */
+background-repeat: repeat-x;   /* Repete horizontalmente */
+background-repeat: repeat-y;   /* Repete verticalmente */
+background-repeat: repeat;     /* Repete em ambas direções */
+
+/* Posição do fundo */
+background-position: center;
+background-position: top right;
+background-position: 50% 25%;
+background-position: 20px 30px;
+
+/* Tamanho do fundo */
+background-size: cover;     /* Cobre todo o container */
+background-size: contain;   /* Cabe dentro do container */
+background-size: 100% auto; /* Largura 100%, altura automática */
+background-size: 200px 150px;
+
+/* Anexação de fundo */
+background-attachment: scroll;  /* Rola com a página */
+background-attachment: fixed;   /* Fixo na viewport */
+background-attachment: local;   /* Rola com o conteúdo do elemento */
+
+/* Origem de fundo */
+background-origin: padding-box;  /* Padrão */
+background-origin: border-box;   /* Inclui a área da borda */
+background-origin: content-box;  /* Apenas área de conteúdo */
+
+/* Área de recorte de fundo */
+background-clip: border-box;   /* Padrão */
+background-clip: padding-box;  /* Corta na borda interna */
+background-clip: content-box;  /* Corta na borda do conteúdo */
+```
+
+## Sintaxe Abreviada
+
+cssresponse-action-icon
+
+```css
+/* background: cor imagem repetição anexação posição / tamanho */
+background: #f0f0f0 url('imagem.jpg') no-repeat fixed center / cover;
+```
+
+## Múltiplos Fundos
+
+cssresponse-action-icon
+
+```css
+/* Ordem: o primeiro declarado fica por cima */
+background: 
+  url('padrão.png') repeat,
+  url('logo.png') no-repeat center,
+  linear-gradient(to bottom, #fff, #ccc);
+```
+
+## Gradientes
+
+cssresponse-action-icon
+
+```css
+/* Gradiente Linear */
+background: linear-gradient(to right, red, blue);
+background: linear-gradient(45deg, red, blue);
+background: linear-gradient(to bottom right, red, yellow, blue);
+
+/* Gradiente Radial */
+background: radial-gradient(circle, yellow, green);
+background: radial-gradient(ellipse at top left, yellow, green);
+background: radial-gradient(circle at center, white, blue 20%, black);
+
+/* Gradiente Cônico */
+background: conic-gradient(red, yellow, green, blue, purple);
+background: conic-gradient(from 45deg, red, blue);
+
+/* Gradiente Repetido */
+background: repeating-linear-gradient(45deg, red, red 10px, blue 10px, blue 20px);
+background: repeating-radial-gradient(circle, white, white 10px, black 10px, black 20px);
+```
+
+## Paletas de Cores
+
+cssresponse-action-icon
+
+```css
+/* Esquema monocromático */
+:root {
+  --cor-primaria: #3498db;
+  --cor-primaria-clara: #5dade2;
+  --cor-primaria-escura: #2980b9;
+}
+
+/* Esquema complementar */
+:root {
+  --cor-primaria: #3498db; /* Azul */
+  --cor-complementar: #e67e22; /* Laranja */
+}
+
+/* Esquema análogo */
+:root {
+  --cor-primaria: #3498db; /* Azul */
+  --cor-secundaria-1: #2ecc71; /* Verde */
+  --cor-secundaria-2: #9b59b6; /* Roxo */
+}
+```
+
+## Ferramentas de Cores
+
+- [Adobe Color](https://color.adobe.com/)
+- [Coolors](https://coolors.co/)
+- [ColorHunt](https://colorhunt.co/)
+- [Paletton](https://paletton.com/)
