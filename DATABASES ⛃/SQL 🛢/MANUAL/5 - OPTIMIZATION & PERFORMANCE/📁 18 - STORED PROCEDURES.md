@@ -210,8 +210,6 @@ SELECT @result; -- Resultado após 5 anos a 5%
 
 #### **Processar Resultados Linha a Linha:**
 
-sqlresponse-action-icon
-
 ```sql
 DELIMITER //
 CREATE PROCEDURE UpdateCustomerTiers()
@@ -271,8 +269,6 @@ CALL UpdateCustomerTiers();
 ### **🚨 Tratamento de Erros:**
 
 #### **Exception Handling:**
-
-sqlresponse-action-icon
 
 ```sql
 DELIMITER //
