@@ -318,8 +318,6 @@ WHERE email LIKE '%.com'
 
 #### **1. Confundir = com LIKE:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ Procura texto exato 'Maria%'
 SELECT * FROM students WHERE first_name = 'Maria%';
@@ -330,8 +328,6 @@ SELECT * FROM students WHERE first_name LIKE 'Maria%';
 
 #### **2. Esquecer aspas em strings:**
 
-sqlresponse-action-icon
-
 ```sql
 -- ❌ MySQL interpreta como coluna
 SELECT * FROM students WHERE first_name = Maria;
@@ -341,8 +337,6 @@ SELECT * FROM students WHERE first_name = 'Maria';
 ```
 
 #### **3. Problemas com NULL:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Nunca encontra NULL
@@ -356,8 +350,6 @@ SELECT * FROM students WHERE email IS NULL;
 
 #### **1. Usar Índices:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Criar índice para colunas frequentemente filtradas
 CREATE INDEX idx_students_first_name ON students(first_name);
@@ -365,8 +357,6 @@ CREATE INDEX idx_students_birth_date ON students(birth_date);
 ```
 
 #### **2. Evitar Funções em WHERE:**
-
-sqlresponse-action-icon
 
 ```sql
 -- ❌ Lento (função em cada linha)

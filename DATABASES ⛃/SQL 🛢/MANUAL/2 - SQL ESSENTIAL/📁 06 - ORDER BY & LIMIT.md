@@ -2,8 +2,6 @@
 
 #### **Sintaxe Básica:**
 
-sqlresponse-action-icon
-
 ```sql
 SELECT columns
 FROM table
@@ -13,8 +11,6 @@ ORDER BY column1 [ASC|DESC], column2 [ASC|DESC], ...
 ```
 
 #### **Ordem Crescente (ASC - padrão):**
-
-sqlresponse-action-icon
 
 ```sql
 -- Por nome (A-Z)
@@ -33,8 +29,6 @@ ORDER BY age;
 
 #### **Ordem Decrescente (DESC):**
 
-sqlresponse-action-icon
-
 ```sql
 -- Por nome (Z-A)
 SELECT * FROM students ORDER BY first_name DESC;
@@ -52,8 +46,6 @@ ORDER BY age DESC;
 ### **📋 Ordenação por Múltiplas Colunas:**
 
 #### **Prioridade de Ordenação:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Primeiro por último nome, depois por primeiro nome
@@ -74,8 +66,6 @@ ORDER BY last_name DESC, first_name ASC, birth_date DESC;
 
 #### **Usar Número da Coluna:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Ordenar pela 2ª coluna do SELECT
 SELECT first_name, last_name, birth_date 
@@ -91,8 +81,6 @@ ORDER BY 3 DESC, 1 ASC;  -- birth_date DESC, first_name ASC
 ### **🎨 Ordenar por Expressões:**
 
 #### **Ordenar por Cálculos:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Por idade calculada
