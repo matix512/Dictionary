@@ -263,8 +263,6 @@ HAVING COUNT(*) > 1;             -- Filtrar grupos DEPOIS
 
 #### **Por Períodos:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Vendas por dia
 SELECT 
@@ -297,8 +295,6 @@ ORDER BY year, quarter;
 
 #### **Relatórios Temporais Avançados:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Crescimento mês a mês (usando window functions se disponível)
 SELECT 
@@ -315,8 +311,6 @@ ORDER BY month;
 ### **🔗 GROUP BY com JOINs:**
 
 #### **Agrupamento Multi-Tabela:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Assumindo tabelas relacionadas
@@ -358,8 +352,6 @@ LIMIT 5;
 
 #### **Múltiplas Agregações:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Relatório completo por vendedor
 SELECT 
@@ -378,8 +370,6 @@ ORDER BY total_revenue DESC;
 ```
 
 #### **Percentuais e Ranking:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Participação de cada categoria no total
@@ -403,8 +393,6 @@ GROUP BY salesperson;
 ### **🎯 Casos de Uso Práticos:**
 
 #### **Dashboard de Vendas:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Métricas principais
@@ -431,8 +419,6 @@ FROM sales;
 
 #### **Análise de Performance:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Top produtos por receita e quantidade
 SELECT 
@@ -450,8 +436,6 @@ ORDER BY total_revenue DESC;
 ### **🎯 Exercícios Práticos:**
 
 #### **Exercício 1 - Básico:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Total de vendas por vendedor
@@ -471,8 +455,6 @@ GROUP BY category;
 ```
 
 #### **Exercício 2 - Intermediário:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Vendedores com mais de 1 venda
@@ -495,8 +477,6 @@ HAVING SUM(quantity * price) > 500;
 ```
 
 #### **Exercício 3 - Avançado:**
-
-sqlresponse-action-icon
 
 ```sql
 -- 1. Relatório mensal completo
@@ -526,8 +506,6 @@ ORDER BY salesperson, revenue DESC;
 
 #### **1. Índices para GROUP BY:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Indexar colunas do GROUP BY
 CREATE INDEX idx_sales_category ON sales(category);
@@ -539,8 +517,6 @@ CREATE INDEX idx_sales_category_salesperson ON sales(category, salesperson);
 ```
 
 #### **2. Ordem das Colunas no GROUP BY:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Ordem deve corresponder ao índice para melhor performance
@@ -555,8 +531,6 @@ GROUP BY salesperson, category;  -- ❌ Pode não usar o índice
 ```
 
 #### **3. LIMIT com GROUP BY:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Para top N, usar ORDER BY + LIMIT
