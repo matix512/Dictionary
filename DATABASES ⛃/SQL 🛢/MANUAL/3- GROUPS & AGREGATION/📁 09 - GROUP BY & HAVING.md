@@ -20,8 +20,6 @@
 
 #### **Sintaxe:**
 
-sqlresponse-action-icon
-
 ```sql
 SELECT column1, aggregate_function(column2)
 FROM table
@@ -32,8 +30,6 @@ ORDER BY column1;
 ```
 
 #### **Exemplos Fundamentais:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Dataset expandido para exemplos
@@ -73,8 +69,6 @@ GROUP BY salesperson;
 
 #### **COUNT - Contar:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Contar todas as linhas por grupo
 SELECT category, COUNT(*) AS total_items
@@ -93,9 +87,6 @@ GROUP BY category;
 ```
 
 #### **SUM - Somar:**
-
-sqlresponse-action-icon
-
 ```sql
 -- Total de vendas por categoria
 SELECT 
@@ -114,8 +105,6 @@ GROUP BY salesperson;
 ```
 
 #### **AVG - Média:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Preço médio por categoria
@@ -136,8 +125,6 @@ GROUP BY salesperson;
 ```
 
 #### **MIN/MAX - Mínimo/Máximo:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Faixa de preços por categoria
@@ -163,8 +150,6 @@ GROUP BY salesperson;
 
 #### **Agrupamento Hierárquico:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Vendas por categoria e vendedor
 SELECT 
@@ -189,8 +174,6 @@ ORDER BY category, revenue DESC;
 ```
 
 #### **Agrupamento por Expressões:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Vendas por ano e mês
@@ -223,11 +206,10 @@ END
 ORDER BY avg_price;
 ```
 
-
-````text
 ### **🎯 HAVING - Filtrar Grupos:**
 
 #### **HAVING vs WHERE:**
+
 ```sql
 -- WHERE filtra ANTES do GROUP BY (linhas individuais)
 -- HAVING filtra DEPOIS do GROUP BY (grupos)
@@ -243,11 +225,9 @@ SELECT category, COUNT(*) AS item_count
 FROM sales 
 GROUP BY category
 HAVING COUNT(*) > 1;  -- Só categorias com mais de 1 item
-````
+```
 
 #### **Exemplos HAVING:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Vendedores com receita total > 1000
