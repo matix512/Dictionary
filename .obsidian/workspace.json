@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE/📁 18 - STORED PROCEDURES.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE/📁 19 - TRIGGERS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📁 18 - STORED PROCEDURES"
+              "title": "📁 19 - TRIGGERS"
             }
           }
         ]
@@ -193,6 +193,7 @@
   },
   "active": "19bc7392c8a4f39a",
   "lastOpenFiles": [
+    "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE/📁 18 - STORED PROCEDURES.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE/📁 17 - VIEWS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE/📁 16 - INDEX.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/4 - DATA STRUCTURE/📁 15 - CONSTRAINTS E RELACIONAMENTOS.md",
@@ -222,7 +223,6 @@
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/03. CONTROL STRUCTURES.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/02. OPERATORS.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/01. VARIABLES & DATA TYPES.md",
-    "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑/02. DATA TYPES.md",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑",
     "JAVASCRIPT ｡🇯‌🇸‌",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS",

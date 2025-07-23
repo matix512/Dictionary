@@ -911,8 +911,6 @@ DELIMITER ;
 
 #### **Ver Procedures Existentes:**
 
-sqlresponse-action-icon
-
 ```sql
 -- Listar todas as procedures
 SHOW PROCEDURE STATUS WHERE Db = 'your_database_name';
@@ -987,8 +985,6 @@ DROP PROCEDURE IF EXISTS GetCustomerStats;
 ### **🎯 Exercícios Práticos:**
 
 #### **Exercício 1 - Sistema de Comissões:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Procedure para calcular comissões de vendedores
@@ -1089,8 +1085,6 @@ CALL CalculateSalesCommissions(1, 2024);
 ```
 
 #### **Exercício 2 - Sistema de Alertas de Stock:**
-
-sqlresponse-action-icon
 
 ```sql
 -- Procedure para gerar alertas de stock
@@ -1239,7 +1233,6 @@ CALL GenerateStockAlerts();
 
 
 ### **🚨 Debugging e Troubleshooting:**
-
 
 #### **Técnicas de Debug:**
 
