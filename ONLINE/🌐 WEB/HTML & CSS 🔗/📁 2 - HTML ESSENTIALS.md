@@ -1,5 +1,4 @@
-````text
-## 📁 2 - HTML ESSENCIAL
+
 
 ### 📄 03 - ESTRUTURA & SEMÂNTICA
 
@@ -11,7 +10,6 @@
 
 Conteúdo
 
-textresponse-action-icon
 
 ````text
 

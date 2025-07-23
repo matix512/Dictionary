@@ -35,7 +35,7 @@ CSS (Cascading Style Sheets) é a linguagem usada para estilizar os elementos HT
 
 ### 📄 02 - FERRAMENTAS & AMBIENTE
 
-```markdown
+
 # Ferramentas & Ambiente de Desenvolvimento
 
 ## Editores de Código
@@ -56,7 +56,7 @@ CSS (Cascading Style Sheets) é a linguagem usada para estilizar os elementos HT
 - Firefox Developer Edition
 - Edge DevTools
 
-## Validadores
+## Validators
 - [W3C HTML Validator](https://validator.w3.org/)
 - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 
