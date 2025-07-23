@@ -159,11 +159,6 @@ function exemplo() {
 
 # 📄 05 - LINKS & NAVEGAÇÃO
 
-
-````text
-
-
-```markdown
 # Links & Navegação
 
 ## Links Básicos
@@ -183,8 +178,6 @@ function exemplo() {
 
 ## Atributos de Links
 
-htmlresponse-action-icon
-
 ```html
 <!-- Abrir em nova aba -->
 <a href="https://www.exemplo.com" target="_blank">Link externo</a>
@@ -200,9 +193,6 @@ htmlresponse-action-icon
 ```
 
 ## Links para Seções na Mesma Página
-
-htmlresponse-action-icon
-
 ```html
 <!-- Link para uma seção -->
 <a href="#secao1">Ir para Seção 1</a>
@@ -212,9 +202,6 @@ htmlresponse-action-icon
 ```
 
 ## Menu de Navegação
-
-htmlresponse-action-icon
-
 ```html
 <nav>
   <ul>
@@ -227,9 +214,6 @@ htmlresponse-action-icon
 ```
 
 ## Navegação em Breadcrumb
-
-htmlresponse-action-icon
-
 ```html
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -248,13 +232,9 @@ htmlresponse-action-icon
 - Use aria-current="page" para indicar a página atual
 - Considere usar rel="noopener" em links externos com target="_blank"
 
-textresponse-action-icon
 
-````text
+# 📄 06 - IMAGENS & MÍDIA
 
-### 📄 06 - IMAGENS & MÍDIA
-
-```markdown
 # Imagens & Mídia
 
 ## Imagens Básicas
@@ -271,6 +251,7 @@ textresponse-action-icon
 
 ## Atributos de Imagem
 
+``
 - src: Caminho da imagem (obrigatório)
 - alt: Texto alternativo para acessibilidade (obrigatório)
 - width: Largura da imagem
