@@ -33,7 +33,7 @@ CSS (Cascading Style Sheets) é a linguagem usada para estilizar os elementos HT
 ````
 
 
-### 📄 02 - FERRAMENTAS & AMBIENTE
+### 📄 FERRAMENTAS & AMBIENTE
 
 
 # Ferramentas & Ambiente de Desenvolvimento
