@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 501.5
+    "width": 501.5,
+    "collapsed": true
   },
   "right": {
     "id": "3c417fe92f6b15e7",
@@ -200,51 +201,24 @@
         "type": "window",
         "children": [
           {
-            "id": "77980519124adb84",
-            "type": "split",
+            "id": "f5c37157f8787f0c",
+            "type": "tabs",
             "children": [
               {
-                "id": "f5c37157f8787f0c",
-                "type": "tabs",
-                "children": [
-                  {
-                    "id": "4fdc13c02e7586c0",
-                    "type": "leaf",
-                    "state": {
-                      "type": "markdown",
-                      "state": {
-                        "file": "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 2 - HTML ESSENTIALS.md",
-                        "mode": "source",
-                        "source": false
-                      },
-                      "icon": "lucide-file",
-                      "title": "📁 2 - HTML ESSENTIALS"
-                    }
-                  }
-                ]
-              },
-              {
-                "id": "5a71da548f5443f2",
-                "type": "tabs",
-                "children": [
-                  {
-                    "id": "42335dc3f733e43f",
-                    "type": "leaf",
-                    "state": {
-                      "type": "markdown",
-                      "state": {
-                        "file": "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 1 - FUNDAMENTOS.md",
-                        "mode": "source",
-                        "source": false
-                      },
-                      "icon": "lucide-file",
-                      "title": "📁 1 - FUNDAMENTOS"
-                    }
-                  }
-                ]
+                "id": "4fdc13c02e7586c0",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 2 - HTML ESSENTIALS.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "📁 2 - HTML ESSENTIALS"
+                }
               }
-            ],
-            "direction": "horizontal"
+            ]
           }
         ],
         "direction": "vertical",
@@ -257,10 +231,11 @@
       }
     ]
   },
-  "active": "a9d4e10e066d511e",
+  "active": "4fdc13c02e7586c0",
   "lastOpenFiles": [
-    "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 2 - HTML ESSENTIALS.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 0 - INDEX.md",
+    "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 2 - HTML ESSENTIALS.md",
+    "FERRAMENTAS & AMBIENTE.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 1 - FUNDAMENTOS.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 7 - RECURSOS E REFERÊNCIAS.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 6 - FRAMEWORKS & TOOLS.md",
@@ -285,7 +260,6 @@
     "DATABASES ⛃/SQL 🛢/MANUAL/4 - DATA STRUCTURE/📁 12 - CREATE TABLE & DDL.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/3- GROUPS & AGREGATION/📁 11 - BASIC SUBQUERIES.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/3- GROUPS & AGREGATION/📁 10 - AGREGGATION FUNCTIONS.md",
-    "DATABASES ⛃/SQL 🛢/MANUAL/3- GROUPS & AGREGATION/📁 09 - GROUP BY & HAVING.md",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/Untitled",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS",
     "DATABASES ⛃/COURSERA",

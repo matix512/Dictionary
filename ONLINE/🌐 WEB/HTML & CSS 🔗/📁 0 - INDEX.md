@@ -24,7 +24,7 @@ Este manual serve como referência completa para HTML e CSS, organizado progress
 
 ## 📁 2 - HTML ESSENCIAL
 
-- 2.1 [Estrutura & Semântica](https://app.outlier.ai/playground/688156ffe0777f1ce2cf8773#estrutura--sem%C3%A2ntica-html)
+- 2.1 [[ESTRUTURA & SEMÂNTICA]]
     
     - 2.1.1 Anatomia de um Elemento HTML
     - 2.1.2 Elementos de Estrutura Básica
