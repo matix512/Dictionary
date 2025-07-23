@@ -42,18 +42,22 @@ FROM Customer;
 ```
 
 ### Ordenar por coluna (ascendente)
-
-```
 ```sql
-
-CopyEdit
-
-`SELECT FirstName, LastName  FROM Customer ORDER BY LastName ASC;`
-
-
+SELECT FirstName, LastName 
+FROM Customer
+ORDER BY LastName ASC;
 ```
-Copy
-Edit
+
+### Ordenar por coluna (descendente)
+```sql
+SELECT FirstName, LastName 
+FROM Customer
+ORDER BY State DESC;
+```
+
+
+
+
 SELECT Country 
 FROM Customer;
 Obter várias colunas
