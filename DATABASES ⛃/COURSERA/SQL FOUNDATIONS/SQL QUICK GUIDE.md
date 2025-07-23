@@ -34,20 +34,17 @@ _Exemplos baseados nas tabelas **Customer** e **Invoice** do conjunto de dados C
 SELECT * 
 FROM Customer;
 ```
-
 ### Obter várias colunas
 ```sql
 SELECT FirstName, LastName 
 FROM Customer;
 ```
-
 ### Ordenar por coluna (ascendente)
 ```sql
 SELECT FirstName, LastName 
 FROM Customer
 ORDER BY LastName ASC;
 ```
-
 ### Ordenar por coluna (descendente)
 ```sql
 SELECT FirstName, LastName 
@@ -55,6 +52,38 @@ FROM Customer
 ORDER BY State DESC;
 ```
 
+### Listagem única (valores distintos)
+```sql
+SELECT DISTINCT State 
+FROM Customer;
+```
+
+### Limitar resultados
+```sql
+SELECT DISTINCT State 
+FROM Customer;
+```
+
+
+CopyEdit
+
+`SELECT DISTINCT State  FROM Customer;`
+
+### Limitar resultados
+
+sql
+
+CopyEdit
+
+`SELECT TOP 5 FirstName, LastName  FROM Customer;`
+
+### Saltar linhas (OFFSET / FETCH)
+
+sql
+
+CopyEdit
+
+`SELECT CustomerId, LastName  FROM Customer ORDER BY CustomerId OFFSET 10 ROWS FETCH NEXT 5 ROWS ONLY;`
 
 
 
