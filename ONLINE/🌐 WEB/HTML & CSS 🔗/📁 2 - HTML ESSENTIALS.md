@@ -251,13 +251,14 @@ function exemplo() {
 
 ## Atributos de Imagem
 
-``
-- src: Caminho da imagem (obrigatório)
-- alt: Texto alternativo para acessibilidade (obrigatório)
-- width: Largura da imagem
-- height: Altura da imagem
-- title: Título/tooltip da imagem
-- loading: Comportamento de carregamento (eager, lazy)
+```html
+src: Caminho da imagem (obrigatório)
+alt: Texto alternativo para acessibilidade (obrigatório)
+width: Largura da imagem
+height: Altura da imagem
+title: Título/tooltip da imagem
+loading: Comportamento de carregamento (eager, lazy)
+```
 
 ## Formatos de Imagem
 
@@ -268,9 +269,6 @@ function exemplo() {
 - **WebP**: Formato moderno de alta compressão
 
 ## Figure & Figcaption
-
-htmlresponse-action-icon
-
 ```html
 <figure>
   <img src="grafico.png" alt="Gráfico de vendas 2023">
@@ -279,9 +277,6 @@ htmlresponse-action-icon
 ```
 
 ## Imagens Responsivas
-
-htmlresponse-action-icon
-
 ```html
 <!-- Imagem que se adapta ao container -->
 <img src="imagem.jpg" alt="Descrição" style="max-width: 100%; height: auto;">
@@ -300,9 +295,6 @@ htmlresponse-action-icon
 ```
 
 ## Vídeo
-
-htmlresponse-action-icon
-
 ```html
 <video width="320" height="240" controls>
   <source src="video.mp4" type="video/mp4">
@@ -313,6 +305,9 @@ htmlresponse-action-icon
 
 ## Atributos de Vídeo
 
+```html
+
+```
 - controls: Mostra controles de reprodução
 - autoplay: Reproduz automaticamente
 - loop: Repete o vídeo
