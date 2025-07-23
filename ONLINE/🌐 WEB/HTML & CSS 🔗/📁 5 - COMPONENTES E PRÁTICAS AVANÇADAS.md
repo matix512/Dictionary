@@ -2032,5 +2032,10 @@ Os princípios POUR:
 </a>
 
 <!-- Link com ícone -->
-<a href="
+
+<a href="https://twitter.com/perfil">
+  <span class="icon-twitter" aria-hidden="true"></span>
+  <span>Siga-nos no Twitter</span>
+</a>
 ```
+
