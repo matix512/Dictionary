@@ -7,4 +7,4 @@
 - [[Tipo Espacial]]
 
 
-# Tipo Numérico
+
