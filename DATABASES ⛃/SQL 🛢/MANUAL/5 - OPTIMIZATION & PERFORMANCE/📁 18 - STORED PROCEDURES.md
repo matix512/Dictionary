@@ -704,8 +704,6 @@ FROM order_summary;
 
 #### **Relatórios Configuráveis:**
 
-sqlresponse-action-icon
-
 ```sql
 DELIMITER //
 CREATE PROCEDURE DynamicSalesReport(
@@ -780,8 +778,6 @@ CALL DynamicSalesReport('2024-01-01', '2024-01-31', 'category', NULL);
 
 #### **Auditoria de Login:**
 
-sqlresponse-action-icon
-
 ```sql
 DELIMITER //
 CREATE PROCEDURE LogUserLogin(
@@ -847,8 +843,6 @@ CALL LogUserLogin('user@example.com', '192.168.1.100', 'Mozilla/5.0...', TRUE);
 ### **⚡ Performance e Otimização:**
 
 #### **Procedure com Análise de Performance:**
-
-sqlresponse-action-icon
 
 ```sql
 DELIMITER //
