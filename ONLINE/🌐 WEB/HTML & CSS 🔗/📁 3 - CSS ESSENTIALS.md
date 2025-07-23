@@ -220,8 +220,6 @@ opacity: 0.5;  /* Afeta todo o elemento e seus filhos */
 
 ## Propriedades de Cor
 
-cssresponse-action-icon
-
 ```css
 /* Cor do texto */
 color: #333;
@@ -237,8 +235,6 @@ outline-color: blue;
 ```
 
 ## Propriedades de Fundo
-
-cssresponse-action-icon
 
 ```css
 /* Cor de fundo */
@@ -283,16 +279,12 @@ background-clip: content-box;  /* Corta na borda do conteúdo */
 
 ## Sintaxe Abreviada
 
-cssresponse-action-icon
-
 ```css
 /* background: cor imagem repetição anexação posição / tamanho */
 background: #f0f0f0 url('imagem.jpg') no-repeat fixed center / cover;
 ```
 
 ## Múltiplos Fundos
-
-cssresponse-action-icon
 
 ```css
 /* Ordem: o primeiro declarado fica por cima */
@@ -303,8 +295,6 @@ background:
 ```
 
 ## Gradientes
-
-cssresponse-action-icon
 
 ```css
 /* Gradiente Linear */
@@ -327,8 +317,6 @@ background: repeating-radial-gradient(circle, white, white 10px, black 10px, bla
 ```
 
 ## Paletas de Cores
-
-cssresponse-action-icon
 
 ```css
 /* Esquema monocromático */
@@ -358,3 +346,55 @@ cssresponse-action-icon
 - [Coolors](https://coolors.co/)
 - [ColorHunt](https://colorhunt.co/)
 - [Paletton](https://paletton.com/)
+
+
+# 📄 09 - BOX MODEL
+
+
+# Box Model (Modelo de Caixa)
+
+## Conceito
+Todo elemento HTML é representado como uma caixa retangular. O Box Model descreve como essas caixas são dimensionadas, posicionadas e como interagem entre si.
+
+## Componentes do Box Model
+```
+
+┌───────────────────────────────────────┐  
+│ Margin │  
+│ ┌───────────────────────────────────┐ │  
+│ │ Border │ │  
+│ │ ┌───────────────────────────────┐ │ │  
+│ │ │ Padding │ │ │  
+│ │ │ ┌───────────────────────────┐ │ │ │  
+│ │ │ │ Content │ │ │ │  
+│ │ │ └───────────────────────────┘ │ │ │  
+│ │ └───────────────────────────────┘ │ │  
+│ └───────────────────────────────────┘ │  
+└───────────────────────────────────────┘
+
+textresponse-action-icon
+
+````text
+
+- **Content**: Área onde o conteúdo é exibido
+- **Padding**: Espaço entre o conteúdo e a borda
+- **Border**: Linha que circunda o padding
+- **Margin**: Espaço externo à borda, entre elementos
+
+## Propriedades Básicas
+
+### Width & Height
+```css
+/* Largura e altura do conteúdo */
+width: 300px;
+height: 200px;
+
+/* Largura e altura mínima/máxima */
+min-width: 100px;
+max-width: 500px;
+min-height: 100px;
+max-height: 300px;
+
+/* Largura percentual (relativa ao container) */
+width: 50%;
+````
