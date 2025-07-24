@@ -40,8 +40,6 @@
 
 ### Passo 1: Instalação e Configuração do Ambiente
 
-bashresponse-action-icon
-
 ```bash
 # Certifique-se que o XAMPP está instalado e os serviços Apache e MySQL estão ativos
 
@@ -59,8 +57,6 @@ cd projeto-laravel
 
 Edite o arquivo .env na raiz do projeto:
 
-textresponse-action-icon
-
 ```text
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -73,8 +69,6 @@ DB_PASSWORD=
 Crie o banco de dados no phpMyAdmin acessando http://localhost/phpmyadmin.
 
 ### Passo 3: Instalação do Laravel UI para Auth e Bootstrap
-
-bashresponse-action-icon
 
 ```bash
 # Instale o pacote Laravel UI
