@@ -117,8 +117,6 @@ public function boot()
 
 ### Texto e Palavras
 
-phpresponse-action-icon
-
 ```php
 $faker->word                      // Uma palavra aleatória
 $faker->words(3)                  // Array com 3 palavras
@@ -128,8 +126,6 @@ $faker->text(200)                 // Texto com 200 caracteres
 ```
 
 ### Pessoas e Identidades
-
-phpresponse-action-icon
 
 ```php
 $faker->name                      // 'John Doe'
@@ -142,8 +138,6 @@ $faker->cpf                       // (no Brasil) '123.456.789-00'
 ```
 
 ### Números e Datas
-
-phpresponse-action-icon
 
 ```php
 $faker->randomDigit               // Dígito de 0-9
@@ -161,8 +155,6 @@ $faker->year                      // '1993'
 
 ### Internet e Tecnologia
 
-phpresponse-action-icon
-
 ```php
 $faker->email                     // 'email@example.com'
 $faker->safeEmail                 // 'email@example.org'
@@ -173,8 +165,6 @@ $faker->userAgent                 // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64).
 ```
 
 ### Endereços
-
-phpresponse-action-icon
 
 ```php
 $faker->address                   // '123 Rua Principal'
@@ -187,8 +177,6 @@ $faker->postcode                  // '12345-678'
 
 ### Cores
 
-phpresponse-action-icon
-
 ```php
 $faker->colorName                 // 'blue'
 $faker->hexColor                  // '#ff0044'
@@ -199,8 +187,6 @@ $faker->rgbColor                  // '0,255,122'
 
 O Faker também possui métodos "modificadores" que podem ser encadeados:
 
-phpresponse-action-icon
-
 ```php
 $faker->unique()->randomNumber(5)  // Garante que o número seja único
 $faker->optional(0.5)->firstName   // 50% de chance de retornar um nome, null caso contrário
@@ -210,8 +196,6 @@ $faker->valid(function($v) { return $v > 0; })->randomNumber() // Só aceita nú
 ## 6. Criando seus Próprios Geradores
 
 Se precisar de um tipo específico de dado que o Faker não fornece, você pode criar seu próprio provider:
-
-phpresponse-action-icon
 
 ```php
 // Estendendo o Faker com métodos personalizados
