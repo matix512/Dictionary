@@ -398,8 +398,6 @@ class Bicycle extends Model
 
 ### Passo 1: Criar o Seeder
 
-bashresponse-action-icon
-
 ```bash
 php artisan make:seeder CountriesTableSeeder
 ```
@@ -407,8 +405,6 @@ php artisan make:seeder CountriesTableSeeder
 ### Passo 2: Definir os Dados no Seeder
 
 Edite database/seeds/CountriesTableSeeder.php:
-
-phpresponse-action-icon
 
 ```php
 <?php
@@ -438,8 +434,6 @@ class CountriesTableSeeder extends Seeder
 
 Edite database/seeds/DatabaseSeeder.php:
 
-phpresponse-action-icon
-
 ```php
 <?php
 
@@ -456,8 +450,6 @@ class DatabaseSeeder extends Seeder
 
 ### Passo 4: Executar o Seeder
 
-bashresponse-action-icon
-
 ```bash
 php artisan db:seed
 ```
@@ -467,8 +459,6 @@ php artisan db:seed
 ### Passo 1: Criar/Modificar a Factory para Users
 
 Edite database/factories/UserFactory.php:
-
-phpresponse-action-icon
 
 ```php
 <?php
@@ -496,15 +486,11 @@ $factory->define(User::class, function (Faker $faker) {
 
 ### Passo 2: Criar um Seeder para Usuários
 
-bashresponse-action-icon
-
 ```bash
 php artisan make:seeder UsersTableSeeder
 ```
 
 Edite database/seeds/UsersTableSeeder.php:
-
-phpresponse-action-icon
 
 ```php
 <?php
@@ -525,8 +511,6 @@ class UsersTableSeeder extends Seeder
 
 Edite database/seeds/DatabaseSeeder.php:
 
-phpresponse-action-icon
-
 ```php
 <?php
 
@@ -544,8 +528,6 @@ class DatabaseSeeder extends Seeder
 
 ### Passo 4: Executar o Seeder
 
-bashresponse-action-icon
-
 ```bash
 php artisan db:seed --class=UsersTableSeeder
 ```
@@ -555,8 +537,6 @@ php artisan db:seed --class=UsersTableSeeder
 ### Passo 1: Criar Factory para Bicycles
 
 Crie o arquivo database/factories/BicycleFactory.php:
-
-phpresponse-action-icon
 
 ```php
 <?php
@@ -579,15 +559,11 @@ $factory->define(Bicycle::class, function (Faker $faker) {
 
 ### Passo 2: Criar um Seeder para Bicicletas
 
-bashresponse-action-icon
-
 ```bash
 php artisan make:seeder BicyclesTableSeeder
 ```
 
 Edite database/seeds/BicyclesTableSeeder.php:
-
-phpresponse-action-icon
 
 ```php
 <?php
@@ -624,8 +600,6 @@ class BicyclesTableSeeder extends Seeder
 
 Edite database/seeds/DatabaseSeeder.php:
 
-phpresponse-action-icon
-
 ```php
 <?php
 
@@ -644,8 +618,6 @@ class DatabaseSeeder extends Seeder
 
 ### Passo 4: Executar o Seeder
 
-bashresponse-action-icon
-
 ```bash
 php artisan db:seed --class=BicyclesTableSeeder
 ```
@@ -653,8 +625,6 @@ php artisan db:seed --class=BicyclesTableSeeder
 ## 8-9. Criação dos Controllers e Views para as Listagens
 
 ### Passo 1: Criar os Controllers
-
-bashresponse-action-icon
 
 ```bash
 php artisan make:controller CountryController --resource
@@ -665,8 +635,6 @@ php artisan make:controller BicycleController --resource
 ### Passo 2: Implementar os Métodos de Listagem nos Controllers
 
 Edite app/Http/Controllers/CountryController.php:
-
-phpresponse-action-icon
 
 ```php
 <?php
@@ -690,8 +658,6 @@ class CountryController extends Controller
 
 Edite app/Http/Controllers/UserController.php:
 
-phpresponse-action-icon
-
 ```php
 <?php
 
@@ -713,8 +679,6 @@ class UserController extends Controller
 ```
 
 Edite app/Http/Controllers/BicycleController.php:
-
-phpresponse-action-icon
 
 ```php
 <?php
@@ -739,8 +703,6 @@ class BicycleController extends Controller
 ### Passo 3: Criar as Rotas para as Listagens
 
 Edite routes/web.php:
-
-phpresponse-action-icon
 
 ```php
 <?php
@@ -768,8 +730,6 @@ Route::get('/bicycles', 'BicycleController@index')->name('bicycles.index');
 ### Passo 4: Criar as Views para as Listagens
 
 Crie o diretório resources/views/countries e o arquivo index.blade.php:
-
-htmlresponse-action-icon
 
 ```html
 @extends('layouts.app')
@@ -808,8 +768,6 @@ htmlresponse-action-icon
 ```
 
 Crie o diretório resources/views/users e o arquivo index.blade.php:
-
-htmlresponse-action-icon
 
 ```html
 @extends('layouts.app')
@@ -850,8 +808,6 @@ htmlresponse-action-icon
 ```
 
 Crie o diretório resources/views/bicycles e o arquivo index.blade.php:
-
-htmlresponse-action-icon
 
 ```html
 @extends('layouts.app')
