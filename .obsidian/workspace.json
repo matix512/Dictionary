@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LARAVEL 🐘/📋REVIEW TEST.md",
+                "file": "GIT 👾/🧠 Git Cheat Sheet.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📋REVIEW TEST"
+              "title": "🧠 Git Cheat Sheet"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 501.5,
-    "collapsed": true
+    "width": 501.5
   },
   "right": {
     "id": "3c417fe92f6b15e7",
@@ -194,6 +193,7 @@
   },
   "active": "6bd1ea7499f25b95",
   "lastOpenFiles": [
+    "LARAVEL 🐘/📋REVIEW TEST.md",
     "LARAVEL 🐘/📜PAGE EXAMPLE.md",
     "LARAVEL 🐘/🔄MIGRATIONS.md",
     "LARAVEL 🐘/🅱BOOTSTRAP TOOLKIT.md",
@@ -201,7 +201,6 @@
     "LARAVEL 🐘/🐘BLADE TRICKS.md",
     "LARAVEL 🐘/📦FACTORIES.md",
     "LARAVEL 🐘/⚡CHEAT SHEET.md",
-    "LARAVEL 🐘/📋REVIEW TEST.md",
     "LARAVEL 🐘/🛣️ROUTES AND CONTROLLERS.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 2 - HTML ESSENTIALS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/4 - DATA STRUCTURE/📁 12 - CREATE TABLE & DDL.md",
