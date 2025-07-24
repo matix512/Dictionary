@@ -16,6 +16,8 @@ Página paises.html:
 • As tabelas devem estar centradas horizontalmente na página (utilizar margin: auto) e devem ter a aparência
 igual à imagem em anexo.
 
+
+
 Página 2
 Página contactos.html:
 • Acrescentar um campo Mensagem utilizando o elemento <textarea> e os atributos cols e rows para definir o
