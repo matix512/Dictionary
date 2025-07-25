@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ASP.NET/Untitled/3.md",
+                "file": "ASP.NET/Untitled/4. CONTROLLERS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3"
+              "title": "4. CONTROLLERS"
             }
           }
         ]
@@ -193,6 +193,7 @@
   },
   "active": "6bd1ea7499f25b95",
   "lastOpenFiles": [
+    "ASP.NET/Untitled/3. Estrutura de projetos.md",
     "ASP.NET/Untitled/2. Configuração do Ambiente.md",
     "ASP.NET/Untitled/1. Introdução ao ASP.NET Core MVC.md",
     "ASP.NET/Untitled/0. INDEX.md",
@@ -204,9 +205,8 @@
     "ASP.NET/Untitled/7..md",
     "ASP.NET/Untitled/6..md",
     "ASP.NET/Untitled/5. MODELS.md",
-    "ASP.NET/Untitled/4..md",
+    "ASP.NET/Untitled/4. CONTROLLERS.md",
     "ASP.NET/Untitled",
-    "ASP.NET/Untitled/3.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 2 - HTML ESSENTIALS.md",
     "ASP.NET",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/Untitled 1.md",
