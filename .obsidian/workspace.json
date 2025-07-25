@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ASP.NET/Untitled/4. CONTROLLERS 🕹️.md",
+                "file": "ASP.NET/MANUAL/1. FUNDAMENTOS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4. CONTROLLERS 🕹️"
+              "title": "1. FUNDAMENTOS"
             }
           }
         ]
@@ -191,11 +191,13 @@
       "mermaid-tools:Open Mermaid Toolbar": false
     }
   },
-  "active": "a9d4e10e066d511e",
+  "active": "6bd1ea7499f25b95",
   "lastOpenFiles": [
+    "ASP.NET/MANUAL/0. INDEX.md",
+    "ASP.NET/MANUAL/1. FUNDAMENTOS.md",
+    "ASP.NET/Untitled/4. CONTROLLERS 🕹️.md",
     "ASP.NET/MANUAL",
     "ASP.NET/Untitled/5. MODELS ⚛.md",
-    "ASP.NET/Untitled/4. CONTROLLERS 🕹️.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/0 - INDEX 📑.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS/📁 20 - SSMS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/5 - OPTIMIZATION & PERFORMANCE/📁 16 - INDEX.md",
@@ -221,7 +223,6 @@
     "ONLINE/🌐 WEB/HTML & CSS 🔗/Untitled 1.md",
     "Pasted image 20250724213600.png",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/EX/4.md",
-    "ONLINE/🌐 WEB/HTML & CSS 🔗/EX/3.md",
     "Pasted image 20250724213136.png",
     "Pasted image 20250724213131.png",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/EX",
@@ -231,7 +232,6 @@
     "DATABASES ⛃/COURSERA",
     "DATABASES ⛃/CURSOEMVIDEO",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑",
-    "JAVASCRIPT ｡🇯‌🇸‌",
     "Pasted image 20250719013940.png",
     "Pasted image 20250719013937.png",
     "Pasted image 20250719014104.png",
