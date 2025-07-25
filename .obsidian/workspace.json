@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ASP.NET/MANUAL/1. FUNDAMENTOS.md",
+                "file": "ASP.NET/MANUAL/3. CONTROLLERS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. FUNDAMENTOS"
+              "title": "3. CONTROLLERS"
             }
           }
         ]
@@ -193,8 +193,10 @@
   },
   "active": "6bd1ea7499f25b95",
   "lastOpenFiles": [
-    "ASP.NET/MANUAL/0. INDEX.md",
+    "ASP.NET/MANUAL/2. CONFIGURAÇÃO DO PROJECTO.md",
+    "ASP.NET/MANUAL/3. CONTROLLERS.md",
     "ASP.NET/MANUAL/1. FUNDAMENTOS.md",
+    "ASP.NET/MANUAL/0. INDEX.md",
     "ASP.NET/Untitled/4. CONTROLLERS 🕹️.md",
     "ASP.NET/MANUAL",
     "ASP.NET/Untitled/5. MODELS ⚛.md",
@@ -220,9 +222,7 @@
     "ASP.NET/Untitled",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 2 - HTML ESSENTIALS.md",
     "ASP.NET",
-    "ONLINE/🌐 WEB/HTML & CSS 🔗/Untitled 1.md",
     "Pasted image 20250724213600.png",
-    "ONLINE/🌐 WEB/HTML & CSS 🔗/EX/4.md",
     "Pasted image 20250724213136.png",
     "Pasted image 20250724213131.png",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/EX",
