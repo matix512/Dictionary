@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ASP.NET/Untitled/9..md",
+                "file": "ASP.NET/Untitled/11..md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "9."
+              "title": "11."
             }
           }
         ]
@@ -193,8 +193,10 @@
   },
   "active": "6bd1ea7499f25b95",
   "lastOpenFiles": [
-    "ASP.NET/Untitled/8..md",
+    "ASP.NET/Untitled/10..md",
+    "ASP.NET/Untitled/11..md",
     "ASP.NET/Untitled/9..md",
+    "ASP.NET/Untitled/8..md",
     "ASP.NET/Untitled/7..md",
     "ASP.NET/Untitled/6..md",
     "ASP.NET/Untitled/5. MODELS.md",
@@ -223,8 +225,6 @@
     "GIT 👾/🧠 Git Cheat Sheet.md",
     "LARAVEL 🐘/📜PAGE EXAMPLE.md",
     "LARAVEL 🐘/🔄MIGRATIONS.md",
-    "LARAVEL 🐘/🅱BOOTSTRAP TOOLKIT.md",
-    "LARAVEL 🐘/🎨LAYOUTS.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/Untitled",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS",
