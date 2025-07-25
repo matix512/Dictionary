@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ASP.NET/MANUAL/7. FORMULÁRIOS.md",
+                "file": "ASP.NET/MANUAL/Untitled.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "7. FORMULÁRIOS"
+              "title": "Untitled"
             }
           }
         ]
@@ -193,8 +193,9 @@
   },
   "active": "6bd1ea7499f25b95",
   "lastOpenFiles": [
-    "ASP.NET/MANUAL/6. ROUTES.md",
     "ASP.NET/MANUAL/7. FORMULÁRIOS.md",
+    "ASP.NET/MANUAL/Untitled.md",
+    "ASP.NET/MANUAL/6. ROUTES.md",
     "ASP.NET/MANUAL/5. VIEWS.md",
     "ASP.NET/MANUAL/4. MODELS.md",
     "ASP.NET/MANUAL/3. CONTROLLERS.md",
@@ -219,7 +220,6 @@
     "ASP.NET/Untitled/1. Introdução ao ASP.NET Core MVC.md",
     "ASP.NET/Untitled/11..md",
     "ASP.NET/Untitled/10..md",
-    "ASP.NET/Untitled/9..md",
     "ASP.NET/Untitled",
     "ASP.NET",
     "Pasted image 20250724213600.png",
