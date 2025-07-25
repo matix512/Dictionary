@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ASP.NET/INDEX.md",
+                "file": "ASP.NET/4..md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "INDEX"
+              "title": "4."
             }
           }
         ]
@@ -193,8 +193,12 @@
   },
   "active": "6bd1ea7499f25b95",
   "lastOpenFiles": [
-    "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 2 - HTML ESSENTIALS.md",
+    "ASP.NET/3.md",
+    "ASP.NET/4..md",
+    "ASP.NET/2..md",
+    "ASP.NET/1..md",
     "ASP.NET/INDEX.md",
+    "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 2 - HTML ESSENTIALS.md",
     "ASP.NET",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/Untitled 1.md",
     "Pasted image 20250724213600.png",
@@ -220,10 +224,6 @@
     "DATABASES ⛃/SQL 🛢/MANUAL/4 - DATA STRUCTURE/📁 12 - CREATE TABLE & DDL.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 0 - INDEX.md",
     "FERRAMENTAS & AMBIENTE.md",
-    "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 1 - FUNDAMENTOS.md",
-    "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 7 - RECURSOS E REFERÊNCIAS.md",
-    "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 6 - FRAMEWORKS & TOOLS.md",
-    "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 5 - COMPONENTES E PRÁTICAS AVANÇADAS.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/Untitled",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS",
