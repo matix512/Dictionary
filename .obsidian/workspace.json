@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ASP.NET/4..md",
+                "file": "ASP.NET/Untitled/5. MODELS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4."
+              "title": "5. MODELS"
             }
           }
         ]
@@ -193,11 +193,13 @@
   },
   "active": "6bd1ea7499f25b95",
   "lastOpenFiles": [
-    "ASP.NET/3.md",
-    "ASP.NET/4..md",
-    "ASP.NET/2..md",
-    "ASP.NET/1..md",
-    "ASP.NET/INDEX.md",
+    "ASP.NET/Untitled/1..md",
+    "ASP.NET/Untitled/5. MODELS.md",
+    "ASP.NET/Untitled/4..md",
+    "ASP.NET/Untitled",
+    "ASP.NET/Untitled/3.md",
+    "ASP.NET/Untitled/2..md",
+    "ASP.NET/Untitled/INDEX.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 2 - HTML ESSENTIALS.md",
     "ASP.NET",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/Untitled 1.md",
@@ -223,7 +225,6 @@
     "LARAVEL 🐘/🛣️ROUTES AND CONTROLLERS.md",
     "DATABASES ⛃/SQL 🛢/MANUAL/4 - DATA STRUCTURE/📁 12 - CREATE TABLE & DDL.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 0 - INDEX.md",
-    "FERRAMENTAS & AMBIENTE.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/Untitled",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS",
@@ -231,7 +232,6 @@
     "DATABASES ⛃/CURSOEMVIDEO",
     "JAVASCRIPT ｡🇯‌🇸‌/MANUAL 📑",
     "JAVASCRIPT ｡🇯‌🇸‌",
-    "DATABASES ⛃/SQL 🛢/MANUAL/6 - TOOLS",
     "Pasted image 20250719013940.png",
     "Pasted image 20250719013937.png",
     "Pasted image 20250719014104.png",
