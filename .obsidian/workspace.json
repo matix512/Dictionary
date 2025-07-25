@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ASP.NET/Untitled/5. MODELS.md",
+                "file": "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 03 - INSTALL & SETUP.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "5. MODELS"
+              "title": "📁 03 - INSTALL & SETUP"
             }
           }
         ]
@@ -193,6 +193,9 @@
   },
   "active": "6bd1ea7499f25b95",
   "lastOpenFiles": [
+    "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 02 - RELATIONAL MODEL.md",
+    "DATABASES ⛃/SQL 🛢/MANUAL/1 - BASE/📁 01 - BASIC CONCEPT.md",
+    "ASP.NET/Untitled/5. MODELS ⚛.md",
     "ASP.NET/Untitled/4. CONTROLLERS 🕹️.md",
     "ASP.NET/Untitled/0. INDEX.md",
     "ASP.NET/Untitled/12..md",
@@ -205,7 +208,6 @@
     "ASP.NET/Untitled/8..md",
     "ASP.NET/Untitled/7..md",
     "ASP.NET/Untitled/6..md",
-    "ASP.NET/Untitled/5. MODELS.md",
     "ASP.NET/Untitled",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/📁 2 - HTML ESSENTIALS.md",
     "ASP.NET",
@@ -223,8 +225,6 @@
     "LARAVEL 🐘/📋REVIEW TEST.md",
     "LARAVEL 🐘/📦FACTORIES.md",
     "LARAVEL 🐘/⚡CHEAT SHEET.md",
-    "GIT 👾/🧠 Git Cheat Sheet.md",
-    "LARAVEL 🐘/📜PAGE EXAMPLE.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/Untitled",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS",
