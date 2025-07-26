@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LARAVEL 🐘/🎨LAYOUTS.md",
+                "file": "LARAVEL 🐘/⚡CHEAT SHEET.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "🎨LAYOUTS"
+              "title": "⚡CHEAT SHEET"
             }
           }
         ]
@@ -190,8 +190,9 @@
       "mermaid-tools:Open Mermaid Toolbar": false
     }
   },
-  "active": "a9d4e10e066d511e",
+  "active": "6bd1ea7499f25b95",
   "lastOpenFiles": [
+    "LARAVEL 🐘/🎨LAYOUTS.md",
     "LARAVEL 🐘/SCRIPT.md",
     "LARAVEL 🐘/🅱BOOTSTRAP TOOLKIT.md",
     "LARAVEL 🐘/📜PAGE EXAMPLE.md",
@@ -218,7 +219,6 @@
     "ASP.NET/MANUAL/7. FORMULÁRIOS.md",
     "ASP.NET/MANUAL/6. ROUTES.md",
     "ASP.NET/MANUAL/5. VIEWS.md",
-    "ASP.NET/MANUAL/4. MODELS.md",
     "ASP.NET/MANUAL",
     "ASP.NET/Untitled",
     "ASP.NET",
