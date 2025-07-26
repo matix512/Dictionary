@@ -22,8 +22,6 @@ php artisan make:model Bicycle -a
 
 ### Migration: Countries (criar primeiro)
 
-phpresponse-action-icon
-
 ```php
 // database/migrations/xxxx_create_countries_table.php
 Schema::create('countries', function (Blueprint $table) {
@@ -34,8 +32,6 @@ Schema::create('countries', function (Blueprint $table) {
 ```
 
 ### Migration: Users (editar existente)
-
-phpresponse-action-icon
 
 ```php
 // database/migrations/xxxx_create_users_table.php
@@ -53,8 +49,6 @@ Schema::create('users', function (Blueprint $table) {
 
 ### Migration: Bicycles
 
-phpresponse-action-icon
-
 ```php
 // database/migrations/xxxx_create_bicycles_table.php
 Schema::create('bicycles', function (Blueprint $table) {
@@ -69,8 +63,6 @@ Schema::create('bicycles', function (Blueprint $table) {
 ## 4. Configurar Models e Relações
 
 ### Model: Country
-
-phpresponse-action-icon
 
 ```php
 // app/Country.php
@@ -87,8 +79,6 @@ class Country extends Model
 
 ### Model: User (editar existente)
 
-phpresponse-action-icon
-
 ```php
 // app/User.php
 public function country()
@@ -104,8 +94,6 @@ public function bicycles()
 
 ### Model: Bicycle
 
-phpresponse-action-icon
-
 ```php
 // app/Bicycle.php
 class Bicycle extends Model
@@ -120,8 +108,6 @@ class Bicycle extends Model
 ```
 
 ## 5. Criar Seeder para Countries
-
-phpresponse-action-icon
 
 ```php
 // database/seeds/CountrySeeder.php
@@ -144,8 +130,6 @@ class CountrySeeder extends Seeder
 
 ### Factory: User
 
-phpresponse-action-icon
-
 ```php
 // database/factories/UserFactory.php (editar existente)
 use App\Country;
@@ -164,8 +148,6 @@ $factory->define(User::class, function (Faker $faker) {
 
 ### Factory: Bicycle
 
-phpresponse-action-icon
-
 ```php
 // database/factories/BicycleFactory.php
 use App\Bicycle;
@@ -182,8 +164,6 @@ $factory->define(Bicycle::class, function (Faker $faker) {
 
 ## 7. Atualizar DatabaseSeeder
 
-phpresponse-action-icon
-
 ```php
 // database/seeds/DatabaseSeeder.php
 public function run()
@@ -198,15 +178,11 @@ public function run()
 
 ## 8. Executar Migrações e Seeds
 
-bashresponse-action-icon
-
 ```bash
 php artisan migrate:fresh --seed
 ```
 
 ## 9. Configurar Master Page
-
-bladeresponse-action-icon
 
 ```blade
 {{-- resources/views/layouts/app.blade.php --}}
@@ -216,8 +192,6 @@ bladeresponse-action-icon
 ## 10. Criar Controllers
 
 ### CountryController
-
-phpresponse-action-icon
 
 ```php
 // app/Http/Controllers/CountryController.php
@@ -230,8 +204,6 @@ public function index()
 
 ### UserController
 
-phpresponse-action-icon
-
 ```php
 // app/Http/Controllers/UserController.php
 public function index()
@@ -243,8 +215,6 @@ public function index()
 
 ### BicycleController
 
-phpresponse-action-icon
-
 ```php
 // app/Http/Controllers/BicycleController.php
 public function index()
@@ -255,8 +225,6 @@ public function index()
 ```
 
 ## 11. Configurar Rotas
-
-phpresponse-action-icon
 
 ```php
 // routes/web.php
@@ -271,8 +239,6 @@ Route::get('/bicycles', 'BicycleController@index')->name('bicycles.index');
 ## 12. Criar Views
 
 ### View: Countries
-
-bladeresponse-action-icon
 
 ```blade
 {{-- resources/views/countries/index.blade.php --}}
