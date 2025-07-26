@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LARAVEL 🐘/SCRIPT.md",
+                "file": "LARAVEL 🐘/🎨LAYOUTS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SCRIPT"
+              "title": "🎨LAYOUTS"
             }
           }
         ]
@@ -190,8 +190,9 @@
       "mermaid-tools:Open Mermaid Toolbar": false
     }
   },
-  "active": "6bd1ea7499f25b95",
+  "active": "a9d4e10e066d511e",
   "lastOpenFiles": [
+    "LARAVEL 🐘/SCRIPT.md",
     "LARAVEL 🐘/🅱BOOTSTRAP TOOLKIT.md",
     "LARAVEL 🐘/📜PAGE EXAMPLE.md",
     "LARAVEL 🐘/📋REVIEW TEST.md",
@@ -201,7 +202,6 @@
     "LARAVEL 🐘/🐘BLADE TRICKS.md",
     "LARAVEL 🐘/⚡CHEAT SHEET.md",
     "LARAVEL 🐘/📋REVIEW TEST2.md",
-    "LARAVEL 🐘/SCRIPT.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/EX/PAISES/PAISES.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/EX/PAISES/ROMENIA.md",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/EX/PAISES/HUNGRIA.md",
