@@ -36,7 +36,7 @@ DB_PASSWORD=
 
 ```bash
 # package de autenticação:  
-cd est
+composer require laravel/ui ^2.4
 
 # instalar o package:  
 php artisan ui vue --auth  
