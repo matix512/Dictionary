@@ -1,4 +1,4 @@
-# Script Passo a Passo - Laravel 7 + Bootstrap 4.3
+for# Script Passo a Passo - Laravel 7 + Bootstrap 4.3
 
 ## 1. Setup Inicial
 
