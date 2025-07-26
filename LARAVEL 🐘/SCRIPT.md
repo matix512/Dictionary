@@ -271,8 +271,6 @@ Route::get('/bicycles', 'BicycleController@index')->name('bicycles.index');
 
 ### View: Users
 
-bladeresponse-action-icon
-
 ```blade
 {{-- resources/views/users/index.blade.php --}}
 @extends('layouts.app')
@@ -306,8 +304,6 @@ bladeresponse-action-icon
 ```
 
 ### View: Bicycles
-
-bladeresponse-action-icon
 
 ```blade
 {{-- resources/views/bicycles/index.blade.php --}}
