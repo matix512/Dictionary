@@ -339,8 +339,6 @@ Route::get('/bicycles', 'BicycleController@index')->name('bicycles.index');
 
 ## 13. Ordem de Execução Final
 
-bashresponse-action-icon
-
 ```bash
 # 1. Executar migrações e seeds
 php artisan migrate:fresh --seed
