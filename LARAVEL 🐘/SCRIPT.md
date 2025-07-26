@@ -2,8 +2,6 @@
 
 ## 1. Setup Inicial
 
-bashresponse-action-icon
-
 ```bash
 # Criar projeto Laravel com autenticação
 composer create-project --prefer-dist laravel/laravel nome-projeto "7.*"
@@ -14,8 +12,6 @@ npm install && npm run dev
 ```
 
 ## 2. Criar Models com Resources
-
-bashresponse-action-icon
 
 ```bash
 php artisan make:model Country -a
