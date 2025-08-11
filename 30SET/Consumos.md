@@ -9,7 +9,13 @@
 - Vinho Tinto 
 	- Dona Matilde :  6.80 € x 60 = 408 €
 - Vinho Rosé 
-	-  Trinca Bolotas : 4,89 x 36 =  
-	
+	-  Trinca Bolotas : 4,89 x 36 =  176.04 €
 
+
+
+
+
+Digestivos 
+
+- Whiskey velho : 
 
