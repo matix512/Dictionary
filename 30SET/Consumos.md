@@ -22,5 +22,6 @@ Digestivos
 - Rum envelhecido
 	- Matusalem 7A : 17,98 € x 6 = 107,82 €
 -  Aguardente Velha
-	-  AG VELHA MARQUES MARIALVA RESERVA : 
+	-  AG VELHA MARQUES MARIALVA RESERVA : 15,95 € x 4 = 63,8 €
+- Licor Café
 
