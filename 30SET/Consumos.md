@@ -38,5 +38,6 @@ Espiritos
 	- Foxtale Original LT : 17,95€ x 12 = 215,4 €
 	- Foxtale Pink LT : 19,25€ x 12 = 231 €
 - Tequila
-	- Jose Cuervo Gold : 13,99€ x 18 = 
-
+	- Jose Cuervo Gold : 13,99€ x 18 = 251,82 €
+- Cachaça
+	-  51 LT : 
