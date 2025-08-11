@@ -51,5 +51,5 @@ Espiritos
 
 Refrigerantes
 
--  Cola LY : 
+-  Cola LY : 10 Packs de 12 : 16,78€ x 10 = 
 
