@@ -24,5 +24,10 @@ Digestivos
 -  Aguardente Velha
 	-  AG VELHA MARQUES MARIALVA RESERVA : 15,95 € x 4 = 63,8 €
 - Licor Café
-	- Baileys : 12,56 € x 6 = 
+	- Baileys : 12,56 € x 6 = 75,36 €
+
+Espiritos
+
+- Aperol
+	- Aperol : 11,29€ x 18 = 
 
