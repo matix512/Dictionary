@@ -46,4 +46,6 @@ Espiritos
 - St. Germain 
 	-  St.Germain : 24.44 € x 6 = 146,64€
 - Whiskey 
-	- Jim Beam: 14,54 € x 12 = 
+	- Jim Beam: 14,54 € x 12 = 174,48 €
+
+
