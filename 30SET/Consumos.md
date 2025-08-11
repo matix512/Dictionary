@@ -51,5 +51,7 @@ Espiritos
 
 Refrigerantes
 
--  Cola LY : 10 Packs de 12 : 16,78€ x 10 = 
+-  Cola Lt : 10 Packs de 12 : 16,78€ x 10 = 167.80
+-  Cola Zero Lt : 6 Packs de 12 : 15,11 * 6 = 90.66
+- 
 
