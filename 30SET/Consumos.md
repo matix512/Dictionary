@@ -25,6 +25,8 @@ Digestivos
 	-  AG VELHA MARQUES MARIALVA RESERVA : 15,95 € x 4 = 63,8 €
 - Licor Café
 	- Baileys : 12,56 € x 6 = 75,36 €
+- Fernet
+	- Fernet Branca : 16,01 x 6 = 96,06 
 
 
 
@@ -42,4 +44,5 @@ Espiritos
 - Cachaça
 	-  51 LT : 11,34 x 12 = 136,08 €
 - St. Germain 
-	-  St.Germain : 24.44 € x 
+	-  St.Germain : 24.44 € x 6 = 146,64€
+- 
