@@ -26,8 +26,12 @@ Digestivos
 - Licor Café
 	- Baileys : 12,56 € x 6 = 75,36 €
 
+
+
 Espiritos
 
 - Aperol
-	- Aperol : 11,29€ x 18 = 
+	- Aperol : 11,29€ x 18 = 203,22 €
+- Vodka
+	- 
 
