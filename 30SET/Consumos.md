@@ -56,5 +56,5 @@ Refrigerantes
 -  7up 1,5 Lt : 10 x6 garrfas : 8.82 x 10 = 88.20
 -  Ginger Ale Lt : 4 caixas de 12 : 15.95 * 4 = 63.8
 -  Joi maracuja Lt : 10 caixas de 6 : 5,65 * 10 = 56,5
--  Ginger Beer : 
+-  Ginger Beer : 10 caixas : 10 
 
