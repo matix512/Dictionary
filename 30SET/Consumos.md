@@ -40,4 +40,6 @@ Espiritos
 - Tequila
 	- Jose Cuervo Gold : 13,99€ x 18 = 251,82 €
 - Cachaça
-	-  51 LT : 
+	-  51 LT : 11,34 x 12 = 136,08 €
+- St. Germain 
+	-  St.Germain : 24.44 € x 
