@@ -17,5 +17,7 @@
 
 Digestivos 
 
-- Whiskey velho : Dewars 12A 
+- Whiskey velho 
+	- Dewars 12A : 17,96€ x 6 =  107,76 €
+- Rum env
 
