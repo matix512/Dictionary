@@ -9,7 +9,7 @@
 - Vinho Tinto 
 	- Dona Matilde :  6.80 € x 60 = 408 €
 - Vinho Rosé 
-	-  
+	-  Trinca Bolotad
 	
 
 
