@@ -54,5 +54,5 @@ Refrigerantes
 -  Cola Lt : 10 Packs de 12 : 16,78€ x 10 = 167.80
 -  Cola Zero Lt : 6 Packs de 12 : 15,11 * 6 = 90.66
 -  7up 1,5 Lt : 10 x6 garrfas : 8.82 x 10 = 88.20
-- 
+-  Ginger Ale Lt : 4 caixas de 12 : 1
 
