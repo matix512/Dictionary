@@ -17,5 +17,5 @@
 
 Digestivos 
 
-- Whiskey velho : 
+- Whiskey velho : Dewars 12A 
 
