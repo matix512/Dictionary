@@ -26,7 +26,7 @@ Digestivos
 - Licor Café
 	- Baileys : 12,56 € x 6 = 75,36 €
 - Fernet
-	- Fernet Branca : 16,01 x 6 = 96,06 
+	- Fernet Branca : 16,01 x 6 = 96,06 €
 
 
 
@@ -45,4 +45,5 @@ Espiritos
 	-  51 LT : 11,34 x 12 = 136,08 €
 - St. Germain 
 	-  St.Germain : 24.44 € x 6 = 146,64€
-- 
+- Whiskey 
+	- Jim Beam: 14,54 € x 12 = 
