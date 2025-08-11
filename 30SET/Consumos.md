@@ -35,5 +35,5 @@ Espiritos
 - Vodka
 	-  Nemiroff de luxe : 11,98 € x 18 = 215,64 €
 - Gin
-	- Foxtale Original LT : 
+	- Foxtale Original LT : 17,95€ x 12 = 215,4 €
 
