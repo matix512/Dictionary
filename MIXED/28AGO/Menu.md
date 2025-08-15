@@ -1,14 +1,13 @@
 ### Mojito
 
-- classic
-- passionfruit
-    ´´´text
-    - Ingredientes: Rum, hortelã, xarope, sumo limão, xarope açucar, água com gás
+- `classic`
+- `passionfruit`
 
-Sangria espumante
+
+### Sangria espumante
 
 - - Maracujá
-    - Frutos vermelhos
+    rutos vermelhos
 
 Águas
 
