@@ -2,12 +2,10 @@
 
 - `classic`
 - `passionfruit`
-
-
 ### Sangria espumante
 
-- - Maracujá
-    rutos vermelhos
+- `Maracujá`
+- `Frutos Vermelhos`
 
 Águas
 
