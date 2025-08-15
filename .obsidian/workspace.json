@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "30SET/Consumos.md",
+                "file": "MIXED/28AGO/Menu.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Consumos"
+              "title": "Menu"
             }
           }
         ]
@@ -192,9 +192,12 @@
   },
   "active": "6bd1ea7499f25b95",
   "lastOpenFiles": [
+    "MIXED/30SET/Consumos.md",
+    "MIXED/28AGO/Menu.md",
+    "MIXED/28AGO",
+    "MIXED",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/EX/PAISES/CONTACTOS.md",
-    "30SET/Consumos.md",
-    "30SET",
+    "MIXED/30SET",
     "LARAVEL 🐘/📋REVIEW TEST2.md",
     "LARAVEL 🐘/📋REVIEW TEST.md",
     "LARAVEL 🐘/⚡CHEAT SHEET.md",
@@ -219,7 +222,6 @@
     "ASP.NET/MANUAL/9. Implementação da Aplicação Calçados Omega.md",
     "ASP.NET/MANUAL/8. PERSISTÊNCIA DE DADOS.md",
     "ASP.NET/MANUAL/7. FORMULÁRIOS.md",
-    "ASP.NET/MANUAL/6. ROUTES.md",
     "ASP.NET/MANUAL",
     "ASP.NET/Untitled",
     "ASP.NET",
@@ -229,8 +231,6 @@
     "ONLINE/🌐 WEB/HTML & CSS 🔗/EX",
     "ONLINE/🌐 WEB/HTML & CSS 🔗",
     "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/Untitled",
-    "DATABASES ⛃/COURSERA/SQL FOUNDATIONS",
-    "DATABASES ⛃/COURSERA",
     "Pasted image 20250719013940.png",
     "Pasted image 20250719013937.png",
     "Pasted image 20250719014104.png",
