@@ -1,5 +1,5 @@
 
-Dacosta
+# Dacosta
 Espumante Cinzano Sparkling Rose - 3,49 € x 12 = 
 Espumante Cinzano Sparkling Asti - 3,49€ x 12 =
 Espumante Cinzano to Spritz - 
@@ -15,7 +15,7 @@ Tónica L: 15,95€ x 2 =
 
 
 
-Makro
+# Makro
 Xarope Rioba Passonfruit - 12 Ud
 2 Packs de água de 1,5L
 2 Garrafões de 5L
@@ -23,6 +23,7 @@ Xarope Rioba Passonfruit - 12 Ud
 Café Moído
 1 Caixa de Laranjas 
 PEPINOS (6) - PEPINOS, NÃO QUERO COURGETTE
+1 Saco de Frutos Vermelhos 
 
 
 
