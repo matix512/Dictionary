@@ -17,15 +17,15 @@
 
 # Makro
 
-`Xarope Rioba Passonfruit - 12 Ud`
-`2 Packs de água de 1,5L`
-`2 Garrafões de 5L`
-`2 caixas de limas` 
-`Café Moído`
-`1 Caixa de Laranjas` 
-`PEPINOS (6) - PEPINOS, NÃO QUERO COURGETTE`
-`1 Saco de Frutos Vermelhos congelado`
-`1 Clara de Ovo Litro - CLARA DE OVO, NÃO É O OVO INTEIRO ZÉ NANDO`
-`Hortelã`
+- `Xarope Rioba Passonfruit - 12 Ud`
+- `2 Packs de água de 1,5L`
+- `2 Garrafões de 5L`
+- `2 caixas de limas` 
+- `Café Moído`
+- `1 Caixa de Laranjas` 
+- `PEPINOS (6) - PEPINOS, NÃO QUERO COURGETTE`
+- `1 Saco de Frutos Vermelhos congelado`
+- `1 Clara de Ovo Litro - CLARA DE OVO, NÃO É O OVO INTEIRO ZÉ NANDO`
+- `Hortelã`
 
 
