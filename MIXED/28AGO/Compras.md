@@ -10,7 +10,7 @@
 - Ginger Ale L : 15,95€ 
 - Tónica L: 15,95€ x 2 = 
 - Foxtale - 12,92€ x 6 =
-	- - (Promo 5+1 NÃO ESQUECER DE MENCIONAR)
+	- (Promo 5+1 NÃO ESQUECER DE MENCIONAR)
 - 
 	
 	
