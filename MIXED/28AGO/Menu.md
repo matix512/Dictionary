@@ -1,26 +1,33 @@
+## 🍹 Cocktails
+
 ### Mojito
+- 🌿 Classic
+- 🥭 Passionfruit
 
-- `classic`
-- `passionfruit`
-### Sangria espumante
+### Sangria Espumante
+- 🥭 Maracujá
+- 🍓 Frutos Vermelhos
 
-- `Maracujá`
-- `Frutos Vermelhos`
+---
 
-Águas
+## 💧 Águas
 
-- Aromatizadas:
-    - Pepino e cardamomo
-    - Frutos Vermelhos e hortelã
-- Água gaseificada
-- Água natural
+### Aromatizadas
+- 🥒 Pepino e cardamomo
+- 🍓 Frutos Vermelhos e hortelã
 
-Refrigerantes
+### Outras
+- 💨 Água gaseificada
+- 💧 Água natural
 
-- - Coca Cola
-    - 7up
-    - Ginger Ale
+---
 
-Gin & Tonic
+## 🥤 Refrigerantes
+- 🥤 Coca Cola
+- 🥤 7up
+- 🫚 Ginger Ale
 
-- - Ingredientes: Gin, água tónica
+---
+
+## 🍸 Gin & Tonic
+**Ingredientes:** 🍸 Gin, 💨 Água tónica
