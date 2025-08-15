@@ -17,4 +17,8 @@ Tónica L: 15,95€ x 2 =
 Makro
 Xarope Rioba Passonfruit - 12 Ud
 2 Packs de água de 1,5L
+2 Garrafões de 5L
+2 caixas de limas 
+Café Moído
+
 
