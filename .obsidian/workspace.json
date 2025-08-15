@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MIXED/30SET/Logística.md",
+                "file": "MIXED/28AGO/Compras.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Logística"
+              "title": "Compras"
             }
           }
         ]
@@ -192,8 +192,8 @@
   },
   "active": "6bd1ea7499f25b95",
   "lastOpenFiles": [
-    "MIXED/28AGO/Compras.md",
     "MIXED/30SET/Logística.md",
+    "MIXED/28AGO/Compras.md",
     "MIXED/22AGO/Compras.md",
     "MIXED/22AGO/Menu.md",
     "MIXED/28AGO/Menu.md",
