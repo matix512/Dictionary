@@ -6,7 +6,8 @@ Rum Abuelo Anejo - 12,49€ x 12 =
 (Promo 5+1 NÃO ESQUECER DE MENCIONAR)
 Coca Cola Lt : 16,78€ x 3 = 
 7UP Lt : 8,82 € x 2 = 
-Ginger Ale Lt : 
+Ginger Ale Lt : 15,95€ x 1
+Tónica Lt : 2 Packs 
 
 
 
