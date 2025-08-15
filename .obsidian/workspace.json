@@ -22,6 +22,26 @@
             }
           }
         ]
+      },
+      {
+        "id": "f61f99a9537b64f1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "37a3464d5507c042",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "MIXED/28AGO/Menu.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Menu"
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -190,11 +210,11 @@
       "mermaid-tools:Open Mermaid Toolbar": false
     }
   },
-  "active": "a9d4e10e066d511e",
+  "active": "6bd1ea7499f25b95",
   "lastOpenFiles": [
-    "MIXED/22AGO",
     "MIXED/28AGO/Menu.md",
     "MIXED/28AGO/Compras.md",
+    "MIXED/22AGO",
     "MIXED/30SET/Consumos.md",
     "MIXED/28AGO",
     "MIXED",
@@ -230,7 +250,6 @@
     "Pasted image 20250724213131.png",
     "ONLINE/🌐 WEB/HTML & CSS 🔗/EX",
     "ONLINE/🌐 WEB/HTML & CSS 🔗",
-    "DATABASES ⛃/COURSERA/SQL FOUNDATIONS/Untitled",
     "Pasted image 20250719013940.png",
     "Pasted image 20250719013937.png",
     "Pasted image 20250719014104.png",
