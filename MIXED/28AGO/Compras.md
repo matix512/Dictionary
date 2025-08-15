@@ -9,7 +9,7 @@ Coca Cola L : 16,78€ x 3 =
 7UP L : 8,82 € x 2 = 
 Ginger Ale L : 15,95€ 
 Tónica L: 15,95€ x 2 = 
-
+Fox
 
 
 
@@ -23,7 +23,7 @@ Xarope Rioba Passonfruit - 12 Ud
 Café Moído
 1 Caixa de Laranjas 
 PEPINOS (6) - PEPINOS, NÃO QUERO COURGETTE
-1 Saco de Frutos Vermelhos 
+1 Saco de Frutos Vermelhos congelado
 1 Clara de Ovo Litro - CLARA DE OVO, NÃO É O OVO INTEIRO ZÉ NANDO
 Hortelã
 
